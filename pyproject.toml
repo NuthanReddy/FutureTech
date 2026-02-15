@@ -1,0 +1,19 @@
+[project]
+name = "nuthan"
+version = "0.1.0"
+description = "A collection of Python projects including data structures, algorithms, utilities, and more"
+readme = "README.md"
+requires-python = ">=3.10,<3.12"
+dependencies = [
+    "deepdiff",
+    "pdf2docx",
+    "PyPDF2",
+    "pillow",
+    "pyspark==4.1.1",
+    "pandas",
+    "spleeter",
+    "pytest",
+]
+
+[tool.uv]
+# Python <3.12 is required for tensorflow/spleeter compatibility

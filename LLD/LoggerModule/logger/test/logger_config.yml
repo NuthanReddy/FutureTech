@@ -1,0 +1,12 @@
+name: MyLogger
+ts_format: '%d-%m-%Y-%H-%M-%S'
+logger_type: ASYNC
+buffer_size: 25
+sinks:
+  - type: CONSOLE
+    log_level: INFO
+    max_message_size: 1000
+  - type: FILE
+    log_level: DEBUG
+    max_message_size: 2000
+    file_path: logs/app.log
