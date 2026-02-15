@@ -1,3 +1,7 @@
+import sqlite3
+import threading
+
+
 class Singleton(object):
     def __new__(cls):
         if not hasattr(cls, 'instance'):
@@ -5,28 +9,22 @@ class Singleton(object):
         return cls.instance
 
 
-s = Singleton()
-print("Object created", s)
 s1 = Singleton()
-print("Object created", s1)
+s2 = Singleton()
+
+print(s1 is s2)
 
 
-class Singleton:
-    __instance = None
+class DatabaseSingleton:
+    _instance = None
+    _lock = threading.Lock()
 
-    def __init__(self):
-        if not Singleton.__instance:
-            print(" __init__ method called..")
-        else:
-            print("Instance already created:", self.get_instance())
+    def __new__(cls):
+        if cls._instance is None:
+            with cls._lock:
+                if cls._instance is None:
+                    cls._instance = super(DatabaseSingleton, cls).__new__(cls)
+                    cls._instance.conn = sqlite3.connect("database.db")
+        return cls._instance
 
-    @classmethod
-    def get_instance(cls):
-        if not cls.__instance:
-            cls.__instance = Singleton()
-        return cls.__instance
-
-
-s = Singleton()  ## class initialized, but object not created
-print("Object created", Singleton.get_instance())  # Object gets created here
-s1 = Singleton()  ## instance already created
+# https://softwarepatterns.com/python/singleton-software-pattern-python-example
