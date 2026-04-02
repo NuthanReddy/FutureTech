@@ -55,19 +55,23 @@ uv run pytest
 Nuthan/
 ├── Adhoc/               # Miscellaneous scripts
 ├── AI/                  # AI/ML experiments (Google GenAI)
+├── Basics/              # Beginner scripts and stdlib examples
 ├── DataStructures/      # Data structure implementations
-├── Design Patterns/     # Design pattern examples
-├── Docker/              # Dockerfile
-├── Examples/            # Example code snippets (heapq, defaultdict)
+├── DesignPatterns/      # Design pattern examples
 ├── LLD/                 # Low-level design (LoggerModule, games)
+├── Misc/                # Docker, SQL notes, echo server
 ├── Pandas/              # Pandas DataFrame operations
 ├── Problems/            # Algorithm problems by category
+│   ├── BST/
+│   ├── Combinations/
+│   ├── FenwickTree/
+│   ├── SlidingWindow/
+│   ├── Trie/
+│   └── UnionFind/
 ├── PySpark/             # Spark DataFrame operations
-├── Server/              # Echo server
-├── SQL/                 # SQL notes
+│   └── sparkdata/       # Sample Spark/Delta data files
 ├── SystemDesign/        # System design implementations
 ├── Utils/               # Logging utilities
-├── sparkdata/           # Sample Spark/Delta data files
 ├── tests/               # Pytest test files
 └── pyproject.toml       # Project configuration
 ```
