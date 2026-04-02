@@ -41,3 +41,18 @@
 - Avoid broad refactors across learning folders unless requested; treat each folder as an independent exercise area.
 - When adding new code, keep it local to the target domain folder and include a small runnable example or test near that code.
 
+## Specialized agent routing (`.github/agents/`)
+- Use `.github/agents/README.md` as the quick index; use the agent files below for behavior details.
+- `test-case-generator` - Create unit/integration tests with edge-case coverage; route for "write tests" requests.
+- `build-validation-runner` - Run scoped validation with `uv` first, then broaden checks if needed.
+- `git-commit-push-guard` - Handle safe commit/push flow (status, scoped commit, non-destructive push).
+- `problem-solution-coach` - Solve/explain algorithm problems in `Problems/` with complexity and edge cases.
+- `data-structure-implementer` - Implement/extend data structures in `DataStructures/` with practical tests.
+- `bug-triage-debug` - Reproduce failures quickly and apply minimal-risk bug fixes.
+- `python-cleanup-refactor` - Improve readability without behavior changes; keep refactors local.
+- `system-design-simulator` - Work on simulations/prototypes in `SystemDesign/` and `LLD/`.
+- `logger-variant-boundary` - Make logging changes while keeping `LLD/LoggerModule/logger/` and `Utils/` variants isolated.
+- `ai-genai-experiments` - Build safe, parameterized Google GenAI scripts in `AI/`.
+- `pyspark-local-jobs` - Implement readable local Spark jobs and DataFrame transforms in `PySpark/`.
+- `pandas-script-analyst` - Improve dataframe workflows in `Pandas/` with explicit null/type handling.
+- Maintenance: whenever a new `*.agent.md` is added, update this section and `.github/agents/README.md` together.
