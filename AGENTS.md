@@ -1,0 +1,43 @@
+# AGENTS.md
+
+## What this repo is
+- `Nuthan` is a **practice monorepo**: mostly standalone Python scripts for DS/algorithms + a few mini-systems (`SystemDesign/`, `LLD/LoggerModule/`).
+- There is no single app entrypoint; changes are usually scoped to one folder/problem.
+
+## Architecture and boundaries (important)
+- `DataStructures/` and `Problems/` are the core learning areas; files are generally self-contained and often executable directly (many `if __name__ == "__main__"` blocks).
+- `SystemDesign/` contains simulations/prototypes with runtime side effects at module import/execution time (example: `SystemDesign/RateLimiter.py` runs a packet loop immediately).
+- Logging system appears in two places:
+  - package-style implementation: `LLD/LoggerModule/logger/` (`logger.py`, `sinks.py`, `config_reader.py`)
+  - script-style split modules: `Utils/` (`LoggerFactory.py`, `PriorityBuffer.py`, etc.)
+  Keep edits within one variant unless explicitly unifying both.
+- Data/compute experiments are isolated:
+  - `PySpark/` builds local Spark sessions (`PySpark/SparkUtils.py`)
+  - `Pandas/` holds notebook-like scripts
+  - `AI/` uses Google GenAI (`AI/GoogleAI.py`)
+
+## Developer workflow (repo-specific)
+- Python/tooling constraints are defined in `pyproject.toml`: `requires-python = ">=3.10,<3.12"` (despite broader guidance in docs).
+- Install deps with `uv`; canonical commands from `README.md`:
+  - `uv sync`
+  - `uv sync --group dev`
+  - `uv sync --extra <group>`
+- Run tests with `uv run pytest`.
+- Dependency caveat documented in `README.md`: `audio` extra (`spleeter`) conflicts with newer `pandas`; avoid combining `--extra audio` and `--extra pandas`.
+
+## Conventions you should follow here
+- Keep solutions simple/readable; prefer explicit logic over compact tricks (matches `.github/copilot-instructions.md`).
+- Use `test_*.py` naming and pytest style (`tests/test_fixtures_scope.py`, `tests/test_sample.py`).
+- In `Problems/`, include problem context at file top and handle edge cases (see `Problems/Combinations/MaxPalindromes.py`).
+- Expect mixed import styles in legacy scripts (example: `Problems/Combinations/test_MaxPalindromes.py` uses `from MaxPalindromes import ...`); preserve local style when making small fixes.
+
+## Integration points and external dependencies
+- Google AI: `AI/GoogleAI.py` requires `GOOGLE_API_KEY`; currently uses hardcoded absolute image paths (machine-specific). Prefer parameterizing paths/env vars in new work.
+- Spark: scripts assume local Spark (`master("local[*]")`) and direct DataFrame construction utilities.
+- Logging config expects YAML schema with `logger_type`, `buffer_size`, and sink definitions (`LLD/LoggerModule/logger/config_reader.py`).
+
+## Editing guardrails for agents
+- Check for top-level executable code before importing a module in tests/tools; many files are script-first.
+- Avoid broad refactors across learning folders unless requested; treat each folder as an independent exercise area.
+- When adding new code, keep it local to the target domain folder and include a small runnable example or test near that code.
+
