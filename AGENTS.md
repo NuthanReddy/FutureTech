@@ -1,12 +1,13 @@
 # AGENTS.md
 
 ## What this repo is
-- `Nuthan` is a **practice monorepo**: mostly standalone Python scripts for DS/algorithms + a few mini-systems (`SystemDesign/`, `LLD/LoggerModule/`).
+- `Nuthan` is a **practice monorepo**: mostly standalone Python scripts for DS/algorithms + a few mini-systems (`SystemDesign/`, `LLD/`).
 - There is no single app entrypoint; changes are usually scoped to one folder/problem.
 
 ## Architecture and boundaries (important)
 - `DataStructures/` and `Problems/` are the core learning areas; files are generally self-contained and often executable directly (many `if __name__ == "__main__"` blocks).
 - `SystemDesign/` contains simulations/prototypes with runtime side effects at module import/execution time (example: `SystemDesign/RateLimiter.py` runs a packet loop immediately).
+- `SystemDesign/` also includes documentation-first domain folders with large design READMEs (example: `SystemDesign/DistributedCache/README.md`); avoid broad edits there unless requested.
 - Logging system appears in two places:
   - package-style implementation: `LLD/LoggerModule/logger/` (`logger.py`, `sinks.py`, `config_reader.py`)
   - script-style split modules: `Utils/` (`LoggerFactory.py`, `PriorityBuffer.py`, etc.)
@@ -14,16 +15,13 @@
 - Data/compute experiments are isolated:
   - `PySpark/` builds local Spark sessions (`PySpark/SparkUtils.py`)
   - `Pandas/` holds notebook-like scripts
-  - `AI/` uses Google GenAI (`AI/GoogleAI.py`)
+  - `AI/` mixes Google GenAI (`AI/GoogleAI.py`) and Azure AI Agents SDK experiments (`AI/Agent.py`)
 
 ## Developer workflow (repo-specific)
 - Python/tooling constraints are defined in `pyproject.toml`: `requires-python = ">=3.10,<3.12"` (despite broader guidance in docs).
-- Install deps with `uv`; canonical commands from `README.md`:
-  - `uv sync`
-  - `uv sync --group dev`
-  - `uv sync --extra <group>`
+- Install deps with `uv`; current canonical setup in `README.md` is `uv sync` (dependencies are currently in main `[project.dependencies]`).
 - Run tests with `uv run pytest`.
-- Dependency caveat documented in `README.md`: `audio` extra (`spleeter`) conflicts with newer `pandas`; avoid combining `--extra audio` and `--extra pandas`.
+- Dependency caveat from `README.md`/`pyproject.toml`: `spleeter` constrains pandas compatibility; if you need newer `pandas`, remove or adjust `spleeter` first.
 
 ## Conventions you should follow here
 - Keep solutions simple/readable; prefer explicit logic over compact tricks (matches `.github/copilot-instructions.md`).
@@ -33,12 +31,14 @@
 
 ## Integration points and external dependencies
 - Google AI: `AI/GoogleAI.py` requires `GOOGLE_API_KEY`; currently uses hardcoded absolute image paths (machine-specific). Prefer parameterizing paths/env vars in new work.
+- Azure AI Agents: `AI/Agent.py` uses `azure.ai.projects` + `DefaultAzureCredential` with a hardcoded project endpoint; prefer env/config-driven endpoints and credentials in new work.
 - Spark: scripts assume local Spark (`master("local[*]")`) and direct DataFrame construction utilities.
 - Logging config expects YAML schema with `logger_type`, `buffer_size`, and sink definitions (`LLD/LoggerModule/logger/config_reader.py`).
 
 ## Editing guardrails for agents
 - Check for top-level executable code before importing a module in tests/tools; many files are script-first.
 - Avoid broad refactors across learning folders unless requested; treat each folder as an independent exercise area.
+- Prefer targeted validation first (affected module/tests) before broad runs like full `uv run pytest`.
 - When adding new code, keep it local to the target domain folder and include a small runnable example or test near that code.
 
 ## Specialized agent routing (`.github/agents/`)
