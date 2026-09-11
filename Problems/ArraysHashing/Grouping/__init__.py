@@ -1,0 +1,1 @@
+"""Canonical-key grouping patterns."""

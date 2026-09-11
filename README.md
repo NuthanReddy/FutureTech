@@ -7,7 +7,7 @@ A collection of Python projects for learning and practicing data structures, alg
 ## Contents
 
 - **DataStructures/** — LinkedList, DoublyLinkedList, BST, AVL Tree, Red-Black Tree, B-Tree, B+ Tree, Heap, Trie, Fenwick Tree, Segment Tree, Skip List, Disjoint Set, LRU Cache, Bloom Filter, Graph, SortedSet, and more
-- **Problems/** — Algorithm problems organized by category (Sliding Window, Combinations, BST, Trie, Union Find, Fenwick Tree)
+- **Problems/** — Algorithm problems organized by category (Backtracking, Sliding Window, Combinations, BST, Trie, Union Find, Fenwick Tree)
 - **SystemDesign/** — SSTable/LSM Tree, Consistent Hashing, Rendezvous Hashing, Rate Limiter, Load Balancer
 - **LLD/** — Low-level design (Logger Module, Snake & Ladder, Airflow simulation)
 - **AI/** — AI/ML experiments with Google Generative AI
@@ -63,6 +63,7 @@ Nuthan/
 ├── Pandas/              # Pandas DataFrame operations
 ├── Problems/            # Algorithm problems by category
 │   ├── BST/
+│   ├── Backtracking/
 │   ├── Combinations/
 │   ├── FenwickTree/
 │   ├── SlidingWindow/

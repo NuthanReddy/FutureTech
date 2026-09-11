@@ -12,6 +12,10 @@ Typical clues:
 - "parenthesize expression"
 - palindrome partition over ranges
 
+## State Shape
+
+`dp[left][right]` represents the answer for the inclusive interval `[left, right]`. The transition normally tries every split point `k`, so both resulting intervals are shorter than the current one.
+
 ## Base DP Values
 
 For Matrix Chain Multiplication example:
@@ -39,6 +43,15 @@ For matrix chain with dimensions `dims`:
 Memoization ends when interval shrinks to single matrix (`i == j`).
 Tabulation ends after filling intervals by increasing chain length.
 
+## Complexity
+
+For `n` items and a split point at every interval:
+
+- Time: `O(n^3)`
+- Space: `O(n^2)`
+
+Some specialized interval recurrences or optimizations improve the cubic time, but the increasing-length fill order remains the standard tabulation strategy.
+
 ## Memoization vs Tabulation Tradeoffs
 
 - Memoization:
@@ -58,3 +71,10 @@ Given matrix dimensions array, find minimum scalar multiplications needed to mul
 
 See `solution.py` and `demo.py`.
 
+## Related Problems
+
+1. Burst Balloons
+2. Palindrome Partitioning
+3. Optimal Binary Search Tree
+4. Minimum Cost to Merge Stones
+5. Boolean Parenthesization

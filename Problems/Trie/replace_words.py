@@ -2,9 +2,13 @@
 #
 # DS used: Trie (DataStructures/Trie.py)
 #
-# Problem:
-# Given a dictionary of root words and a sentence, replace every derivative
-# word in the sentence with the *shortest* root that is its prefix.
+# Problem statement:
+#   Input: a dictionary of root words and a sentence made of words separated by
+#   single spaces.
+#   Required output: replace every derivative word with the shortest root that
+#   is its prefix; leave words unchanged when no root prefix exists.
+#   Key constraints: canonical prompt uses lowercase English words, up to 1000
+#   roots, root length up to 100, and sentence length up to 10^6.
 #
 # Example:
 #   roots = ["cat", "bat", "rat"]
@@ -67,4 +71,3 @@ if __name__ == "__main__":
     # Edge: root is the full word
     print(replace_words(["a", "aa", "aaa"], "aadsfasf adfadfasdfasf bbbb"))
     # Output: "a a bbbb"
-

@@ -2,8 +2,12 @@
 #
 # DS used: Trie (DataStructures/Trie.py)
 #
-# Problem:
-# Given an array of strings, find the longest common prefix among all strings.
+# Problem statement:
+#   Input: a list of strings.
+#   Required output: the longest prefix shared by every string in the list, or
+#   "" when there is no common prefix.
+#   Key constraints: canonical prompt uses 1 <= len(strs) <= 200 and
+#   0 <= len(strs[i]) <= 200; non-empty strings contain lowercase letters.
 #
 # Example:
 #   strs = ["flower", "flow", "flight"]
@@ -64,4 +68,3 @@ if __name__ == "__main__":
     print(longest_common_prefix(["interspecies", "interstellar", "interstate"]))  # "inters"
     print(longest_common_prefix(["a"]))                          # "a"
     print(longest_common_prefix([""]))                           # ""
-

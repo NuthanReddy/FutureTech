@@ -12,6 +12,10 @@ Typical clues:
 - "count ways in a grid"
 - blocked cells or weighted cells
 
+## State Shape
+
+`dp[r][c]` represents the answer for cell `(r, c)`, either from the start to that cell or from that cell to the destination. Choose one direction and keep the recurrence consistent.
+
 ## Base DP Values
 
 For this example (Minimum Path Sum):
@@ -40,6 +44,13 @@ Memoized version computes from current cell to destination:
 Memoization ends when recursion reaches destination or boundary.
 Tabulation ends after filling all rows and columns.
 
+## Complexity
+
+For an `R x C` grid with a constant number of moves:
+
+- Time: `O(RC)`
+- Space: `O(RC)`, reducible to `O(C)` with a rolling row when only the previous row is needed
+
 ## Memoization vs Tabulation Tradeoffs
 
 - Memoization:
@@ -51,11 +62,45 @@ Tabulation ends after filling all rows and columns.
   - often faster in Python due to less call overhead
   - needs careful initialization of first row/column
 
-## Example Problem
+## Implemented Top Interview 150 problems
 
-**Minimum Path Sum**
+### Unique Paths
+
+**Problem statement:** Given an empty `rows x cols` grid, count paths from the
+top-left to the bottom-right using only right and down moves.
+
+- **Input:** positive integers `rows` and `cols` (commonly at most 100).
+- **Output:** number of valid paths.
+
+The coordinate recurrence is a counting version of the same grid DAG:
+`paths(r,c) = paths(r+1,c) + paths(r,c+1)`. Unlike Minimum Path Sum there is
+no cell cost, so the tabulated solution can use one rolling row and `O(C)`
+space.
+
+### Minimum Path Sum
+
+**Problem statement:** Given an `m x n` grid of non-negative integers, move
+only right or down from the top-left to the bottom-right and return the
+smallest possible sum of visited cells.
+
+- **Input:** non-empty `grid` (standard bounds are up to `200 x 200`).
+- **Output:** minimum path sum.
 
 Given a grid of non-negative integers, move only right or down from top-left to bottom-right and return the minimum path sum.
 
 See `solution.py` and `demo.py`.
 
+## Comparison
+
+Memoized DFS is closest to the “move toward the destination” proof and
+naturally handles boundaries with sentinel values. Tabulation is stack-safe,
+and the Unique Paths implementation demonstrates the stronger optimization:
+when only the previous row is needed, keep one row rather than a full matrix.
+
+## Related Problems
+
+1. Unique Paths
+2. Unique Paths with Obstacles
+3. Maximum Path Sum
+4. Minimum Falling Path Sum
+5. Dungeon Game

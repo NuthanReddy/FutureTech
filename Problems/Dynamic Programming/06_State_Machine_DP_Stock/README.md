@@ -11,6 +11,10 @@ Typical clues:
 - stock buy/sell with constraints (cooldown, fee, max transactions)
 - "can buy" vs "holding stock" states
 
+## State Shape
+
+Use `dp[day][state]`, where `state` is the minimum status needed to determine legal future actions. Add dimensions such as remaining transactions, cooldown days, or previous color only when they affect future decisions.
+
 ## Base DP Values
 
 For stock with cooldown:
@@ -42,10 +46,19 @@ Tabulation transitions per day price:
 - `new_hold = max(hold, rest - price)`
 - `new_rest = max(rest, sold)`
 
+Always calculate a new layer from the previous layer. Do not overwrite a state before another transition has read its previous-day value.
+
 ## Break / Termination Condition
 
 Memoization ends when day index passes final day.
 Tabulation ends after final day is processed.
+
+## Complexity
+
+For `n` days, `s` finite states, and a constant number of actions:
+
+- Time: `O(ns)`
+- Space: `O(ns)` for a full table, reducible to `O(s)` for rolling state variables
 
 ## Memoization vs Tabulation Tradeoffs
 
@@ -66,3 +79,10 @@ You may complete as many transactions as you want, but after selling a stock you
 
 See `solution.py` and `demo.py`.
 
+## Related Problems
+
+1. Stock with transaction fee
+2. Stock with at most `k` transactions
+3. Paint House / constrained coloring
+4. Cricket scoring without consecutive 4s
+5. Counting strings accepted by a finite-state automaton
