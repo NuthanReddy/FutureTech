@@ -111,3 +111,24 @@ def dfs(state):
 
 The `make` and `undo` steps are the invariant boundary: every loop iteration
 must see the same state it would have seen if earlier branches had never run.
+
+## Intervals / ranges
+
+```text
+Intervals / ranges
+       ↓
+Need to combine / detect overlap?
+       ↓ Yes
+Are they sorted?
+   ↙           ↘
+ No             Yes
+ ↓               ↓
+Sort by start    Scan
+      ↘         ↙
+       Linear scan
+            ↓
+Compare:
+next.start <= current.end
+            ↓
+       Merge / Emit
+```

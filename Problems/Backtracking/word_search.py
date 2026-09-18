@@ -25,6 +25,8 @@ Complexity:
 
 from __future__ import annotations
 
+from collections import Counter
+
 
 VISITED = "#"
 DIRECTIONS = ((1, 0), (-1, 0), (0, 1), (0, -1))
@@ -41,6 +43,14 @@ def exist(board: list[list[str]], word: str) -> bool:
     cols = len(board[0])
     if len(word) > rows * cols:
         return False
+
+    board_count = Counter(character for row in board for character in row)
+    word_count = Counter(word)
+    if any(board_count[character] < count for character, count in word_count.items()):
+        return False
+
+    if board_count[word[0]] > board_count[word[-1]]:
+        word = word[::-1]
 
     def dfs(row: int, col: int, index: int) -> bool:
         if index == len(word):

@@ -9,32 +9,33 @@ Problem statement:
 
 from __future__ import annotations
 
+from collections import Counter, defaultdict
+
 
 def group_anagrams(words: list[str]) -> list[list[str]]:
     """Group anagrams while preserving input order within each group.
 
-    A fixed 26-count tuple is the canonical key for lowercase English words,
-    which is the LeetCode constraint.  Words with the same tuple have exactly
-    the same frequency for every letter, so they belong to the same bucket.
-    ``groups`` is a dictionary from that key to the output bucket.
+    A frozenset of character-count pairs is the canonical key.  Words with the
+    same key have exactly the same frequency for every character, so they
+    belong to the same bucket.  ``groups`` is a dictionary from that key to the
+    output bucket.
 
-    Sorting each word is simpler to write but costs ``O(k log k)`` per word.
-    Counting costs ``O(k)`` and makes the grouping invariant visible.  The
-    implementation intentionally does not sort the result: group order is not
-    part of the problem contract, while retaining insertion order keeps
-    examples predictable and avoids unnecessary work.
+    ``Counter`` makes the frequency invariant explicit, while ``frozenset``
+    makes the unordered character-count pairs hashable.  The implementation
+    intentionally does not sort the result: group order is not part of the
+    problem contract, while retaining insertion order keeps examples
+    predictable.
 
     Complexity:
         For ``n`` words of maximum length ``k``: time ``O(nk)``, space
         ``O(nk)`` including the returned groups.
     """
-    groups: dict[tuple[int, ...], list[str]] = {}
+    groups: defaultdict[frozenset[tuple[str, int]], list[str]] = defaultdict(
+        list
+    )
     for word in words:
-        counts = [0] * 26
-        for character in word:
-            counts[ord(character) - ord("a")] += 1
-        key = tuple(counts)
-        groups.setdefault(key, []).append(word)
+        key = frozenset(Counter(word).items())
+        groups[key].append(word)
     return list(groups.values())
 
 

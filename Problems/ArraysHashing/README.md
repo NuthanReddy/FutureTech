@@ -78,6 +78,9 @@ shape visible rather than introducing classes that do not add value.
 - Sudoku uses three families of sets rather than encoding cells into one
   large set.  The separate regions make the invariant auditable and prevent
   accidentally checking only rows or only boxes.
+- `frozenset` is an immutable, hashable set.  It is useful when comparing
+  unordered groups, such as verifying Group Anagrams results without depending
+  on the order of groups or words.
 
 ## Running examples and tests
 

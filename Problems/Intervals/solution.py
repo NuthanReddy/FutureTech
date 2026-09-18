@@ -24,6 +24,7 @@ integer count.  The algorithms are intended for up to typical interview-scale
 ``n`` (sorting dominates at ``O(n log n)``).
 """
 
+import heapq
 from typing import List
 
 
@@ -94,19 +95,19 @@ def erase_overlap_intervals(intervals: List[List[int]]) -> int:
 
 
 def min_meeting_rooms(intervals: List[List[int]]) -> int:
-    """Return minimum rooms needed for all meetings in ``intervals``."""
+    """Return minimum rooms needed for all meetings in ``intervals``.
+
+    The heap stores the end time of each room's currently scheduled meeting.
+    Reusing the earliest-ending room is sufficient because all other rooms
+    finish no earlier.
+    """
     if not intervals:
         return 0
-    starts = sorted(start for start, _ in intervals)
-    ends = sorted(end for _, end in intervals)
-    start_index = end_index = active = peak = 0
-    while start_index < len(starts):
-        if end_index == len(ends) or starts[start_index] < ends[end_index]:
-            active += 1
-            peak = max(peak, active)
-            start_index += 1
+
+    room_end_times: List[int] = []
+    for start, end in sorted(intervals, key=lambda interval: interval[0]):
+        if room_end_times and room_end_times[0] <= start:
+            heapq.heapreplace(room_end_times, end)
         else:
-            # A meeting ending exactly as another starts frees its room.
-            end_index += 1
-            active -= 1
-    return peak
+            heapq.heappush(room_end_times, end)
+    return len(room_end_times)
