@@ -13,7 +13,12 @@ dependencies = [
     "pandas",
     "spleeter",
     "pytest",
+    "qrcode[pil]",
+    "PyYAML",
 ]
 
 [tool.uv]
 # Python <3.12 is required for tensorflow/spleeter compatibility
+
+[tool.pytest.ini_options]
+pythonpath = [".", "LLD/LoggerModule"]
