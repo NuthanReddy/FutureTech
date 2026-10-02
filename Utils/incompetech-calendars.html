@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Incompetech Calendars</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fff'/%3E%3Crect x='3' y='6' width='26' height='23' fill='none' stroke='%233a5fcd' stroke-width='2'/%3E%3Cpath d='M3 12h26M10 6V3M22 6V3' stroke='%233a5fcd' stroke-width='2'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --ink: #222; --muted: #777; --line: #ddd;
+    --accent: #3a5fcd; --bg: #fafafa; --panel: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink); background: var(--bg); }
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 20px 16px 60px; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  .tagline { color: var(--muted); font-size: 0.9rem; margin: 0 0 20px; }
+  .layout { display: grid; grid-template-columns: minmax(340px, 1fr) minmax(280px, 400px);
+    gap: 28px; align-items: start; }
+  @media (max-width: 720px) { .layout { grid-template-columns: 1fr; }
+    .previewcol { order: -1; } }
+  fieldset { border: 1px solid var(--line); border-radius: 8px;
+    background: var(--panel); margin: 0 0 16px; padding: 12px 14px; }
+  legend { font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--muted); padding: 0 6px; }
+  .row { display: grid; grid-template-columns: 110px 1fr;
+    gap: 10px; align-items: center; margin: 8px 0; }
+  .row label { font-size: 0.9rem; }
+  .ctl { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  input[type="text"], input[type="number"], input[type="date"] {
+    padding: 4px 6px; border: 1px solid var(--line); border-radius: 4px;
+    font: inherit; background: var(--panel); color: var(--ink); }
+  input[type="number"] { width: 70px; }
+  input[type="date"] { width: 150px; }
+  textarea { width: 100%; min-height: 90px; padding: 6px 8px;
+    border: 1px solid var(--line); border-radius: 4px; font: inherit;
+    font-size: 0.85rem; background: var(--panel); color: var(--ink); }
+  select { padding: 4px 6px; border: 1px solid var(--line); border-radius: 4px;
+    font: inherit; background: var(--panel); color: var(--ink); }
+  .unit { color: var(--muted); font-size: 0.85rem; }
+  input[type="color"] { width: 36px; height: 28px; padding: 0;
+    border: 1px solid var(--line); border-radius: 4px; background: none; cursor: pointer; }
+  .stepper { width: 30px; height: 30px; border: 1px solid var(--line);
+    border-radius: 5px; background: var(--panel); font: inherit; cursor: pointer; }
+  .actions { display: flex; gap: 10px; margin-top: 4px; }
+  .actions button { padding: 10px 18px; font: inherit; font-weight: 600;
+    border-radius: 6px; cursor: pointer; border: 1px solid var(--accent); }
+  [id$="-download"] { background: var(--accent); color: #fff;
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.15); }
+  [id$="-copylink"] { background: var(--panel); color: var(--accent); }
+  .alsorow { margin-top: 8px; font-size: 0.8rem; color: var(--muted); }
+  .alsorow a { color: var(--accent); text-decoration: none; }
+  .alsorow a:hover { text-decoration: underline; }
+  .printhint { margin-top: 6px; font-size: 0.75rem; color: var(--muted); }
+  .previewcol { position: sticky; top: 16px; }
+  [id$="-preview"] { width: 100%; border: 1px solid var(--line); border-radius: 4px;
+    background: #fff; box-shadow: 2px 4px 12px rgba(0,0,0,0.08); display: block; }
+  [id$="-pageinfo"] { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 8px; }
+  .assemblynote { font-size: 0.75rem; color: var(--muted); margin-top: 6px; text-align: left; }
+  .keepblock { margin-top: 48px; padding: 22px; border: 1px solid var(--line);
+    border-radius: 8px; background: var(--panel); text-align: center; }
+  .keepblock h3 { margin: 0 0 8px; }
+  .keepblock p { max-width: 560px; margin: 0 auto 14px; color: var(--muted); font-size: 0.9rem; }
+  .keep { padding: 10px 18px; border: 1px solid var(--accent); border-radius: 6px;
+    background: var(--accent); color: #fff; font: inherit; font-size: 0.95rem;
+    font-weight: 600; cursor: pointer; box-shadow: 2px 4px 8px rgba(0,0,0,0.15); }
+  footer { margin-top: 40px; color: var(--muted); font-size: 0.8rem; text-align: center; }
+  footer a { color: var(--accent); }
+  .license { font-size: 0.75rem; max-width: 640px; margin: 12px auto 0; }
+  .version { font-size: 0.75rem; margin-top: 8px; }
+  .nojs { padding: 28px; text-align: center; color: var(--muted);
+    border: 1px dashed var(--line); border-radius: 8px; max-width: 560px; margin: 20px auto; }
+
+  .presets { display: flex; gap: 4px; }
+  .presets button { width: 22px; height: 22px; border: 1px solid rgba(0,0,0,0.25);
+    border-radius: 4px; cursor: pointer; padding: 0; }
+  .sizebtns { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+  .sizebtns button { padding: 5px 10px; border: 1px solid var(--line); border-radius: 5px;
+    background: var(--panel); font: inherit; font-size: 0.85rem; cursor: pointer; }
+  .sizebtns button.active { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+  /* ---------- header, index ---------- */
+  #appbar { display: flex; align-items: baseline; gap: 16px;
+    max-width: 1020px; margin: 0 auto; padding: 20px 16px 10px; }
+  #appbar .brand { font-size: 1.5rem; font-weight: 700; }
+  #appbar .brand a { color: #b8860b; text-decoration: none; }
+  #appbar a.backlink { font-size: 0.85rem; color: var(--accent); text-decoration: none; }
+  #appbar a.backlink:hover { text-decoration: underline; }
+  .tool[hidden] { display: none; }
+  .cards { display: flex; gap: 18px; flex-wrap: wrap; justify-content: flex-start; }
+  .card { width: 232px; background: var(--panel); border: 1px solid var(--line);
+    border-radius: 12px; padding: 16px 14px 14px; text-decoration: none;
+    color: var(--ink); display: block; transition: box-shadow .15s, border-color .15s; }
+  .card:hover { border-color: var(--accent); box-shadow: 2px 5px 16px rgba(0,0,0,0.10); }
+  .card svg.thumb { width: 82%; border: 1px solid var(--line); border-radius: 3px;
+    display: block; margin: 0 auto 12px; background: #fff;
+    box-shadow: 2px 3px 6px rgba(0,0,0,0.10); }
+  .card h3 { font-size: 1rem; margin: 0 0 4px; color: var(--accent); }
+  .card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin: 0; }
+  .grouphead { font-size: 1.05rem; font-weight: 600; text-align: center;
+    border-top: 1px solid var(--line); padding-top: 24px; margin: 0 0 18px; }
+  h2.toolhead { font-size: 1.25rem; margin: 0 0 4px; }
+</style>
+</head>
+<body>
+
+<div id="appbar">
+  <span class="brand"><a href="https://incompetech.com/">Incompetech</a> Calendars</span>
+  <a class="backlink" href="#home">&larr; All calendar types</a>
+</div>
+
+<div class="nojs" id="nojs">
+  <p><strong>Oh, Poop!</strong></p>
+  <p>You're probably looking at a preview of this file. This app can't run here.
+  You need to figure out how to load this into a web browser.
+  If you have the internet
+  - <a href="https://incompetech.com/calendars/">You can use this copy</a>.</p>
+</div>
+
+<section class="tool" id="tool-home" hidden>
+  <div class="wrap">
+    <div class="grouphead">Printable Calendar PDFs (Also PNG and SVG)</div>
+    <div class="cards">
+
+
+    <a class="card" href="#yearly">
+      <svg class="thumb" id="thumb-yearly" xmlns="http://www.w3.org/2000/svg"></svg>
+      <h3>Year on a Page</h3>
+      <p>12 months, one sheet.</p>
+    </a>
+
+    <a class="card" href="#monthly">
+      <svg class="thumb" id="thumb-monthly" xmlns="http://www.w3.org/2000/svg"></svg>
+      <h3>Monthly Calendar</h3>
+      <p>One month to a page.</p>
+    </a>
+    <a class="card" href="#weekday">
+      <svg class="thumb" id="thumb-weekday" xmlns="http://www.w3.org/2000/svg"></svg>
+      <h3>Weekday Calendar</h3>
+      <p>Five columns. No weekend.</p>
+    </a>
+    <a class="card" href="#pageaday">
+      <svg class="thumb" id="thumb-pageaday" xmlns="http://www.w3.org/2000/svg"></svg>
+      <h3>Page-a-Day Calendar</h3>
+      <p>Cut-and-stack.</p>
+    </a>
+
+    </div>
+
+    <div class="keepblock">
+      <h3>Copy, Remix, Reuse</h3>
+      <p>Download your own copy of this utility, and it works forever: offline.</p>
+      <button class="keep" id="keepapp">&#8595; Download the entire app</button>
+    </div>
+
+    <footer>
+      <p class="version">Incompetech Calendars - Version 2.0 &middot;
+      <a href="https://incompetech.com/calendars">check for newer versions</a> &middot;
+      <a href="https://incompetech.com/email.html">Report Problems</a></p>
+      <p class="license">This application file and the calendars it produces are released
+      under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank">CC0 1.0</a>
+      (public domain).<BR>Based on the original Perl Calendar generators by Kevin MacLeod.</p>
+    </footer>
+  </div>
+</section>
+
+<section class="tool" id="tool-monthly" hidden>
+  <div class="wrap">
+    <h2 class="toolhead">Monthly Calendar</h2>
+    <p class="tagline">One month per page, up to two years at a time.</p>
+    <div class="layout">
+    <div>
+      <form onsubmit="return false;">
+        <fieldset><legend>Calendar</legend>
+          <div class="row"><label for="mo-year">Year</label>
+            <div class="ctl">
+              <button type="button" class="stepper" id="mo-yearminus">&minus;</button>
+              <input type="number" id="mo-year" value="2026" min="1600" max="3000" step="1">
+              <button type="button" class="stepper" id="mo-yearplus">+</button>
+            </div>
+          </div>
+          <div class="row"><label for="mo-lang">Language</label>
+            <div class="ctl"><select id="mo-lang"></select></div>
+          </div>
+          <div class="row"><label for="mo-monthstart">First month</label>
+            <div class="ctl"><select id="mo-monthstart"></select></div>
+          </div>
+          <div class="row"><label for="mo-monthcount">Months</label>
+            <div class="ctl"><input type="number" id="mo-monthcount" value="12" min="1" max="24" step="1">
+            <span class="unit">pages</span></div>
+          </div>
+          <div class="row"><label for="mo-weekstart">Week starts on</label>
+            <div class="ctl"><select id="mo-weekstart">
+              <option value="0">Sunday</option>
+              <option value="1" selected>Monday</option>
+            </select></div>
+          </div>
+          <div class="row"><label>Extras</label>
+            <div class="ctl">
+              <label style="font-size:0.9rem"><input type="checkbox" id="mo-weeknum"> Week numbers</label>
+              <label style="font-size:0.9rem"><input type="checkbox" id="mo-doy"> Day of year</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset><legend>Colors</legend>
+          <div class="row"><label for="mo-inkswatch">Ink</label>
+            <div class="ctl">
+              <input type="color" id="mo-inkswatch" value="#000000">
+              <span class="presets" data-target="ink"></span>
+              <span class="unit">Hex #</span>
+              <input type="text" id="mo-inkhex" value="000000" maxlength="6">
+            </div>
+          </div>
+          <div class="row"><label for="mo-bgswatch">Background</label>
+            <div class="ctl">
+              <input type="color" id="mo-bgswatch" value="#ffffff">
+              <span class="presets" data-target="bg"></span>
+              <span class="unit">Hex #</span>
+              <input type="text" id="mo-bghex" value="FFFFFF" maxlength="6">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset><legend>Page</legend>
+          <div class="sizebtns" id="mo-sizebtns">
+            <button type="button" data-w="8.5" data-h="11" data-u="inch">Letter</button>
+            <button type="button" data-w="21" data-h="29.7" data-u="cm">A4</button>
+            <button type="button" data-w="11" data-h="17" data-u="inch">Tabloid</button>
+            <button type="button" data-w="17" data-h="11" data-u="inch">17 &times; 11</button>
+            <button type="button" id="mo-rotate" title="Swap width and height">&#10561; Rotate</button>
+          </div>
+          <div class="row"><label for="mo-width">Size</label>
+            <div class="ctl">
+              <input type="number" id="mo-width" value="8.5" min="3" max="200" step="any">
+              <span class="unit">&times;</span>
+              <input type="number" id="mo-height" value="11" min="3" max="200" step="any">
+              <select id="mo-page_units">
+                <option value="inch" selected>inches</option>
+                <option value="cm">cm</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" id="mo-download">Download PDF</button>
+          <button type="button" id="mo-copylink" title="Copy a link to these exact settings">Copy Link</button>
+        </div>
+        <div class="alsorow">Also available:
+          <a href="#" id="mo-openprint" title="Open in a browser tab, print from there">Open PDF</a> &middot;
+          <a href="#" id="mo-dl-svg" title="Vector, for design apps">SVG</a> &middot;
+          <a href="#" id="mo-dl-png" title="Raster at 300 dpi">PNG</a></div>
+        <div class="printhint">Printing? Choose &quot;Actual size&quot; (100%), not
+        &quot;Fit to page.&quot;</div>
+      </form>
+    </div>
+
+    <div class="previewcol">
+      <svg id="mo-preview" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div id="mo-pageinfo"></div>
+    </div></div>
+  </div>
+</section>
+
+<section class="tool" id="tool-weekday" hidden>
+  <div class="wrap">
+    <h2 class="toolhead">Weekday Calendar</h2>
+    <p class="tagline">Monday through Friday</p>
+    <div class="layout">
+    <div>
+      <form onsubmit="return false;">
+        <fieldset><legend>Calendar</legend>
+          <div class="row"><label for="wk-year">Year</label>
+            <div class="ctl">
+              <button type="button" class="stepper" id="wk-yearminus">&minus;</button>
+              <input type="number" id="wk-year" value="2026" min="1600" max="3000" step="1">
+              <button type="button" class="stepper" id="wk-yearplus">+</button>
+            </div>
+          </div>
+          <div class="row"><label for="wk-lang">Language</label>
+            <div class="ctl"><select id="wk-lang"></select></div>
+          </div>
+          <div class="row"><label for="wk-monthstart">First month</label>
+            <div class="ctl"><select id="wk-monthstart"></select></div>
+          </div>
+          <div class="row"><label for="wk-monthcount">Months</label>
+            <div class="ctl"><input type="number" id="wk-monthcount" value="12" min="1" max="24" step="1">
+            <span class="unit">pages</span></div>
+          </div>
+          <div class="row"><label>Extras</label>
+            <div class="ctl">
+              <label style="font-size:0.9rem"><input type="checkbox" id="wk-weeknum"> Week numbers</label>
+              <label style="font-size:0.9rem"><input type="checkbox" id="wk-doy"> Day of year</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset><legend>Colors</legend>
+          <div class="row"><label for="wk-inkswatch">Ink</label>
+            <div class="ctl">
+              <input type="color" id="wk-inkswatch" value="#000000">
+              <span class="presets" data-target="ink"></span>
+              <span class="unit">Hex #</span>
+              <input type="text" id="wk-inkhex" value="000000" maxlength="6">
+            </div>
+          </div>
+          <div class="row"><label for="wk-bgswatch">Background</label>
+            <div class="ctl">
+              <input type="color" id="wk-bgswatch" value="#ffffff">
+              <span class="presets" data-target="bg"></span>
+              <span class="unit">Hex #</span>
+              <input type="text" id="wk-bghex" value="FFFFFF" maxlength="6">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset><legend>Page</legend>
+          <div class="sizebtns" id="wk-sizebtns">
+            <button type="button" data-w="8.5" data-h="11" data-u="inch">Letter</button>
+            <button type="button" data-w="21" data-h="29.7" data-u="cm">A4</button>
+            <button type="button" data-w="11" data-h="17" data-u="inch">Tabloid</button>
+            <button type="button" data-w="17" data-h="11" data-u="inch">17 &times; 11</button>
+            <button type="button" id="wk-rotate" title="Swap width and height">&#10561; Rotate</button>
+          </div>
+          <div class="row"><label for="wk-width">Size</label>
+            <div class="ctl">
+              <input type="number" id="wk-width" value="8.5" min="3" max="200" step="any">
+              <span class="unit">&times;</span>
+              <input type="number" id="wk-height" value="11" min="3" max="200" step="any">
+              <select id="wk-page_units">
+                <option value="inch" selected>inches</option>
+                <option value="cm">cm</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" id="wk-download">Download PDF</button>
+          <button type="button" id="wk-copylink" title="Copy a link to these exact settings">Copy Link</button>
+        </div>
+        <div class="alsorow">Also available:
+          <a href="#" id="wk-openprint" title="Open in a browser tab, print from there">Open PDF</a> &middot;
+          <a href="#" id="wk-dl-svg" title="Vector, for design apps">SVG</a> &middot;
+          <a href="#" id="wk-dl-png" title="Raster at 300 dpi">PNG</a></div>
+        <div class="printhint">Printing? Choose &quot;Actual size&quot; (100%), not
+        &quot;Fit to page.&quot;</div>
+      </form>
+    </div>
+
+    <div class="previewcol">
+      <svg id="wk-preview" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div id="wk-pageinfo"></div>
+    </div></div>
+  </div>
+</section>
+
+<section class="tool" id="tool-pageaday" hidden>
+  <div class="wrap">
+    <h2 class="toolhead">Page-a-Day Calendar</h2>
+
+    <div class="layout">
+    <div>
+      <form onsubmit="return false;">
+        <fieldset><legend>Dates</legend>
+          <div class="row"><label for="pd-range">Range</label>
+            <div class="ctl"><select id="pd-range">
+              <option value="year" selected>Whole year</option>
+              <option value="custom">Custom range</option>
+            </select></div>
+          </div>
+          <div class="row" id="pd-yearrow"><label for="pd-year">Year</label>
+            <div class="ctl">
+              <button type="button" class="stepper" id="pd-yearminus">&minus;</button>
+              <input type="number" id="pd-year" value="2026" min="1600" max="3000" step="1">
+              <button type="button" class="stepper" id="pd-yearplus">+</button>
+            </div>
+          </div>
+          <div class="row" id="pd-customrow1" style="display:none"><label for="pd-datestart">Start</label>
+            <div class="ctl"><input type="date" id="pd-datestart" value="2026-01-01"></div>
+          </div>
+          <div class="row" id="pd-customrow2" style="display:none"><label for="pd-datestop">End</label>
+            <div class="ctl"><input type="date" id="pd-datestop" value="2026-12-31"></div>
+          </div>
+          <div class="row"><label for="pd-lang">Language</label>
+            <div class="ctl"><select id="pd-lang"></select></div>
+          </div>
+        </fieldset>
+
+        <fieldset><legend>Layout</legend>
+          <div class="row"><label for="pd-layoutsel">Cutting layout</label>
+            <div class="ctl"><select id="pd-layoutsel">
+              <option value="4up" selected>4-up &middot; 8.5 &times; 11</option>
+              <option value="6up">6-up &middot; 8.5 &times; 11</option>
+              <option value="8up">8-up &middot; 17 &times; 11</option>
+              <option value="12up">12-up &middot; 17 &times; 11</option>
+              <option value="custom">Custom</option>
+            </select></div>
+          </div>
+          <div class="row customlayout" style="display:none"><label for="pd-xcells">Cells</label>
+            <div class="ctl">
+              <input type="number" id="pd-xcells" value="2" min="1" max="10">
+              <span class="unit">&times;</span>
+              <input type="number" id="pd-ycells" value="2" min="1" max="10">
+            </div>
+          </div>
+          <div class="row customlayout" style="display:none"><label for="pd-pw">Page size</label>
+            <div class="ctl">
+              <input type="number" id="pd-pw" value="8.5" min="2" max="40" step="any">
+              <span class="unit">&times;</span>
+              <input type="number" id="pd-ph" value="11" min="2" max="40" step="any">
+              <span class="unit">inches</span>
+            </div>
+          </div>
+          <div class="row"><label for="pd-bordersel">Cell border</label>
+            <div class="ctl"><select id="pd-bordersel">
+              <option value="thin" selected>Thin black</option>
+              <option value="thick">Thick black</option>
+              <option value="grey">Thin grey</option>
+              <option value="none">None</option>
+              <option value="custom">Custom</option>
+            </select></div>
+          </div>
+          <div class="row customborder" style="display:none"><label for="pd-bsize">Border</label>
+            <div class="ctl">
+              <input type="number" id="pd-bsize" value="1" min="0.1" max="8" step="any">
+              <span class="unit">pt</span>
+              <input type="color" id="pd-bcolor" value="#000000">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset><legend>Date lines</legend>
+          <div class="row"><label for="pd-fmt1">Line 1</label>
+            <div class="ctl">
+              <input type="text" id="pd-fmt1" value="Fdow" style="width:110px">
+              <select id="pd-font1"></select>
+              <input type="number" id="pd-size1" value="20" min="0" max="200">
+              <input type="color" id="pd-color1" value="#000000">
+            </div>
+          </div>
+          <div class="row"><label for="pd-fmt2">Line 2</label>
+            <div class="ctl">
+              <input type="text" id="pd-fmt2" value="Fmonth" style="width:110px">
+              <select id="pd-font2"></select>
+              <input type="number" id="pd-size2" value="32" min="0" max="200">
+              <input type="color" id="pd-color2" value="#000000">
+            </div>
+          </div>
+          <div class="row"><label for="pd-fmt3">Line 3</label>
+            <div class="ctl">
+              <input type="text" id="pd-fmt3" value="DDST" style="width:110px">
+              <select id="pd-font3"></select>
+              <input type="number" id="pd-size3" value="70" min="0" max="200">
+              <input type="color" id="pd-color3" value="#000000">
+            </div>
+          </div>
+          <div class="row"><label></label>
+            <div class="ctl"><span class="unit">Codes: Fdow, Adow, Fmonth, Amonth,
+            DD, DDST, MM, YYYY, YY - anything else prints as written.
+            Size 0 hides a line.</span></div>
+          </div>
+        </fieldset>
+
+        <fieldset><legend>Quotes (optional)</legend>
+          <div class="row"><label for="pd-quotes">One per day</label>
+            <div class="ctl" style="display:block">
+              <textarea id="pd-quotes" placeholder="First day's quote&#10;Second day's quote&#10;Use \ for a line break inside a quote"></textarea>
+            </div>
+          </div>
+          <div class="row"><label for="pd-qwrap">Style</label>
+            <div class="ctl">
+              <span class="unit">wrap</span>
+              <input type="number" id="pd-qwrap" value="40" min="10" max="120">
+              <span class="unit">chars &middot;</span>
+              <select id="pd-qfont"></select>
+              <input type="number" id="pd-qsize" value="8" min="0" max="40">
+              <input type="color" id="pd-qcolor" value="#000000">
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" id="pd-download">Download PDF</button>
+          <button type="button" id="pd-copylink" title="Copy a link to these exact settings">Copy Link</button>
+        </div>
+        <div class="alsorow">Also available:
+          <a href="#" id="pd-openprint" title="Open in a browser tab, print from there">Open PDF</a> &middot;
+          <a href="#" id="pd-dl-svg" title="First page only">SVG</a> &middot;
+          <a href="#" id="pd-dl-png" title="First page only, 300 dpi">PNG</a></div>
+        <div class="printhint">Printing? Choose &quot;Actual size&quot; (100%), not
+        &quot;Fit to page.&quot;</div>
+      </form>
+    </div>
+
+    <div class="previewcol">
+      <svg id="pd-preview" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div id="pd-pageinfo"></div>
+      <div class="assemblynote">1) Print<BR>2) Cut the stack<BR>3) Pile
+      the stacks in order<BR>4) Assemble with punch holes, glue, etc.</div>
+    </div></div>
+  </div>
+</section>
+
+<section class="tool" id="tool-yearly" hidden>
+  <div class="wrap">
+    <h2 class="toolhead">Year on a Page</h2>
+    <div class="layout">
+    <div>
+      <form onsubmit="return false;">
+        <fieldset><legend>Calendar</legend>
+          <div class="row"><label for="yr-year">Year</label>
+            <div class="ctl">
+              <button type="button" class="stepper" id="yr-yearminus">&minus;</button>
+              <input type="number" id="yr-year" value="2026" min="1600" max="3000" step="1">
+              <button type="button" class="stepper" id="yr-yearplus">+</button>
+            </div>
+          </div>
+          <div class="row"><label for="yr-lang">Language</label>
+            <div class="ctl"><select id="yr-lang"></select></div>
+          </div>
+          <div class="row"><label for="yr-weekstart">Week starts on</label>
+            <div class="ctl"><select id="yr-weekstart">
+              <option value="0">Sunday</option>
+              <option value="1" selected>Monday</option>
+            </select></div>
+          </div>
+        </fieldset>
+
+        <fieldset><legend>Colors</legend>
+          <div class="row"><label for="yr-inkswatch">Ink</label>
+            <div class="ctl">
+              <input type="color" id="yr-inkswatch" value="#000000">
+              <span class="presets" data-target="ink"></span>
+              <span class="unit">Hex #</span>
+              <input type="text" id="yr-inkhex" value="000000" maxlength="6">
+            </div>
+          </div>
+          <div class="row"><label for="yr-bgswatch">Background</label>
+            <div class="ctl">
+              <input type="color" id="yr-bgswatch" value="#ffffff">
+              <span class="presets" data-target="bg"></span>
+              <span class="unit">Hex #</span>
+              <input type="text" id="yr-bghex" value="FFFFFF" maxlength="6">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset><legend>Page</legend>
+          <div class="sizebtns" id="yr-sizebtns">
+            <button type="button" data-w="8.5" data-h="11" data-u="inch">Letter</button>
+            <button type="button" data-w="21" data-h="29.7" data-u="cm">A4</button>
+            <button type="button" data-w="11" data-h="17" data-u="inch">Tabloid</button>
+            <button type="button" data-w="17" data-h="11" data-u="inch">17 &times; 11</button>
+            <button type="button" id="yr-rotate" title="Swap width and height">&#10561; Rotate</button>
+          </div>
+          <div class="row"><label for="yr-width">Size</label>
+            <div class="ctl">
+              <input type="number" id="yr-width" value="8.5" min="3" max="200" step="any">
+              <span class="unit">&times;</span>
+              <input type="number" id="yr-height" value="11" min="3" max="200" step="any">
+              <select id="yr-page_units">
+                <option value="inch" selected>inches</option>
+                <option value="cm">cm</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button type="button" id="yr-download">Download PDF</button>
+          <button type="button" id="yr-copylink" title="Copy a link to these exact settings">Copy Link</button>
+        </div>
+        <div class="alsorow">Also available:
+          <a href="#" id="yr-openprint" title="Open in a browser tab, print from there">Open PDF</a> &middot;
+          <a href="#" id="yr-dl-svg" title="Vector, for design apps">SVG</a> &middot;
+          <a href="#" id="yr-dl-png" title="Raster at 300 dpi">PNG</a></div>
+        <div class="printhint">Printing? Choose &quot;Actual size&quot; (100%), not
+        &quot;Fit to page.&quot;</div>
+      </form>
+    </div>
+
+    <div class="previewcol">
+      <svg id="yr-preview" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div id="yr-pageinfo"></div>
+    </div></div>
+  </div>
+</section>
+
+<script>
+"use strict";
+
+"use strict";
+
+function correct(value, min, max) {
+  let n = parseFloat(String(value).replace(/,/g, "."));
+  if (!isFinite(n)) return min;
+  return Math.min(max, Math.max(min, n));
+}
+function checkColor(input, fallback) {
+  if (input && /^[0-9a-fA-F]{6}$/.test(input)) return input.toLowerCase();
+  return fallback;
+}
+function fnum(n) { return (Math.round(n * 100) / 100).toString(); }
+function hexToRgbTriplet(hex) {
+  return fnum(parseInt(hex.slice(0, 2), 16) / 255) + " " +
+         fnum(parseInt(hex.slice(2, 4), 16) / 255) + " " +
+         fnum(parseInt(hex.slice(4, 6), 16) / 255);
+}
+function pdfEscape(s) {
+  return String(s).replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
+}
+
+const W_HELV = [278,278,355,556,556,889,667,191,333,333,389,584,278,333,278,278,
+556,556,556,556,556,556,556,556,556,556,278,278,584,584,584,556,1015,667,667,
+722,722,667,611,778,722,278,500,667,556,833,722,778,667,778,722,667,611,722,
+667,944,667,667,611,278,278,278,469,556,333,556,556,500,556,556,278,556,556,
+222,222,500,222,833,556,556,556,556,333,278,278,556,500,722,500,500,500,334,
+260,334,584];
+const W_HELVB = [278,333,474,556,556,889,722,238,333,333,389,584,278,333,278,278,
+556,556,556,556,556,556,556,556,556,556,333,333,584,584,584,611,975,722,722,
+722,722,667,611,778,722,278,556,722,611,833,722,778,667,778,722,667,611,722,
+667,944,667,667,611,333,278,333,584,556,333,556,611,556,611,556,333,611,611,
+278,278,556,278,889,611,611,611,611,389,556,333,611,556,778,556,556,500,389,
+280,389,584];
+const W_TIMES = [250,333,408,500,500,833,778,180,333,333,500,564,250,333,250,278,
+500,500,500,500,500,500,500,500,500,500,278,278,564,564,564,444,921,722,667,
+667,722,611,556,722,722,333,389,722,611,889,722,722,556,722,667,556,611,722,
+722,944,722,722,611,333,278,333,469,500,333,444,500,444,500,444,333,500,500,
+278,278,500,278,778,500,500,500,500,333,389,278,500,500,722,500,500,444,480,
+200,480,541];
+const W_TIMESB = [250,333,555,500,500,1000,833,278,333,333,500,570,250,333,250,278,
+500,500,500,500,500,500,500,500,500,500,333,333,570,570,570,500,930,722,667,
+722,722,667,611,778,778,389,500,778,667,944,722,778,611,778,722,556,667,722,
+722,1000,722,722,667,333,278,333,581,500,333,500,556,444,556,444,333,500,556,
+278,333,556,278,833,556,500,556,556,444,389,333,556,500,722,500,500,444,394,
+220,394,520];
+const W_COUR = []; for (let i = 0; i < 95; i++) W_COUR.push(600);
+
+const FONTS = {
+  h:  { ref: "/F1", w: W_HELV,   pdfName: "Helvetica",
+        svg: 'font-family="Helvetica, Arial, sans-serif"' },
+  hb: { ref: "/F2", w: W_HELVB,  pdfName: "Helvetica-Bold",
+        svg: 'font-family="Helvetica, Arial, sans-serif" font-weight="bold"' },
+  t:  { ref: "/F3", w: W_TIMES,  pdfName: "Times-Roman",
+        svg: 'font-family="Times New Roman, Times, serif"' },
+  tb: { ref: "/F4", w: W_TIMESB, pdfName: "Times-Bold",
+        svg: 'font-family="Times New Roman, Times, serif" font-weight="bold"' },
+  c:  { ref: "/F5", w: W_COUR,   pdfName: "Courier",
+        svg: 'font-family="Courier New, Courier, monospace"' }
+};
+const FONT_CHOICES = [["h", "Helvetica"], ["hb", "Helvetica Bold"],
+  ["t", "Times"], ["tb", "Times Bold"], ["c", "Courier"]];
+
+function textWidthPts(s, size, font) {
+  const tbl = (FONTS[font] || FONTS.h).w;
+  let w = 0;
+  for (let i = 0; i < s.length; i++) {
+    const c = s.charCodeAt(i);
+    w += (c >= 32 && c <= 126) ? tbl[c - 32] : 556;
+  }
+  return (w / 1000) * size;
+}
+
+function dlToPdfOps(p, dl) {
+  const ops = [];
+  ops.push(hexToRgbTriplet(p.bgColor || "ffffff") + " rg");
+  ops.push("0 0 " + fnum(p.width) + " " + fnum(p.height) + " re f");
+  let color = p.inkColor || "000000", w = 1;
+  ops.push("1 w");
+  ops.push(hexToRgbTriplet(color) + " RG");
+  ops.push(hexToRgbTriplet(color) + " rg");
+  for (const pr of dl) {
+    const t = pr[0];
+    if (t === "T") {
+      const size = pr[3], str = String(pr[4]), font = pr[6] || "h";
+      let x = pr[1];
+      const tw = textWidthPts(str, size, font);
+      if (pr[5] === "c") x -= tw / 2;
+      else if (pr[5] === "r") x -= tw;
+      ops.push("BT " + FONTS[font].ref + " " + fnum(size) + " Tf " +
+        fnum(x) + " " + fnum(pr[2]) + " Td (" + pdfEscape(str) + ") Tj ET");
+    } else if (t === "L") {
+      ops.push(fnum(pr[1]) + " " + fnum(pr[2]) + " m " +
+               fnum(pr[3]) + " " + fnum(pr[4]) + " l S");
+    } else if (t === "P") {
+      const pts = pr[1];
+      let s = fnum(pts[0]) + " " + fnum(pts[1]) + " m";
+      for (let i = 2; i < pts.length; i += 2) s += " " + fnum(pts[i]) + " " + fnum(pts[i + 1]) + " l";
+      ops.push(s + (pr[2] ? " h S" : " S"));
+    } else if (t === "S") {
+      if (pr[1] !== color) {
+        color = pr[1];
+        ops.push(hexToRgbTriplet(color) + " RG");
+        ops.push(hexToRgbTriplet(color) + " rg");
+      }
+      if (pr[2] !== w) { w = pr[2]; ops.push(fnum(w) + " w"); }
+    }
+  }
+  return ops;
+}
+
+function buildPdfMulti(pages, title) {
+  const N = pages.length;
+  const now = new Date();
+  const z = (n) => String(n).padStart(2, "0");
+  const pdfDate = "D:" + now.getUTCFullYear() + z(now.getUTCMonth() + 1) +
+    z(now.getUTCDate()) + z(now.getUTCHours()) + z(now.getUTCMinutes()) +
+    z(now.getUTCSeconds()) + "+00'00'";
+  const safeTitle = title.replace(/[\\()]/g, "");
+  const keys = Object.keys(FONTS);
+  const fontBase = 3 + 2 * N;
+  let fd = "<< /Font << ";
+  keys.forEach((k, i) => { fd += FONTS[k].ref + " " + (fontBase + i) + " 0 R "; });
+  fd += ">> >>";
+  const objects = [
+    "<< /Type /Catalog /Pages 2 0 R >>",
+    "<< /Type /Pages /Kids [" + pages.map((_, i) => (3 + i) + " 0 R").join(" ") +
+      "] /Count " + N + " >>"
+  ];
+  for (let i = 0; i < N; i++) {
+    objects.push("<< /Type /Page /Parent 2 0 R /MediaBox [0 0 " +
+      fnum(pages[i].p.width) + " " + fnum(pages[i].p.height) +
+      "] /Contents " + (3 + N + i) + " 0 R /Resources " + fd + " >>");
+  }
+  for (let i = 0; i < N; i++) {
+    const stream = dlToPdfOps(pages[i].p, pages[i].dl).join("\n");
+    objects.push("<< /Length " + stream.length + " >>\nstream\n" + stream + "\nendstream");
+  }
+  for (const k of keys) {
+    objects.push("<< /Type /Font /Subtype /Type1 /BaseFont /" + FONTS[k].pdfName +
+      " /Encoding /WinAnsiEncoding >>");
+  }
+  objects.push("<< /Title (" + safeTitle + ") /Author (incompetech.com) " +
+    "/Creator (https://incompetech.com/) " +
+    "/Subject (" + safeTitle + ") /CreationDate (" + pdfDate + ") >>");
+  let out = "%PDF-1.4\n";
+  const offsets = [];
+  for (let i = 0; i < objects.length; i++) {
+    offsets.push(out.length);
+    out += (i + 1) + " 0 obj\n" + objects[i] + "\nendobj\n";
+  }
+  const xrefPos = out.length;
+  out += "xref\n0 " + (objects.length + 1) + "\n0000000000 65535 f \n";
+  for (const off of offsets) out += String(off).padStart(10, "0") + " 00000 n \n";
+  out += "trailer\n<< /Size " + (objects.length + 1) +
+    " /Root 1 0 R /Info " + objects.length + " 0 R >>\nstartxref\n" + xrefPos + "\n%%EOF";
+  const bytes = new Uint8Array(out.length);
+  for (let i = 0; i < out.length; i++) bytes[i] = out.charCodeAt(i) & 0xff;
+  return bytes;
+}
+
+function svgEscape(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+}
+function dlToSvgBody(p, dl) {
+  const H = p.height;
+  let body = '<rect x="0" y="0" width="' + fnum(p.width) + '" height="' +
+    fnum(H) + '" fill="#' + (p.bgColor || "ffffff") + '"/>';
+  let color = p.inkColor || "000000", w = 1;
+  let strokeD = "";
+  function flush() {
+    if (strokeD) {
+      body += '<path d="' + strokeD + '" stroke="#' + color +
+        '" stroke-width="' + fnum(w) + '" fill="none"/>';
+      strokeD = "";
+    }
+  }
+  for (const pr of dl) {
+    const t = pr[0];
+    if (t === "T") {
+      flush();
+      const anchor = pr[5] === "c" ? "middle" : (pr[5] === "r" ? "end" : "start");
+      body += '<text x="' + fnum(pr[1]) + '" y="' + fnum(H - pr[2]) +
+        '" font-size="' + fnum(pr[3]) + '" ' + FONTS[pr[6] || "h"].svg +
+        ' text-anchor="' + anchor + '" fill="#' + color + '">' +
+        svgEscape(pr[4]) + "</text>";
+    } else if (t === "L") {
+      strokeD += "M" + fnum(pr[1]) + " " + fnum(H - pr[2]) +
+                 "L" + fnum(pr[3]) + " " + fnum(H - pr[4]);
+    } else if (t === "P") {
+      const pts = pr[1];
+      strokeD += "M" + fnum(pts[0]) + " " + fnum(H - pts[1]);
+      for (let i = 2; i < pts.length; i += 2) {
+        strokeD += "L" + fnum(pts[i]) + " " + fnum(H - pts[i + 1]);
+      }
+      if (pr[2]) strokeD += "Z";
+    } else if (t === "S") {
+      flush(); color = pr[1]; w = pr[2];
+    }
+  }
+  flush();
+  return body;
+}
+
+
+// ---------- Languages ----------
+// Merged from the four originals. They disagreed on what column 3 meant:
+// the yearly grid wants one-letter days, page-a-day wants three-letter ones.
+// 0 code, 1 name, 2 monthsLong, 3 daysNarrow, 4 daysAbbrev, 5 daysLong, 6 monthsAbbrev
+const LANGS = [
+  ["en","English",["January","February","March","April","May","June","July","August","September","October","November","December"],["S","M","T","W","Th","F","Sa"],["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]],
+  ["af","Afrikaans",["Januarie","Februarie","Maart","April","Mei","Junie","Julie","Augustus","September","Oktober","November","Desember"],["So","Ma","Di","Wo","Do","Vr","Sa"],["Son","Maa","Din","Woe","Don","Vry","Sat"],["Sondag","Maandag","Dinsdag","Woensdag","Donderdag","Vrydag","Saterdag"],["Jan","Feb","Mrt","Apr","Mei","Jun","Jul","Aug","Sep","Okt","Nov","Des"]],
+  ["id","Bahasa Indonesia",["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"],["Min","Sen","Sel","Rab","Kam","Jum","Sab"],["Min","Sen","Sel","Rab","Kam","Jum","Sab"],["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"],["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"]],
+  ["ms","Bahasa Melayu",["Januari","Februari","Mac","April","Mei","Jun","Julai","Ogos","September","Oktober","November","Disember"],["Ahd","Isn","Sel","Rab","Kha","Jum","Sab"],["Ahd","Isn","Sel","Rab","Kha","Jum","Sab"],["Ahad","Isnin","Selasa","Rabu","Khamis","Jumaat","Sabtu"],["Jan","Feb","Mac","Apr","Mei","Jun","Jul","Ogo","Sep","Okt","Nov","Dis"]],
+  ["ca","Català",["Gener","Febrer","Març","Abril","Maig","Juny","Juliol","Agost","Setembre","Octubre","Novembre","Desembre"],["Dg","Dl","Dm","Dc","Dj","Dv","Ds"],["Dg","Dl","Dt","Dc","Dj","Dv","Ds"],["Diumenge","Dilluns","Dimarts","Dimecres","Dijous","Divendres","Dissabte"],["Gen","Feb","Mar","Abr","Mai","Jun","Jul","Ago","Set","Oct","Nov","Des"]],
+  ["da","Dansk",["Januar","Februar","Marts","April","Maj","Juni","Juli","August","September","Oktober","November","December"],["S","M","Ti","O","To","F","L"],["Søn","Man","Tir","Ons","Tor","Fre","Lør"],["Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag"],["Jan","Feb","Mar","Apr","Maj","Jun","Jul","Aug","Sep","Okt","Nov","Dec"]],
+  ["de","Deutsch",["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],["So","Mo","Di","Mi","Do","Fr","Sa"],["So","Mo","Di","Mi","Do","Fr","Sa"],["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"],["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"]],
+  ["et","Eesti",["Jaanuar","Veebruar","Märts","Aprill","Mai","Juuni","Juuli","August","September","Oktoober","November","Detsember"],["P","E","T","K","N","R","L"],["Püh","Esm","Tei","Kol","Nel","Ree","Lau"],["Pühapäev","Esmaspäev","Teisipäev","Kolmapäev","Neljapäev","Reede","Laupäev"],["Jaan","Veebr","Märts","Apr","Mai","Juuni","Juuli","Aug","Sept","Okt","Nov","Dets"]],
+  ["es","Español",["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],["D","L","Ma","Mi","J","V","S"],["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"],["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"]],
+  ["eu","Euskara",["Urtarrila","Otsaila","Martxoa","Apirila","Maiatza","Ekaina","Uztaila","Abuztua","Iraila","Urria","Azaroa","Abendua"],["Ig","Al","Ar","Az","Og","Ol","Lr"],["Ig","Al","Ar","Az","Og","Ol","Lr"],["Igandea","Astelehena","Asteartea","Asteazkena","Osteguna","Ostirala","Larunbata"],["Urt","Ots","Mar","Api","Mai","Eka","Uzt","Abu","Ira","Urr","Aza","Abe"]],
+  ["fil","Filipino",["Enero","Pebrero","Marso","Abril","Mayo","Hunyo","Hulyo","Agosto","Setyembre","Oktubre","Nobyembre","Disyembre"],["Lin","Lun","Mar","Miy","Huw","Biy","Sab"],["Lin","Lun","Mar","Miy","Huw","Biy","Sab"],["Linggo","Lunes","Martes","Miyerkules","Huwebes","Biyernes","Sabado"],["Ene","Peb","Mar","Abr","May","Hun","Hul","Ago","Set","Okt","Nob","Dis"]],
+  ["fr","Français",["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],["D","L","Ma","Me","J","V","S"],["Dim","Lun","Mar","Mer","Jeu","Ven","Sam"],["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"],["Jan","Fév","Mar","Avr","Mai","Juin","Juil","Août","Sep","Oct","Nov","Déc"]],
+  ["it","Italiano",["Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"],["D","L","Ma","Me","G","V","S"],["Dom","Lun","Mar","Mer","Gio","Ven","Sab"],["Domenica","Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato"],["Gen","Feb","Mar","Apr","Mag","Giu","Lug","Ago","Set","Ott","Nov","Dic"]],
+  ["sw","Kiswahili",["Januari","Februari","Machi","Aprili","Mei","Juni","Julai","Agosti","Septemba","Oktoba","Novemba","Desemba"],["Jpi","Jtt","Jnn","Jtn","Alh","Iju","Jms"],["Jpi","Jtt","Jnn","Jtn","Alh","Iju","Jms"],["Jumapili","Jumatatu","Jumanne","Jumatano","Alhamisi","Ijumaa","Jumamosi"],["Jan","Feb","Mac","Apr","Mei","Jun","Jul","Ago","Sep","Okt","Nov","Des"]],
+  ["hu","Magyar",["Január","Február","Március","Április","Május","Június","Július","Augusztus","Szeptember","Október","November","December"],["V","H","K","Sze","Cs","P","Szo"],["V","H","K","Sze","Cs","P","Szo"],["Vasárnap","Hétfö","Kedd","Szerda","Csütörtök","Péntek","Szombat"],["Jan","Febr","Márc","Ápr","Máj","Jún","Júl","Aug","Szept","Okt","Nov","Dec"]],
+  ["nl","Nederlands",["Januari","Februari","Maart","April","Mei","Juni","Juli","Augustus","September","Oktober","November","December"],["Zo","Ma","Di","Wo","Do","Vr","Za"],["Zo","Ma","Di","Wo","Do","Vr","Za"],["Zondag","Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag"],["Jan","Feb","Mrt","Apr","Mei","Jun","Jul","Aug","Sep","Okt","Nov","Dec"]],
+  ["no","Norsk",["Januar","Februar","Mars","April","Mai","Juni","Juli","August","September","Oktober","November","Desember"],["S","M","Ti","O","To","F","L"],["Søn","Man","Tir","Ons","Tor","Fre","Lør"],["Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag"],["Jan","Feb","Mar","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Des"]],
+  ["pl","Polski",["Styczen","Luty","Marzec","Kwiecien","Maj","Czerwiec","Lipiec","Sierpien","Wrzesien","Pazdziernik","Listopad","Grudzien"],["N","Pn","Wt","Sr","Cz","Pt","So"],["Nie","Pon","Wto","Sro","Czw","Pia","Sob"],["Niedziela","Poniedzialek","Wtorek","Sroda","Czwartek","Piatek","Sobota"],["Sty","Lut","Mar","Kwi","Maj","Cze","Lip","Sie","Wrz","Paz","Lis","Gru"]],
+  ["pt","Português",["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"],["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"],["Domingo","Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sábado"],["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"]],
+  ["ro","Română",["Ianuarie","Februarie","Martie","Aprilie","Mai","Iunie","Iulie","August","Septembrie","Octombrie","Noiembrie","Decembrie"],["D","L","Ma","Mi","J","V","S"],["Dum","Lun","Mar","Mie","Joi","Vin","Sam"],["Duminica","Luni","Marti","Miercuri","Joi","Vineri","Sambata"],["Ian","Feb","Mar","Apr","Mai","Iun","Iul","Aug","Sep","Oct","Noi","Dec"]],
+  ["sq","Shqip",["Janar","Shkurt","Mars","Prill","Maj","Qershor","Korrik","Gusht","Shtator","Tetor","Nëntor","Dhjetor"],["Die","Hën","Mar","Mër","Enj","Pre","Sht"],["Die","Hën","Mar","Mër","Enj","Pre","Sht"],["E diel","E hënë","E martë","E mërkurë","E enjte","E premte","E shtunë"],["Jan","Shk","Mar","Pri","Maj","Qer","Kor","Gus","Sht","Tet","Nën","Dhj"]],
+  ["fi","Suomi",["Tammikuu","Helmikuu","Maaliskuu","Huhtikuu","Toukokuu","Kesäkuu","Heinäkuu","Elokuu","Syyskuu","Lokakuu","Marraskuu","Joulukuu"],["S","M","Ti","K","To","P","L"],["Su","Ma","Ti","Ke","To","Pe","La"],["Sunnuntai","Maanantai","Tiistai","Keskiviikko","Torstai","Perjantai","Lauantai"],["Tammi","Helmi","Maalis","Huhti","Touko","Kesä","Heinä","Elo","Syys","Loka","Marras","Joulu"]],
+  ["sv","Svenska",["Januari","Februari","Mars","April","Maj","Juni","Juli","Augusti","September","Oktober","November","December"],["S","M","Ti","O","To","F","L"],["Sön","Mån","Tis","Ons","Tor","Fre","Lör"],["Söndag","Måndag","Tisdag","Onsdag","Torsdag","Fredag","Lördag"],["Jan","Feb","Mar","Apr","Maj","Jun","Jul","Aug","Sep","Okt","Nov","Dec"]],
+  ["tk","Türkçe",["Ocak","Subat","Mart","Nisan","Mayis","Haziran","Temmuz","Agustos","Eylül","Ekim","Kasim","Aralik"],["Pz","Pt","Sa","Ca","Pe","Cu","Ct"],["Paz","Pzt","Sal","Car","Per","Cum","Cmt"],["Pazar","Pazartesi","Sali","Carsamba","Persembe","Cuma","Cumartesi"],["Oca","Sub","Mar","Nis","May","Haz","Tem","Agu","Eyl","Eki","Kas","Ara"]],
+  ["is","Íslenska",["Janúar","Febrúar","Mars","Apríl","Maí","Júní","Júlí","Ágúst","September","Október","Nóvember","Desember"],["S","Má","Þr","Mi","Fi","Fö","La"],["Sun","Mán","Þri","Mið","Fim","Fös","Lau"],["Sunnudagur","Mánudagur","Þriðjudagur","Miðvikudagur","Fimmtudagur","Föstudagur","Laugardagur"],["Jan","Feb","Mar","Apr","Maí","Jún","Júl","Ágú","Sep","Okt","Nóv","Des"]]
+];
+function getLang(code) {
+  for (const l of LANGS) if (l[0] === code) return l;
+  return LANGS[0];
+}
+
+function daysInMonth(year, month0) {
+  return new Date(year, month0 + 1, 0).getDate();
+}
+
+// ISO 8601 week number (the strftime %V the Perl used)
+function isoWeek(date) {
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const dayNum = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+}
+
+
+// ---------- One month page, ported from cal_monthly.pl ----------
+// p: { width, height, inkColor, bgColor, lang, startDay, weekNum, dayOfYear }
+function drawMonthly(p, year, month) {
+  const dl = [];
+  const totalX = p.width, totalY = p.height;
+  const centerX = totalX / 2;
+  const marginX = totalX / 16, marginY = totalY / 16;
+  const useableX = totalX - 2 * marginX;
+  const useableY = totalY - 2 * marginY;
+  const deltaX = useableX / 7;
+  const deltaY = useableY / 7;
+  const L = getLang(p.lang);
+  const months = L[2], days = L[5]; // long day names, per the original
+  const startDay = p.startDay ? 1 : 0;
+  const GREY = "666666";
+
+  function gridHoriz(week, startWday, endWday) {
+    endWday++;
+    dl.push(["L", marginX + deltaX * startWday, totalY - (marginY + deltaY * week),
+                  marginX + deltaX * endWday, totalY - (marginY + deltaY * week)]);
+  }
+  function gridVert(pos, startMDay, endMDay) {
+    const e = endMDay + 1;
+    let top = 1, bottom = 6;
+    if (pos < startMDay) top++;
+    if (pos > e) bottom--;
+    if (startMDay === 0 && e === 7) bottom--;
+    if (startMDay > e) bottom++;
+    dl.push(["L", marginX + deltaX * pos, totalY - (marginY + deltaY * top),
+                  marginX + deltaX * pos, totalY - (marginY + deltaY * bottom)]);
+  }
+
+  // Title
+  dl.push(["T", centerX, totalY - (marginY + deltaY / 3.5),
+    deltaY / 3.5, months[month] + " " + year, "c", "tb"]);
+
+  // Weekday header
+  for (let i = -3; i <= 3; i++) {
+    let wday = i + 3 + startDay;
+    if (wday > 6) wday = 0;
+    dl.push(["T", centerX + i * deltaX,
+      totalY - (marginY + deltaY - deltaY / 7),
+      deltaX / 6.3, days[wday], "c", "tb"]);
+  }
+
+  const max = daysInMonth(year, month);
+  let week = 1, startMDay = -1, endMDay = -1;
+  for (let d = 1; d <= max; d++) {
+    const date = new Date(year, month, d);
+    let wday = date.getDay();
+    if (startDay) {
+      wday--;
+      if (wday === -1) wday = 6;
+    }
+    if (d === 1) { startMDay = wday; gridHoriz(week, wday, 6); }
+    if (d === max) endMDay = wday;
+    if (wday === 0) gridHoriz(week, 0, 6);
+    if (p.weekNum && (wday === 6 || d === max)) {
+      let wn = isoWeek(date);
+      if (wn === 0) wn = 53;
+      dl.push(["S", GREY, 1]);
+      dl.push(["T", marginX / 1.25,
+        totalY - (marginY + deltaY * week + deltaY / 2),
+        deltaX / 8, wn, "r", "tb"]);
+      dl.push(["S", p.inkColor, 1]);
+    }
+    dl.push(["T", marginX + deltaX * wday + deltaX / 5,
+      totalY - (marginY + week * deltaY + deltaX / 5),
+      deltaX / 5, d, "c", "hb"]);
+    if (p.dayOfYear) {
+      const yday = Math.floor((date - new Date(year, 0, 1)) / 86400000);
+      dl.push(["S", GREY, 1]);
+      dl.push(["T", marginX + deltaX * wday + deltaX * (15 / 16),
+        totalY - (marginY + week * deltaY + deltaY * (15 / 16)),
+        deltaX / 10, yday + 1, "r", "hb"]);
+      dl.push(["S", p.inkColor, 1]);
+    }
+    if (wday === 6 || d === max) week++;
+  }
+  gridHoriz(week, 0, endMDay);
+  for (let i = 0; i <= 7; i++) gridVert(i, startMDay, endMDay);
+  return dl;
+}
+
+// All requested pages
+function pagesMonthly(p) {
+  const pages = [];
+  let year = Math.floor(correct(p.year, 1600, 3000));
+  let month = p.monthStart;
+  for (let i = 0; i < p.monthCount; i++) {
+    if (month > 11) { month -= 12; year++; }
+    pages.push({ p: p, dl: drawMonthly(p, year, month) });
+    month++;
+  }
+  return pages;
+}
+
+// ---------- One weekday-only month page, from cal_weekday.pl ----------
+// Monday-Friday columns; the weekend simply does not exist here.
+// p: { width, height, inkColor, bgColor, lang, weekNum, dayOfYear }
+function drawWeekday(p, year, month) {
+  const dl = [];
+  const totalX = p.width, totalY = p.height;
+  const centerX = totalX / 2;
+  const marginX = totalX / 16, marginY = totalY / 16;
+  const useableX = totalX - 2 * marginX;
+  const useableY = totalY - 2 * marginY;
+  const deltaX = useableX / 5;
+  const deltaY = useableY / 7;
+  const L = getLang(p.lang);
+  const months = L[2], days = L[5];
+  const GREY = "666666";
+
+  function gridHoriz(week, startWday, endWday) {
+    endWday++;
+    dl.push(["L", marginX + deltaX * startWday, totalY - (marginY + deltaY * week),
+                  marginX + deltaX * endWday, totalY - (marginY + deltaY * week)]);
+  }
+  function gridVert(pos, startMDay, endMDay) {
+    const e = endMDay + 1;
+    let top = 1, bottom = 6;
+    if (pos < startMDay) top++;
+    if (pos > e) bottom--;
+    if (startMDay > e) bottom++;
+    else if (startMDay === -1 && e === 5) bottom--;
+    dl.push(["L", marginX + deltaX * pos, totalY - (marginY + deltaY * top),
+                  marginX + deltaX * pos, totalY - (marginY + deltaY * bottom)]);
+  }
+
+  // Title
+  dl.push(["T", centerX, totalY - (marginY + deltaY / 3.5),
+    deltaY / 3.5, months[month] + " " + year, "c", "tb"]);
+
+  // Weekday header: Monday..Friday
+  for (let i = -2; i <= 2; i++) {
+    const wday = i + 3; // 1..5
+    dl.push(["T", centerX + i * deltaX,
+      totalY - (marginY + deltaY - deltaY / 5),
+      deltaX / 6.3, days[wday], "c", "tb"]);
+  }
+
+  const max = daysInMonth(year, month);
+  let week = 1, startMDay = -1, endMDay = -1;
+  for (let d = 1; d <= max; d++) {
+    const date = new Date(year, month, d);
+    let wday = date.getDay() - 1; // Monday = 0
+    if (wday === -1) wday = 6;
+    if (d === 1 && wday <= 4) { startMDay = wday; gridHoriz(week, wday, 4); }
+    else if (wday === 0) gridHoriz(week, 0, 4);
+    if (p.weekNum && (wday === 4 || (d === max && wday < 4))) {
+      let wn = isoWeek(date);
+      if (wn === 0) wn = 53;
+      dl.push(["S", GREY, 1]);
+      dl.push(["T", marginX / 1.25,
+        totalY - (marginY + deltaY * week + deltaY / 2),
+        deltaX / 8, wn, "r", "tb"]);
+      dl.push(["S", p.inkColor, 1]);
+    }
+    if (wday <= 4) {
+      dl.push(["T", marginX + deltaX * wday + deltaX / 5,
+        totalY - (marginY + week * deltaY + deltaX / 5),
+        deltaX / 5, d, "c", "hb"]);
+      if (p.dayOfYear) {
+        const yday = Math.floor((date - new Date(year, 0, 1)) / 86400000);
+        dl.push(["S", GREY, 1]);
+        dl.push(["T", marginX + deltaX * wday + deltaX * (15 / 16),
+          totalY - (marginY + week * deltaY + deltaY * (15 / 16)),
+          deltaX / 10, yday + 1, "r", "hb"]);
+        dl.push(["S", p.inkColor, 1]);
+      }
+    }
+    if (wday === 4 || d === max) week++;
+    if (d === max) endMDay = wday;
+  }
+  if (endMDay > 4) { endMDay = 4; week--; }
+  gridHoriz(week, 0, endMDay);
+  for (let i = 0; i <= 5; i++) gridVert(i, startMDay, endMDay);
+  return dl;
+}
+
+// All requested pages
+function pagesWeekday(p) {
+  const pages = [];
+  let year = Math.floor(correct(p.year, 1600, 3000));
+  let month = p.monthStart;
+  for (let i = 0; i < p.monthCount; i++) {
+    if (month > 11) { month -= 12; year++; }
+    pages.push({ p: p, dl: drawWeekday(p, year, month) });
+    month++;
+  }
+  return pages;
+}
+
+// ---------- The calendar, ported from cal_yearly.pl ----------
+// p: { width, height, inkColor, bgColor, year, lang, startDay }
+function drawYear(p) {
+  const dl = [];
+  const totalX = p.width, totalY = p.height;
+  const centerX = totalX / 2;
+  const marginX = 40, marginY = 20;
+  const useableX = totalX - marginX;
+  const useableY = totalY - marginY;
+  const monthX = useableX / 3;
+  const monthY = useableY / 4.5;
+  const deltaX = monthX / 8;
+  const deltaY = monthY / 8.5;
+  const L = getLang(p.lang);
+  const months = L[2], days = L[3];
+  const startDay = p.startDay ? 1 : 0;
+  const year = Math.floor(correct(p.year, 1600, 3000));
+
+  // Year headline
+  dl.push(["T", centerX,
+    totalY - (marginY + (monthX / 3.5) - (monthX / 7)),
+    monthX / 5, year, "c", "tb"]);
+
+  for (let m = 0; m < 12; m++) {
+    let offsetX, offsetY;
+    if ((m + 3) % 3 === 0) offsetX = centerX - monthX;
+    if ((m + 2) % 3 === 0) offsetX = centerX;
+    if ((m + 1) % 3 === 0) offsetX = centerX + monthX;
+    if (m >= 0) offsetY = totalY - (0.5 * monthY + marginY);
+    if (m >= 3) offsetY = totalY - (1.5 * monthY + marginY);
+    if (m >= 6) offsetY = totalY - (2.5 * monthY + marginY);
+    if (m >= 9) offsetY = totalY - (3.5 * monthY + marginY);
+
+    // Month name
+    dl.push(["T", offsetX, offsetY, monthX / 10, months[m], "c", "tb"]);
+
+    // Weekday header
+    for (let i = -3; i <= 3; i++) {
+      let wday = i + 3 + startDay;
+      if (wday > 6) wday = 0;
+      dl.push(["T", offsetX + deltaX * i, offsetY - deltaY,
+        deltaX / 2.6, days[wday], "c", "h"]);
+    }
+
+    // Days of the month
+    let week = 1;
+    const max = daysInMonth(year, m);
+    for (let d = 1; d <= max; d++) {
+      let wday = new Date(year, m, d).getDay();
+      if (startDay) {
+        wday--;
+        if (wday === -1) wday = 6;
+      }
+      dl.push(["T", offsetX + deltaX * wday - deltaX * 3,
+        offsetY - (week * deltaY + marginY),
+        deltaX / 2.3, d, "c", "hb"]);
+      if (wday === 6) week++;
+    }
+  }
+  return dl;
+}
+
+// ---------- Date formatting (the friendly tokens from cal.pl) ----------
+function ordinalSuffix(d) {
+  if (d % 100 >= 11 && d % 100 <= 13) return d + "th";
+  return d + (["th", "st", "nd", "rd"][d % 10 > 3 ? 0 : d % 10] || "th");
+}
+function formatDate(fmt, date, lang) {
+  const L = getLang(lang);
+  const z = (n) => String(n).padStart(2, "0");
+  return String(fmt)
+    .replace(/DDST/g, ordinalSuffix(date.getDate()))
+    .replace(/DD/g, z(date.getDate()))
+    .replace(/MM/g, z(date.getMonth() + 1))
+    .replace(/YYYY/g, date.getFullYear())
+    .replace(/YY/g, z(date.getFullYear() % 100))
+    .replace(/Fmonth/g, L[2][date.getMonth()])
+    .replace(/Fdow/g, L[5][date.getDay()])
+    .replace(/Amonth/g, L[6][date.getMonth()])
+    .replace(/Adow/g, L[4][date.getDay()]);
+}
+
+// Simple word wrap at n characters, honoring \ as a manual line break
+function wrapText(s, n) {
+  const out = [];
+  for (const part of String(s).split("\\")) {
+    let line = "";
+    for (const word of part.split(/\s+/)) {
+      if (!word) continue;
+      if (line && (line + " " + word).length > n) { out.push(line); line = word; }
+      else line = line ? line + " " + word : word;
+    }
+    if (line) out.push(line);
+  }
+  return out;
+}
+
+// ---------- The pages, ported from cal.pl ----------
+// The cut-and-stack ordering is the heart of it: print, cut, pile the
+// stacks in order, and the days come out sequential.
+function drawPageADay(cfg) {
+  const W = cfg.width, H = cfg.height;
+  const xup = cfg.xup, yup = cfg.yup;
+  const border = 0.29 * 72;   // printer-safe inset, per the original
+  const toffset = 10;         // top whitespace for tear-off/drilling
+  const deltaDays = cfg.deltaDays;
+  const numPages = Math.floor(deltaDays / (xup * yup)) + 1;
+  const pages = [];
+  let printIteration = 0;
+  let page = 0;
+  while (printIteration <= deltaDays) {
+    const dl = [];
+    let iteration = 0;
+    for (let sideWays = 0; sideWays < xup; sideWays++) {
+      const xstart = sideWays * (W / xup) + border;
+      const xstop = (sideWays + 1) * (W / xup) - border;
+      for (let lengthWays = 0; lengthWays < yup; lengthWays++) {
+        const ystart = lengthWays * (H / yup) + border;
+        const ystop = (lengthWays + 1) * (H / yup) - border;
+        if (cfg.borderSize > 0) {
+          dl.push(["S", cfg.borderColor, cfg.borderSize]);
+          dl.push(["P", [xstart, ystart, xstart, ystop, xstop, ystop,
+                         xstop, ystart], true]);
+        }
+        const currentDOY = deltaDays - ((iteration * numPages) + page - 1) - 1;
+        if (currentDOY >= 0 && currentDOY <= deltaDays) {
+          const date = new Date(cfg.startY, cfg.startM, cfg.startD + currentDOY, 12);
+          const cx = (xstart + xstop) / 2;
+          let yPos = toffset;
+          const lines = [
+            [cfg.fmt1, cfg.font1, cfg.size1, cfg.color1],
+            [cfg.fmt2, cfg.font2, cfg.size2, cfg.color2],
+            [cfg.fmt3, cfg.font3, cfg.size3, cfg.color3]
+          ];
+          let acc = toffset;
+          for (let li = 0; li < 3; li++) {
+            const [fmt, font, size, color] = lines[li];
+            if (size > 2) {
+              acc += (li === 0 ? size : 0);
+              const y = li === 0 ? ystop - (toffset + cfg.size1)
+                : li === 1 ? ystop - (toffset + cfg.size1 * 1.2 + cfg.size2)
+                : ystop - (toffset + (cfg.size1 + cfg.size2) * 1.2 + cfg.size3);
+              dl.push(["S", color, 1]);
+              dl.push(["T", cx, y, size, formatDate(fmt, date, cfg.lang), "c", font]);
+            }
+          }
+          if (cfg.qsize > 2 && cfg.quotes.length) {
+            const q = cfg.quotes[currentDOY % cfg.quotes.length];
+            if (q) {
+              const qlines = wrapText(q, cfg.qwrap);
+              dl.push(["S", cfg.qcolor, 1]);
+              const lh = cfg.qsize * 1.2;
+              qlines.forEach((line, count) => {
+                dl.push(["T", xstart + 15,
+                  lh * (qlines.length - 1) - lh * count + (ystart + lh),
+                  cfg.qsize, line, "l", cfg.qfont]);
+              });
+            }
+          }
+          dl.push(["S", "000000", 1]);
+        }
+        printIteration++;
+        iteration++;
+      }
+    }
+    pages.push({ p: { width: W, height: H, bgColor: "ffffff", inkColor: "000000" }, dl: dl });
+    page++;
+  }
+  return pages;
+}
+
+</script>
+<script>
+"use strict";
+const $id = (id) => document.getElementById(id);
+
+const PRESETS = {
+  ink: ["000000", "b3b3b3", "0000b3", "b30000", "004400", "3a5fcd"],
+  bg:  ["FFFFFF", "FFF4DE", "f4faf4", "eef2ff", "fdf6e3", "000000"]
+};
+const LANGFLAGS = {"en":"🇺🇸","af":"🇿🇦","ca":"🇦🇩","da":"🇩🇰","de":"🇩🇪","es":"🇪🇸","et":"🇪🇪","fi":"🇫🇮","fil":"🇵🇭","fr":"🇫🇷","hu":"🇭🇺","id":"🇮🇩","is":"🇮🇸","it":"🇮🇹","ms":"🇲🇾","nl":"🇳🇱","no":"🇳🇴","pl":"🇵🇱","pt":"🇵🇹","ro":"🇷🇴","sq":"🇦🇱","sv":"🇸🇪","sw":"🇹🇿","tk":"🇹🇷"};
+
+// Nobody shops for a calendar in December. From mid-August the generators
+// default to next year, because that is when people start needing one.
+const YEAR_ROLLOVER_MONTH = 7;   // 0-based: 7 is August
+const YEAR_ROLLOVER_DAY = 15;
+function defaultYear() {
+  const now = new Date();
+  const turn = new Date(now.getFullYear(), YEAR_ROLLOVER_MONTH, YEAR_ROLLOVER_DAY);
+  return now.getFullYear() + (now >= turn ? 1 : 0);
+}
+
+function triggerDownload(blob, name) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
+}
+
+// The four generators differed only in which fields they carried and what they
+// drew, so everything else lives here once: colour swatches, page sizes, the
+// four export routes, link sharing, and remembered settings.
+function makeCalTool(cfg) {
+  const P = cfg.prefix;
+  const $ = (id) => document.getElementById(P + id);
+  const sect = () => document.getElementById("tool-" + cfg.key);
+  let inited = false, ready = false;
+
+  const fields = () => Array.from(sect().querySelectorAll("input, select, textarea"))
+    .filter((el) => el.id && el.type !== "button");
+  const shortId = (el) => el.id.slice(P.length);
+
+  function collect() { return cfg.collect($); }
+
+  function refresh() {
+    if (!ready) return;
+    const p = collect();
+    const dl = cfg.preview(p);
+    const svg = $("preview");
+    svg.setAttribute("viewBox", "0 0 " + p.width + " " + p.height);
+    svg.innerHTML = dlToSvgBody(p, dl);
+    $("pageinfo").textContent = cfg.info(p, $);
+    if ($("sizebtns")) {
+      const w = parseFloat($("width").value), h = parseFloat($("height").value);
+      const u = $("page_units").value;
+      $("sizebtns").querySelectorAll("button[data-w]").forEach((b) => {
+        b.classList.toggle("active", parseFloat(b.dataset.w) === w &&
+          parseFloat(b.dataset.h) === h && b.dataset.u === u);
+      });
+    }
+    savePrefs();
+  }
+
+  function makePdfBlob() {
+    const p = collect();
+    return new Blob([buildPdfMulti(cfg.pages(p), cfg.title + " " + cfg.stamp(p))],
+      { type: "application/pdf" });
+  }
+  function makeSvgString() {
+    const p = collect();                       // first page only; SVG has no pages
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="' + fnum(p.width) +
+      'pt" height="' + fnum(p.height) + 'pt" viewBox="0 0 ' + fnum(p.width) +
+      " " + fnum(p.height) + '">' + dlToSvgBody(p, cfg.preview(p)) + "</svg>";
+  }
+
+  function savePrefs() {
+    try {
+      const o = {};
+      for (const el of fields()) {
+        const k = shortId(el);
+        if (cfg.forget && cfg.forget.indexOf(k) >= 0) continue;
+        o[k] = el.type === "checkbox" ? (el.checked ? 1 : 0) : el.value;
+      }
+      localStorage.setItem("cal." + cfg.key, JSON.stringify(o));
+    } catch (e) {}
+  }
+  function loadPrefs() {
+    let o = null;
+    try { o = JSON.parse(localStorage.getItem("cal." + cfg.key)); } catch (e) {}
+    if (o) applyValues(o);
+  }
+  function applyValues(o) {
+    for (const el of fields()) {
+      const k = shortId(el);
+      if (!(k in o)) continue;
+      if (el.type === "checkbox") el.checked = o[k] === 1 || o[k] === "1" || o[k] === true;
+      else el.value = o[k];
+    }
+    if (cfg.afterApply) cfg.afterApply($);
+  }
+
+  function init() {
+    inited = true;
+    // languages
+    if ($("lang")) {
+      for (const l of LANGS) {
+        const o = document.createElement("option");
+        o.value = l[0];
+        o.textContent = (LANGFLAGS[l[0]] ? LANGFLAGS[l[0]] + "  " : "") + l[1];
+        $("lang").appendChild(o);
+      }
+    }
+    // colour swatch rows
+    sect().querySelectorAll(".presets").forEach((span) => {
+      const target = span.dataset.target;
+      PRESETS[target].forEach((c) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.style.background = "#" + c;
+        b.title = "#" + c;
+        b.addEventListener("click", () => {
+          $(target + "swatch").value = "#" + c.toLowerCase();
+          $(target + "hex").value = c;
+          refresh();
+        });
+        span.appendChild(b);
+      });
+    });
+    // ink / background pairs
+    for (const t of ["ink", "bg"]) {
+      const fall = t === "ink" ? "000000" : "ffffff";
+      if (!$(t + "swatch")) continue;
+      $(t + "swatch").addEventListener("input", function () {
+        $(t + "hex").value = this.value.replace(/^#/, ""); refresh();
+      });
+      $(t + "hex").addEventListener("change", function () {
+        const c = checkColor(this.value.replace(/^#/, ""), fall);
+        this.value = c; $(t + "swatch").value = "#" + c; refresh();
+      });
+    }
+    // year steppers
+    if ($("yearminus")) {
+      $("yearminus").addEventListener("click", () => {
+        $("year").value = Math.floor(correct($("year").value, 1600, 3000)) - 1; refresh();
+      });
+      $("yearplus").addEventListener("click", () => {
+        $("year").value = Math.floor(correct($("year").value, 1600, 3000)) + 1; refresh();
+      });
+    }
+    // page size buttons
+    if ($("sizebtns")) {
+      $("sizebtns").querySelectorAll("button[data-w]").forEach((b) => {
+        b.addEventListener("click", () => {
+          $("width").value = b.dataset.w;
+          $("height").value = b.dataset.h;
+          $("page_units").value = b.dataset.u;
+          refresh();
+        });
+      });
+      if ($("rotate")) $("rotate").addEventListener("click", () => {
+        const w = $("width").value;
+        $("width").value = $("height").value;
+        $("height").value = w;
+        refresh();
+      });
+    }
+    if (cfg.wire) cfg.wire($, refresh);
+    for (const el of fields()) {
+      const ev = (el.tagName === "TEXTAREA" || el.type === "text") ? "input" : "change";
+      el.addEventListener(ev, () => { if (cfg.onChange) cfg.onChange($, el); refresh(); });
+    }
+    // exports
+    $("download").addEventListener("click", () =>
+      triggerDownload(makePdfBlob(), cfg.fileBase(collect()) + ".pdf"));
+    $("openprint").addEventListener("click", (ev) => {
+      ev.preventDefault();
+      const url = URL.createObjectURL(makePdfBlob());
+      window.open(url, "_blank");
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+    });
+    $("dl-svg").addEventListener("click", (ev) => {
+      ev.preventDefault();
+      triggerDownload(new Blob([makeSvgString()], { type: "image/svg+xml" }),
+        cfg.fileBase(collect()) + ".svg");
+    });
+    $("dl-png").addEventListener("click", (ev) => {
+      ev.preventDefault();
+      const p = collect();
+      const img = new Image();
+      const url = URL.createObjectURL(new Blob([makeSvgString()], { type: "image/svg+xml" }));
+      img.onload = function () {
+        const scale = Math.min(300 / 72, 8000 / Math.max(p.width, p.height));
+        const c = document.createElement("canvas");
+        c.width = Math.round(p.width * scale);
+        c.height = Math.round(p.height * scale);
+        const ctx = c.getContext("2d");
+        ctx.fillStyle = "#" + (p.bgColor || "ffffff");
+        ctx.fillRect(0, 0, c.width, c.height);
+        ctx.drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url);
+        c.toBlob((b) => { if (b) triggerDownload(b, cfg.fileBase(p) + ".png"); }, "image/png");
+      };
+      img.onerror = function () {
+        URL.revokeObjectURL(url);
+        alert("PNG export failed in this browser. The SVG download will work.");
+      };
+      img.src = url;
+    });
+    // share link: the route rides in front of the settings
+    if (location.protocol !== "https:") $("copylink").style.display = "none";
+    $("copylink").addEventListener("click", function () {
+      const q = new URLSearchParams();
+      for (const el of fields()) {
+        const k = shortId(el);
+        if (cfg.forget && cfg.forget.indexOf(k) >= 0) continue;
+        q.set(k, el.type === "checkbox" ? (el.checked ? "1" : "0") : el.value);
+      }
+      const url = location.href.split("#")[0] + "#" + cfg.key + "&" + q.toString();
+      const btn = this;
+      const done = () => {
+        btn.textContent = "Copied!";
+        setTimeout(() => { btn.textContent = "Copy Link"; }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done, () => prompt("Copy this link:", url));
+      } else prompt("Copy this link:", url);
+    });
+
+    if ($("year")) $("year").value = defaultYear();
+    if ($("datestart")) $("datestart").value = defaultYear() + "-01-01";
+    if ($("datestop")) $("datestop").value = defaultYear() + "-12-31";
+    if (cfg.afterApply) cfg.afterApply($);
+    loadPrefs();
+  }
+
+  return {
+    activate(params) {
+      if (!inited) init();
+      ready = true;
+      if (params && params.toString()) {
+        const o = {};
+        params.forEach((v, k) => { o[k] = v; });
+        applyValues(o);
+      }
+      refresh();
+    },
+    deactivate() { ready = false; }
+  };
+}
+
+// ---------- the four generators ----------
+function pageSize($) {
+  let w = correct($("width").value, 3, 200);
+  let h = correct($("height").value, 3, 200);
+  if ($("page_units").value === "cm") { w /= 2.54; h /= 2.54; }
+  return { width: Math.floor(w * 72), height: Math.floor(h * 72) };
+}
+function inkAndPaper($) {
+  return {
+    inkColor: checkColor($("inkhex").value.replace(/^#/, ""), "000000"),
+    bgColor: checkColor($("bghex").value.replace(/^#/, ""), "ffffff")
+  };
+}
+function sizeNote($) {
+  const w = parseFloat($("width").value), h = parseFloat($("height").value);
+  return $("page_units").value === "inch" ? w + '" × ' + h + '"' : w + " × " + h + " cm";
+}
+// the month dropdown is spelled in whatever language is selected
+function monthOptions($) {
+  const keep = $("monthstart").value || "0";
+  const months = getLang($("lang").value)[2];
+  $("monthstart").innerHTML = "";
+  months.forEach((name, i) => {
+    const o = document.createElement("option");
+    o.value = i; o.textContent = name;
+    $("monthstart").appendChild(o);
+  });
+  $("monthstart").value = keep;
+}
+
+const monthlyish = (key, prefix, title, weekStartFromField, drawOne, drawAll, base) => ({
+  key: key, prefix: prefix, title: title,
+  forget: ["year"],
+  collect: ($) => Object.assign(pageSize($), inkAndPaper($), {
+    year: $("year").value,
+    lang: $("lang").value,
+    startDay: weekStartFromField ? $("weekstart").value === "1" : true,
+    monthStart: Math.floor(correct($("monthstart").value, 0, 11)),
+    monthCount: Math.floor(correct($("monthcount").value, 1, 24)),
+    weekNum: $("weeknum").checked,
+    dayOfYear: $("doy").checked
+  }),
+  preview: (p) => drawOne(p, Math.floor(correct(p.year, 1600, 3000)), p.monthStart),
+  pages: drawAll,
+  stamp: (p) => String(Math.floor(correct(p.year, 1600, 3000))),
+  fileBase: (p) => base + Math.floor(correct(p.year, 1600, 3000)) + "-" + p.lang,
+  info: (p, $) => "First of " + p.monthCount + " page" +
+    (p.monthCount > 1 ? "s" : "") + " · " + sizeNote($),
+  afterApply: monthOptions,
+  onChange: ($, el) => { if (el.id.endsWith("lang")) monthOptions($); }
+});
+
+const TOOLS = {
+  monthly: makeCalTool(monthlyish("monthly", "mo-", "Monthly Calendar",
+    true, drawMonthly, pagesMonthly, "calendar-monthly-")),
+  weekday: makeCalTool(monthlyish("weekday", "wk-", "Weekday Calendar",
+    false, drawWeekday, pagesWeekday, "calendar-weekday-")),
+  yearly: makeCalTool({
+    key: "yearly", prefix: "yr-", title: "Year on a Page",
+    forget: ["year"],
+    collect: ($) => Object.assign(pageSize($), inkAndPaper($), {
+      year: $("year").value, lang: $("lang").value,
+      startDay: $("weekstart").value === "1"
+    }),
+    preview: (p) => drawYear(p),
+    pages: (p) => [{ p: p, dl: drawYear(p) }],
+    stamp: (p) => String(Math.floor(correct(p.year, 1600, 3000))),
+    fileBase: (p) => "calendar-" + Math.floor(correct(p.year, 1600, 3000)) + "-" + p.lang,
+    info: (p, $) => Math.floor(correct(p.year, 1600, 3000)) + " · " + sizeNote($)
+  }),
+  pageaday: makeCalTool((() => {
+    const LAYOUTS = {
+      "4up": [2, 2, 612, 792], "6up": [2, 3, 612, 792],
+      "8up": [4, 2, 1224, 792], "12up": [4, 3, 1224, 792]
+    };
+    const BORDERS = {
+      thin: [0.2, "000000"], thick: [3, "000000"],
+      grey: [0.3, "808080"], none: [0, "ffffff"]
+    };
+    const sync = ($) => {
+      const custom = $("range").value === "custom";
+      $("yearrow").style.display = custom ? "none" : "";
+      $("customrow1").style.display = custom ? "" : "none";
+      $("customrow2").style.display = custom ? "" : "none";
+      const cl = $("layoutsel").value === "custom";
+      const sect = document.getElementById("tool-pageaday");
+      sect.querySelectorAll(".customlayout").forEach((el) => { el.style.display = cl ? "" : "none"; });
+      const cb = $("bordersel").value === "custom";
+      sect.querySelectorAll(".customborder").forEach((el) => { el.style.display = cb ? "" : "none"; });
+    };
+    return {
+      key: "pageaday", prefix: "pd-", title: "Page-a-Day Calendar",
+      forget: ["year", "quotes"],
+      collect: ($) => {
+        let W, H, xup, yup;
+        if ($("layoutsel").value === "custom") {
+          xup = Math.floor(correct($("xcells").value, 1, 10));
+          yup = Math.floor(correct($("ycells").value, 1, 10));
+          W = correct($("pw").value, 2, 40) * 72;
+          H = correct($("ph").value, 2, 40) * 72;
+        } else [xup, yup, W, H] = LAYOUTS[$("layoutsel").value];
+        let bs, bc;
+        if ($("bordersel").value === "custom") {
+          bs = correct($("bsize").value, 0.1, 8);
+          bc = checkColor($("bcolor").value.replace(/^#/, ""), "000000");
+        } else [bs, bc] = BORDERS[$("bordersel").value];
+        let startY, startM, startD, deltaDays;
+        if ($("range").value === "year") {
+          const y = Math.floor(correct($("year").value, 1600, 3000));
+          startY = y; startM = 0; startD = 1;
+          deltaDays = Math.round((new Date(y, 11, 31, 12) - new Date(y, 0, 1, 12)) / 86400000);
+        } else {
+          const a = ($("datestart").value || "2026-01-01").split("-").map(Number);
+          const b = ($("datestop").value || "2026-12-31").split("-").map(Number);
+          startY = a[0]; startM = a[1] - 1; startD = a[2];
+          deltaDays = Math.round((new Date(b[0], b[1] - 1, b[2], 12) -
+            new Date(startY, startM, startD, 12)) / 86400000);
+          if (!isFinite(deltaDays) || deltaDays < 0) deltaDays = 0;
+          if (deltaDays > 500) deltaDays = 500;
+        }
+        const rawQ = $("quotes").value.trim();
+        return {
+          width: W, height: H, xup: xup, yup: yup,
+          bgColor: "ffffff", inkColor: "000000",
+          borderSize: bs, borderColor: bc,
+          startY: startY, startM: startM, startD: startD, deltaDays: deltaDays,
+          lang: $("lang").value,
+          fmt1: $("fmt1").value, font1: $("font1").value,
+          size1: correct($("size1").value, 0, 200),
+          color1: checkColor($("color1").value.replace(/^#/, ""), "000000"),
+          fmt2: $("fmt2").value, font2: $("font2").value,
+          size2: correct($("size2").value, 0, 200),
+          color2: checkColor($("color2").value.replace(/^#/, ""), "000000"),
+          fmt3: $("fmt3").value, font3: $("font3").value,
+          size3: correct($("size3").value, 0, 200),
+          color3: checkColor($("color3").value.replace(/^#/, ""), "000000"),
+          quotes: rawQ ? rawQ.split("\n") : [],
+          qwrap: Math.floor(correct($("qwrap").value, 10, 120)),
+          qfont: $("qfont").value,
+          qsize: correct($("qsize").value, 0, 40),
+          qcolor: checkColor($("qcolor").value.replace(/^#/, ""), "000000")
+        };
+      },
+      preview: (p) => drawPageADay(p)[0].dl,
+      pages: (p) => drawPageADay(p),
+      stamp: (p) => String(p.startY),
+      fileBase: (p) => "calendar-pageaday-" + p.startY + "-" + p.lang,
+      info: (p) => {
+        // count the sheets rather than building them again: the preview has
+        // already paid for one full imposition this keystroke
+        const n = Math.ceil((p.deltaDays + 1) / (p.xup * p.yup));
+        
+        
+        // return (p.deltaDays + 1) + " days · " + n + " sheet" +
+        //   (n > 1 ? "s" : "") + " · first sheet shown";
+
+
+  		return "First of " + n + " page" + (n > 1 ? "s" : "") + " · " +
+          +(p.width / 72).toFixed(3) + '" × ' + +(p.height / 72).toFixed(3) + '"';         
+          
+          
+      },
+      wire: ($, refresh) => {
+        for (const id of ["font1", "font2", "font3", "qfont"]) {
+          for (const [v, name] of FONT_CHOICES) {
+            const o = document.createElement("option");
+            o.value = v; o.textContent = name;
+            $(id).appendChild(o);
+          }
+        }
+        $("font1").value = "h"; $("font2").value = "hb";
+        $("font3").value = "tb"; $("qfont").value = "h";
+      },
+      afterApply: sync,
+      onChange: ($, el) => sync($)
+    };
+  })())
+};
+
+// ---------- router ----------
+// The hash carries the route first, then the settings: #monthly&year=2026&...
+function route() {
+  const raw = (location.hash || "").replace(/^#/, "");
+  const parts = raw.split("&").filter(Boolean);
+  let name = "home";
+  if (parts.length && parts[0].indexOf("=") < 0) name = parts.shift();
+  if (!TOOLS[name]) { name = "home"; }
+  const params = new URLSearchParams(parts.join("&"));
+  document.querySelectorAll(".tool").forEach((s) => { s.hidden = true; });
+  document.querySelector("#appbar a.backlink").hidden = (name === "home");
+  for (const k in TOOLS) if (k !== name) TOOLS[k].deactivate();
+  document.getElementById("tool-" + name).hidden = false;
+  if (TOOLS[name]) TOOLS[name].activate(params);
+}
+window.addEventListener("hashchange", route);
+
+document.getElementById("keepapp").addEventListener("click", () => {
+  if (location.protocol === "file:") {
+    alert("Good news: you're already running your own copy.\nThis file works offline, forever.");
+    return;
+  }
+  fetch(location.href)
+    .then((r) => r.blob())
+    .then((b) => triggerDownload(b, "incompetech-calendars.html"))
+    .catch(() => alert("Use your browser's File → Save Page As… to keep a copy."));
+});
+
+document.getElementById("nojs").style.display = "none";
+
+// ---------- index thumbnails ----------
+// The cards show a real page from each generator, drawn by the same code that
+// makes the PDF. Cheap settings: one month, four days, so nothing builds 92
+// sheets just to fill a 170px box.
+function paintThumbs() {
+  const yr = defaultYear();
+  const paper = { width: 612, height: 792, inkColor: "000000", bgColor: "ffffff" };
+  const shots = {
+    monthly: () => {
+      const p = Object.assign({}, paper, { year: String(yr), lang: "en", startDay: true,
+        monthStart: 0, monthCount: 1, weekNum: false, dayOfYear: false });
+      return { p: p, dl: drawMonthly(p, yr, 0) };
+    },
+    weekday: () => {
+      const p = Object.assign({}, paper, { year: String(yr), lang: "en", startDay: true,
+        monthStart: 0, monthCount: 1, weekNum: false, dayOfYear: false });
+      return { p: p, dl: drawWeekday(p, yr, 0) };
+    },
+    yearly: () => {
+      const p = Object.assign({}, paper, { year: String(yr), lang: "en", startDay: true });
+      return { p: p, dl: drawYear(p) };
+    },
+    pageaday: () => {
+      const p = { width: 612, height: 792, xup: 2, yup: 2, bgColor: "ffffff", inkColor: "000000",
+        borderSize: 0.2, borderColor: "000000",
+        startY: yr, startM: 0, startD: 1, deltaDays: 3, lang: "en",
+        fmt1: "Fdow", font1: "h", size1: 20, color1: "000000",
+        fmt2: "Fmonth", font2: "hb", size2: 32, color2: "000000",
+        fmt3: "DDST", font3: "tb", size3: 70, color3: "000000",
+        quotes: [], qwrap: 40, qfont: "h", qsize: 0, qcolor: "000000" };
+      return { p: p, dl: drawPageADay(p)[0].dl };
+    }
+  };
+  for (const k in shots) {
+    const el = document.getElementById("thumb-" + k);
+    if (!el) continue;
+    let shot;
+    try { shot = shots[k](); } catch (e) { continue; }
+    el.setAttribute("viewBox", "0 0 " + shot.p.width + " " + shot.p.height);
+    el.style.aspectRatio = shot.p.width + " / " + shot.p.height;
+    el.innerHTML = dlToSvgBody(shot.p, shot.dl);
+  }
+}
+paintThumbs();
+route();
+
+</script>
+</body>
+</html>
