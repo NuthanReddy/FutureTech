@@ -31,7 +31,11 @@ from collections.abc import Sequence
 
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        """Return whether ``s`` is a palindrome after ignoring punctuation."""
+        """Return whether ``s`` is a palindrome after ignoring punctuation.
+
+        Pattern identification: mirrored normalized characters -> inward pointers;
+        all compared outer pairs match, leaving only the interior unchecked.
+        """
         left, right = 0, len(s) - 1
         while left < right:
             # Non-alphanumeric characters do not participate in the comparison.
@@ -46,7 +50,11 @@ class Solution:
         return True
 
     def isSubsequence(self, s: str, t: str) -> bool:
-        """Return whether ``s`` can be obtained by deleting characters from ``t``."""
+        """Return whether ``s`` can be obtained by deleting characters from ``t``.
+
+        Pattern identification: deletions preserve order -> forward matching cursor;
+        s[:s_index] is matched within the processed prefix of t.
+        """
         s_index = 0
         for character in t:
             # The invariant is that s[:s_index] has already been matched.
@@ -55,7 +63,11 @@ class Solution:
         return s_index == len(s)
 
     def twoSum(self, numbers: Sequence[int], target: int) -> list[int]:
-        """Find two sorted values and return their one-based indices."""
+        """Find two sorted values and return their one-based indices.
+
+        Pattern identification: sorted pair sum -> inward pointers;
+        every possible remaining pair lies between left and right.
+        """
         left, right = 0, len(numbers) - 1
         while left < right:
             total = numbers[left] + numbers[right]
@@ -69,7 +81,11 @@ class Solution:
         return []
 
     def threeSum(self, nums: list[int]) -> list[list[int]]:
-        """Return unique triples whose sum is zero."""
+        """Return unique triples whose sum is zero.
+
+        Pattern identification: unique zero-sum triples -> sorted anchor plus pair search;
+        pointer moves preserve remaining candidates; duplicate skips prevent repeats.
+        """
         nums.sort()
         result: list[list[int]] = []
         for anchor in range(len(nums) - 2):
@@ -96,7 +112,11 @@ class Solution:
         return result
 
     def maxArea(self, height: Sequence[int]) -> int:
-        """Return the largest container area formed by two vertical lines."""
+        """Return the largest container area formed by two vertical lines.
+
+        Pattern identification: width times shorter wall -> inward pointers;
+        after recording area, the shorter endpoint cannot improve with narrower width.
+        """
         left, right = 0, len(height) - 1
         best = 0
         while left < right:
@@ -110,7 +130,11 @@ class Solution:
         return best
 
     def trap(self, height: Sequence[int]) -> int:
-        """Compute trapped rain water in O(n) time and O(1) extra space."""
+        """Compute trapped rain water in O(n) time and O(1) extra space.
+
+        Pattern identification: water needs two enclosing maxima -> boundary pointers;
+        the smaller running maximum fixes that side's water; processed bars are final.
+        """
         left, right = 0, len(height) - 1
         left_max = right_max = 0
         water = 0

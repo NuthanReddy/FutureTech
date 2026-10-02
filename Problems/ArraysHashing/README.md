@@ -24,17 +24,25 @@ The solution docstrings record the known constraints and edge cases for each
 problem. The implementations use the function signatures expected by the
 focused tests and do not mutate caller-owned input unless explicitly stated.
 
+## Pattern identification steps
+
+1. Look for repeated values, complements, equal counts, or order-independent groups.
+2. Choose membership sets, index/count maps, canonical keys, or frequency buckets.
+3. For all-except-self products, choose prefix/suffix accumulation instead of hashing.
+4. State what each key or accumulator represents; check before inserting when indices must differ.
+5. Do not use unordered state for adjacency/order constraints; do not use count buckets for unbounded streams.
+
 ## Pattern map
 
-| Pattern | Problems | State and invariant | Complexity |
+| Pattern | Problems / identification cue | State and invariant | Complexity |
 | --- | --- | --- | --- |
-| Membership map/set | Contains Duplicate, Two Sum | State describes exactly the processed prefix; a hit proves the required relation. | `O(n)` average time, `O(n)` space |
-| Character frequencies | Valid Anagram | Every count is the difference between the two processed strings. | `O(n)` time, `O(u)` space |
-| Canonical keys | Group Anagrams | Equal keys mean equal character multiplicities, so one dictionary bucket is one equivalence class. | `O(nk)` time, `O(nk)` output-inclusive space |
-| Frequency buckets | Top K Frequent Elements | Bucket `c` contains precisely values occurring `c` times; scanning downward yields highest frequencies first. | `O(n + u)` time, `O(n + u)` space |
-| Prefix/suffix products | Product of Array Except Self | Each output is left product times right product; neither pass includes the current item. | `O(n)` time, `O(1)` auxiliary space |
-| Region validation | Valid Sudoku | Each row, column, and box set contains only values already seen in that region. | `O(1)` on 9x9, `O(r*c)` generally |
-| Set starts | Longest Consecutive Sequence | Only values without predecessors start scans, so each sequence is traversed once. | `O(n)` average time, `O(n)` space |
+| Membership map/set | [Contains Duplicate](HashMap/contains_duplicate.py): repeated value; [Two Sum](HashMap/two_sum.py): target complement, original indices | State describes exactly the processed prefix; a hit proves the required relation. | `O(n)` average time, `O(n)` space |
+| Character frequencies | [Valid Anagram](HashMap/valid_anagram.py): same characters with multiplicity, order irrelevant | Counts track unmatched characters from the first string. | `O(n)` time, `O(u)` space |
+| Canonical keys | [Group Anagrams](Grouping/group_anagrams.py): partition words by equal multiplicities | Equal keys mean equal character multiplicities, so one dictionary bucket is one equivalence class. | `O(nk)` time, `O(nk)` output-inclusive space |
+| Frequency buckets | [Top K Frequent Elements](Frequency/top_k_frequent_elements.py): rank values by bounded occurrence counts | Bucket `c` contains precisely values occurring `c` times; scanning downward yields highest frequencies first. | `O(n + u)` time, `O(n + u)` space |
+| Prefix/suffix products | [Product of Array Except Self](Prefix/product_of_array_except_self.py): exclude each index without division | Each output is left product times right product; neither pass includes the current item. | `O(n)` time, `O(1)` auxiliary space |
+| Region validation | [Valid Sudoku](Matrix/valid_sudoku.py): uniqueness in overlapping regions | Each row, column, and box set contains only values already seen in that region. | `O(1)` on 9x9, `O(r*c)` generally |
+| Set starts | [Longest Consecutive Sequence](Set/longest_consecutive_sequence.py): consecutive values, not adjacent positions | Only values without predecessors start scans, so each sequence is traversed once. | `O(n)` average time, `O(n)` space |
 
 ## Problem statements
 

@@ -1,3 +1,5 @@
+# Pattern identification: maximum sum of exactly k adjacent items -> fixed rolling sum;
+# for 1 <= k <= len(arr), subtract outgoing/add incoming to retain exactly k items.
 def max_k_sub_array_sum(arr, k):
     n = len(arr)
     if k > n:

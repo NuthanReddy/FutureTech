@@ -1,3 +1,5 @@
+# Pattern identification: nested matching delimiters -> LIFO opener stack;
+# the top is the next required match, and success leaves no unmatched openers.
 """Valid Parentheses.
 
 Problem: Given a string containing ``()``, ``[]``, ``{}``, and optionally

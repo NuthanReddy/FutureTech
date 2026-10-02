@@ -19,6 +19,8 @@ result = [
 '''
 
 
+# Pattern identification: sum a fixed 3x3 neighborhood -> bounded grid stencil;
+# count only in-bounds offsets (including self); legacy output slicing is unchanged.
 def count_neighbours(input):
     rows = len(input)
     if rows == 0:

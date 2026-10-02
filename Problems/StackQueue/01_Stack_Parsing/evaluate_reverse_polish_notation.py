@@ -1,3 +1,5 @@
+# Pattern identification: postfix binary operators -> operand stack;
+# the stack holds evaluated subexpressions; pop right then left and push their result.
 """Evaluate Reverse Polish Notation.
 
 Problem: Given a valid arithmetic expression in Reverse Polish (postfix)

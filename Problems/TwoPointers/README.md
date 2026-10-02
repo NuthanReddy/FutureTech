@@ -31,14 +31,25 @@ Use two pointers when the input is ordered, or when a left/right boundary
 defines a shrinking search space. The key question is: *which discarded region
 can never contain a better answer?*
 
-| Problem | Invariant / decision | Time | Extra space |
-| --- | --- | ---: | ---: |
-| Valid Palindrome | equal normalized characters remain possible | O(n) | O(1) |
-| Is Subsequence | prefix of `s` has been matched in `t` | O(|t|) | O(1) |
-| Two Sum II | sorted pair sum is compared with target | O(n) | O(1) |
-| 3Sum | sorted anchor plus inward pair search | O(n²) | O(1) besides output |
-| Container With Most Water | move the shorter wall; the taller wall cannot help | O(n) | O(1) |
-| Trapping Rain Water | smaller running boundary determines that side's water | O(n) | O(1) |
+## Pattern identification steps
+
+1. Look for ordered pair searches, symmetric comparisons, or order-preserving matching.
+2. Choose inward pointers for pairs/boundaries; choose forward cursors for subsequences.
+3. Prove each pointer move discards only impossible or non-improving candidates.
+4. For triples, sort and fix an anchor before searching the remaining pair; skip duplicates.
+5. Do not use sum-directed pointer moves on unsorted input; use hashing if original indices must survive.
+
+| Problem | Identification cue | Invariant / decision | Time | Extra space |
+| --- | --- | --- | ---: | ---: |
+| Valid Palindrome (`solution.py:isPalindrome`) | compare normalized ends | equal normalized characters remain possible | O(n) | O(1) |
+| Is Subsequence (`solution.py:isSubsequence`) | delete without reordering | prefix of `s` has been matched in `t` | O(|t|) | O(1) |
+| Two Sum II (`solution.py:twoSum`) | sorted pair sum, original positions | sorted pair sum is compared with target | O(n) | O(1) |
+| 3Sum (`solution.py:threeSum`) | unique zero-sum triples | sorted anchor plus inward pair search | O(n²) | O(1) besides output/sort workspace |
+| Container With Most Water (`solution.py:maxArea`) | area limited by shorter endpoint | move the shorter wall; the taller wall cannot help | O(n) | O(1) |
+| Trapping Rain Water (`solution.py:trap`) | per-bar water bounded on both sides | smaller running boundary determines that side's water | O(n) | O(1) |
+| [Trapping Rain Water (legacy)](leetcode_42_trapping_rain_water.py) | rising bar closes a basin | non-increasing stack of indices; popped bottoms are bounded by surviving left wall | O(n) | O(n) |
+
+The legacy rain-water script uses a monotonic stack, not two pointers.
 
 ## Alternatives and critique
 

@@ -13,6 +13,9 @@ from __future__ import annotations
 def is_anagram(first: str, second: str) -> bool:
     """Return whether *first* and *second* are anagrams.
 
+    Pattern identification: equal character multiplicities, order irrelevant -> counts;
+    each count tracks unmatched occurrences from first and must never go negative.
+
     Counting rather than sorting makes the condition explicit: two strings
     are anagrams exactly when every character has equal frequency.  The
     length check is an inexpensive early rejection and also makes the final

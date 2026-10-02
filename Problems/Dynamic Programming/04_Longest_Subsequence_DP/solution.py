@@ -17,7 +17,11 @@ from typing import List
 
 
 def lis_memo(nums: List[int]) -> int:
-    """Return LIS length using include/skip memoization."""
+    """Return LIS length using include/skip memoization.
+
+    Pattern identification: increasing non-contiguous choices -> index/previous DP ->
+    take requires a strictly larger value; take/skip exhausts valid subsequences.
+    """
     n = len(nums)
 
     @lru_cache(maxsize=None)
@@ -37,7 +41,11 @@ def lis_memo(nums: List[int]) -> int:
 
 
 def lis_tab(nums: List[int]) -> int:
-    """Return LIS length using O(n²) bottom-up tabulation."""
+    """Return LIS length using O(n²) bottom-up tabulation.
+
+    Pattern identification: increasing non-contiguous choices -> best-ending-index DP ->
+    each state extends only earlier, strictly smaller endpoints.
+    """
     if not nums:
         return 0
 
@@ -54,6 +62,9 @@ def lis_tab(nums: List[int]) -> int:
 
 def edit_distance_memo(source: str, target: str) -> int:
     """Solve Edit Distance: minimize edits transforming ``source`` to ``target``.
+
+    Pattern identification: insert/delete/replace between strings -> two-suffix DP ->
+    match or one edit reduces the unresolved suffixes with minimum total cost.
 
     ``distance(i, j)`` is the minimum edits to turn ``source[i:]`` into
     ``target[j:]``.  If characters match, no edit is needed.  Otherwise the
@@ -78,6 +89,9 @@ def edit_distance_memo(source: str, target: str) -> int:
 
 def edit_distance_tab(source: str, target: str) -> int:
     """Return Levenshtein distance using prefix tabulation.
+
+    Pattern identification: insert/delete/replace between strings -> two-prefix DP ->
+    each state minimizes left/top/diagonal edits with exact empty-prefix costs.
 
     ``dp[i][j]`` compares the first ``i`` source characters with the first
     ``j`` target characters.  Empty-prefix initialization supplies the only

@@ -1,3 +1,5 @@
+# Pattern identification: contiguous area limited by shortest bar -> increasing index stack;
+# a shorter bar closes popped spans; the remaining top bounds each span on the left.
 """Largest Rectangle in Histogram.
 
 Problem: Given non-negative bar heights in a histogram, where each bar has

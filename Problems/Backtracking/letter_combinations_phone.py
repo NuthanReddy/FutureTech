@@ -1,5 +1,9 @@
 """Top Interview 150: Letter Combinations of a Phone Number.
 
+Pattern identification:
+    One letter choice per digit -> Cartesian-product backtracking;
+    keep exactly one letter per processed digit and undo each choice.
+
 Problem statement:
     Input: a string ``digits`` containing only keypad digits 2 through 9.
     Required output: all possible strings formed by choosing one mapped letter

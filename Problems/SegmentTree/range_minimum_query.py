@@ -1,4 +1,6 @@
 # Range Minimum Query (RMQ)
+# Pattern identification: interval minima mixed with point replacements -> min segment tree.
+# Each node stores its interval minimum; +infinity is the merge identity.
 #
 # Problem:
 #   Given an array of integers, efficiently answer multiple queries of the form:

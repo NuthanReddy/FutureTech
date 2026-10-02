@@ -4,15 +4,23 @@ A trie stores strings by prefix. Each edge consumes one character, and a node
 marks whether the path so far is a complete word. This folder contains both
 general trie exercises and Top Interview 150 trie problems.
 
+## Pattern identification steps
+
+1. Look for repeated prefix operations or many candidate words sharing prefixes.
+2. Choose deterministic trie lookup for literals, wildcard DFS for `.`, or trie-guided backtracking for board paths.
+3. Match stopping rules: terminal for exact/shortest-root lookup; branch or word end for common prefix.
+4. Keep the trie node aligned with the consumed prefix; restore board cells after each backtracking branch.
+5. Check limits: wildcard/grid branching can be exponential; a set or direct comparison is simpler for exact-only or one-off queries.
+
 ## Implemented coverage
 
-| Problem | File | Core pattern | Time | Space |
-|---|---|---|---|---|
-| Implement Trie | `implement_trie.py` | Prefix tree operations | `O(L)` per operation | `O(total characters)` |
-| Design Add and Search Words Data Structure | `design_add_search_words.py` | Trie plus wildcard DFS | `O(26^wildcards * L)` worst case | `O(total characters + L)` |
-| Word Search II | `word_search_ii.py` | Trie-guided grid backtracking | `O(m*n*4^L)` worst case, pruned by prefixes | `O(total dictionary chars + L)` |
-| Longest Common Prefix | `longest_common_prefix.py` | Single-child prefix walk | `O(total characters)` | `O(total characters)` |
-| Replace Words | `replace_words.py` | Shortest root prefix lookup | `O(total root chars + sentence chars)` | `O(total root chars)` |
+| Problem | File | Identification cue | Core pattern | Time | Space |
+|---|---|---|---|---|---|
+| Implement Trie | `implement_trie.py` | Repeated exact and prefix queries | Prefix tree operations | `O(L)` per operation | `O(total characters)` |
+| Design Add and Search Words Data Structure | `design_add_search_words.py` | Full-word patterns with single-character wildcards | Trie plus wildcard DFS | `O(26^wildcards * L)` worst case | `O(total characters + L)` |
+| Word Search II | `word_search_ii.py` | Many board words with no cell reuse | Trie-guided grid backtracking | `O(m*n*4^L)` worst case, pruned by prefixes | `O(total dictionary chars + L)` |
+| Longest Common Prefix | `longest_common_prefix.py` | Prefix shared by every input string | Single-child prefix walk | `O(total characters)` | `O(total characters)` |
+| Replace Words | `replace_words.py` | Shortest dictionary root prefix per word | Shortest root prefix lookup | `O(total root chars + sentence chars)` | `O(total root chars)` |
 
 ## Problem statements
 

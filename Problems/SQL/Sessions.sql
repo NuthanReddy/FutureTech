@@ -1,5 +1,7 @@
 /*
 Sessions
+Pattern identification: consecutive equal users -> LAG boundaries + cumulative SUM islands.
+Use global event order, not user partitions; this is not inactivity-gap sessionization.
 
 Group consecutive records belonging to the same user into sessions, then
 return the start and end time for each session.

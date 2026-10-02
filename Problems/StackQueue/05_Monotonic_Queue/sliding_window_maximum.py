@@ -1,3 +1,5 @@
+# Pattern identification: repeated maxima in fixed windows -> monotonic index deque;
+# indices are live and increasing, values decrease, and the front is the maximum.
 """Sliding Window Maximum.
 
 Problem: Given an integer array and a fixed window size, slide the window one

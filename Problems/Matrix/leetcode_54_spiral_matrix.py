@@ -3,6 +3,8 @@
 #
 # [54] Spiral Matrix
 #
+# Pattern identification: clockwise outer-ring traversal -> four shrinking boundaries;
+# the remaining rectangle holds unvisited cells; guard collapsed rows and columns.
 
 # @lc code=start
 class Solution:
@@ -31,4 +33,3 @@ class Solution:
                 left += 1
         return output
 # @lc code=end
-

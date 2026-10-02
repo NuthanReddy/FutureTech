@@ -1,3 +1,5 @@
+# Pattern identification: deletion measured from the end -> sentinel + fixed gap;
+# fast stays n links ahead, leaving slow at the target's predecessor at the tail.
 """LeetCode 19: Remove Nth Node From End of List.
 
 Problem statement:

@@ -1,3 +1,5 @@
+# Pattern identification: nested +/- expression -> stack of outer total/sign contexts;
+# total evaluates the current scope, and each saved frame resumes its parent scope.
 """Basic Calculator.
 
 Problem: Evaluate an arithmetic expression containing non-negative integers,

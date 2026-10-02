@@ -1,5 +1,7 @@
 # ---------------------------------------------------------------------------
 # Problem: Duplicate URL Detector Using a Bloom Filter
+# Pattern identification: probable repeats in a URL stream -> query-before-add Bloom filter.
+# Negatives are certain; positives need exact verification if false alarms are unacceptable.
 # ---------------------------------------------------------------------------
 # Given a stream of URLs (simulated), detect probable duplicates using a
 # Bloom Filter.

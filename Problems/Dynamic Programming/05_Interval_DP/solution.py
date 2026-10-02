@@ -6,7 +6,11 @@ from typing import List
 
 
 def matrix_chain_memo(dimensions: List[int]) -> int:
-    """Return minimum multiplication cost using memoized interval DP."""
+    """Return minimum multiplication cost using memoized interval DP.
+
+    Pattern identification: parenthesize a fixed matrix chain -> interval split DP ->
+    every final split combines optimal subchains plus their multiplication cost.
+    """
     matrix_count = len(dimensions) - 1
     if matrix_count <= 1:
         return 0
@@ -29,7 +33,11 @@ def matrix_chain_memo(dimensions: List[int]) -> int:
 
 
 def matrix_chain_tab(dimensions: List[int]) -> int:
-    """Return minimum multiplication cost using bottom-up interval DP."""
+    """Return minimum multiplication cost using bottom-up interval DP.
+
+    Pattern identification: parenthesize a fixed matrix chain -> increasing-length DP ->
+    all shorter subchains are optimal before evaluating every final split.
+    """
     matrix_count = len(dimensions) - 1
     if matrix_count <= 1:
         return 0
@@ -47,4 +55,3 @@ def matrix_chain_tab(dimensions: List[int]) -> int:
                 dp[left][right] = min(dp[left][right], total_cost)
 
     return dp[0][matrix_count - 1]
-

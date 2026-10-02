@@ -1,5 +1,13 @@
 # 2D Grid DP
 
+## Pattern identification steps
+
+1. Recognize right/down movement: every move advances toward the destination without cycles.
+2. Choose a coordinate state; sum route counts for Unique Paths or minimize cost for Minimum Path Sum.
+3. Prove every route starts with one legal move (suffix DP) or ends at one predecessor (prefix DP).
+4. Seed destination/start and invalid boundaries; fill dependencies first, preserving top/left values in a rolling row.
+5. Require rectangular grids; cycles or history-dependent movement need a different state/algorithm.
+
 ## Pattern: How to Identify
 
 Use 2D Grid DP when:

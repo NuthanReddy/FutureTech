@@ -32,7 +32,11 @@ from collections import Counter, deque
 
 class Solution:
     def minSubArrayLen(self, target: int, nums: list[int]) -> int:
-        """Return the shortest positive-number subarray with sum >= target."""
+        """Return the shortest positive-number subarray with sum >= target.
+
+        Pattern identification: positive values and minimum threshold length -> sum window;
+        sum tracks [left, right]; record covered windows before shrinking loses coverage.
+        """
         left = 0
         window_sum = 0
         best = len(nums) + 1
@@ -47,7 +51,11 @@ class Solution:
         return 0 if best == len(nums) + 1 else best
 
     def lengthOfLongestSubstring(self, s: str) -> int:
-        """Return the longest substring containing no repeated character."""
+        """Return the longest substring containing no repeated character.
+
+        Pattern identification: longest contiguous unique characters -> last-seen jumps;
+        left never retreats and the current window contains no duplicate.
+        """
         last_seen: dict[str, int] = {}
         left = best = 0
         for right, character in enumerate(s):
@@ -60,7 +68,12 @@ class Solution:
         return best
 
     def characterReplacement(self, s: str, k: int) -> int:
-        """Return the longest window fixable by replacing at most k characters."""
+        """Return the longest window fixable by replacing at most k characters.
+
+        Pattern identification: length minus dominant count is replacement cost -> counts;
+        historical max_frequency keeps length - max_frequency <= k after repair,
+        without claiming every retained window is currently feasible.
+        """
         counts: Counter[str] = Counter()
         left = best = max_frequency = 0
         for right, character in enumerate(s):
@@ -74,7 +87,11 @@ class Solution:
         return best
 
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        """Return whether some permutation of s1 occurs as a substring of s2."""
+        """Return whether some permutation of s1 occurs as a substring of s2.
+
+        Pattern identification: permutation substring -> fixed-size frequency window;
+        counts describe exactly len(s1) consecutive characters; equality proves a match.
+        """
         if len(s1) > len(s2):
             return False
         need = Counter(s1)
@@ -92,7 +109,11 @@ class Solution:
         return False
 
     def maxSlidingWindow(self, nums: list[int], k: int) -> list[int]:
-        """Return each window maximum using a decreasing monotonic deque."""
+        """Return each window maximum using a decreasing monotonic deque.
+
+        Pattern identification: repeated fixed-window maxima -> monotonic index deque;
+        indices are live and values decrease, so the front is the current maximum.
+        """
         if not nums or k <= 0:
             return []
         candidates: deque[int] = deque()
@@ -108,7 +129,11 @@ class Solution:
         return result
 
     def minWindow(self, s: str, t: str) -> str:
-        """Return the shortest substring of s containing all characters of t."""
+        """Return the shortest substring of s containing all characters of t.
+
+        Pattern identification: minimum multiplicity-aware coverage -> deficit window;
+        remaining counts missing occurrences; zero permits recording then shrinking.
+        """
         if not t or len(t) > len(s):
             return ""
         required = Counter(t)

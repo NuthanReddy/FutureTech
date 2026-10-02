@@ -17,6 +17,34 @@ which the questions appear:
 5. [Interval DP](./05_Interval_DP/README.md)
 6. [State-machine DP](./06_State_Machine_DP_Stock/README.md)
 
+## Pattern identification steps
+
+1. Look for repeated subproblems whose best/count/feasibility result can be reused.
+2. Choose the smallest sufficient state: index, cell, target, two prefixes, interval, or mode.
+3. Enumerate legal choices and terminal/impossible states; prove they cover every solution.
+4. Evaluate dependencies first (memoization or ordered tabulation); preserve state meaning on every update.
+5. Check state count, recursion depth, and input assumptions; use greedy only with a safety proof.
+
+### Implemented problem recognition map
+
+Memoized/tabulated pairs share a row; the six subcategory guides refine these choices.
+
+| Problem | Recognition cue -> chosen pattern |
+| --- | --- |
+| Climbing Stairs | One/two-step routes -> 1D counting by stair |
+| House Robber | Adjacent choices conflict -> 1D take/skip by house |
+| Word Break | Dictionary segmentation -> 1D boundary reachability |
+| Unique Paths | Count right/down routes -> coordinate counting DP |
+| Minimum Path Sum | Cheapest right/down route -> coordinate minimum-cost DP |
+| 0/1 Knapsack | Each item once under capacity -> item/capacity take/skip DP |
+| Coin Change | Unlimited denominations, fewest coins -> unbounded amount DP |
+| Partition Equal Subset Sum | Equal halves, each number once -> 0/1 subset-sum feasibility |
+| Longest Increasing Subsequence | Increasing, non-contiguous choices -> previous-index/ending-index DP |
+| Edit Distance | Insert/delete/replace between strings -> two-sequence DP |
+| Matrix Chain Multiplication | Parenthesize a fixed matrix order -> interval split DP |
+| Stock with Cooldown | Selling blocks next-day buying -> day/mode DP |
+| Wildcard Matching (`leetcode_44_wildcard_matching.py`) | Full match with `?`/`*` -> two-prefix boolean DP |
+
 ## Top Interview 150 coverage
 
 | Top 150 problem | Pattern folder | Implementations |

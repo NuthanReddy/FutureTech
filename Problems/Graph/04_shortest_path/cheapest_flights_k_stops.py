@@ -12,6 +12,9 @@ from typing import List
 def find_cheapest_price(n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
     """Return the cheapest price using at most ``k`` intermediate stops.
 
+    Pattern identification: cheapest route with an edge budget -> bounded
+    Bellman-Ford; round r reads only costs achievable with at most r-1 edges.
+
     Each round adds at most one edge.  Reading from a copy prevents an update
     in the same round from accidentally using more than the allowed edges.
     """

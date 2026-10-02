@@ -1,4 +1,6 @@
 # Count of Smaller Numbers After Self
+# Pattern identification: smaller suffix counts per element -> ranked frequency segment tree.
+# Scan right to left; query strictly lower ranks before adding the current value.
 #
 # Problem (LeetCode 315):
 #   Given an integer array nums, return a list counts where counts[i] is the

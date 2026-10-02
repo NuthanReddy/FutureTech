@@ -33,6 +33,9 @@ def network_delay_time(
 ) -> int:
     """Return the time for a signal from *source* to reach all *n* nodes.
 
+    Pattern identification: nonnegative travel times to every node -> repeated
+    Graph Dijkstra queries; answer is the maximum shortest distance, not edge sum.
+
     Args:
         times:  List of [u, v, w] directed edges (u→v with weight w).
         n:      Number of nodes (labelled 1 … n).

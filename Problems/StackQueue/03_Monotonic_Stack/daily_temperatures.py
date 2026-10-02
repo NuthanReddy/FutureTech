@@ -1,3 +1,5 @@
+# Pattern identification: distance to next strictly warmer day -> monotonic index stack;
+# unresolved indices increase while their temperatures stay nonincreasing.
 """Daily Temperatures.
 
 Problem: Given daily temperatures, for each day find how many days must pass

@@ -34,6 +34,9 @@ _DIRECTIONS = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 def shortest_path_maze(grid: list[list[int]]) -> int:
     """Return the shortest path length from top-left to bottom-right.
 
+    Pattern identification: minimum unit-cost grid steps -> Graph Dijkstra
+    (BFS would suffice); settled distances are minimum steps through open cells.
+
     Args:
         grid: 2D list of 0s (open) and 1s (walls).
 

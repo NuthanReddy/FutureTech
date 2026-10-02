@@ -1,5 +1,25 @@
 # Bit Manipulation
 
+## Pattern identification steps
+
+1. Look for pair cancellation, set-bit counts, fixed-width reversal, or carry propagation.
+2. Choose XOR cancellation, clear-lowest-bit iteration, shift-based DP/reversal, or XOR-plus-carry.
+3. State what the accumulator preserves: uncancelled values, processed bits, or sum modulo `2^32`.
+4. Check zero, sign, width, and masks before looping; distinguish decimal digit reversal from bit reversal.
+5. Require the stated multiplicities/ranges; negative Python integers need explicit fixed-width handling.
+
+## Implemented problem recognition map
+
+| Problem | Recognition cue -> chosen pattern |
+| --- | --- |
+| Single Number | Exactly one singleton among pairs -> XOR cancellation |
+| Number of 1 Bits | Count set bits -> clear lowest set bit |
+| Counting Bits | Counts for every prefix integer -> shift-parent popcount DP |
+| Reverse Bits | Reverse a 32-bit word -> shift/append exactly 32 bits |
+| Missing Number | One gap in distinct `0..n` -> XOR expected and actual values |
+| Sum of Two Integers | Addition without arithmetic operators -> XOR sum + shifted carry, masked to 32 bits |
+| Reverse Integer | Reverse decimal digits -> string digit reversal + signed overflow check (not bit reversal) |
+
 | Problem | Problem statement (input → required output) | Invariant | Time | Extra space |
 | --- | --- | ---: | ---: |
 | Single Number | List with one singleton and all others twice → singleton | `x ^ x == 0`, `x ^ 0 == x` | O(n) | O(1) |

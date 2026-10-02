@@ -1,3 +1,5 @@
+# Pattern identification: pivot split with stable order -> two sentinel output chains;
+# each detached node enters exactly one chain, in its original encounter order.
 """LeetCode 86: Partition List.
 
 Problem statement:

@@ -53,7 +53,11 @@ class _UnionFind:
 
 
 def find_circle_num(is_connected: List[List[int]]) -> int:
-    """Return the number of provinces (connected components)."""
+    """Return the number of provinces (connected components).
+
+    Pattern identification: symmetric city connectivity matrix -> Union-Find;
+    each successful distinct-root merge reduces the province count by one.
+    """
     n = len(is_connected)
     uf = _UnionFind(n)
     for i in range(n):
@@ -81,4 +85,3 @@ if __name__ == "__main__":
              [1, 1, 1],
              [1, 1, 1]]
     print(find_circle_num(grid3))  # 1
-

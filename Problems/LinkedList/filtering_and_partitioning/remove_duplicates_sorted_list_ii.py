@@ -1,3 +1,5 @@
+# Pattern identification: remove every repeated value in sorted input -> skip equal runs;
+# the retained prefix contains only singleton runs, with a sentinel predecessor.
 """LeetCode 82: Remove Duplicates from Sorted List II.
 
 Problem statement:

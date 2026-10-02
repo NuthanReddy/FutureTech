@@ -13,6 +13,9 @@ from typing import List
 def num_islands(grid: List[List[str]]) -> int:
     """Return the number of 4-directionally connected land components.
 
+    Pattern identification: count connected land regions -> BFS flood fill;
+    mark on enqueue so each component starts exactly one search.
+
     We mark a cell as soon as it enters the queue.  Therefore no cell can be
     enqueued twice, and each island contributes exactly one counter increment.
     """

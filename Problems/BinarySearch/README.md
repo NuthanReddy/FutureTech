@@ -5,6 +5,28 @@ Top Interview 150 study plan.  The implementations emphasize the invariant
 that makes each boundary update correct rather than treating binary search as
 one memorized template.
 
+## Pattern identification steps
+
+1. Find sorted order, a monotone boundary, or a comparison proving one half still contains an answer.
+2. Choose exact lookup, lower/upper bound, slope/pivot search, or a two-array partition.
+3. State the retained-answer invariant and choose inclusive or half-open bounds before updating them.
+4. Prove every discard safe and every iteration shrinking; check empty inputs and boundary cuts.
+5. Check distinctness/global sorting assumptions; halving an exponent is not binary search.
+
+### Implemented problem recognition map
+
+| Problem / implementation | Recognition cue -> chosen pattern |
+| --- | --- |
+| Search Insert Position | Sorted insertion boundary -> lower bound |
+| Search a 2D Matrix | Globally row-major sorted cells -> virtual flattened exact search |
+| Find Peak Element | Unequal neighbors indicate a slope -> retain a half containing a peak |
+| Search in Rotated Sorted Array | Distinct rotated values -> identify sorted half, then range-test target |
+| Find First and Last Position | Sorted duplicate block -> lower bound + upper bound |
+| Find Minimum in Rotated Sorted Array | Distinct rotation pivot -> compare midpoint with right endpoint |
+| Median (`solution.py`) | Two sorted arrays, logarithmic requirement -> balanced partition search |
+| Median (`leetcode_4_median_of_two_sorted_arrays.py`) | Sorted streams, middle rank -> partial two-pointer merge (linear, not binary search) |
+| Pow (`leetcode_50_pow_x_n.py`) | Large integer exponent -> repeated squaring/binary exponentiation, not search |
+
 ## Problem statements and complexities
 
 ### Search Insert Position

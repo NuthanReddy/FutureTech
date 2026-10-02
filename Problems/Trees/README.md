@@ -4,6 +4,14 @@ These solutions cover all 20 tree-related exercises in LeetCode's **Top
 Interview 150**. They are grouped by the reusable decision being practiced,
 not merely by LeetCode's nearby headings.
 
+## Pattern identification steps
+
+1. Identify whether the result depends on child answers, a root-to-leaf path, a level, or BST ordering.
+2. Choose postorder DFS for child summaries, carried-state DFS for paths, BFS for levels, and inorder/bounds for BSTs.
+3. For reconstruction use inorder ranges plus the root-order cursor; for mutation preserve pending nodes before rewiring.
+4. State what each return, queue batch, or stack top represents before processing children.
+5. Check assumptions: complete-tree shortcuts need completeness, reconstruction needs unique values, LCA needs existing targets, and recursive depth may reach n.
+
 ## Problem statements
 
 Each implementation below includes the same statement in its module
@@ -59,28 +67,30 @@ listed here so the README can be used independently as a study guide.
 
 ## Pattern map
 
-| Pattern | Problem | Primary choice | Time | Extra space |
-| --- | --- | --- | ---: | ---: |
-| Structural DFS | Maximum Depth of Binary Tree | recursive height | O(n) | O(h) |
-| Structural DFS | Same Tree | recursive paired nodes | O(n) | O(h) |
-| Structural DFS | Invert Binary Tree | iterative BFS mutation | O(n) | O(w) |
-| Structural DFS | Symmetric Tree | iterative mirror pairs | O(n) | O(w) |
-| Traversal reconstruction | Construct from Preorder and Inorder | indexed recursive ranges | O(n) | O(n) |
-| Traversal reconstruction | Construct from Inorder and Postorder | indexed recursive ranges | O(n) | O(n) |
-| Pointer threading | Populating Next Right Pointers II | reuse current `next` chain | O(n) | O(1) |
-| Preorder mutation | Flatten Binary Tree to Linked List | explicit DFS stack | O(n) | O(h), O(n) worst |
-| Root-to-leaf state | Path Sum | subtract remaining target | O(n) | O(h) |
-| Root-to-leaf state | Sum Root to Leaf Numbers | carry numeric prefix | O(n) | O(h) |
-| Postorder tree DP | Binary Tree Maximum Path Sum | return one branch, record two | O(n) | O(h) |
-| Complete-tree shortcut | Count Complete Tree Nodes | compare boundary heights | O(log² n) | O(log n) |
-| Ancestor recursion | Lowest Common Ancestor | merge subtree matches | O(n) | O(h) |
-| Level-order BFS | Binary Tree Right Side View | final node per level | O(n) | O(w) |
-| Level-order BFS | Average of Levels | fixed-size level batches | O(n) | O(w) |
-| Level-order BFS | Zigzag Level Order Traversal | alternating deque placement | O(n) | O(w) |
-| BST inorder | Minimum Absolute Difference in BST | adjacent sorted values | O(n) | O(h) |
-| BST inorder | Kth Smallest Element in a BST | early-stop inorder | O(h + k) | O(h) |
-| BST bounds | Validate Binary Search Tree | ancestor range propagation | O(n) | O(h) |
-| Lazy BST inorder | Binary Search Tree Iterator | stored left spine | O(1) amortized next | O(h) |
+All implementations below are in `solution.py`.
+
+| Pattern | Problem | Identification cue | Primary choice | Time | Extra space |
+| --- | --- | --- | --- | ---: | ---: |
+| Structural DFS | Maximum Depth of Binary Tree | Longest root-to-leaf length | recursive height | O(n) | O(h) |
+| Structural DFS | Same Tree | Equal shape and corresponding values | recursive paired nodes | O(n) | O(h) |
+| Structural DFS | Invert Binary Tree | Swap every pair of children | iterative BFS mutation | O(n) | O(w) |
+| Structural DFS | Symmetric Tree | Reflection around the root | iterative mirror pairs | O(n) | O(w) |
+| Traversal reconstruction | Construct from Preorder and Inorder | Root-first order plus subtree splits | indexed recursive ranges | O(n) | O(n) |
+| Traversal reconstruction | Construct from Inorder and Postorder | Root-last order plus subtree splits | indexed recursive ranges | O(n) | O(n) |
+| Pointer threading | Populating Next Right Pointers II | Level neighbors with constant space | reuse current `next` chain | O(n) | O(1) |
+| Preorder mutation | Flatten Binary Tree to Linked List | Right-only preorder chain in place | explicit DFS stack | O(n) | O(h), O(n) worst |
+| Root-to-leaf state | Path Sum | Target must end at a leaf | subtract remaining target | O(n) | O(h) |
+| Root-to-leaf state | Sum Root to Leaf Numbers | Digits concatenate along each path | carry numeric prefix | O(n) | O(h) |
+| Postorder tree DP | Binary Tree Maximum Path Sum | Path may join two child branches | return one branch, record two | O(n) | O(h) |
+| Complete-tree shortcut | Count Complete Tree Nodes | Complete, left-filled tree | compare boundary heights | O(log² n) | O(log n) |
+| Ancestor recursion | Lowest Common Ancestor | Two existing node identities | merge subtree matches | O(n) | O(h) |
+| Level-order BFS | Binary Tree Right Side View | Rightmost value at each depth | final node per level | O(n) | O(w) |
+| Level-order BFS | Average of Levels | Aggregate values at each depth | fixed-size level batches | O(n) | O(w) |
+| Level-order BFS | Zigzag Level Order Traversal | Alternate level output direction | alternating deque placement | O(n) | O(w) |
+| BST inorder | Minimum Absolute Difference in BST | Smallest gap among ordered values | adjacent sorted values | O(n) | O(h) |
+| BST inorder | Kth Smallest Element in a BST | Rank query in sorted order | early-stop inorder | O(h + k) | O(h) |
+| BST bounds | Validate Binary Search Tree | Strict ordering against all ancestors | ancestor range propagation | O(n) | O(h) |
+| Lazy BST inorder | Binary Search Tree Iterator | Sorted values requested on demand | stored left spine | O(1) amortized next | O(h) |
 
 Here, `h` is tree height and `w` is maximum width. A balanced tree has
 `h = O(log n)`; a skewed tree has `h = O(n)`.

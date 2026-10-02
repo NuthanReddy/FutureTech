@@ -1,3 +1,6 @@
+# Pattern identification: rank values by bounded counts -> canonical frequency buckets;
+# reuse ArraysHashing.Frequency.top_k_frequent_elements, not a second heap solution;
+# bucket c holds exactly frequency-c values, emitted in descending frequency order.
 """Compatibility import for the Arrays & Hashing Top K solution.
 
 Problem statement:

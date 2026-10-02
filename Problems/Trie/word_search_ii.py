@@ -42,7 +42,11 @@ class _TrieNode:
 
 
 def find_words(board: list[list[str]], words: list[str]) -> list[str]:
-    """Return all words from ``words`` that appear in ``board``."""
+    """Return all words from ``words`` that appear in ``board``.
+
+    Pattern identification: many words on a no-cell-reuse grid -> trie-guided DFS;
+    trie prefix equals the board path, with visited cells restored on backtrack.
+    """
     if not board or not board[0] or not words:
         return []
 

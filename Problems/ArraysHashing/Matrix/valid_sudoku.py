@@ -14,6 +14,9 @@ from __future__ import annotations
 def is_valid_sudoku(board: list[list[str]]) -> bool:
     """Return whether all filled cells satisfy Sudoku uniqueness rules.
 
+    Pattern identification: uniqueness in overlapping grid regions -> three set families;
+    each row, column, and box set contains only its previously visited digits.
+
     Each set records values already observed in one constraint region.  For a
     cell ``(row, column)``, its box index is ``(row // 3) * 3 + column // 3``.
     The duplicate check happens before insertion, preserving the invariant

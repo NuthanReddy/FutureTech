@@ -1,5 +1,7 @@
 # -----------------------------------------------------------------------
 # Merge K Sorted Lists
+# Pattern identification: merge k ascending sequences -> min-heap frontier;
+# keep one next candidate per nonempty sequence and emit a globally sorted prefix.
 #
 # Problem:
 #   Given k sorted lists, merge them into one sorted list.

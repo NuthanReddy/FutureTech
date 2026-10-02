@@ -1,3 +1,5 @@
+# Pattern identification: reverse one bounded range -> sentinel-based head insertion;
+# the predecessor stays fixed and the original range head remains the range tail.
 """LeetCode 92: Reverse Linked List II.
 
 Problem statement:

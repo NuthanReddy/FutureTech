@@ -1,4 +1,6 @@
 # Range Sum Query – Mutable (LeetCode 307)
+# Pattern identification: point assignments + interval sums -> delta-update Fenwick tree.
+# Keep current values for deltas; subtract prefixes to obtain an inclusive range.
 #
 # DS used: Fenwick Tree / BIT (DataStructures/FenwickTree.py)
 #

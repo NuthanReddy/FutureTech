@@ -1,5 +1,7 @@
 /*
 Employee Working Hours - Hard
+Pattern identification: repeated punch runs -> last-in-run filtering + LEAD pairing.
+Partition by employee; pair only In -> Out under a deterministic chronological order.
 
 Skills: SQL (Advanced)
 Tags: Windowing, SQL, Simple Joins, Analytic Functions

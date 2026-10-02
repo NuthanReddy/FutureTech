@@ -30,7 +30,11 @@ class TreeNode:
 
 
 def kth_smallest(root: Optional[TreeNode], k: int) -> int:
-    """Return the kth smallest value in the BST (1-indexed)."""
+    """Return the kth smallest value in the BST (1-indexed).
+
+    Pattern identification: rank query on a BST -> early-stop iterative inorder;
+    popped nodes are visited in sorted order, so visit k supplies the answer.
+    """
     stack: list[TreeNode] = []
     current = root
     count = 0
@@ -76,4 +80,3 @@ if __name__ == "__main__":
     print(kth_smallest(tree2, 3))  # 3
 
     print(kth_smallest(TreeNode(42), 1))  # 42
-

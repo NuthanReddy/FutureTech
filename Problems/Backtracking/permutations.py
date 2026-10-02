@@ -1,5 +1,9 @@
 """Top Interview 150: Permutations.
 
+Pattern identification:
+    Every ordering of distinct values -> used-index backtracking;
+    each index appears once per path, with its flag restored after recursion.
+
 Problem statement:
     Input: a list ``nums`` of distinct integers.
     Required output: every possible ordering of all values in ``nums``.

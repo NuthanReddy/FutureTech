@@ -1,5 +1,9 @@
 """Top Interview 150: Combination Sum.
 
+Pattern identification:
+    Reusable values, unordered target sums -> indexed backtracking;
+    keep indices nondecreasing and prune values above the remaining target.
+
 Problem statement:
     Input: a list of positive candidate integers and a non-negative ``target``.
     Required output: unique combinations whose values sum to ``target``; each

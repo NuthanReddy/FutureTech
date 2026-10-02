@@ -1,3 +1,5 @@
+# Pattern identification: O(1) lookup plus recency eviction -> map + doubly linked list;
+# each key owns one linked node, ordered least-to-most recent between sentinels.
 """LeetCode 146: LRU Cache.
 
 Problem statement:

@@ -1,5 +1,9 @@
 """Top Interview 150: Combinations.
 
+Pattern identification:
+    Unordered size-k selections -> increasing-index backtracking;
+    never reuse a value and prune starts that leave too few choices.
+
 Problem statement:
     Input: two integers ``n`` and ``k``.
     Required output: every size-k combination chosen from integers 1..n, with

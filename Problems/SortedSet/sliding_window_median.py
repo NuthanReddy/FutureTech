@@ -1,4 +1,6 @@
 # Sliding Window Median — LeetCode 480
+# Pattern identification: window medians with duplicates -> ordered (value, index) keys.
+# Keep exactly the current window; sorted traversal makes each median read O(k).
 #
 # Problem:
 #   Given an array of integers nums and an integer k, there is a sliding window

@@ -43,6 +43,8 @@
 #     return result
 
 
+# Pattern identification: merge two sorted inputs -> recursive head comparison;
+# emit the smaller head, leaving sorted tails; slicing copies data at each recursive step.
 def merge_sorted_arrays3(arr1, arr2):
     if len(arr1) == 0:
         return arr2

@@ -1,5 +1,7 @@
 # ---------------------------------------------------------------------------
 # Problem: Spell Checker Using a Bloom Filter
+# Pattern identification: fast dictionary rejection -> lowercase Bloom membership.
+# Absence is certain; a positive is only tentative, not proof of correct spelling.
 # ---------------------------------------------------------------------------
 # Build a fast spell checker backed by a Bloom Filter.
 #

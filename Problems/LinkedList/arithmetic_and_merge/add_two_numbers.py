@@ -1,3 +1,5 @@
+# Pattern identification: reverse-order digits -> forward addition with carry;
+# the result tail holds finalized digits, and carry belongs to the next column.
 """LeetCode 2: Add Two Numbers.
 
 Problem statement:

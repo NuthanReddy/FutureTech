@@ -3,6 +3,35 @@
 This folder groups graph exercises by the invariant that makes the solution
 simple, rather than by the order in which they appear on a problem list.
 
+## Pattern identification steps
+
+1. Model cells, words, or objects as vertices; identify direction and edge cost.
+2. Choose reachability DFS/BFS, unit-cost BFS, nonnegative Dijkstra, or budgeted relaxation.
+3. For dependencies choose cycle/topological checks; for undirected groups choose Union-Find; for a cheapest network choose MST.
+4. State the invariant: visited once, shortest settled distance, distinct roots, or cheapest cut edge.
+5. Check limits: DFS is not shortest-path search; Dijkstra rejects negative weights; ordinary Union-Find gives neither routes nor directed reachability.
+
+## Identification map
+
+| Problem / implementation | Identification cue | Chosen pattern |
+| --- | --- | --- |
+| `01_traversal/clone_graph.py` | Copy cyclic adjacency by identity | BFS + original-to-clone map |
+| `01_traversal/number_of_islands.py` | Count orthogonal land regions | BFS flood fill |
+| `01_traversal/pacific_atlantic_water_flow.py` | Reach both oceans under downhill flow | Reverse DFS from borders + set intersection |
+| `01_traversal/rotting_oranges.py` | Simultaneous minute-by-minute spread | Multi-source layered BFS |
+| `01_traversal/surrounded_regions.py` | Preserve regions connected to borders | Border BFS + complement capture |
+| `02_union_find/graph_valid_tree.py` | Connected acyclic undirected graph | n-1 edge check + Union-Find |
+| `02_union_find/number_connected_components.py` | Count groups without needing routes | Union-Find component counter |
+| `course_schedule.py:can_finish` | Directed prerequisite feasibility | Graph cycle detection |
+| `course_schedule.py:find_order` | Prerequisites must precede each course | Graph topological sort |
+| `network_delay_time.py` | All-node arrival with nonnegative times | Repeated Graph Dijkstra + maximum distance |
+| `shortest_path_in_maze.py` | Minimum steps between open grid endpoints | Graph Dijkstra with unit weights (BFS suffices) |
+| `04_shortest_path/cheapest_flights_k_stops.py` | Cheapest route with at most k+1 edges | Copy-based bounded Bellman-Ford |
+| `04_shortest_path/evaluate_division.py` | Repeated consistent ratios between variables | Weighted Union-Find, not shortest path |
+| `04_shortest_path/snakes_and_ladders.py` | Minimum throws after landing jumps | BFS on post-jump squares |
+| `04_shortest_path/word_ladder.py` | Minimum one-letter transformations | BFS with wildcard neighbor buckets |
+| `05_mst/min_cost_connect_points.py` | Minimum total cost connecting all points | Dense Prim on Manhattan distances |
+
 | Pattern | Problems in this folder | Why this approach wins |
 | --- | --- | --- |
 | Grid traversal | Islands, Surrounded Regions, Pacific Atlantic, Rotting Oranges | Each cell is visited once; BFS/DFS state is the component or frontier. |

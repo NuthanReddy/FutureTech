@@ -1,3 +1,5 @@
+# Pattern identification: corrected records plus extrema queries -> map + lazy dual heaps;
+# the map is authoritative, and a queried heap root must match its current price.
 """LeetCode 2034 - Stock Price Fluctuation.
 
 Problem summary:

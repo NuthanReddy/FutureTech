@@ -1,3 +1,5 @@
+# Pattern identification: arbitrary cross-links need a deep copy -> two-pass identity map;
+# each original owns one clone before next/random edges are wired to clones only.
 """LeetCode 138: Copy List with Random Pointer.
 
 Problem statement:

@@ -1,3 +1,5 @@
+# Pattern identification: maximize disjoint zero-sum segments -> prefix-sum map + earliest-finish greedy;
+# accept equal prefixes only when the earlier index is at/after the last accepted endpoint.
 def max_beautiful_segments(n, arr):
     prefix_sum = 0
     prefix_map = {0: -1}

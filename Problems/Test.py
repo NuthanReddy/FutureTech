@@ -16,6 +16,8 @@ class Solution:
         return count
 
     def numSubmatrixSumTarget(self, mat: List[List[int]], target: int) -> int:
+        # Pattern identification: count target-sum rectangles -> row-band compression + prefix-frequency counting;
+        # intended invariant: v sums one row band; fun counts its target-sum subarrays (legacy band loops differ).
         m, n = len(mat), len(mat[0])
         ans = 0
         for i in range(m):

@@ -1,6 +1,8 @@
 def merge(nums1, m, nums2, n):
     """
     Do not return anything, modify nums1 in-place instead.
+    Pattern identification: sorted arrays with spare destination capacity -> backward two-pointer merge;
+    intended invariant: filled suffix is final and unread inputs stay intact; legacy syntax error remains.
     """
     if m == 0:
         for i in range(n):
@@ -24,5 +26,4 @@ a = [2,0]
 b = [1]
 merge(a, 1, b, 1)
 print(a)
-
 

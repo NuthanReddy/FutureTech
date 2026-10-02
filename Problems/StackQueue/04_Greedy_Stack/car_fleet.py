@@ -1,3 +1,5 @@
+# Pattern identification: no passing, count merged arrivals -> descending-position greedy scan;
+# the last fleet's arrival barrier only increases; faster trailing cars join that fleet.
 """Car Fleet.
 
 Problem: Cars travel toward one target on a one-lane road. A faster car

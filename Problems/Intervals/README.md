@@ -1,5 +1,23 @@
 # Intervals
 
+## Pattern identification steps
+
+1. Decide whether the input describes consecutive runs, covered ranges, or competing schedules.
+2. Choose run compression, start-sorted merging/insertion, end-sorted selection, or a room-end heap.
+3. Prove the maintained result: completed union, earliest compatible finish, or one end time per allocated room.
+4. Fix endpoint semantics: merge touching coverage, but allow scheduling reuse at equal endpoints.
+5. Check ordering/disjointness preconditions; weighted selection needs more than earliest-finish greedy.
+
+## Implemented problem recognition map
+
+| Problem | Recognition cue -> chosen pattern |
+| --- | --- |
+| Summary Ranges | Sorted distinct consecutive integers -> maximal-run compression |
+| Merge Intervals | Union of arbitrary overlapping ranges -> sort starts and coalesce |
+| Insert Interval | One addition to sorted disjoint ranges -> before/overlap/after phases |
+| Non-overlapping Intervals | Fewest removals for compatible intervals -> earliest-finish greedy |
+| Meeting Rooms II | Reuse rooms as meetings finish -> start-sorted scan + minimum end-time heap |
+
 These solutions cover the interval-shaped Top Interview 150 exercises:
 
 | Problem | Problem statement (input → required output) | Pattern | Time | Extra space |
@@ -8,7 +26,7 @@ These solutions cover the interval-shaped Top Interview 150 exercises:
 | Merge Intervals | Arbitrary intervals → disjoint union after merging overlaps | sort then coalesce | O(n log n) | O(n) |
 | Insert Interval | Sorted disjoint intervals plus one interval → sorted disjoint result | three linear phases | O(n) | O(n) |
 | Non-overlapping Intervals | Intervals → minimum number to remove for no overlap | earliest finish greedy | O(n log n) | O(n) |
-| Meeting Rooms II | Meeting start/end pairs → minimum simultaneous rooms | sorted endpoint sweep | O(n log n) | O(n) |
+| Meeting Rooms II | Meeting start/end pairs → minimum simultaneous rooms | start-sorted end-time heap | O(n log n) | O(n) |
 
 ## Inputs and constraints
 

@@ -5,6 +5,26 @@ important invariant is that the partial answer is always valid before recursion
 continues; each recursive call makes one choice, explores it, and then undoes
 that choice before trying the next candidate.
 
+## Pattern identification steps
+
+1. Look for all arrangements, constrained placements, or a path without reuse: choose backtracking.
+2. Define the state (path, next index, remaining target, or attacked cells) and legal next branches.
+3. Keep each prefix valid; prune impossible capacity, balance, target, or cell choices before recursing.
+4. Undo every choice before a sibling branch; copy completed answers or return counts/existence.
+5. Check limits: enumeration can be exponential; repeated counting states may favor DP, and many words favor Trie pruning.
+
+## Problem mapping: cues -> chosen pattern
+
+| Problem | Cue -> chosen pattern; invariant/pruning |
+|---|---|
+| [Phone letters](letter_combinations_phone.py) | One letter per digit -> Cartesian-product DFS; path length equals processed digits. |
+| [Combinations](combinations.py) | Unordered size-k selections -> increasing-index DFS; advance past each choice and leave enough values for remaining slots. |
+| [Permutations](permutations.py) | Every ordering of distinct values -> used-index DFS; each index occurs once per path. |
+| [Combination Sum](combination_sum.py) | Unordered sums with reusable positive values -> same-index DFS; nondecreasing indices prevent permutations, sorted values prune excess. |
+| [Generate Parentheses](generate_parentheses.py) | Balanced prefixes -> constrained binary DFS; closing count never exceeds opening count, neither exceeds n. |
+| [N-Queens II](n_queens_ii.py) | Count nonattacking placements -> row-wise constraint DFS; reject occupied columns and diagonals. |
+| [Word Search](word_search.py) | Adjacent letters without cell reuse -> grid backtracking; match the word prefix, mark and restore cells. |
+
 ## Implemented coverage
 
 | Problem | File | Core pattern | Time | Space |

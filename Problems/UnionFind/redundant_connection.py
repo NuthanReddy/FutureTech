@@ -45,7 +45,11 @@ class _UnionFind:
 
 
 def find_redundant_connection(edges: List[List[int]]) -> List[int]:
-    """Return the last edge that creates a cycle."""
+    """Return the last edge that creates a cycle.
+
+    Pattern identification: undirected tree plus one extra edge -> Union-Find;
+    equal roots mean an existing path, so the rejected edge closes the cycle.
+    """
     n = len(edges)
     uf = _UnionFind(n)
     for u, v in edges:
@@ -60,4 +64,3 @@ if __name__ == "__main__":
 
     print(find_redundant_connection([[1, 2], [2, 3], [3, 4], [1, 4], [1, 5]]))
     # Output: [1, 4]
-

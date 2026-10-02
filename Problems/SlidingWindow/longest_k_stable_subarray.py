@@ -1,5 +1,7 @@
 from collections import deque
 
+# Pattern identification: longest interval with max - min <= k (k >= 0) -> dual deques;
+# fronts are the live extrema; shrink left until their difference is within k.
 def longest_k_stable_subarray(arr, k):
     if not arr:
         return 0, (0, -1)

@@ -39,7 +39,11 @@ class TrieNode:
 
 
 class Trie:
-    """A prefix tree supporting insert, exact search, and prefix search."""
+    """A prefix tree supporting insert, exact search, and prefix search.
+
+    Pattern identification: repeated exact/prefix operations -> deterministic trie;
+    each node denotes its consumed prefix; only is_word marks a complete word.
+    """
 
     def __init__(self) -> None:
         self.root = TrieNode()

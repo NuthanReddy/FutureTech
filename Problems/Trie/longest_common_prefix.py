@@ -35,7 +35,11 @@ class _TrieNode:
 
 
 def longest_common_prefix(strs: List[str]) -> str:
-    """Return the longest common prefix of all strings using a Trie."""
+    """Return the longest common prefix of all strings using a Trie.
+
+    Pattern identification: shared prefix across all strings -> single-child
+    trie walk; continue only while no word ends and every word shares the edge.
+    """
     if not strs:
         return ""
 

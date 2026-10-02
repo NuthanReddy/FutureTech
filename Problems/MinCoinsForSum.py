@@ -1,4 +1,6 @@
 # Find the minimum number of coins required for a given amount with a given set of coins
+# Pattern identification: minimum coins with reusable denominations -> unbounded amount DP;
+# intended invariant: dp[i] is the best cost from smaller amounts; legacy zero-amount handling is absent.
 import math
 
 
@@ -27,6 +29,5 @@ print(min_coins(5))
 print(min_coins(6))
 print(min_coins(7))
 print(min_coins(8))
-
 
 

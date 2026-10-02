@@ -40,7 +40,11 @@ class TreeNode:
 
 
 def is_valid_bst(root: Optional[TreeNode]) -> bool:
-    """Return True if *root* is a valid binary search tree."""
+    """Return True if *root* is a valid binary search tree.
+
+    Pattern identification: verify global BST ordering -> bounded DFS;
+    each node must lie strictly inside the interval imposed by all ancestors.
+    """
 
     def _validate(node: Optional[TreeNode], low: float, high: float) -> bool:
         if node is None:
@@ -87,4 +91,3 @@ if __name__ == "__main__":
 
     # Empty tree
     print(is_valid_bst(None))                          # True
-

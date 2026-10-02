@@ -1,5 +1,13 @@
 # Longest Subsequence DP
 
+## Pattern identification steps
+
+1. Distinguish non-contiguous ordered choices (LIS) from transforming two sequences (Edit Distance).
+2. Choose `(index, previous_index)`/best-ending-index for LIS or two suffix/prefix coordinates for edits.
+3. Prove LIS take/skip is exhaustive; edits use match or insert/delete/replace transitions.
+4. Initialize single-element LIS/empty-string edits and evaluate smaller dependencies first.
+5. Keep LIS strictly increasing; quadratic tables may be too large, and subsequences are not substrings.
+
 ## Pattern: How to Identify
 
 Use this pattern when:

@@ -1,4 +1,6 @@
 # My Calendar I — LeetCode 729
+# Pattern identification: online non-overlapping bookings -> ordered interval neighbors.
+# Disjoint [start, end) intervals make predecessor/successor checks sufficient.
 #
 # Problem:
 #   Implement a calendar that prevents double-booking.  Each event is a

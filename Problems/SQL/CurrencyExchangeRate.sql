@@ -1,5 +1,7 @@
 /*
 Currency Exchange Rate - Hard
+Pattern identification: changing rates -> LEAD validity intervals + temporal join.
+Match currency and [start, end) dates so each sale uses one effective USD rate.
 
 Skills: SQL (Advanced)
 Tags: SQL, Simple Joins, Partitioning

@@ -1,4 +1,6 @@
 # LFU Cache — LeetCode 460
+# Pattern identification: frequency eviction with recency ties -> map + frequency lists;
+# each key belongs to one frequency bucket; min_freq selects its LRU eviction victim.
 #
 # Problem:
 #   Design and implement a data structure for a Least Frequently Used (LFU)

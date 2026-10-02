@@ -9,6 +9,8 @@ def get_num_repr(word):
     return int(num_char)
 
 
+# Pattern identification: retrieve words by keypad code -> hash-based grouping;
+# each bucket contains words with the same numeric encoding; the character map is partial.
 def build_word_dict(words):
     word_dict = {}
     for word in words:

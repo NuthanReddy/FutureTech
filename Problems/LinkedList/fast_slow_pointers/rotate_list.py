@@ -1,3 +1,5 @@
+# Pattern identification: cyclic shift by possibly large k -> measure, modulo, ring cut;
+# the ring preserves node order; cutting after length - shift nodes restores a list.
 """LeetCode 61: Rotate List.
 
 Problem statement:

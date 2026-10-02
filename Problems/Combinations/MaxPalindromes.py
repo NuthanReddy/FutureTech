@@ -1,5 +1,8 @@
 # given a list of slots with length as an array of integers and a list of characters and their frequencies
 # as a dictionary, find max no of palindromes formed by filling the slots with the given characters
+# Pattern identification: competing slots share characters -> resource-allocation backtracking;
+# copy each branch's budget and require pairs plus an odd center.
+# Limitation: dictionary-order allocation does not enumerate all character allocations.
 
 def max_palindromes(slot_lengths, char_freq):
     """

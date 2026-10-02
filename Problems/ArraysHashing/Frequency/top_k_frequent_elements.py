@@ -17,6 +17,9 @@ from collections import Counter
 def top_k_frequent(nums: list[int], k: int) -> list[int]:
     """Return up to *k* values with the largest frequencies.
 
+    Pattern identification: rank values by occurrence count -> frequency buckets;
+    bucket c holds exactly the values occurring c times; scan counts downward.
+
     ``buckets[count]`` contains values seen exactly ``count`` times.  Since a
     list of length ``len(nums) + 1`` covers every possible count, scanning
     buckets from high to low avoids sorting all distinct values.

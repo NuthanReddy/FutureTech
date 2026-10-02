@@ -13,6 +13,9 @@ from typing import List
 def solve(board: List[List[str]]) -> None:
     """Capture interior ``O`` regions in-place.
 
+    Pattern identification: preserve boundary-connected regions -> border BFS;
+    marked cells are exactly the discovered safe region, not enclosed cells.
+
     The invariant is that every temporary ``#`` is reachable from a border
     cell, so it must not be captured.  All remaining ``O`` cells are enclosed.
     """

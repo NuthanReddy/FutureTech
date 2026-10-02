@@ -3,6 +3,8 @@
 #
 # [38] Count and Say
 #
+# Pattern identification: each term describes adjacent runs -> iterative run-length encoding;
+# cached terms form the sequence prefix; each encoding emits completed runs plus the final run.
 
 # @lc code=start
 
@@ -32,4 +34,3 @@ class Solution:
         return "".join(result)
         
 # @lc code=end
-

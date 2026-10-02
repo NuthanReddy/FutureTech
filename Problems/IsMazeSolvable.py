@@ -2,6 +2,8 @@ def is_safe(x, y, N, M):
     return 0 <= x < N and 0 <= y < M and maze[x][y] == 1
 
 
+# Pattern identification: find a right/down maze path -> DFS with backtracking;
+# mark the tentative path and undo failed branches; legacy goal validation/aliasing is unchanged.
 def solve_maze(x, y, solution):
     N = len(solution)
     M = len(solution[0])

@@ -1,5 +1,7 @@
 
 
+# Pattern identification: cover a line with fewest fountain ranges -> greedy interval coverage;
+# track farthest reachable end and commit a new range at the current coverage boundary.
 def min_cnt_foun(a, N):
     # dp[i]: Stores the position of
     # rightmost fountain that can

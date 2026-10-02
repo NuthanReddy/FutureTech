@@ -1,3 +1,5 @@
+# Pattern identification: minimum queries alongside push/pop -> paired prefix-min stack;
+# stacks have equal length, and each minimum summarizes the matching value prefix.
 """Min Stack.
 
 Problem: Design a stack of integers supporting ``push``, ``pop``, ``top``,

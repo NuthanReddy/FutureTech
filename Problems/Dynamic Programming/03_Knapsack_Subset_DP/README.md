@@ -1,5 +1,13 @@
 # Knapsack / Subset DP
 
+## Pattern identification steps
+
+1. Recognize a capacity or exact-sum target with item choices.
+2. Choose 0/1 item/capacity maximization for Knapsack, unbounded amount minimization for Coin Change, or half-sum feasibility for Partition.
+3. Prove take/skip covers each 0/1 choice; reusable coins instead leave the item set unchanged.
+4. Seed zero resource and impossible states; descend targets for compressed 0/1 DP, ascend amounts for reuse.
+5. Check positive weights/denominations and non-negative targets; numeric capacity makes these pseudo-polynomial.
+
 ## Pattern: How to Identify
 
 Use this pattern when:

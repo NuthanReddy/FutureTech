@@ -7,6 +7,9 @@
 # @lc code=start
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        """Pattern identification: sorted streams, middle rank -> partial two-pointer merge ->
+        each consumed value is the next smallest; this variant is linear, not binary search.
+        """
         if not nums1:
             if len(nums2) % 2 == 1:
                 return nums2[len(nums2) // 2]

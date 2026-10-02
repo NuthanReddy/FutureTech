@@ -1,3 +1,5 @@
+# Pattern identification: two sorted chains -> sentinel-and-tail merge;
+# the emitted prefix is sorted, and each head is its chain's next candidate.
 """LeetCode 21: Merge Two Sorted Lists.
 
 Problem statement:

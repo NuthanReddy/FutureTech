@@ -1,3 +1,5 @@
+# Pattern identification: return a contiguous palindrome -> expand around odd/even centers, not subsequence DP;
+# intended invariant: endpoints enclose a palindrome; the legacy even-center indices are inconsistent.
 def longestPalindrome(s: str) -> str:
     n = len(s)
     if n == 1:

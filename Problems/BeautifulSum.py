@@ -1,3 +1,5 @@
+# Pattern identification: maximize disjoint zero-sum segments -> prefix-sum set + earliest-finish greedy;
+# repeated prefixes expose a zero sum; reset the prefix state after each accepted segment.
 def max_beautiful_segments(n, a):
     prefix_sum = 0
     seen = set()

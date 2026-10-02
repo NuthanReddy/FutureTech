@@ -28,6 +28,8 @@
 # print(ways_to_score(4))
 
 
+# Pattern identification: count scoring sequences with forbidden consecutive fours -> memoized state DP;
+# (remaining runs, previous-was-four) determines legal branches; negative totals contribute no ways.
 def countWays(N, prevWasFour, memo):
     if N < 0:
         return 0

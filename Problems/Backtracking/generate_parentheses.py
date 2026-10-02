@@ -1,5 +1,9 @@
 """Top Interview 150: Generate Parentheses.
 
+Pattern identification:
+    Enumerate balanced strings -> constrained binary backtracking;
+    keep close_count <= open_count <= n at every prefix.
+
 Problem statement:
     Input: an integer ``n``, the number of parentheses pairs.
     Required output: all well-formed parentheses strings containing exactly

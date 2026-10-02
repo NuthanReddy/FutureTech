@@ -1,4 +1,6 @@
 # find segments >=3 length where egde nodes value - sum(values of nodes in between)
+# Pattern identification: endpoint/interior-sum relation -> prefix-sum hash counting;
+# accumulate earlier (prefix, endpoint) keys and query (s - 3 * value, value); legacy indexing needs review.
 from collections import defaultdict
 
 

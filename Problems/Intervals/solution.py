@@ -29,7 +29,11 @@ from typing import List
 
 
 def summary_ranges(nums: List[int]) -> List[str]:
-    """Return maximal consecutive ranges from sorted distinct ``nums``."""
+    """Return maximal consecutive ranges from sorted distinct ``nums``.
+
+    Pattern identification: sorted distinct consecutive values -> run compression ->
+    start/previous delimit the current maximal run; a gap flushes it.
+    """
     if not nums:
         return []
     result: List[str] = []
@@ -45,7 +49,11 @@ def summary_ranges(nums: List[int]) -> List[str]:
 
 
 def merge(intervals: List[List[int]]) -> List[List[int]]:
-    """Return the disjoint union of arbitrary overlapping ``intervals``."""
+    """Return the disjoint union of arbitrary overlapping ``intervals``.
+
+    Pattern identification: union of overlapping ranges -> sort starts and coalesce ->
+    the output covers the processed prefix; only its last range can still extend.
+    """
     if not intervals:
         return []
     merged: List[List[int]] = []
@@ -60,7 +68,11 @@ def merge(intervals: List[List[int]]) -> List[List[int]]:
 
 
 def insert(intervals: List[List[int]], new_interval: List[int]) -> List[List[int]]:
-    """Insert ``new_interval`` into sorted disjoint ``intervals`` and merge."""
+    """Insert ``new_interval`` into sorted disjoint ``intervals`` and merge.
+
+    Pattern identification: one addition to sorted disjoint ranges -> three phases ->
+    copy ranges before, absorb touching overlaps, then append ranges after.
+    """
     result: List[List[int]] = []
     index = 0
     while index < len(intervals) and intervals[index][1] < new_interval[0]:
@@ -77,6 +89,9 @@ def insert(intervals: List[List[int]], new_interval: List[int]) -> List[List[int
 
 def erase_overlap_intervals(intervals: List[List[int]]) -> int:
     """Return minimum removals needed to make ``intervals`` non-overlapping.
+
+    Pattern identification: fewest removals for compatible intervals -> earliest-finish greedy ->
+    exchanging for an earlier finish cannot reduce future compatible choices.
 
     Keeping the interval with the earliest finishing time leaves the most room
     for all later intervals—the same exchange argument used by activity
@@ -96,6 +111,9 @@ def erase_overlap_intervals(intervals: List[List[int]]) -> int:
 
 def min_meeting_rooms(intervals: List[List[int]]) -> int:
     """Return minimum rooms needed for all meetings in ``intervals``.
+
+    Pattern identification: reuse rooms as meetings finish -> start-sorted end-time heap ->
+    one end per allocated room; allocate only when the earliest end exceeds start.
 
     The heap stores the end time of each room's currently scheduled meeting.
     Reusing the earliest-ending room is sufficient because all other rooms

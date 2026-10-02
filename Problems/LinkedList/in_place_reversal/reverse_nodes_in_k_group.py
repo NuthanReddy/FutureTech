@@ -1,3 +1,5 @@
+# Pattern identification: reverse complete k-node blocks -> look-ahead + pointer reversal;
+# completed groups stay connected, and an unconfirmed short suffix is never mutated.
 """LeetCode 25: Reverse Nodes in k-Group.
 
 Problem statement:

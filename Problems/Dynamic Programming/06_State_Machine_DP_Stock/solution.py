@@ -6,7 +6,11 @@ from typing import List
 
 
 def max_profit_memo(prices: List[int]) -> int:
-    """Return max profit using memoized DFS state machine."""
+    """Return max profit using memoized DFS state machine.
+
+    Pattern identification: a sale blocks next-day buying -> day/can-buy DP ->
+    selling jumps two days; each state maximizes only legal actions.
+    """
     n = len(prices)
 
     @lru_cache(maxsize=None)
@@ -27,7 +31,11 @@ def max_profit_memo(prices: List[int]) -> int:
 
 
 def max_profit_tab(prices: List[int]) -> int:
-    """Return max profit using iterative state-machine tabulation."""
+    """Return max profit using iterative state-machine tabulation.
+
+    Pattern identification: a sale blocks next-day buying -> hold/sold/rest DP ->
+    buy reads prior rest, and all updates preserve previous-day dependencies.
+    """
     hold = -inf
     sold = -inf
     rest = 0
@@ -39,4 +47,3 @@ def max_profit_tab(prices: List[int]) -> int:
         rest = max(rest, previous_sold)
 
     return max(sold, rest)
-

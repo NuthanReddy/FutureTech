@@ -14,6 +14,9 @@ from __future__ import annotations
 def product_except_self(nums: list[int]) -> list[int]:
     """Return products excluding each corresponding input position.
 
+    Pattern identification: all-except-self products without division -> prefix/suffix;
+    accumulators exclude the current index before being multiplied into its output.
+
     On the left-to-right pass, ``result[index]`` receives the product of all
     values strictly to its left.  On the right-to-left pass, ``suffix`` is
     the product strictly to the right and is multiplied into that partial

@@ -18,6 +18,8 @@ class CountMinSketch:
         return min(self.table[i][h(word)] for i, h in enumerate(self.hash_functions))
 
 
+# Pattern identification: approximate frequent words -> Count-Min Sketch estimates + heap top-k selection;
+# sketch counts never decrease, but collisions overestimate and stored word estimates can become stale.
 def get_top_k_words(descriptions, k):
     sketch = CountMinSketch(width=1000, depth=5)
     word_freq = {}

@@ -14,6 +14,9 @@ from __future__ import annotations
 def two_sum(nums: list[int], target: int) -> list[int]:
     """Return indices of a pair summing to *target*, or ``[]`` if absent.
 
+    Pattern identification: unsorted pair sum with original indices -> complement map;
+    lookup precedes insertion, so every stored partner has an earlier index.
+
     The dictionary stores an earlier value's index.  At index ``i``, the only
     possible partner is ``target - nums[i]``; checking that complement before
     storing the current value prevents using the same element twice.

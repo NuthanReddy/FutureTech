@@ -12,6 +12,7 @@ schema.
 
 /*
 1. Time-Difference / SLA Aggregation
+Pattern identification: completed resolution averages -> filtered duration AVG by team.
 
 Question:
 Calculate the average bug resolution time in hours for each team.
@@ -40,6 +41,7 @@ ORDER BY average_resolution_hours;
 
 /*
 2. Top-N / Most-Frequently Used Products
+Pattern identification: monthly leader with ties -> grouped COUNT + DENSE_RANK.
 
 Question:
 Determine the most frequently used Atlassian product during the current month.
@@ -76,6 +78,7 @@ ORDER BY product_name;
 
 /*
 3. Window Functions vs. Self-Joins
+Pattern identification: previous event per user -> time-ordered, partitioned LAG.
 
 Question:
 Explain the difference between window functions and self-joins in user journey
@@ -111,6 +114,8 @@ FROM user_events;
 
 /*
 4. Retention / Churn Analysis
+Pattern identification: missing next-month return -> distinct monthly activity + LEAD gap.
+Treat trailing months as churn only when the next observation month is complete.
 
 Question:
 Identify monthly recurring churn patterns across two product datasets.
@@ -174,6 +179,7 @@ ORDER BY
 
 /*
 5. Join Semantics
+Pattern identification: entities with no matching activity -> NOT EXISTS anti-join.
 
 Question:
 Explain the different join types and when to use them.
@@ -201,6 +207,7 @@ WHERE NOT EXISTS (
 
 /*
 6. Query Optimization / Tuning
+Pattern identification: large fact-to-dimension metric -> filter and pre-aggregate by join key.
 
 Question:
 How would you optimize a slow query over a large dataset with complex joins?
@@ -240,6 +247,7 @@ ORDER BY recent_usage.usage_count DESC;
 
 /*
 7. NULL Handling in Metrics
+Pattern identification: missing metrics and rate denominators -> NULL-aware aggregates.
 
 Question:
 How should missing values be handled when calculating KPIs?
@@ -267,6 +275,7 @@ GROUP BY team_id;
 
 /*
 8. Constraints and Indexing Fundamentals
+Pattern identification: unique user/product pairs + dated lookup -> UNIQUE + composite index.
 
 Question:
 What is the purpose of a UNIQUE constraint, and what types of indexes exist?
@@ -301,6 +310,7 @@ CREATE INDEX product_subscriptions_product_started_idx
 
 /*
 9. Data Modeling Adjacent to SQL
+Pattern identification: interaction analytics -> event-grain fact with dimension keys.
 
 Question:
 When should a star schema or snowflake schema be used, and how would you model
@@ -336,6 +346,7 @@ CREATE TABLE fact_product_interaction (
 
 /*
 10. Semi-Structured Data
+Pattern identification: JSON attribute arrays -> typed extraction + LATERAL FLATTEN.
 
 Question:
 How would you parse JSON data in a large-scale Snowflake pipeline?

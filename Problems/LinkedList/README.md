@@ -15,6 +15,31 @@ live in `helpers.py`. The solution modules expose readable snake-case
 functions plus LeetCode-compatible `Solution` methods where LeetCode expects
 that interface.
 
+## Pattern identification steps
+
+1. Identify the cue: sorted chains, end-relative positions, reversal, cross-links, or recency.
+2. Choose tail assembly, a pointer gap/ring cut, local reversal, an identity map, or a map/list cache.
+3. State what stays valid: finalized prefix, fixed gap, saved boundary, clone identity, or recency order.
+4. Check limits before rewiring: sortedness, valid bounds, full groups, and permitted input mutation; handle empty/head cases with sentinels.
+
+### Per-problem recognition
+
+Paths below are relative to this directory; `Solution` methods delegate to the same functions.
+
+| Problem / source | Recognition cue | Chosen pattern |
+|---|---|---|
+| [Add Two Numbers](arithmetic_and_merge/add_two_numbers.py) | Least-significant digits first | Forward carry propagation + result tail |
+| [Merge Two Sorted Lists](arithmetic_and_merge/merge_two_sorted_lists.py) | Two ascending chains | Compare heads + sentinel-tail relinking |
+| [Copy List with Random Pointer](hash_map_cloning/copy_list_with_random_pointer.py) | Arbitrary links and duplicate values | Two-pass original-identity-to-clone map |
+| [Reverse Linked List II](in_place_reversal/reverse_linked_list_ii.py) | One inclusive reversal range | Fixed predecessor + head insertion |
+| [Reverse Nodes in k-Group](in_place_reversal/reverse_nodes_in_k_group.py) | Reverse only complete blocks | k-node look-ahead + bounded pointer reversal |
+| [Linked List Cycle](fast_slow_pointers/linked_list_cycle.py) | Detect repeated traversal without mutation | Floyd's slow/fast pointers |
+| [Remove Nth Node From End](fast_slow_pointers/remove_nth_node_from_end.py) | Target measured from tail | Sentinel + n-link pointer gap |
+| [Rotate List](fast_slow_pointers/rotate_list.py) | Wraparound shift, potentially large k | Length/modulo + temporary ring and cut |
+| [Remove Duplicates II](filtering_and_partitioning/remove_duplicates_sorted_list_ii.py) | Remove whole equal-value runs | Sorted-run skipping + sentinel predecessor |
+| [Partition List](filtering_and_partitioning/partition_list.py) | Pivot split must preserve order | Detach and append to two stable chains |
+| [LRU Cache](cache_design/lru_cache.py) | Constant-time access and recency eviction | Key map + doubly linked recency list |
+
 ## Problem statements
 
 | Problem | Input | Required output | Key constraints |

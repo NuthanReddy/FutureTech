@@ -1,6 +1,8 @@
 from time import time
 
 
+# Pattern identification: two predecessor recurrence -> naive recursive decomposition;
+# each result sums the two preceding terms; repeated states are not cached.
 def fib(n):
     if n==0:
         return 1
@@ -9,6 +11,8 @@ def fib(n):
     return fib(n-2) +fib(n-1)
 
 
+# Pattern identification: repeated Fibonacci subproblems -> bottom-up DP;
+# fill earlier terms before dp[i]; this variant assumes n >= 1.
 def fib2(n):
     dp = [0]*(n+1)
     dp[0] = 1
@@ -23,6 +27,8 @@ def fib2(n):
 fib_arr = [1, 1]
 
 
+# Pattern identification: repeated queries for later terms -> persistent incremental DP;
+# fib_arr retains the computed prefix and extends it only for missing indices.
 def fib3(n):
     global fib_arr
     l = len(fib_arr)

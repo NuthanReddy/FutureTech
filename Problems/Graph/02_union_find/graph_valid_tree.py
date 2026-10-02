@@ -10,7 +10,11 @@ from typing import List
 
 
 def valid_tree(n: int, edges: List[List[int]]) -> bool:
-    """A graph is a tree iff it has n-1 edges and no union finds a cycle."""
+    """A graph is a tree iff it has n-1 edges and no union finds a cycle.
+
+    Pattern identification: undirected tree test -> edge count plus Union-Find;
+    accepted edges join distinct roots, preserving an acyclic forest.
+    """
     if len(edges) != n - 1:
         return False
     parent = list(range(n))

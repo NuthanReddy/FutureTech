@@ -35,6 +35,9 @@ from DataStructures.Graph import Graph
 def can_finish(num_courses: int, prerequisites: list[list[int]]) -> bool:
     """Return True if all courses can be completed.
 
+    Pattern identification: directed prerequisite feasibility -> Graph cycle
+    detection; completion is possible exactly when the prerequisite graph is acyclic.
+
     Args:
         num_courses:   Total number of courses (0 … num_courses-1).
         prerequisites: List of [course, prerequisite] pairs.
@@ -59,6 +62,9 @@ def can_finish(num_courses: int, prerequisites: list[list[int]]) -> bool:
 
 def find_order(num_courses: int, prerequisites: list[list[int]]) -> list[int]:
     """Return a valid course ordering, or an empty list if impossible.
+
+    Pattern identification: order directed prerequisites -> topological sort;
+    every emitted course has all its prerequisites earlier in the order.
 
     Args:
         num_courses:   Total number of courses.

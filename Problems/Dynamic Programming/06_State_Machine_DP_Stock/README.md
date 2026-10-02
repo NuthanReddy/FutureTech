@@ -1,5 +1,13 @@
 # State-machine DP (Buy/Sell Stock)
 
+## Pattern identification steps
+
+1. Recognize that holding stock and a sale's cooldown change tomorrow's legal actions.
+2. Choose `(day, can_buy)` with a two-day sale jump, or rolling `hold/sold/rest` states.
+3. Prove each state keeps its best legal profit; buy only from rest and sell only from hold.
+4. Derive every new state from the previous day; return a non-holding terminal profit.
+5. Assume one share and non-negative prices; fees, transaction limits, or longer cooldowns change transitions/state.
+
 ## Pattern: How to Identify
 
 Use state-machine DP when:

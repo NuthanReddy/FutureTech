@@ -90,6 +90,9 @@ def _upper_bound(nums: Sequence[int], target: int) -> int:
 def search_insert(nums: Sequence[int], target: int) -> int:
     """Return target's index or the index where it should be inserted.
 
+    Pattern identification: sorted insertion point -> lower-bound search ->
+    values before the boundary are smaller, values after it are at least target.
+
     Problem statement:
     Input is a sorted integer sequence ``nums`` and an integer ``target``.
     Return the index of ``target`` when it exists; otherwise return the position
@@ -110,6 +113,9 @@ def search_insert(nums: Sequence[int], target: int) -> int:
 
 def search_matrix(matrix: Sequence[Sequence[int]], target: int) -> bool:
     """Search a row-major sorted matrix as though it were one sorted array.
+
+    Pattern identification: global row-major order -> flattened exact search ->
+    any target index stays inside the retained inclusive bounds.
 
     Problem statement:
     Input is an m x n integer matrix and an integer ``target``.  Each row is
@@ -160,6 +166,9 @@ def search_matrix(matrix: Sequence[Sequence[int]], target: int) -> bool:
 def find_peak_element(nums: Sequence[int]) -> int:
     """Return the index of any peak element.
 
+    Pattern identification: unequal neighbors reveal a slope -> peak search ->
+    the chosen half always contains a peak, even without global sorted order.
+
     Problem statement:
     Input is a non-empty integer sequence ``nums``.  Return the index of any
     peak element, where a peak is strictly greater than its immediate
@@ -206,6 +215,9 @@ def find_peak_element(nums: Sequence[int]) -> int:
 def search_rotated(nums: Sequence[int], target: int) -> int:
     """Return target's index in a rotated sorted array, or ``-1``.
 
+    Pattern identification: distinct rotated sorted values -> sorted-half search ->
+    discard a half only when its value range excludes the target.
+
     Problem statement:
     Input is an integer sequence ``nums`` that was sorted in ascending order,
     then rotated at an unknown pivot, plus an integer ``target``.  Return the
@@ -251,6 +263,9 @@ def search_rotated(nums: Sequence[int], target: int) -> int:
 def search_range(nums: Sequence[int], target: int) -> list[int]:
     """Return the first and last target positions, or ``[-1, -1]``.
 
+    Pattern identification: sorted duplicate block -> lower/upper-bound searches ->
+    all equal values occupy the half-open interval between those boundaries.
+
     Problem statement:
     Input is a sorted integer sequence ``nums`` that may contain duplicates and
     an integer ``target``.  Return a two-item list containing the first and last
@@ -278,6 +293,9 @@ def search_range(nums: Sequence[int], target: int) -> list[int]:
 
 def find_min_rotated(nums: Sequence[int]) -> int:
     """Return the minimum value in a rotated sorted array.
+
+    Pattern identification: distinct rotation pivot -> midpoint/right comparison ->
+    retain the half containing the minimum, including midpoint when it may win.
 
     Problem statement:
     Input is a non-empty integer sequence ``nums`` that was sorted in ascending
@@ -322,6 +340,9 @@ def find_median_sorted_arrays(
     second: Sequence[int],
 ) -> float:
     """Return the median of two sorted arrays in logarithmic time.
+
+    Pattern identification: two sorted arrays, middle rank -> shorter-array partition search ->
+    left size stays fixed; cross-boundary order identifies the valid cut.
 
     Problem statement:
     Input is two individually sorted integer sequences, ``first`` and

@@ -15,6 +15,9 @@ from __future__ import annotations
 def contains_duplicate(nums: list[int]) -> bool:
     """Return ``True`` when *nums* contains a repeated value.
 
+    Pattern identification: detect any repeated value -> membership set;
+    before each check, seen contains exactly the values in the earlier prefix.
+
     The invariant after processing each item is that ``seen`` contains every
     value in the processed prefix.  Therefore a value already in ``seen`` is
     both necessary and sufficient evidence of a duplicate.

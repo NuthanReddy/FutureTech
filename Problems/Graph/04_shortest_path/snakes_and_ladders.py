@@ -12,7 +12,11 @@ from typing import List
 
 
 def snakes_and_ladders(board: List[List[int]]) -> int:
-    """Return the minimum number of dice throws needed to reach the end."""
+    """Return the minimum number of dice throws needed to reach the end.
+
+    Pattern identification: minimum equal-cost throws with landing jumps -> BFS;
+    first discovery of a post-jump square uses the fewest throws.
+    """
     n = len(board)
     if n == 0:
         return -1

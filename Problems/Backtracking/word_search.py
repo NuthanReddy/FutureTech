@@ -1,5 +1,9 @@
 """Top Interview 150: Word Search.
 
+Pattern identification:
+    Adjacent letters with no cell reuse -> grid backtracking;
+    match the word prefix and restore visited cells before sibling branches.
+
 Problem statement:
     Input: a rectangular character grid ``board`` and a string ``word``.
     Required output: True if ``word`` can be formed by adjacent horizontal or

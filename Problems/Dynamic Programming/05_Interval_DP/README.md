@@ -1,5 +1,13 @@
 # Interval DP
 
+## Pattern identification steps
+
+1. Recognize parenthesization of a fixed matrix order, where adjacent subchains combine.
+2. Choose inclusive matrix interval `(left, right)` and try every final split.
+3. Prove an optimal parenthesization has optimal left/right subchains; add their dimension-based merge cost.
+4. Seed single matrices with zero cost and fill increasing chain lengths (or memoize shorter intervals).
+5. Require compatible positive dimensions; cubic split DP is not the sorting/greedy pattern for interval scheduling.
+
 ## Pattern: How to Identify
 
 Use Interval DP when:

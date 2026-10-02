@@ -21,7 +21,11 @@ from typing import List
 
 
 def knapsack_memo(weights: List[int], values: List[int], capacity: int) -> int:
-    """Return max value for 0/1 knapsack using take/skip states."""
+    """Return max value for 0/1 knapsack using take/skip states.
+
+    Pattern identification: each item once under capacity -> item/resource DP ->
+    both take and skip advance the index, preventing reuse.
+    """
     n = len(weights)
 
     @lru_cache(maxsize=None)
@@ -41,7 +45,11 @@ def knapsack_memo(weights: List[int], values: List[int], capacity: int) -> int:
 
 
 def knapsack_tab(weights: List[int], values: List[int], capacity: int) -> int:
-    """Return max value for 0/1 knapsack using bottom-up tabulation."""
+    """Return max value for 0/1 knapsack using bottom-up tabulation.
+
+    Pattern identification: each item once under capacity -> suffix/capacity table ->
+    transitions read only the next item row, keeping every choice 0/1.
+    """
     n = len(weights)
     dp = [[0] * (capacity + 1) for _ in range(n + 1)]
 
@@ -60,6 +68,9 @@ def knapsack_tab(weights: List[int], values: List[int], capacity: int) -> int:
 
 def coin_change_memo(coins: List[int], amount: int) -> int:
     """Solve Coin Change: minimize reusable coins needed to make ``amount``.
+
+    Pattern identification: unlimited coins, minimum count -> remaining-amount DP ->
+    each positive coin reduces the remainder without removing denominations.
 
     ``best(remaining)`` tries every coin and may reuse it, so the transition
     stays at the same item set rather than advancing an item index.  ``inf``
@@ -85,7 +96,11 @@ def coin_change_memo(coins: List[int], amount: int) -> int:
 
 
 def coin_change_tab(coins: List[int], amount: int) -> int:
-    """Return the minimum coin count using forward unbounded transitions."""
+    """Return the minimum coin count using forward unbounded transitions.
+
+    Pattern identification: unlimited coins, minimum count -> ascending amount DP ->
+    smaller amounts are optimal and may already include the same coin.
+    """
     if amount < 0:
         return -1
     dp = [amount + 1] * (amount + 1)
@@ -99,7 +114,11 @@ def coin_change_tab(coins: List[int], amount: int) -> int:
 
 
 def can_partition_memo(nums: List[int]) -> bool:
-    """Solve Partition Equal Subset Sum: test for an equal-sum split."""
+    """Solve Partition Equal Subset Sum: test for an equal-sum split.
+
+    Pattern identification: equal halves with each number once -> half-sum 0/1 DP ->
+    take/skip advances the index; an odd total cannot split equally.
+    """
     total = sum(nums)
     if total % 2:
         return False
@@ -120,6 +139,9 @@ def can_partition_memo(nums: List[int]) -> bool:
 
 def can_partition_tab(nums: List[int]) -> bool:
     """Solve equal partition as 0/1 subset-sum with a descending loop.
+
+    Pattern identification: equal halves with each number once -> half-sum reachability ->
+    descending updates read pre-item states, preventing reuse.
 
     Descending targets are essential: they ensure each input number updates a
     state only once, whereas ascending targets would accidentally reuse it.

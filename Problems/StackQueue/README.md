@@ -4,6 +4,30 @@ This package covers the stack/queue problems from the Top Interview 150 set that
 are most useful as reusable patterns. Each problem is kept in a small,
 stand-alone module so it can be imported or run directly.
 
+## Pattern identification steps
+
+1. Look for nested/most-recent dependencies, next-greater boundaries, or expiring window maxima.
+2. Choose a parsing stack, paired minimum stack, monotonic index stack/deque, or sorted arrival-barrier scan.
+3. Name the invariant: unmatched context, prefix minimum, unresolved ordered indices, live maxima, or fleet barrier.
+4. Check equality and expiry rules; postfix operand order and calculator grammar matter, and car fleets require no passing.
+
+### Per-problem recognition
+
+| Source | Recognition cue | Chosen pattern |
+|---|---|---|
+| [Valid Parentheses](01_Stack_Parsing/valid_parentheses.py) | Most recent opener must close first | LIFO delimiter stack |
+| [Evaluate RPN](01_Stack_Parsing/evaluate_reverse_polish_notation.py) | Postfix operator follows two operands | Operand stack; pop right before left |
+| [Basic Calculator](01_Stack_Parsing/basic_calculator.py) | Nested +/- scopes | Saved outer total/sign stack |
+| [Min Stack](02_Stack_Design/min_stack.py) | O(1) minimum after push/pop | Paired value and prefix-minimum stacks |
+| [Daily Temperatures](03_Monotonic_Stack/daily_temperatures.py) | Distance to next strictly greater value | Nonincreasing unresolved-temperature index stack |
+| [Largest Rectangle](03_Monotonic_Stack/largest_rectangle.py) | Shorter bar closes a rectangle span | Nondecreasing-height index stack + flush sentinel |
+| [Car Fleet](04_Greedy_Stack/car_fleet.py) | Faster cars cannot pass those ahead | Descending-position scan + one arrival barrier (no explicit stack) |
+| [Sliding Window Maximum](05_Monotonic_Queue/sliding_window_maximum.py) | Maxima with fixed-window expiry | Decreasing-value deque of live indices |
+
+`01_Stack_Parsing/leetcode_20_valid_parentheses.py` is an unfinished legacy
+stub, not an implemented wrapper; use `valid_parentheses.py`. Its empty method
+body currently prevents parsing and is left unchanged.
+
 ## Coverage by pattern
 
 | Pattern | Problems | Why this pattern fits |

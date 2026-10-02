@@ -1,4 +1,6 @@
 # Count Inversions using Fenwick Tree (BIT)
+# Pattern identification: smaller values to the right -> reverse scan + ranked frequency BIT.
+# Query rank - 1 before inserting; the tree contains only the processed suffix.
 #
 # DS used: Fenwick Tree / BIT (DataStructures/FenwickTree.py)
 #

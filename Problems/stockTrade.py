@@ -59,6 +59,8 @@ def trade(sell_stock, buy_stock, seller_queue, buyer_queue):
         return False
 
 
+# Pattern identification: match streaming buy/sell requests -> per-stock priority/FIFO queue simulation;
+# intended invariant: queues retain unmatched quantities; legacy parsing/queue APIs are incomplete.
 def stream_trade(s):
     split_req = s.split("")
     person = split_req[0]

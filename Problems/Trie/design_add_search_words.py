@@ -37,7 +37,11 @@ class _Node:
 
 
 class WordDictionary:
-    """Trie-backed dictionary with single-character wildcard search."""
+    """Trie-backed dictionary with single-character wildcard search.
+
+    Pattern identification: full-word lookup with '.' -> trie plus wildcard DFS;
+    each branch matches the consumed pattern, accepting only terminal words.
+    """
 
     def __init__(self) -> None:
         self.root = _Node()

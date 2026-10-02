@@ -23,6 +23,9 @@ Grid = List[List[int]]
 def min_path_sum_memo(grid: Grid) -> int:
     """Return minimum path sum using memoized DFS.
 
+    Pattern identification: cheapest right/down route -> coordinate suffix DP ->
+    each cell adds its cost to the cheapest legal successor.
+
     ``best(r, c)`` is the cheapest cost from this cell to the destination.
     Out-of-bounds moves are impossible and use ``inf`` so they can never win
     the minimum.  The destination returns its own value because it still must
@@ -51,6 +54,9 @@ def min_path_sum_memo(grid: Grid) -> int:
 
 def min_path_sum_tab(grid: Grid) -> int:
     """Return minimum path sum using a start-to-destination table.
+
+    Pattern identification: cheapest right/down route -> coordinate prefix DP ->
+    each cell adds its cost to the optimal top/left predecessor.
 
     First row and first column have only one predecessor; initializing them
     explicitly prevents accidentally treating an unavailable direction as a
@@ -81,6 +87,9 @@ def min_path_sum_tab(grid: Grid) -> int:
 def unique_paths_memo(rows: int, cols: int) -> int:
     """Solve Unique Paths: count right/down routes through an empty grid.
 
+    Pattern identification: count right/down routes -> coordinate counting DP ->
+    disjoint first moves sum all paths; the destination contributes one.
+
     The state is a coordinate, and each path is decomposed by its first move.
     A one-cell grid has one path (doing nothing), while non-positive
     dimensions have no valid grid.
@@ -100,7 +109,11 @@ def unique_paths_memo(rows: int, cols: int) -> int:
 
 
 def unique_paths_tab(rows: int, cols: int) -> int:
-    """Count right/down paths with a rolling one-dimensional DP row."""
+    """Count right/down paths with a rolling one-dimensional DP row.
+
+    Pattern identification: count right/down routes -> rolling grid-count DP ->
+    each update sums the old top count and the current row's left count.
+    """
     if rows <= 0 or cols <= 0:
         return 0
 

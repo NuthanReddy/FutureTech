@@ -1,5 +1,9 @@
 """Top Interview 150: N-Queens II.
 
+Pattern identification:
+    Count nonattacking placements -> row-wise constraint backtracking;
+    keep one queen per row and reject occupied columns or diagonals.
+
 Problem statement:
     Input: an integer ``n``, the side length of an n x n chessboard.
     Required output: the count of distinct ways to place n queens so that no

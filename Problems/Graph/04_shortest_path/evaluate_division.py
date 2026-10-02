@@ -52,7 +52,11 @@ class _WeightedUnionFind:
 def calc_equation(
     equations: List[List[str]], values: List[float], queries: List[List[str]]
 ) -> List[float]:
-    """Evaluate all division queries in near-constant amortized time."""
+    """Evaluate all division queries in near-constant amortized time.
+
+    Pattern identification: repeated consistent ratio queries -> weighted
+    Union-Find; weight[x] remains x / parent[x], including after compression.
+    """
     uf = _WeightedUnionFind()
     for (a, b), value in zip(equations, values):
         uf.union(a, b, value)

@@ -37,7 +37,11 @@ class _TrieNode:
 
 
 def replace_words(roots: List[str], sentence: str) -> str:
-    """Replace every word in *sentence* with its shortest matching root."""
+    """Replace every word in *sentence* with its shortest matching root.
+
+    Pattern identification: shortest dictionary prefix per word -> trie lookup;
+    the first terminal reached is the shortest matching root.
+    """
     # Build trie from root words
     trie_root = _TrieNode()
     for word in roots:

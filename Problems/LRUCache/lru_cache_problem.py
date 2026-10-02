@@ -1,4 +1,7 @@
 # LRU Cache — LeetCode 146
+# Pattern identification: recency eviction with O(1) lookup -> DataStructures.LRUCache;
+# reuse its map/list implementation; one node per key stays in recency order,
+# while this adapter only translates KeyError misses to -1.
 #
 # Problem:
 #   Design a data structure that follows the constraints of a Least Recently

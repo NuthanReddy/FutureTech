@@ -1,3 +1,5 @@
+# Pattern identification: cap duplicates in sorted input -> read/write two-pointer compaction;
+# intended invariant: written prefix retains at most two of each value; legacy bounds are unchecked.
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         occurance=0
@@ -20,4 +22,3 @@ class Solution:
                 nums[new_index] = nums[old_index]
                 new_index +=1
         return new_index
-

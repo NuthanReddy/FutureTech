@@ -10,7 +10,11 @@ from typing import List
 
 
 def min_cost_connect_points(points: List[List[int]]) -> int:
-    """Return the Manhattan-weight MST cost."""
+    """Return the Manhattan-weight MST cost.
+
+    Pattern identification: cheapest network connecting all points -> dense Prim;
+    best[v] is the cheapest edge from the growing tree to unused point v.
+    """
     n = len(points)
     if n < 2:
         return 0

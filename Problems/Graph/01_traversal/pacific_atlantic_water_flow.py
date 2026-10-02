@@ -11,7 +11,11 @@ from typing import List, Set, Tuple
 
 
 def pacific_atlantic(heights: List[List[int]]) -> List[List[int]]:
-    """Return cells from which water can reach both oceans."""
+    """Return cells from which water can reach both oceans.
+
+    Pattern identification: reach either boundary under downhill flow ->
+    reverse DFS from each ocean; visited cells have a valid downhill return path.
+    """
     if not heights or not heights[0]:
         return []
     rows, cols = len(heights), len(heights[0])

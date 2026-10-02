@@ -7,6 +7,8 @@ import math
 # Add any helper functions you may need here
 
 
+# Pattern identification: arbitrary subarray reversals preserve multiplicities -> multiset frequency comparison;
+# counts track unmatched occurrences from array_a while consuming array_b.
 def are_they_equal(array_a, array_b):
     if len(array_a) != len(array_b):
         return False

@@ -1,5 +1,7 @@
 # ---------------------------------------------------------------------------
 # Problem: Range Sum on a Dynamic Sorted Collection (using a Skip List)
+# Pattern identification: dynamic duplicate values + value-range sums -> ordered count map.
+# Keep positive counts; this unaugmented implementation scans keys, worst-case O(d).
 # ---------------------------------------------------------------------------
 # Maintain a dynamic sorted collection supporting three operations:
 #

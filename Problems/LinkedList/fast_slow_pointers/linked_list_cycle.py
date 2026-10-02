@@ -1,3 +1,5 @@
+# Pattern identification: repeated next-pointer traversal without storage -> Floyd;
+# fast moves twice as far as slow: it reaches null or meets slow inside a cycle.
 """LeetCode 141: Linked List Cycle.
 
 Problem statement:

@@ -28,7 +28,11 @@ required output list and the temporary digit string in ``reverse_integer``.
 
 
 def single_number(nums: list[int]) -> int:
-    """Return the value occurring once in ``nums``."""
+    """Return the value occurring once in ``nums``.
+
+    Pattern identification: one singleton among pairs -> XOR cancellation ->
+    the accumulator is the processed prefix XOR, with equal pairs cancelled.
+    """
     answer = 0
     for value in nums:
         answer ^= value
@@ -36,7 +40,11 @@ def single_number(nums: list[int]) -> int:
 
 
 def hamming_weight(n: int) -> int:
-    """Return the number of set bits in non-negative integer ``n``."""
+    """Return the number of set bits in non-negative integer ``n``.
+
+    Pattern identification: count set bits -> clear the lowest set bit ->
+    each iteration removes exactly one bit and increments its count.
+    """
     count = 0
     while n:
         n &= n - 1
@@ -45,7 +53,11 @@ def hamming_weight(n: int) -> int:
 
 
 def count_bits(n: int) -> list[int]:
-    """Return popcounts for every integer in the inclusive range ``[0, n]``."""
+    """Return popcounts for every integer in the inclusive range ``[0, n]``.
+
+    Pattern identification: counts for all integers through n -> shift-parent DP ->
+    popcount(value) equals the known parent count plus its low bit.
+    """
     result = [0] * (n + 1)
     for value in range(1, n + 1):
         result[value] = result[value >> 1] + (value & 1)
@@ -53,7 +65,11 @@ def count_bits(n: int) -> list[int]:
 
 
 def reverse_bits(n: int) -> int:
-    """Return the 32-bit value obtained by reversing ``n``'s bits."""
+    """Return the 32-bit value obtained by reversing ``n``'s bits.
+
+    Pattern identification: reverse a fixed-width word -> shift/append 32 bits ->
+    the result holds the reversal of the consumed low bits.
+    """
     result = 0
     for _ in range(32):
         result = (result << 1) | (n & 1)
@@ -62,7 +78,11 @@ def reverse_bits(n: int) -> int:
 
 
 def missing_number(nums: list[int]) -> int:
-    """Return the missing value from the distinct range ``[0, len(nums)]``."""
+    """Return the missing value from the distinct range ``[0, len(nums)]``.
+
+    Pattern identification: one gap in distinct 0..n -> expected/actual XOR ->
+    all present values cancel, leaving only the absent value.
+    """
     answer = len(nums)
     for index, value in enumerate(nums):
         answer ^= index ^ value
@@ -70,7 +90,11 @@ def missing_number(nums: list[int]) -> int:
 
 
 def get_sum(a: int, b: int) -> int:
-    """Return ``a + b`` for signed 32-bit inputs without ``+`` or ``-``."""
+    """Return ``a + b`` for signed 32-bit inputs without ``+`` or ``-``.
+
+    Pattern identification: addition without arithmetic operators -> XOR and carry ->
+    a + b modulo 2**32 is preserved until the masked carry is zero.
+    """
     mask = 0xFFFFFFFF
     sign_bit = 0x80000000
     while b & mask:
@@ -81,7 +105,11 @@ def get_sum(a: int, b: int) -> int:
 
 
 def reverse_integer(x: int) -> int:
-    """Reverse decimal digits, returning zero on signed 32-bit overflow."""
+    """Reverse decimal digits, returning zero on signed 32-bit overflow.
+
+    Pattern identification: decimal digit reversal -> reverse magnitude string ->
+    restore the sign and return only values within signed 32-bit bounds.
+    """
     sign = -1 if x < 0 else 1
     reversed_value = int(str(abs(x))[::-1])
     reversed_value *= sign

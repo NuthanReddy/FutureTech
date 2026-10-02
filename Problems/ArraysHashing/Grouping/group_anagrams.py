@@ -15,6 +15,9 @@ from collections import Counter, defaultdict
 def group_anagrams(words: list[str]) -> list[list[str]]:
     """Group anagrams while preserving input order within each group.
 
+    Pattern identification: group words regardless of letter order -> count keys;
+    each bucket contains only words with identical character multiplicities.
+
     A frozenset of character-count pairs is the canonical key.  Words with the
     same key have exactly the same frequency for every character, so they
     belong to the same bucket.  ``groups`` is a dictionary from that key to the

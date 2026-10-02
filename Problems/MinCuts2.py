@@ -1,4 +1,6 @@
 # Using memoizatoin to solve the partition problem.
+# Pattern identification: repeated substring cut subproblems -> memoized interval DP;
+# minimize left cuts + 1 + right cuts; interval keys should be unique (legacy concatenation can collide).
 
 # Function to check if input string is pallindrome or not
 def ispallindrome(input, start, end):
@@ -73,6 +75,5 @@ if __name__ == '__main__':
     input = "ababbbabbababa"
     memo = dict()
     print(minpalparti_memo(input, 0, len(input) - 1, memo))
-
 
 

@@ -11,7 +11,11 @@ from typing import List
 
 
 def oranges_rotting(grid: List[List[int]]) -> int:
-    """Return minutes until all reachable fresh oranges rot, or ``-1``."""
+    """Return minutes until all reachable fresh oranges rot, or ``-1``.
+
+    Pattern identification: simultaneous unit-time infection -> multi-source BFS;
+    each queue layer is one minute, and each fresh cell changes once.
+    """
     if not grid or not grid[0]:
         return 0
     rows, cols = len(grid), len(grid[0])

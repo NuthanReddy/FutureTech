@@ -18,6 +18,8 @@
 # Output:
 # 3, (1, 1)
 
+# Pattern identification: maximize buildings over all bomb centers -> brute-force grid neighborhood search;
+# damage counts in-bounds cells in a square radius window, not a circular blast.
 def max_building_damage(matrix, radius):
     max_damage = 0
     bomb_location = (0, 0)
@@ -50,6 +52,5 @@ matrix = [[1, 0, 0, 0, 0],
 
 radius = 3
 print(max_building_damage(matrix, radius))
-
 
 

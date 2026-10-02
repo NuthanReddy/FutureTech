@@ -1,5 +1,7 @@
 # ---------------------------------------------------------------------------
 # Problem: Design an Ordered Stream (using a Skip List)
+# Pattern identification: out-of-order IDs, consecutive output -> pending map + read pointer.
+# Flush only from the next expected ID; a bounded-ID array is a simpler alternative.
 # ---------------------------------------------------------------------------
 # You receive (id, value) pairs potentially out of order, where ids are
 # positive integers starting from 1.  After each insertion, return all

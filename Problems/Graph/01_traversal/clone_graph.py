@@ -21,7 +21,11 @@ class Node:
 
 
 def clone_graph(node: Optional[Node]) -> Optional[Node]:
-    """Deep-copy a connected graph, including cycles and self-loops."""
+    """Deep-copy a connected graph, including cycles and self-loops.
+
+    Pattern identification: cyclic adjacency copy -> BFS with identity map;
+    each original has exactly one clone, created before exploring neighbors.
+    """
     if node is None:
         return None
     # The map is the key invariant: one original identity has one clone.

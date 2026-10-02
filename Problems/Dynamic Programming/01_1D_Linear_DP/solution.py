@@ -26,6 +26,9 @@ from typing import List
 def rob_memo(nums: List[int]) -> int:
     """Return the maximum non-adjacent sum using memoized take/skip DP.
 
+    Pattern identification: adjacent houses conflict -> suffix take/skip DP ->
+    each state maximizes all legal choices without robbing neighbors.
+
     ``dfs(i)`` means "the best amount obtainable from houses ``i`` onward".
     At every index the complete choice is either to skip ``i`` or rob it and
     therefore skip ``i + 1``.  The answer at index zero is the final state.
@@ -47,6 +50,9 @@ def rob_memo(nums: List[int]) -> int:
 def rob_tab(nums: List[int]) -> int:
     """Return the maximum non-adjacent sum using bottom-up tabulation.
 
+    Pattern identification: adjacent houses conflict -> backward suffix DP ->
+    skip uses i+1, rob uses i+2, both already optimal.
+
     The two zero-valued sentinel cells represent the terminal states ``n`` and
     ``n + 1``.  They make the ``i + 2`` transition safe without special cases.
     """
@@ -63,6 +69,9 @@ def rob_tab(nums: List[int]) -> int:
 
 def climb_stairs_memo(n: int) -> int:
     """Solve Climbing Stairs: count one/two-step routes to stair ``n``.
+
+    Pattern identification: one/two-step routes -> memoized stair counting ->
+    disjoint first moves sum all paths, with one completed terminal route.
 
     State ``ways(step)`` counts paths from that step to the top.  The terminal
     state ``ways(n) = 1`` is important: reaching the top is one completed
@@ -83,7 +92,11 @@ def climb_stairs_memo(n: int) -> int:
 
 
 def climb_stairs_tab(n: int) -> int:
-    """Count stair-climbing paths with an iterative Fibonacci-style DP."""
+    """Count stair-climbing paths with an iterative Fibonacci-style DP.
+
+    Pattern identification: one/two-step routes -> rolling stair-count DP ->
+    the two stored counts cover every possible final move.
+    """
     if n < 0:
         return 0
     if n <= 1:
@@ -99,6 +112,9 @@ def climb_stairs_tab(n: int) -> int:
 
 def word_break_memo(text: str, words: List[str]) -> bool:
     """Solve Word Break: decide whether ``text`` is dictionary-segmentable.
+
+    Pattern identification: dictionary segmentation -> suffix-boundary DP ->
+    every matching non-empty word advances to a complete remaining segmentation.
 
     ``can_break(i)`` describes the suffix beginning at ``i``.  Trying every
     word is the transition; a successful word carries the solution to its
@@ -123,6 +139,9 @@ def word_break_memo(text: str, words: List[str]) -> bool:
 
 def word_break_tab(text: str, words: List[str]) -> bool:
     """Return word-break feasibility using prefix tabulation.
+
+    Pattern identification: dictionary segmentation -> prefix reachability DP ->
+    a boundary is reachable exactly when a word extends a reachable prefix.
 
     ``dp[end]`` is true when ``text[:end]`` is segmentable.  For each reachable
     prefix, append each dictionary word and carry the truth value forward.

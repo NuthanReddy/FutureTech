@@ -1,5 +1,13 @@
 # 1D Linear DP
 
+## Pattern identification steps
+
+1. Recognize choices along one sequence; ask whether an index alone determines the remaining problem.
+2. Choose suffix take/skip for Robber, stair counts for Stairs, or string-boundary feasibility for Word Break.
+3. Prove choices exhaustive: rob/skip, one/two steps, or every matching dictionary word.
+4. Seed terminal states and evaluate dependencies first; roll memory only when the required history is bounded.
+5. Require non-empty dictionary words; linear state count does not imply constant work per state.
+
 ## Pattern: How to Identify
 
 Use 1D Linear DP when:

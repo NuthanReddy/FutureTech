@@ -23,7 +23,11 @@ from typing import List
 
 
 def is_valid_sudoku(board: List[List[str]]) -> bool:
-    """Return whether ``board`` obeys Sudoku row, column, and box rules."""
+    """Return whether ``board`` obeys Sudoku row, column, and box rules.
+
+    Pattern identification: overlapping uniqueness constraints -> region sets;
+    each set records only previously visited digits in its row, column, or box.
+    """
     rows = [set() for _ in range(9)]
     columns = [set() for _ in range(9)]
     boxes = [set() for _ in range(9)]
@@ -42,7 +46,11 @@ def is_valid_sudoku(board: List[List[str]]) -> bool:
 
 
 def spiral_order(matrix: List[List[int]]) -> List[int]:
-    """Return rectangular ``matrix`` values in clockwise spiral order."""
+    """Return rectangular ``matrix`` values in clockwise spiral order.
+
+    Pattern identification: clockwise outer-ring traversal -> shrinking boundaries;
+    the remaining rectangle contains exactly the unvisited cells.
+    """
     if not matrix or not matrix[0]:
         return []
     top, bottom, left, right = 0, len(matrix) - 1, 0, len(matrix[0]) - 1
@@ -64,7 +72,11 @@ def spiral_order(matrix: List[List[int]]) -> List[int]:
 
 
 def rotate(matrix: List[List[int]]) -> None:
-    """Rotate square ``matrix`` 90 degrees clockwise in-place."""
+    """Rotate square ``matrix`` 90 degrees clockwise in-place.
+
+    Pattern identification: square clockwise coordinate transform -> transpose/reverse;
+    swap each off-diagonal pair once, then reverse rows to map (r, c) to (c, n-1-r).
+    """
     n = len(matrix)
     for row in range(n):
         for column in range(row + 1, n):
@@ -74,7 +86,11 @@ def rotate(matrix: List[List[int]]) -> None:
 
 
 def set_zeroes(matrix: List[List[int]]) -> None:
-    """Zero affected rows and columns of ``matrix`` in-place."""
+    """Zero affected rows and columns of ``matrix`` in-place.
+
+    Pattern identification: original zeros trigger whole lines -> first-row/column markers;
+    markers preserve original triggers; separate flags preserve the marker lines' fate.
+    """
     if not matrix or not matrix[0]:
         return
     rows, columns = len(matrix), len(matrix[0])
@@ -96,7 +112,11 @@ def set_zeroes(matrix: List[List[int]]) -> None:
 
 
 def game_of_life(board: List[List[int]]) -> None:
-    """Advance binary ``board`` by one Conway's Game of Life generation."""
+    """Advance binary ``board`` by one Conway's Game of Life generation.
+
+    Pattern identification: simultaneous neighbor-dependent update -> old/new bit packing;
+    low bits retain original states until every next state is encoded in bit 1.
+    """
     if not board or not board[0]:
         return
     rows, columns = len(board), len(board[0])

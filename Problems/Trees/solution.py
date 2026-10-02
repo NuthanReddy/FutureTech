@@ -159,6 +159,9 @@ def level_order_values(root: Optional[TreeNode]) -> list[Optional[int]]:
 def max_depth(root: Optional[TreeNode]) -> int:
     """Return the number of nodes on the longest root-to-leaf path.
 
+    Pattern identification: longest root-to-leaf length -> recursive height DFS;
+    each return is one plus the larger child height, with empty height zero.
+
     Recursion mirrors the definition of tree height: a node contributes one
     plus the larger child height.  An iterative level-order traversal is a
     useful alternative when a skewed tree may exceed Python's recursion limit.
@@ -176,6 +179,9 @@ def is_same_tree(
     first: Optional[TreeNode], second: Optional[TreeNode]
 ) -> bool:
     """Return whether two trees have identical structure and values.
+
+    Pattern identification: compare structure and values -> paired recursive DFS;
+    each pair occupies the same position, including missing children.
 
     Invariant: each recursive call compares nodes occupying the same logical
     position.  One missing node is therefore a structural mismatch; two
@@ -196,6 +202,9 @@ def is_same_tree(
 
 def invert_tree(root: Optional[TreeNode]) -> Optional[TreeNode]:
     """Mirror a tree in-place and return its root.
+
+    Pattern identification: swap every subtree -> iterative BFS mutation;
+    each dequeued node has its children swapped exactly once.
 
     The iterative breadth-first form avoids recursion-depth failures and makes
     the mutation invariant explicit: once a node leaves the queue, its direct
@@ -222,6 +231,9 @@ def invert_tree(root: Optional[TreeNode]) -> Optional[TreeNode]:
 
 def is_symmetric(root: Optional[TreeNode]) -> bool:
     """Return whether the tree is a mirror of itself.
+
+    Pattern identification: reflection around the root -> mirror-pair BFS;
+    compare outer children together and inner children together.
 
     Queue entries are mirror pairs.  Their values must match, and their
     children are enqueued in crossed order: outer with outer, inner with inner.
@@ -260,6 +272,9 @@ def build_tree_preorder_inorder(
     preorder: list[int], inorder: list[int]
 ) -> Optional[TreeNode]:
     """Reconstruct a tree from preorder and inorder traversals.
+
+    Pattern identification: root-first traversal plus inorder -> indexed DFS;
+    each root splits its inorder range, consuming the left subtree first.
 
     Preorder chooses the next root.  Its index in inorder divides the current
     subtree into left and right ranges.  The shared preorder cursor advances
@@ -304,6 +319,9 @@ def build_tree_inorder_postorder(
     inorder: list[int], postorder: list[int]
 ) -> Optional[TreeNode]:
     """Reconstruct a tree from inorder and postorder traversals.
+
+    Pattern identification: root-last traversal plus inorder -> reverse-cursor DFS;
+    build right before left so each inorder range consumes the correct nodes.
 
     Reading postorder backward produces root-right-left.  Therefore the right
     subtree must be built first; reversing that order is a common bug.
@@ -354,6 +372,9 @@ def _validate_reconstruction_inputs(
 def connect_next(root: Optional[TreeNode]) -> Optional[TreeNode]:
     """Populate each node's ``next`` pointer without an auxiliary BFS queue.
 
+    Pattern identification: level neighbors with constant extra space -> threading;
+    the current next-chain is complete while the next level's prefix is built.
+
     ``level_start`` begins a level whose ``next`` chain is already available.
     A dummy node and ``tail`` build the next level from left to right.  The
     invariant after processing each parent is that ``dummy.next ... tail`` is
@@ -392,6 +413,9 @@ def connect_next(root: Optional[TreeNode]) -> Optional[TreeNode]:
 
 def flatten(root: Optional[TreeNode]) -> None:
     """Flatten a tree in-place into a right-only preorder linked list.
+
+    Pattern identification: preorder pointer rewiring -> right-before-left DFS stack;
+    previous is the tail of the flattened prefix, whose left links are cleared.
 
     The stack stores nodes still to visit.  Pushing right before left ensures
     left is popped first, matching preorder.  ``previous`` is always the tail
@@ -436,6 +460,9 @@ def flatten(root: Optional[TreeNode]) -> None:
 def has_path_sum(root: Optional[TreeNode], target_sum: int) -> bool:
     """Return whether any root-to-leaf path sums to ``target_sum``.
 
+    Pattern identification: target on a complete root-to-leaf path -> remaining-sum DFS;
+    accept zero remaining only at a leaf, never at an internal prefix.
+
     Subtracting each node value keeps recursive state local.  The leaf check is
     essential: reaching the target at an internal node is not a valid answer.
 
@@ -453,6 +480,9 @@ def has_path_sum(root: Optional[TreeNode], target_sum: int) -> bool:
 
 def sum_numbers(root: Optional[TreeNode]) -> int:
     """Sum all numbers represented by root-to-leaf digit paths.
+
+    Pattern identification: digits accumulated along root-to-leaf paths -> prefix DFS;
+    prefix * 10 + digit represents the current path; only leaves contribute.
 
     Invariant: ``prefix`` is the integer represented by nodes strictly above
     the current node.  Appending the current digit is ``prefix * 10 + value``.
@@ -474,6 +504,9 @@ def sum_numbers(root: Optional[TreeNode]) -> int:
 
 def max_path_sum(root: Optional[TreeNode]) -> int:
     """Return the maximum sum of a path between any two nodes.
+
+    Pattern identification: best path may join two child branches -> postorder DP;
+    return one extendable gain upward, but score both branches locally.
 
     Postorder separates two concepts:
 
@@ -518,6 +551,9 @@ def max_path_sum(root: Optional[TreeNode]) -> int:
 def count_complete_tree_nodes(root: Optional[TreeNode]) -> int:
     """Count nodes in a *complete* binary tree faster than a full traversal.
 
+    Pattern identification: complete-tree count -> boundary-height shortcut;
+    equal boundary heights imply a perfect subtree only under completeness.
+
     In a complete tree, equal leftmost and rightmost heights prove the subtree
     is perfect, so its size is ``2**height - 1``.  Otherwise recurse into both
     children.  The completeness precondition matters: equal boundary heights
@@ -557,6 +593,9 @@ def lowest_common_ancestor(
 ) -> Optional[TreeNode]:
     """Return the lowest node whose subtree contains both target nodes.
 
+    Pattern identification: two existing targets in an unordered tree -> match DFS;
+    two nonempty child matches identify the split; otherwise propagate one match.
+
     Identity, not value, identifies targets; duplicate values are therefore
     safe.  If left and right each return a target, the current node is their
     split point.  If only one side returns a node, propagate it upward.
@@ -586,6 +625,9 @@ def lowest_common_ancestor(
 def right_side_view(root: Optional[TreeNode]) -> list[int]:
     """Return the final visible node at each level.
 
+    Pattern identification: one rightmost value per depth -> level-batched BFS;
+    the last node in each left-to-right batch is the visible node.
+
     BFS makes level boundaries explicit.  Because children are enqueued
     left-to-right, the last node removed in each level is the right-side view.
 
@@ -614,6 +656,9 @@ def right_side_view(root: Optional[TreeNode]) -> list[int]:
 def average_of_levels(root: Optional[TreeNode]) -> list[float]:
     """Return the arithmetic mean of values at each depth.
 
+    Pattern identification: aggregate values by depth -> level-batched BFS;
+    freeze queue length so each sum and divisor cover exactly one level.
+
     Time: O(n)
     Space: O(w)
     """
@@ -639,6 +684,9 @@ def average_of_levels(root: Optional[TreeNode]) -> list[float]:
 
 def zigzag_level_order(root: Optional[TreeNode]) -> list[list[int]]:
     """Return level values with alternating left-to-right direction.
+
+    Pattern identification: alternating level output -> BFS plus deque placement;
+    traversal stays left-to-right; only output placement alternates by level.
 
     Nodes are always traversed in ordinary BFS order; only placement in the
     current result row changes.  This avoids reversing whole levels afterward
@@ -681,6 +729,9 @@ def zigzag_level_order(root: Optional[TreeNode]) -> list[list[int]]:
 def get_minimum_difference(root: Optional[TreeNode]) -> int:
     """Return the minimum absolute difference between values in a BST.
 
+    Pattern identification: smallest BST value gap -> iterative inorder;
+    previous is the last sorted value, so only adjacent gaps need comparison.
+
     Inorder visits BST values in increasing order, so the global minimum must
     occur between adjacent visited values.  The iterative stack is preferable
     here because it exposes the previous-value invariant and avoids recursion.
@@ -717,6 +768,9 @@ def get_minimum_difference(root: Optional[TreeNode]) -> int:
 def kth_smallest(root: Optional[TreeNode], k: int) -> int:
     """Return the 1-indexed kth smallest BST value using iterative inorder.
 
+    Pattern identification: BST rank query -> early-stop inorder stack;
+    popped values are sorted and the kth visit is the requested rank.
+
     The stack contains the path of ancestors whose value/right subtree has not
     yet been processed.  Stopping after k visits can be much cheaper than
     materializing all n values.
@@ -747,6 +801,9 @@ def kth_smallest(root: Optional[TreeNode], k: int) -> int:
 def is_valid_bst(root: Optional[TreeNode]) -> bool:
     """Return whether every node obeys all ancestor-imposed BST bounds.
 
+    Pattern identification: global strict BST validity -> range-propagating DFS;
+    each open interval contains exactly the values allowed by all ancestors.
+
     Checking only a node against its parent is insufficient: a deep node can
     violate the root's range.  Each recursive call therefore carries the open
     interval allowed by every ancestor.  ``None`` bounds avoid assumptions
@@ -776,6 +833,9 @@ def is_valid_bst(root: Optional[TreeNode]) -> bool:
 
 class BSTIterator(Iterator[int]):
     """Lazy inorder iterator using O(h) memory instead of storing all values.
+
+    Pattern identification: sorted BST values on demand -> lazy left-spine stack;
+    the stack top is always the next smallest unreturned node.
 
     The stack is maintained so its top is always the next smallest unreturned
     node.  After returning a node, pushing the left spine of its right subtree

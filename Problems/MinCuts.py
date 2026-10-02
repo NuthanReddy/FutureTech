@@ -1,5 +1,7 @@
 # Dynamic Programming Solution for
 # Palindrome Partitioning Problem
+# Pattern identification: minimize cuts into palindromes -> interval palindrome DP + prefix-cut DP;
+# build shorter palindrome intervals first, then minimize cuts using already solved prefixes.
 import sys
 
 

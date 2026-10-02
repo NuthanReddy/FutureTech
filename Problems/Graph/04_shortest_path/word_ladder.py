@@ -12,7 +12,11 @@ from typing import List
 
 
 def ladder_length(begin_word: str, end_word: str, word_list: List[str]) -> int:
-    """Return the number of words in the shortest valid transformation."""
+    """Return the number of words in the shortest valid transformation.
+
+    Pattern identification: minimum single-letter changes -> wildcard-bucket BFS;
+    first discovery gives the shortest sequence length for each word.
+    """
     words = set(word_list)
     if end_word not in words:
         return 0

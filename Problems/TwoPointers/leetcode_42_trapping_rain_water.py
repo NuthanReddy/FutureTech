@@ -3,6 +3,8 @@
 #
 # [42] Trapping Rain Water
 #
+# Pattern identification: a rising bar closes basins -> monotonic index stack;
+# heights stay non-increasing; popped bottoms use surviving left and current right walls.
 
 # @lc code=start
 class Solution:
@@ -30,4 +32,3 @@ class Solution:
 
         return water
 # @lc code=end
-

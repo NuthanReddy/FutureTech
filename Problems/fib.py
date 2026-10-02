@@ -1,3 +1,5 @@
+# Pattern identification: recurrence needs only two predecessors -> rolling-state DP;
+# prev_fib and curr_fib hold consecutive Fibonacci values before each update.
 def fibonacci(n):
     if n == 0:
         return 0

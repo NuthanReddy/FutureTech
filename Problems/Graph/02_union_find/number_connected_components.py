@@ -10,7 +10,11 @@ from typing import List
 
 
 def count_components(n: int, edges: List[List[int]]) -> int:
-    """Count components while merging each undirected edge."""
+    """Count components while merging each undirected edge.
+
+    Pattern identification: count undirected groups without routes -> Union-Find;
+    decrease the component count only when two distinct roots merge.
+    """
     parent = list(range(n))
     components = n
 

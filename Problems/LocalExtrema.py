@@ -1,6 +1,8 @@
 # you can write to stdout for debugging purposes, e.g.
 # print("this is a debug message")
 
+# Pattern identification: count peaks/valleys across equal-height runs -> plateau-aware linear scan;
+# intended invariant: compare each run with its outside neighbors; legacy endpoint handling is incomplete.
 def solution(A):
     # write your code in Python 3.6
     local_extrema_count = 0
@@ -32,6 +34,8 @@ def solution(A):
 #
 # print(solution([-3, -3]))
 
+# Pattern identification: visit matrix anti-diagonals -> diagonal-index traversal;
+# intended invariant: row + column stays constant within a diagonal; this scratch traversal is unfinished.
 def foo(arr):
     a = dict()
     # [[1,2,3,4], [5,6,7,8], [9,10,11,12]]

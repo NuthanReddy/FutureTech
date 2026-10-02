@@ -1,5 +1,7 @@
 # -----------------------------------------------------------------------
 # Find Median from Data Stream
+# Pattern identification: online middle-value queries -> balanced lower/upper heaps;
+# every lower value <= every upper value, with lower size equal or one larger.
 #
 # Problem:
 #   Design a data structure that supports:

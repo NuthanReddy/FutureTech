@@ -9,6 +9,8 @@
 # Write a program that takes as input the height of each tree in the field.
 # It should return the direction (`N` or `W`) and the index from which the wire should enter the field,
 # so that it is hanging closest to the ground.
+# Pattern identification: choose the lowest straight row/column route -> minimax grid scan;
+# intended invariant: each route is bounded by its tallest tree; legacy extrema tracking is incomplete.
 
 arr = [[3, 2, 4, 4], [5, 6, 3, 4], [2, 1, 4, 5], [5, 2, 1, 3]]
 

@@ -13,6 +13,9 @@ from __future__ import annotations
 def longest_consecutive(nums: list[int]) -> int:
     """Return the length of the longest consecutive integer sequence.
 
+    Pattern identification: consecutive values in unsorted input -> set-start scans;
+    only predecessor-free values start runs, so each distinct value is scanned once.
+
     A number starts a sequence only when its predecessor is absent.  From
     each such start, the inner loop advances through present successors.
     Every value belongs to at most one forward scan because non-start values

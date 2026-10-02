@@ -7,6 +7,9 @@
 # @lc code=start
 class Solution:
     def myPow(self, x: float, n: int) -> float:
+        """Pattern identification: large integer exponent -> binary exponentiation ->
+        result * x**n stays equal to the normalized power as n halves.
+        """
         if n < 0:
             x = 1 / x
             n = -n
@@ -20,4 +23,3 @@ class Solution:
             n //= 2
         return result
 # @lc code=end
-
