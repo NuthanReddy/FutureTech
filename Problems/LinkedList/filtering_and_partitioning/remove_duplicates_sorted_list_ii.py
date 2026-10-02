@@ -29,6 +29,13 @@ def delete_duplicates(head: Optional[ListNode]) -> Optional[ListNode]:
 
     Time: O(n); extra space: O(1).
     """
+    # 1. Output: Return only nodes whose values appear exactly once, not one copy of each repeated value.
+    # 2. Structure: Sorted values put all copies of a value in one consecutive run.
+    # 3. Constraints: Assume sorted input; an empty list returns None. O(n) time and O(1) extra space.
+    # 4. Choice: Equal values are adjacent, so skip each whole repeated run using the last retained node's next link.
+    # A singleton advances the retained node; no separate frequency dictionary is needed.
+    # 5. Why it works: The retained prefix contains only singleton runs; no later copy can exist in sorted input.
+    # A placeholder before head lets us discard a repeated run at the start as well.
     dummy = ListNode(next=head)
     previous_unique = dummy
     current = head
@@ -53,6 +60,11 @@ class Solution:
         self,
         head: Optional[ListNode],
     ) -> Optional[ListNode]:
+        # 1. Output: Return the chain after removing every value that occurred more than once.
+        # 2. Structure: Sorted nodes group equal values into adjacent runs.
+        # 3. Constraints: Empty input is valid; the helper takes O(n) time and O(1) extra space.
+        # 4. Choice: Call delete_duplicates to skip repeated runs while linking singleton runs.
+        # 5. Why it works: Each complete run is examined before deciding whether any node may remain.
         return delete_duplicates(head)
 
 

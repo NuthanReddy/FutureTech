@@ -47,6 +47,13 @@ def find_words(board: list[list[str]], words: list[str]) -> list[str]:
     Pattern identification: many words on a no-cell-reuse grid -> trie-guided DFS;
     trie prefix equals the board path, with visited cells restored on backtrack.
     """
+    # 1. Output: Return each dictionary word found along a legal board path once.
+    # 2. Structure: Neighboring board cells spell words; shared word beginnings let one search serve many words.
+    # 3. Constraints: No cell reuse within a path; lowercase rectangular boards are restored after searching.
+    # 4. Choice: Store shared beginnings in a trie; search paths from each cell only while that prefix exists.
+    #    Mark/restore cells on each path, clear found words to avoid duplicates, and remove spent trie leaves.
+    # 5. Why it works: The trie path equals the board prefix, so missing children safely reject a branch.
+    #    With S dictionary characters and longest length L, time is O(S + R*C*4^L), space O(S + L).
     if not board or not board[0] or not words:
         return []
 

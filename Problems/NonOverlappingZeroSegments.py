@@ -1,6 +1,12 @@
 # Pattern identification: maximize disjoint zero-sum segments -> prefix-sum map + earliest-finish greedy;
 # accept equal prefixes only when the earlier index is at/after the last accepted endpoint.
 def max_beautiful_segments(n, arr):
+    # 1. Output: Return the maximum count of disjoint zero-sum contiguous segments.
+    # 2. Structure: Adjacent array values form segments; equal running sums expose a zero sum.
+    # 3. Constraints: Negatives prevent predictable window shrinking; assume 0<=n<=len(arr).
+    # 4. Choice: Store latest sum positions; commit to the first repeat whose segment avoids earlier choices.
+    # 5. Why it works: Latest positions detect any non-overlapping repeat; replacing an
+    # optimum's next segment with this earlier-ending one keeps every later segment available.
     prefix_sum = 0
     prefix_map = {0: -1}
     beautiful_segments = 0

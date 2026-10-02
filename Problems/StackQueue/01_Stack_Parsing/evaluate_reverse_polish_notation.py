@@ -26,6 +26,13 @@ def eval_reverse_polish(tokens: list[str]) -> int:
 
     Complexity: O(n) time and O(n) space.
     """
+    # 1. Output: Return the expression's integer value, with division truncated toward zero.
+    # 2. Structure: Postfix notation places each binary operator after the two values it combines.
+    # 3. Constraints: Reject missing operands, extra results, and division by zero; O(n) token work/space.
+    # 4. Choice: Each operator needs the newest two results, so use a stack: push numbers, pop right then left.
+    # Push their combined result so the next operator can use it without rereading earlier tokens.
+    # 5. Why it works: Stack entries are the completed subexpressions not yet combined by an operator.
+    # Keeping operand order preserves subtraction/division; a valid expression finishes with one entry.
     stack: list[int] = []
     operators = {"+", "-", "*", "/"}
 

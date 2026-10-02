@@ -50,6 +50,12 @@ def find_redundant_connection(edges: List[List[int]]) -> List[int]:
     Pattern identification: undirected tree plus one extra edge -> Union-Find;
     equal roots mean an existing path, so the rejected edge closes the cycle.
     """
+    # 1. Output: Return the cycle edge appearing last among valid removal choices.
+    # 2. Structure: A tree plus one extra edge has one cycle; an edge within an existing group closes it.
+    # 3. Constraints: Labels are 1..len(edges); the single-extra-edge assumption makes one rejection enough.
+    # 4. Choice: Process edges in order with size-balanced Union-Find; return the first failed union.
+    # 5. Why it works: A failed union closes an existing path and is the last processed edge of the sole cycle.
+    #    Path halving plus union by size gives O(n * alpha(n)) time and O(n) storage.
     n = len(edges)
     uf = _UnionFind(n)
     for u, v in edges:

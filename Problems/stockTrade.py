@@ -62,6 +62,12 @@ def trade(sell_stock, buy_stock, seller_queue, buyer_queue):
 # Pattern identification: match streaming buy/sell requests -> per-stock priority/FIFO queue simulation;
 # intended invariant: queues retain unmatched quantities; legacy parsing/queue APIs are incomplete.
 def stream_trade(s):
+    # 1. Output: Intend to print matched trades and retain unmatched buy/sell quantities.
+    # 2. Structure: Orders arrive over time and can wait for later partners; per-stock queues remember pending work.
+    # 3. Constraints: Parsed quantities must be numeric and matches price-compatible; neither is enforced.
+    # 4. Choice: Parse an order, consume opposite orders, and let trade requeue any remaining quantity.
+    # 5. Why it works: Queues should preserve only unmatched amounts, but split("") fails first;
+    # missing queue imports/nonstandard APIs and absent price checks also prevent reliable matching.
     split_req = s.split("")
     person = split_req[0]
     type = split_req[1]

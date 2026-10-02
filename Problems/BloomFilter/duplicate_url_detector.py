@@ -64,6 +64,16 @@ def detect_duplicates(
 
     Returns a dict of statistics and lists for analysis.
     """
+    # 1. Output: Return probable-repeat occurrences and true/false-positive
+    #    lists, missed duplicates, counts, and the populated filter for analysis.
+    # 2. Structure: The stream needs "seen before?" checks, and probable repeats
+    #    are acceptable; a Bloom filter fits only because false alarms are allowed.
+    # 3. Constraints: Positive capacity and 0 < false_positive_rate < 1 are required;
+    #    k hashes cost O(k) per URL apart from string hashing; exact tracking/lists use O(n) space.
+    # 4. Choice: Query a Bloom filter before setting its bits; compare that answer
+    #    with a seen set to classify the occurrence, then add it to both structures.
+    # 5. Why it works: Previously inserted URLs retain every required bit, so
+    #    repeats cannot be missed; collisions can flag new URLs, which the set exposes.
     bf = BloomFilter(
         expected_items=expected_items,
         false_positive_rate=false_positive_rate,

@@ -38,6 +38,12 @@ DIRECTIONS = ((1, 0), (-1, 0), (0, 1), (0, -1))
 
 def exist(board: list[list[str]], word: str) -> bool:
     """Return True if ``word`` can be formed by adjacent board cells."""
+    # 1. Output: Return whether a non-reusing neighboring-cell path spells word.
+    # 2. Structure: A word must follow four-way neighbors; a matching letter may still lead to a dead end.
+    # 3. Constraints: Assume letters exclude the "#" marker; empty word is True, empty board False.
+    # 4. Choice: Backtrack through neighboring matches, marking and restoring cells; counts prune impossible words.
+    # 5. Why it works: Marked cells cannot be reused, and each call matches the next letter;
+    # restoring on success and failure keeps all other starting paths available.
     if not word:
         return True
     if not board or not board[0]:
@@ -72,8 +78,10 @@ def exist(board: list[list[str]], word: str) -> bool:
         board[row][col] = VISITED
         for row_delta, col_delta in DIRECTIONS:
             if dfs(row + row_delta, col + col_delta, index + 1):
+                # Restore even on early success: the caller must receive its original board.
                 board[row][col] = original
                 return True
+        # All neighbors failed; free this cell for a different path.
         board[row][col] = original
         return False
 

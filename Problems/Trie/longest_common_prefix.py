@@ -40,6 +40,12 @@ def longest_common_prefix(strs: List[str]) -> str:
     Pattern identification: shared prefix across all strings -> single-child
     trie walk; continue only while no word ends and every word shares the edge.
     """
+    # 1. Output: Return the longest beginning shared by all strings, or "" when none exists.
+    # 2. Structure: Shared beginnings follow the same trie path until a branch or word end.
+    # 3. Constraints: No strings or any empty string means ""; the result cannot exceed the shortest word.
+    # 4. Choice: Insert every word, then collect characters while the current node has one child and no end.
+    # 5. Why it works: One child means every word continues identically; branching or ending forbids extension.
+    #    Building and walking take O(S) time and space for S total input characters.
     if not strs:
         return ""
 

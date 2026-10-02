@@ -33,6 +33,13 @@ from __future__ import annotations
 import heapq
 
 
+# 1. Output: Query the price at the greatest timestamp, or the highest/lowest price after all corrections.
+# 2. Structure: Updates can arrive out of order and replace a timestamp's old price.
+# 3. Constraints: Empty queries raise ValueError; updates cost O(log U) for U updates, current costs O(1).
+# 4. Choice: Corrections make old heap entries unreliable, so keep the current price per timestamp in a dictionary.
+# Heaps expose smallest/largest prices; on query discard roots that disagree with that dictionary, not all old entries.
+# 5. Why it works: Each current record has a heap entry; a root agreeing with the dictionary is a valid extreme.
+# Each stale entry is removed once: O(log U) amortized extreme-query work, O(U) storage; one query may clean many.
 class StockPrice:
     """Track the latest, maximum, and minimum stock prices."""
 

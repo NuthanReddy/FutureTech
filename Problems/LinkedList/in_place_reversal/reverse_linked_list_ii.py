@@ -34,6 +34,13 @@ def reverse_between(
 
     Time: O(n); extra space: O(1).
     """
+    # 1. Output: Return the list with only the inclusive positions left through right reversed.
+    # 2. Structure: Positions are one-based in a forward chain; reversing means changing next links.
+    # 3. Constraints: Validate 1 <= left <= right <= length before changing links; O(n) time, O(1) space.
+    # 4. Choice: Only one bounded section changes, so hold before_range fixed and move each next range node to its front.
+    # range_tail remains the original first node, avoiding a search for where to reconnect the section.
+    # 5. Why it works: range_tail remains the original first node; each move extends the reversed prefix.
+    # Nodes outside the range keep their order, and a one-position range needs no rewiring.
     if left < 1 or right < left:
         raise ValueError("require 1 <= left <= right")
 
@@ -55,6 +62,7 @@ def reverse_between(
     range_tail = before_range.next
     for _ in range(right - left):
         moving = range_tail.next  # type: ignore[union-attr]
+        # Unlink moving from its old place before inserting it at the range's front.
         range_tail.next = moving.next  # type: ignore[union-attr]
         moving.next = before_range.next  # type: ignore[union-attr]
         before_range.next = moving
@@ -71,6 +79,11 @@ class Solution:
         left: int,
         right: int,
     ) -> Optional[ListNode]:
+        # 1. Output: Return the list with the selected positions reversed.
+        # 2. Structure: left and right bound a one-based section of the next-linked chain.
+        # 3. Constraints: The helper validates the range; O(n) time and O(1) extra space.
+        # 4. Choice: Delegate to reverse_between, which moves successive range nodes to its front.
+        # 5. Why it works: Each move grows the reversed section while leaving the outside chain connected.
         return reverse_between(head, left, right)
 
 

@@ -78,6 +78,16 @@ employee_id   employee_name      department       designation   in_at_date   in_
 2             Kamli  Dawar       Accounts         Sr. Manager   2021-02-01   08:10:00.000    2021-02-01    16:45:00.000   08:35:00
 */
 
+-- 1. Output: One row per retained In followed by Out, with employee details,
+--    both timestamps and elapsed HH:MM:SS, ordered by employee and clock-in time.
+-- 2. Structure: Repeated In/Out punches cannot be paired raw; keep each run's
+--    last punch first, then the next retained punch can close an In.
+-- 3. Constraints: MySQL 8+ parses HH:MM times; assume valid, distinct timestamps
+--    per employee since no tie-breaker is supplied; NULL/unknown punch types are filtered out.
+-- 4. Choice: Normalize punches, use LEAD to keep run endings, use LEAD again
+--    to pair neighbors, then keep In -> Out and join employee/dimension details.
+-- 5. Why it works: Retained run endings alternate types, so only the next Out
+--    closes an In, even across dates; trailing In/leading Out and missing inner-join details are omitted.
 WITH normalized_attendance AS (
     SELECT
         employee_id,

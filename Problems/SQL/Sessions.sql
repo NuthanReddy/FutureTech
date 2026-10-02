@@ -28,6 +28,16 @@ u1        t6              t7
 u4        t8              t8
 */
 
+-- 1. Output: One row per consecutive same-user run with its first and last
+--    event time, in global run order; a returning user may have multiple rows.
+-- 2. Structure: Switching users ends a run, even if that user returns later;
+--    compare global neighbors and number changes so separate visits are not merged.
+-- 3. Constraints: Assume distinct non-NULL event times; tied times have no
+--    tie-breaker, and NULL user IDs start new runs because NULL equality is unknown.
+-- 4. Choice: LAG the user globally, flag changes, cumulatively sum flags with
+--    a ROWS frame, and group each numbered run to get MIN/MAX timestamps.
+-- 5. Why it works: The running session number changes exactly at a boundary;
+--    grouping by it keeps separated visits apart even when their user IDs match.
 WITH previous_events AS (
     SELECT
         user_id,

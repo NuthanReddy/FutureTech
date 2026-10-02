@@ -38,6 +38,12 @@ class TrieNode:
     is_word: bool = False
 
 
+# 1. Output: Store words, answer exact-word searches, and answer prefix searches.
+# 2. Structure: Common word prefixes can reuse the same character-by-character path.
+# 3. Constraints: Exact search requires a word-end flag; a prefix query only requires its path.
+# 4. Choice: Insert child nodes and mark the final node; lookup walks children, with aliases delegating.
+# 5. Why it works: Each node represents precisely its root-to-node prefix, distinguishing words from prefixes.
+#    Each operation takes O(L) time; storage is O(total inserted characters).
 class Trie:
     """A prefix tree supporting insert, exact search, and prefix search.
 

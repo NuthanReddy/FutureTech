@@ -4,6 +4,12 @@
 # Pattern identification: count peaks/valleys across equal-height runs -> plateau-aware linear scan;
 # intended invariant: compare each run with its outside neighbors; legacy endpoint handling is incomplete.
 def solution(A):
+    # 1. Output: Attempt to count local peak and valley runs, treating equal heights as a plateau.
+    # 2. Structure: Only a run's outside neighbors decide peak or valley status, suggesting a left-to-right scan.
+    # 3. Constraints: Single and two-item inputs have special cases; empty input is unchecked.
+    # 4. Choice: Track previous height and run size while comparing nearby values.
+    # 5. Why it works: Each run should be counted once against valid outside neighbors;
+    # this scan omits the first endpoint and may read A[i+1] past the last plateau.
     # write your code in Python 3.6
     local_extrema_count = 0
     length = len(A)
@@ -37,6 +43,12 @@ def solution(A):
 # Pattern identification: visit matrix anti-diagonals -> diagonal-index traversal;
 # intended invariant: row + column stays constant within a diagonal; this scratch traversal is unfinished.
 def foo(arr):
+    # 1. Output: Attempt to print every matrix cell in anti-diagonal order.
+    # 2. Structure: Constant row+column identifies each anti-diagonal, so index movement can describe the order.
+    # 3. Constraints: Assert a nonempty matrix; assume rectangular rows with at least one column.
+    # 4. Choice: Track row, column, and diagonal number, moving to the next proposed start.
+    # 5. Why it works: Traversal should visit each diagonal cell once, but row+1>=row
+    # is always true, so the within-diagonal move is unreachable and starts can repeat forever.
     a = dict()
     # [[1,2,3,4], [5,6,7,8], [9,10,11,12]]
     assert (len(arr) > 0)

@@ -46,6 +46,12 @@ def is_valid_bst(root: Optional[TreeNode]) -> bool:
     each node must lie strictly inside the interval imposed by all ancestors.
     """
 
+    # 1. Output: Return whether every node obeys strict binary-search-tree ordering.
+    # 2. Structure: Each left/right subtree inherits restrictions from every ancestor, not just its parent.
+    # 3. Constraints: Duplicate values fail strict bounds; an empty tree is valid.
+    # 4. Choice: Recursively pass (low, high), tightening high on the left and low on the right.
+    # 5. Why it works: The allowed interval combines all ancestor rules, catching deep misplaced values.
+    #    Visit each node at most once: O(n) time and O(h) recursion space.
     def _validate(node: Optional[TreeNode], low: float, high: float) -> bool:
         if node is None:
             return True

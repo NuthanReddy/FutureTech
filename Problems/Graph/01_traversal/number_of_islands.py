@@ -19,6 +19,12 @@ def num_islands(grid: List[List[str]]) -> int:
     We mark a cell as soon as it enters the queue.  Therefore no cell can be
     enqueued twice, and each island contributes exactly one counter increment.
     """
+    # 1. Output: Return the number of separate land islands.
+    # 2. Structure: "1" cells connect only vertically or horizontally in a rectangular grid.
+    # 3. Constraints: The grid may be changed, so marking land as water replaces a separate visited set.
+    # 4. Choice: Start BFS at each remaining land cell, count it, and mark queued land as water.
+    # 5. Why it works: Flood fill consumes exactly one component, so it cannot be counted again.
+    #    Every cell is examined a constant number of times: O(R*C) time and worst-case queue space.
     if not grid or not grid[0]:
         return 0
     rows, cols = len(grid), len(grid[0])

@@ -36,6 +36,12 @@ class Solution:
         Pattern identification: mirrored normalized characters -> inward pointers;
         all compared outer pairs match, leaving only the interior unchecked.
         """
+        # 1. Output: Return whether letters and digits read the same from both ends, ignoring case.
+        # 2. Structure: Only mirrored characters need comparing, so two ends can move inward without a reversed copy.
+        # 3. Constraints: Use the implementation's isalnum()/lower() rules; empty or punctuation-only input passes.
+        # 4. Choice: Move two pointers inward, skip non-alphanumeric characters, and reject a differing pair.
+        # 5. Why it works: All discarded outer pairs matched, leaving only the unchecked interior.
+        #    Each pointer moves in one direction: O(n) time and O(1) extra space.
         left, right = 0, len(s) - 1
         while left < right:
             # Non-alphanumeric characters do not participate in the comparison.
@@ -55,6 +61,12 @@ class Solution:
         Pattern identification: deletions preserve order -> forward matching cursor;
         s[:s_index] is matched within the processed prefix of t.
         """
+        # 1. Output: Return whether deleting characters from t can leave s in its original order.
+        # 2. Structure: We may skip t's characters but cannot reorder them, suggesting a forward cursor for each string.
+        # 3. Constraints: Empty s always matches; repeated letters each need their own later match.
+        # 4. Choice: Scan t once and advance s_index only when the next required character matches.
+        # 5. Why it works: Taking the earliest available match leaves the most remaining characters for the suffix.
+        #    s[:s_index] stays matched; O(len(t)) time and O(1) extra space.
         s_index = 0
         for character in t:
             # The invariant is that s[:s_index] has already been matched.
@@ -68,6 +80,12 @@ class Solution:
         Pattern identification: sorted pair sum -> inward pointers;
         every possible remaining pair lies between left and right.
         """
+        # 1. Output: Return distinct one-based indices summing to target, or [] if no pair exists.
+        # 2. Structure: Sorted values make left moves increase sums and right moves decrease them, ruling out many pairs at once.
+        # 3. Constraints: Do not mutate the sequence; one position cannot supply both values.
+        # 4. Choice: Compare the endpoint sum; advance left if too small, or retreat right if too large.
+        # 5. Why it works: A too-small left endpoint cannot pair with anything smaller than right, and vice versa.
+        #    Each discarded endpoint is safe: O(n) time and O(1) extra space.
         left, right = 0, len(numbers) - 1
         while left < right:
             total = numbers[left] + numbers[right]
@@ -86,6 +104,12 @@ class Solution:
         Pattern identification: unique zero-sum triples -> sorted anchor plus pair search;
         pointer moves preserve remaining candidates; duplicate skips prevent repeats.
         """
+        # 1. Output: Return every unique value-triple whose sum is zero.
+        # 2. Structure: Fixing one value leaves two that must sum to its negative; sorting lets endpoints guide that search.
+        # 3. Constraints: This method sorts nums in place; fewer than three values yield no triples.
+        # 4. Choice: Fix each distinct anchor, move endpoint pointers by the sum, and skip duplicate matches.
+        # 5. Why it works: Sorted sums justify each discarded endpoint; duplicate skips remove only repeated triples.
+        #    O(n^2) time; Python sorting uses O(n) extra space, excluding returned triples.
         nums.sort()
         result: list[list[int]] = []
         for anchor in range(len(nums) - 2):
@@ -117,6 +141,12 @@ class Solution:
         Pattern identification: width times shorter wall -> inward pointers;
         after recording area, the shorter endpoint cannot improve with narrower width.
         """
+        # 1. Output: Return the largest area enclosed by two distinct lines.
+        # 2. Structure: Moving inward reduces width; only replacing the shorter wall can improve the limiting height.
+        # 3. Constraints: Heights are nonnegative; fewer than two lines return zero.
+        # 4. Choice: Record the endpoint area, then move the shorter endpoint inward.
+        # 5. Why it works: Keeping that shorter wall while narrowing the width cannot improve its recorded area.
+        #    No better pair is discarded: O(n) time and O(1) extra space.
         left, right = 0, len(height) - 1
         best = 0
         while left < right:
@@ -135,6 +165,12 @@ class Solution:
         Pattern identification: water needs two enclosing maxima -> boundary pointers;
         the smaller running maximum fixes that side's water; processed bars are final.
         """
+        # 1. Output: Return the sum of water trapped above all bars.
+        # 2. Structure: Water needs walls on both sides; knowing the lower wall can settle one end without scanning every pair.
+        # 3. Constraints: Heights are nonnegative; empty input returns zero without accessing a bar.
+        # 4. Choice: Track both running maxima and process the side with the smaller maximum.
+        # 5. Why it works: The opposite maximum covers this side's old maximum; a new taller bar contributes zero.
+        #    Each bar is finalized once: O(n) time and O(1) extra space.
         left, right = 0, len(height) - 1
         left_max = right_max = 0
         water = 0

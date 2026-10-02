@@ -47,6 +47,12 @@ def shortest_path_maze(grid: list[list[int]]) -> int:
         >>> shortest_path_maze([[0, 0, 0], [1, 1, 0], [0, 0, 0]])
         4
     """
+    # 1. Output: Return minimum steps from top-left to bottom-right, or -1 if impossible.
+    # 2. Structure: Open cells in a rectangular grid connect to four orthogonal neighbors.
+    # 3. Constraints: 0 is open and 1 is a wall; empty or blocked endpoints cannot form a path.
+    # 4. Choice: Build unit-weight Graph edges between open cells and query shortest_path().
+    # 5. Why it works: Each graph edge is exactly one legal step, so minimum weight is minimum steps.
+    #    An open single cell needs zero steps; time is O(R*C log(R*C)), space O(R*C).
     if not grid or not grid[0]:
         return -1
 

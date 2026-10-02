@@ -28,6 +28,12 @@ def longest_consecutive(nums: list[int]) -> int:
     Complexity:
         Time ``O(n)`` average, space ``O(n)``.
     """
+    # 1. Output: Return the longest run length of consecutive integer values, or zero for empty input.
+    # 2. Structure: Input positions do not matter; a set can answer whether value + 1 continues a run.
+    # 3. Constraints: Duplicates do not lengthen a run; seek average linear time without sorting.
+    # 4. Choice: Deduplicate in a set; start counting only when value - 1 is absent, avoiding rescans inside a run.
+    # 5. Why it works: Each run has one predecessor-free start, so no run is missed or repeatedly scanned.
+    #    Average O(n) time and O(n) extra space.
     values = set(nums)
     longest = 0
 

@@ -352,6 +352,16 @@ def check_words(
         words: Words to check.
         ground_truth: The actual set of valid words.
     """
+    # 1. Output: Return original word occurrences grouped into true/false
+    #    positives and negatives, not corrected spellings or an exact yes/no list.
+    # 2. Structure: Many words ask about the same dictionary; rejecting absent words
+    #    quickly is useful, and "probably present" is allowed instead of exact acceptance.
+    # 3. Constraints: The filter and lowercase ground-truth set must describe the same dictionary.
+    #    Each check uses k hashes plus string work; output lists store O(q) words.
+    # 4. Choice: The loader hashes lowercase dictionary words; lowercase each query,
+    #    compare Bloom membership with exact set membership, and append to one category.
+    # 5. Why it works: Loaded words retain their bits, so a negative rules out
+    #    dictionary membership; exact comparison identifies collisions among positives.
     results: dict[str, list[str]] = {
         "true_positive": [],
         "true_negative": [],

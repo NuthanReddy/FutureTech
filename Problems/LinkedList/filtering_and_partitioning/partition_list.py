@@ -28,6 +28,13 @@ def partition(head: Optional[ListNode], x: int) -> Optional[ListNode]:
 
     Time: O(n); extra space: O(1).
     """
+    # 1. Output: Return nodes below x followed by nodes at least x, preserving order in each group.
+    # 2. Structure: A forward chain can be split by changing next links rather than copying values.
+    # 3. Constraints: Empty input is valid; reuse nodes in O(n) time and O(1) extra space.
+    # 4. Choice: Order must stay unchanged within each group, so append to two tails rather than sorting the nodes.
+    # Save the next node before detaching current; append to its group, then join the finished chains.
+    # 5. Why it works: Each visited node enters exactly one group at its end, so neither group changes order.
+    # Detaching before appending prevents old links from crossing groups or creating a loop.
     before_dummy = ListNode()
     before_tail = before_dummy
     after_dummy = ListNode()
@@ -57,6 +64,11 @@ class Solution:
         head: Optional[ListNode],
         x: int,
     ) -> Optional[ListNode]:
+        # 1. Output: Return a stable split with values below x first.
+        # 2. Structure: head starts a chain of nodes; x selects which output group each node joins.
+        # 3. Constraints: Nodes are reused; the helper uses O(n) time and O(1) extra space.
+        # 4. Choice: Call partition, which appends nodes to two separate chains and joins them.
+        # 5. Why it works: Appending in encounter order preserves the order within each group.
         return partition(head, x)
 
 

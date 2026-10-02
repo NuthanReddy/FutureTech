@@ -3,10 +3,14 @@
 # Pattern identification: cover a line with fewest fountain ranges -> greedy interval coverage;
 # track farthest reachable end and commit a new range at the current coverage boundary.
 def min_cnt_foun(a, N):
-    # dp[i]: Stores the position of
-    # rightmost fountain that can
-    # be covered by water of leftmost
-    # fountain of the i-th fountain
+    # 1. Output: Return the fewest fountains needed to cover positions 0 through N-1.
+    # 2. Structure: Positions lie on a line, and each fountain covers one unbroken interval.
+    # 3. Constraints: Assume N=len(a)>0 and nonnegative integer ranges; empty input fails at dp[0].
+    # 4. Choice: Greedily scan starts and remember the farthest end; commit when current coverage runs out.
+    # 5. Why it works: At the next uncovered position, replace any covering choice with
+    # the farthest-reaching available one: earlier positions stay covered and later options cannot shrink.
+    # dp[i] is the farthest exclusive right endpoint of any range starting at i.
+    # Despite the variable name, these endpoints support a greedy scan, not DP.
     dp = [-1] * N
 
     # Traverse the array

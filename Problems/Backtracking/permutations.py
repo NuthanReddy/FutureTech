@@ -30,6 +30,12 @@ from __future__ import annotations
 
 def permute(nums: list[int]) -> list[list[int]]:
     """Return all permutations of distinct values in ``nums``."""
+    # 1. Output: List every ordering of nums; an empty list has one empty ordering.
+    # 2. Structure: Every ordering is needed; each position offers any input value not already chosen.
+    # 3. Constraints: Values are assumed distinct; duplicates are not filtered here.
+    # 4. Choice: Backtrack rather than commit to one order: mark an unused index, append, recurse, then undo both.
+    # 5. Why it works: used marks exactly the indices in path; every complete path
+    # uses all positions, and each possible next unused index is explored.
     result: list[list[int]] = []
     path: list[int] = []
     used = [False] * len(nums)
@@ -45,6 +51,7 @@ def permute(nums: list[int]) -> list[list[int]]:
             used[index] = True
             path.append(value)
             dfs()
+            # Restore both pieces of state before the next sibling choice.
             path.pop()
             used[index] = False
 

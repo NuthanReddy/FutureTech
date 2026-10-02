@@ -44,6 +44,12 @@ PHONE_LETTERS: dict[str, str] = {
 
 def letter_combinations(digits: str) -> list[str]:
     """Return all keypad letter combinations for ``digits``."""
+    # 1. Output: List every possible letter string for the digits; empty input gives [].
+    # 2. Structure: Each digit offers several letters, and every ordered combination is wanted.
+    # 3. Constraints: Only digits 2 through 9 are allowed; each has three or four choices.
+    # 4. Choice: Try all letters for one digit before moving to the next; pop to explore the alternatives.
+    # 5. Why it works: The path has exactly one letter per processed digit, and trying
+    # every mapping choice visits every complete string once.
     if not digits:
         return []
 

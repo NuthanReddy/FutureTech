@@ -33,6 +33,12 @@ def rotate_right(
 
     Time: O(n); extra space: O(1).
     """
+    # 1. Output: Return the chain after moving its last k positions to the front.
+    # 2. Structure: Nodes form a forward chain; we can count its length and remember its tail.
+    # 3. Constraints: k must be non-negative; empty/single-node lists stay unchanged. O(n) time, O(1) space.
+    # 4. Choice: Rotation keeps circular node order, so reduce k modulo length, join tail to head, and cut at the new tail.
+    # 5. Why it works: Whole-length rotations change nothing; the temporary ring preserves every node's order.
+    # Cutting after length - shift nodes moves exactly the final shift nodes to the front.
     if k < 0:
         raise ValueError("k must be non-negative")
     if head is None or head.next is None or k == 0:
@@ -67,6 +73,11 @@ class Solution:
         head: Optional[ListNode],
         k: int,
     ) -> Optional[ListNode]:
+        # 1. Output: Return the head after k right rotations.
+        # 2. Structure: head names the first node of a next-linked chain.
+        # 3. Constraints: Non-negative k may exceed the length; O(n) time and O(1) extra space.
+        # 4. Choice: Delegate to rotate_right, which reduces k and cuts a temporary ring.
+        # 5. Why it works: The helper's cut preserves order and makes the old suffix the new prefix.
         return rotate_right(head, k)
 
 

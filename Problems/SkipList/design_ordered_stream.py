@@ -38,6 +38,16 @@ sys.path.insert(0, os.path.join(_project_root, "DataStructures"))
 from SkipList import SkipList
 
 
+# 1. Output: Each insert returns the newly available consecutive values in ID
+#    order, stopping at the first missing ID rather than returning all pending items.
+# 2. Structure: IDs arrive out of order, but only the next expected ID can unlock
+#    output; this calls for pending lookups and a pointer, not sorting every insertion.
+# 3. Constraints: Assume each ID in 1..n arrives once with a string value.
+#    Flushing r items costs expected O((r + 1) log n); pending storage is O(n).
+# 4. Choice: This version stores pending IDs in a skip list and searches at the
+#    next-ID pointer; emit/delete until a gap. A bounded-ID array could also suffice.
+# 5. Why it works: All IDs before the pointer have already been emitted once;
+#    only advancing past present IDs prevents gaps or out-of-order output.
 class OrderedStream:
     """Ordered stream backed by a SkipList for pending items.
 

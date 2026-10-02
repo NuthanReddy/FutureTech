@@ -33,6 +33,13 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 from DataStructures.LRUCache import LRUCache
 
 
+# 1. Output: get returns a stored value or -1; put evicts the least recently used key when full.
+# 2. Structure: The reused cache maps keys to nodes with links to both neighbors, ordered by last use.
+# 3. Constraints: Require positive capacity; average O(1) get/put and O(capacity) storage.
+# 4. Choice: Fast lookup plus oldest-use eviction needs a dictionary and linked order, already supplied by LRUCache.
+# Delegate get/put to that implementation and translate only its missing-key exception to -1.
+# 5. Why it works: The underlying cache moves touched keys to the recent end and evicts the opposite end.
+# The adapter changes only the miss result, not the one-node-per-key recency order.
 class LRUCacheLeetCode:
     """LeetCode-style LRU Cache backed by DataStructures.LRUCache.
 

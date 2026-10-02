@@ -26,6 +26,15 @@ def knapsack_memo(weights: List[int], values: List[int], capacity: int) -> int:
     Pattern identification: each item once under capacity -> item/resource DP ->
     both take and skip advance the index, preventing reuse.
     """
+    # 1. Output: Return the largest total value that fits the capacity.
+    # 2. Structure: Each item fits or does not fit the remaining capacity;
+    #    the same remaining items/capacity recur, and a biggest-value pick may lose.
+    # 3. Constraints: Assume equal-length lists, positive weights, non-negative
+    #    capacity C. O(n*(C+1)) time/space; recursive depth must fit Python's limit.
+    # 4. Choice: Remember best value for each (index, remaining_capacity); no items/capacity gives 0.
+    #    Skip the item, or take it if it fits, advancing the index either way.
+    # 5. Why it works: Take/skip covers every feasible subset, and advancing
+    #    the index prevents reusing an item; max selects the best subset value.
     n = len(weights)
 
     @lru_cache(maxsize=None)
@@ -50,6 +59,15 @@ def knapsack_tab(weights: List[int], values: List[int], capacity: int) -> int:
     Pattern identification: each item once under capacity -> suffix/capacity table ->
     transitions read only the next item row, keeping every choice 0/1.
     """
+    # 1. Output: Return the maximum value of a subset that fits the capacity.
+    # 2. Structure: Each item is used once; taking it changes capacity while
+    #    both take/skip leave the same later items, so compare their stored best values.
+    # 3. Constraints: Assume equal-length lists, positive weights, non-negative
+    #    capacity C. O(n*(C+1)) time and space; empty items give 0.
+    # 4. Choice: Store best value per item/capacity; start the no-items row at zero and fill backward;
+    #    compare skipping with taking plus the next row's reduced-capacity value.
+    # 5. Why it works: Reading only the next row uses each item at most once;
+    #    both legal choices are evaluated using already optimal suffix results.
     n = len(weights)
     dp = [[0] * (capacity + 1) for _ in range(n + 1)]
 
@@ -77,6 +95,15 @@ def coin_change_memo(coins: List[int], amount: int) -> int:
     represents an impossible remainder and is converted to ``-1`` at the API
     boundary.
     """
+    # 1. Output: Return the fewest reusable coins making amount, or -1 if impossible.
+    # 2. Structure: Coins may be reused, and different choices leave the same amounts.
+    #    Biggest-first is unsafe: for [1,3,4] and 6, 3+3 beats 4+1+1.
+    # 3. Constraints: Ignore non-positive coins; negative amount gives -1.
+    #    For k coins and amount A: O(k*(A+1)) time, O(A+k) space; recursion is limited.
+    # 4. Choice: Remember the fewest coins for each remaining amount; zero needs zero coins.
+    #    Try every fitting coin plus one, keeping infinity for impossible states.
+    # 5. Why it works: Every non-empty payment has a first coin tried here;
+    #    minimizing its optimal remainder gives the fewest coins overall.
     if amount < 0:
         return -1
     usable_coins = tuple(coin for coin in coins if coin > 0)
@@ -101,6 +128,15 @@ def coin_change_tab(coins: List[int], amount: int) -> int:
     Pattern identification: unlimited coins, minimum count -> ascending amount DP ->
     smaller amounts are optimal and may already include the same coin.
     """
+    # 1. Output: Return the minimum number of coins making amount, or -1.
+    # 2. Structure: Any last coin leaves a smaller amount; positive coins let
+    #    those answers be filled first, without assuming biggest-first is best.
+    # 3. Constraints: Ignore non-positive coins; negative amount gives -1.
+    #    With k coins and amount A: O(k*(A+1)) time and O(A+1) space.
+    # 4. Choice: dp[a] stores the fewest coins for a; set dp[0]=0, others=A+1, and fill upward
+    #    with min(dp[current], dp[current-coin]+1) for each fitting coin.
+    # 5. Why it works: Smaller amounts are solved first and can reuse coins;
+    #    A+1 exceeds any feasible count, so it safely marks impossibility.
     if amount < 0:
         return -1
     dp = [amount + 1] * (amount + 1)
@@ -119,6 +155,15 @@ def can_partition_memo(nums: List[int]) -> bool:
     Pattern identification: equal halves with each number once -> half-sum 0/1 DP ->
     take/skip advances the index; an odd total cannot split equally.
     """
+    # 1. Output: Return whether the numbers split into two subsets with equal sums.
+    # 2. Structure: One subset must total half the overall sum; each number
+    #    can belong to it once, and only index/remaining sum affect later choices.
+    # 3. Constraints: Assume positive integers; empty input is True, odd total is False.
+    #    For half-sum T: O(n*(T+1)) time/space; recursive depth must fit Python's limit.
+    # 4. Choice: Remember whether (index, remaining) can succeed; zero succeeds, exhausted
+    #    items or negative remaining fails; try skip/take with the next index.
+    # 5. Why it works: Both choices enumerate all subsets without reuse;
+    #    a subset reaching half the total leaves exactly the same sum outside it.
     total = sum(nums)
     if total % 2:
         return False
@@ -146,6 +191,15 @@ def can_partition_tab(nums: List[int]) -> bool:
     Descending targets are essential: they ensure each input number updates a
     state only once, whereas ascending targets would accidentally reuse it.
     """
+    # 1. Output: Return whether two equal-sum subsets can contain all the numbers.
+    # 2. Structure: One half-sum subset guarantees an equal other half;
+    #    reuse is forbidden, so each number must extend only earlier-number sums.
+    # 3. Constraints: Assume positive integers; empty input is True, odd total is False.
+    #    For half-sum T: O(n*(T+1)) time and O(T+1) space.
+    # 4. Choice: reachable[s] says earlier numbers can make s; seed zero=True and update downward
+    #    using reachable[current] or reachable[current-number].
+    # 5. Why it works: Descending order reads states from before this number,
+    #    preventing reuse; all take/skip subsets are represented after each pass.
     total = sum(nums)
     if total % 2:
         return False

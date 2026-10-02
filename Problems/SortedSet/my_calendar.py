@@ -33,6 +33,16 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 from DataStructures.SortedSet import SortedSet
 
 
+# 1. Output: Accept a booking with True only if it avoids every accepted event;
+#    return False without changing the calendar for conflicts or start >= end.
+# 2. Structure: Accepted bookings never overlap; ordering them by start exposes
+#    the nearest booking before and after a proposed start instead of scanning all events.
+# 3. Constraints: Touching endpoints are allowed; the tuple probes assume
+#    nonnegative calendar times. AVL-backed bookings take O(log n) time, O(n) space.
+# 4. Choice: Keep bookings in a SortedSet; reject if the earlier neighbor ends
+#    after start or the later neighbor starts before end, otherwise insert.
+# 5. Why it works: With disjoint ordered bookings, only these neighbors can
+#    overlap a new event; accepting only safe insertions preserves that property.
 class MyCalendar:
     """Calendar that rejects double-bookings.
 

@@ -27,6 +27,13 @@ def max_sliding_window(values: list[int], window_size: int) -> list[int]:
 
     Complexity: O(n) time and O(k) space, where k is ``window_size``.
     """
+    # 1. Output: Return the maximum of every full window in left-to-right order.
+    # 2. Structure: Fixed-size windows overlap; indices reveal when a value leaves the window.
+    # 3. Constraints: Invalid sizes return []; allow equal/negative values. O(n) time, O(k) candidate space.
+    # 4. Choice: Windows overlap, so reuse maximum candidates in a deque rather than rescan every window.
+    # Remove expired front indices and weaker back values; both ends must be removable, unlike a simple stack.
+    # 5. Why it works: Candidate values decrease, so the front is the maximum still inside the window.
+    # A newer equal/larger value outlasts an older one; each index enters and leaves at most once.
     if window_size <= 0 or window_size > len(values):
         return []
 

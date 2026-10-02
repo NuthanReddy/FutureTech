@@ -19,6 +19,12 @@ def solve(board: List[List[str]]) -> None:
     The invariant is that every temporary ``#`` is reachable from a border
     cell, so it must not be captured.  All remaining ``O`` cells are enclosed.
     """
+    # 1. Output: Change enclosed O regions to X in place; return no result.
+    # 2. Structure: Only four-directional O paths reaching a board border are safe.
+    # 3. Constraints: The board is rectangular and contains X/O; empty input needs no changes.
+    # 4. Choice: BFS from border O cells using # as a safe marker, then restore markers and capture O.
+    # 5. Why it works: Marked cells are exactly border-connected cells; every unmarked O is enclosed.
+    #    Each cell is processed a constant number of times: O(R*C) time and worst-case queue space.
     if not board or not board[0]:
         return
     rows, cols = len(board), len(board[0])

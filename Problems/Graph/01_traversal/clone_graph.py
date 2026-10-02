@@ -26,6 +26,13 @@ def clone_graph(node: Optional[Node]) -> Optional[Node]:
     Pattern identification: cyclic adjacency copy -> BFS with identity map;
     each original has exactly one clone, created before exploring neighbors.
     """
+    # 1. Output: Return a deep-copied start node with the same values and neighbor links.
+    # 2. Structure: Neighbor references form a graph that can contain cycles and self-loops.
+    # 3. Constraints: Cycles can lead back to copied nodes, so remember copies by identity, not value.
+    #    Copy only the reachable component; None returns None without allocating nodes.
+    # 4. Choice: BFS with an original-to-copy dictionary; create each copy before linking neighbors.
+    # 5. Why it works: One copy per original identity preserves sharing and prevents cyclic revisits.
+    #    Each node and neighbor link is processed once: O(V + E) time and space including copies.
     if node is None:
         return None
     # The map is the key invariant: one original identity has one clone.

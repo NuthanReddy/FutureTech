@@ -31,6 +31,12 @@
 # Pattern identification: count scoring sequences with forbidden consecutive fours -> memoized state DP;
 # (remaining runs, previous-was-four) determines legal branches; negative totals contribute no ways.
 def countWays(N, prevWasFour, memo):
+    # 1. Output: Count ordered scoring sequences totaling N without consecutive fours.
+    # 2. Structure: Different sequences reach the same remaining total; only whether the previous score was four matters.
+    # 3. Constraints: Assume integer N and a memo for this recurrence; zero has one empty continuation.
+    # 4. Choice: Memoize (remaining runs, previous-was-four); subtract a legal score and update the flag.
+    # 5. Why it works: Each sequence has one first score, so branches do not overlap;
+    # the flag prevents adjacent fours, and negative remainders contribute no valid sequences.
     if N < 0:
         return 0
     if N == 0:

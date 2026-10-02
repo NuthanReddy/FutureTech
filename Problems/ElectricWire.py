@@ -32,6 +32,12 @@ col_maxs = [5, 6, 4, 5]
 
 
 def pull_the_wire(arr):
+    # 1. Output: Intend to print N or W and the lowest-clearance column or row index.
+    # 2. Structure: Only whole rows or columns are legal routes; each route's tallest tree decides clearance.
+    # 3. Constraints: Assume a nonempty square grid; clearance must exceed its tallest tree.
+    # 4. Choice: Scan rows and columns, tracking proposed extrema and the best route.
+    # 5. Why it works: A safe route comparison needs true maximum heights; this attempt
+    # stores indices as maxima and compares second maxima that may be None, so it fails that invariant.
     min_row_heigth = None
     min_row_index = 0
     no_of_rows = len(arr)

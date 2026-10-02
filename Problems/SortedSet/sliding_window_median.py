@@ -52,6 +52,16 @@ def sliding_window_median(nums: List[int], k: int) -> List[float]:
         >>> sliding_window_median([1, 2], 1)
         [1.0, 2.0]
     """
+    # 1. Output: Return each window's median as a float, averaging the two
+    #    middle values when k is even.
+    # 2. Structure: Each window needs values in sorted order to find its middle;
+    #    moving one step changes only the outgoing and incoming occurrences.
+    # 3. Constraints: Empty input or k <= 0 gives []; otherwise assume k <= n.
+    #    Full sorted traversal costs O(n * k) time and O(k) working space.
+    # 4. Choice: Store (value, index) keys in a SortedSet so duplicates survive;
+    #    remove the departing key, add the arriving key, and read sorted middle values.
+    # 5. Why it works: The set holds exactly the current k occurrences;
+    #    sorting by value puts the required median positions in the middle.
     n = len(nums)
     if n == 0 or k <= 0:
         return []

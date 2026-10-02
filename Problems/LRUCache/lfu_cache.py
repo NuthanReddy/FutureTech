@@ -107,6 +107,13 @@ class _DoublyLinkedList:
 # LFU Cache
 # ---------------------------------------------------------------------------
 
+# 1. Output: get returns a value or -1; full-cache put evicts the least-used key, oldest use breaking ties.
+# 2. Structure: Operations change usage counts; a dictionary finds each node and frequency lists order equal counts.
+# 3. Constraints: Non-positive capacity stores nothing; average O(1) operations, with empty frequency lists retained.
+# 4. Choice: Eviction has two rules, so group nodes by use count and link equal-count nodes in order of last use.
+# Start at count 1; touches move to the next count's front; evict the oldest node in the lowest occupied count.
+# 5. Why it works: Each key belongs to its current count's list; neighbor links preserve recency within that count.
+# min_freq identifies the lowest occupied count; storage includes capacity-limited nodes plus retained count buckets.
 class LFUCache:
     """Least-Frequently-Used cache with O(1) get and put.
 

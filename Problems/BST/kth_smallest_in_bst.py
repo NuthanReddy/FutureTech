@@ -35,6 +35,12 @@ def kth_smallest(root: Optional[TreeNode], k: int) -> int:
     Pattern identification: rank query on a BST -> early-stop iterative inorder;
     popped nodes are visited in sorted order, so visit k supplies the answer.
     """
+    # 1. Output: Return the 1-indexed kth smallest BST value.
+    # 2. Structure: BST ordering makes left-node-right traversal visit values in sorted order.
+    # 3. Constraints: k is assumed positive; exhausting the tree before visit k raises ValueError.
+    # 4. Choice: Push each left spine, pop and count nodes, then continue into the right subtree.
+    # 5. Why it works: Each pop is the next sorted value, so the kth pop has the requested rank.
+    #    Early stopping costs O(h + k) time and O(h) stack space, where h is tree height.
     stack: list[TreeNode] = []
     current = root
     count = 0

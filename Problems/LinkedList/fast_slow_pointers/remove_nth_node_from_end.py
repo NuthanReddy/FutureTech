@@ -28,6 +28,13 @@ def remove_nth_from_end(
 
     Time: O(length); extra space: O(1).
     """
+    # 1. Output: Return the head after removing the nth node counted backward from the end.
+    # 2. Structure: A singly linked list only lets us move forward through next links.
+    # 3. Constraints: Require 1 <= n <= length; invalid n raises ValueError. O(length) time, O(1) space.
+    # 4. Choice: We cannot walk backward from the tail, so start fast n links ahead and move both references together.
+    # Start at a placeholder head so slow can precede even the first real node.
+    # 5. Why it works: Their n-link gap stays fixed; when fast is at the tail, slow precedes the target.
+    # Skipping slow.next removes exactly that node, even when it is the original head.
     if n < 1:
         raise ValueError("n must be at least 1")
 
@@ -56,6 +63,11 @@ class Solution:
         head: Optional[ListNode],
         n: int,
     ) -> Optional[ListNode]:
+        # 1. Output: Return the list with its nth node from the end removed.
+        # 2. Structure: head starts a forward-only chain; n measures a position from the tail.
+        # 3. Constraints: The helper checks n against the length; O(length) time and O(1) extra space.
+        # 4. Choice: Delegate to remove_nth_from_end and its two references kept n links apart.
+        # 5. Why it works: The gap leaves the trailing reference immediately before the node to skip.
         return remove_nth_from_end(head, n)
 
 

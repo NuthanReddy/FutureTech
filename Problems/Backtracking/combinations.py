@@ -31,6 +31,12 @@ from __future__ import annotations
 
 def combine(n: int, k: int) -> list[list[int]]:
     """Return all combinations of ``k`` numbers chosen from ``1..n``."""
+    # 1. Output: List every size-k selection from 1 through n.
+    # 2. Structure: All size-k selections are required, not just one; increasing order removes reordered copies.
+    # 3. Constraints: Negative inputs are rejected; k=0 gives [[]], and k>n gives [].
+    # 4. Choice: Try each possible next value and undo it; skip starts with too few numbers left to fill k slots.
+    # 5. Why it works: Every selection has one increasing path, and pruning only removes
+    # paths that cannot reach k values; copying answers keeps later undo steps separate.
     if k < 0 or n < 0:
         raise ValueError("n and k must be non-negative")
     if k == 0:

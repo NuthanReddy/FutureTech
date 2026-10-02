@@ -34,6 +34,14 @@ def summary_ranges(nums: List[int]) -> List[str]:
     Pattern identification: sorted distinct consecutive values -> run compression ->
     start/previous delimit the current maximal run; a gap flushes it.
     """
+    # 1. Output: Return maximal consecutive runs as single-number or "start->end" strings.
+    # 2. Structure: Sorted distinct values belong to the same run exactly when they differ by one.
+    # 3. Constraints: Assume sorted distinct integers; empty input returns [].
+    #    O(n) time and O(n) extra space, including the slice/sentinel list and output.
+    # 4. Choice: Track start and previous; extend on previous+1, otherwise
+    #    emit the run and restart. A final None sentinel flushes the last run.
+    # 5. Why it works: Every gap proves the current run cannot extend;
+    #    emitting at gaps and the sentinel covers each value exactly once.
     if not nums:
         return []
     result: List[str] = []
@@ -54,6 +62,15 @@ def merge(intervals: List[List[int]]) -> List[List[int]]:
     Pattern identification: union of overlapping ranges -> sort starts and coalesce ->
     the output covers the processed prefix; only its last range can still extend.
     """
+    # 1. Output: Return sorted ranges covering the union, with overlaps/touching ranges merged.
+    # 2. Structure: We need covered ranges, not a maximum compatible selection;
+    #    sorting starts makes the last output range the only one a new range can extend.
+    # 3. Constraints: Assume start <= end; touching endpoints merge here.
+    #    Empty input returns []; O(n log n) time and O(n) space; input is not mutated.
+    # 4. Choice: Sort intervals; if start <= last end extend that end with max,
+    #    otherwise append a new output range.
+    # 5. Why it works: The output always covers exactly the processed intervals;
+    #    sorted starts prove a separated new range cannot overlap earlier output.
     if not intervals:
         return []
     merged: List[List[int]] = []
@@ -73,6 +90,15 @@ def insert(intervals: List[List[int]], new_interval: List[int]) -> List[List[int
     Pattern identification: one addition to sorted disjoint ranges -> three phases ->
     copy ranges before, absorb touching overlaps, then append ranges after.
     """
+    # 1. Output: Return sorted disjoint intervals after inserting and merging the new range.
+    # 2. Structure: Existing ranges are already sorted and separate; one new range
+    #    can only absorb a consecutive group, so no re-sort or choice search is needed.
+    # 3. Constraints: Assume valid sorted disjoint ranges; touching endpoints merge.
+    #    O(n) time/space; new_interval is mutated and output can share input lists.
+    # 4. Choice: Copy ranges strictly before; widen new_interval across all
+    #    touching overlaps; append it and then all remaining ranges.
+    # 5. Why it works: The first/last groups cannot overlap the widened range;
+    #    absorbing the middle group preserves the union without leaving overlaps.
     result: List[List[int]] = []
     index = 0
     while index < len(intervals) and intervals[index][1] < new_interval[0]:
@@ -97,6 +123,15 @@ def erase_overlap_intervals(intervals: List[List[int]]) -> int:
     for all later intervals—the same exchange argument used by activity
     selection.
     """
+    # 1. Output: Return the fewest intervals to remove so the rest do not overlap.
+    # 2. Structure: We want the largest compatible selection, not merged coverage;
+    #    keeping the earliest available finish cannot block a later compatible choice.
+    # 3. Constraints: Assume valid intervals; touching endpoints are compatible.
+    #    Empty input gives 0; O(n log n) time and O(n) sorting space.
+    # 4. Choice: Sort by finish and commit when start >= last kept end, since an earlier finish is safe;
+    #    otherwise count its removal. Start with end at negative infinity.
+    # 5. Why it works: Replacing a kept choice by an earlier finish cannot
+    #    block future choices, so this keeps the most intervals and removes the fewest.
     if not intervals:
         return 0
     removals = 0
@@ -119,6 +154,15 @@ def min_meeting_rooms(intervals: List[List[int]]) -> int:
     Reusing the earliest-ending room is sufficient because all other rooms
     finish no earlier.
     """
+    # 1. Output: Return the minimum number of rooms needed to schedule all meetings.
+    # 2. Structure: Every meeting must be placed, not selected or removed;
+    #    in start order, the earliest room end tells whether any room can be reused.
+    # 3. Constraints: Assume positive-duration meetings; an end equal to a start is compatible.
+    #    Empty input gives 0; O(n log n) time and O(n) extra space.
+    # 4. Choice: Store one end time per allocated room in a min-heap;
+    #    replace its earliest end if <= start, otherwise allocate another room.
+    # 5. Why it works: If the earliest room is still busy, every room is busy
+    #    and a new one is necessary; otherwise reusing a room avoids needless allocation.
     if not intervals:
         return 0
 

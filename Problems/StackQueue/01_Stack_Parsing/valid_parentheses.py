@@ -26,6 +26,13 @@ def is_valid_parentheses(text: str) -> bool:
 
     Complexity: O(n) time and O(n) worst-case space.
     """
+    # 1. Output: Return whether every bracket has a matching partner in the correct nesting order.
+    # 2. Structure: A closer must match the most recent unclosed opener; other characters are ignored.
+    # 3. Constraints: Empty text is valid; reject early closers and leftover openers. O(n) time/space.
+    # 4. Choice: Matching counts cannot check nesting, so stack openers and match each closer against the newest one.
+    # A dictionary gives the required opener type; reject a mismatch instead of searching deeper in the stack.
+    # 5. Why it works: The stack contains exactly the unclosed openers in encounter order.
+    # Matching the newest preserves nesting; an empty final stack means every opener was closed.
     closing_to_open = {")": "(", "]": "[", "}": "{"}
     stack: list[str] = []
 

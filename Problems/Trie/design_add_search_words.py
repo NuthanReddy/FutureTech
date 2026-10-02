@@ -36,6 +36,13 @@ class _Node:
     is_word: bool = False
 
 
+# 1. Output: Store added words and report whether a full search pattern matches one.
+# 2. Structure: Many lookups share word beginnings; "." leaves several possible next letters to try.
+# 3. Constraints: A prefix alone is not a word; wildcard searches may explore many branches.
+# 4. Choice: Store each shared beginning once in a trie and mark complete words; search one letter at a time.
+#    For ".", recursively try each child because any next letter might complete a match.
+# 5. Why it works: Each DFS branch matches the consumed pattern; only a terminal at its end accepts.
+#    Adding takes O(L); search costs the explored trie branches, with O(L) recursion depth.
 class WordDictionary:
     """Trie-backed dictionary with single-character wildcard search.
 

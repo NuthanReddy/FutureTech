@@ -19,12 +19,22 @@
 # A naive array gives O(1) update but O(n) query, or O(n) update with O(1)
 # query using prefix sums.  A Fenwick tree balances both at O(log n) each.
 #
-# Time:  O(n) build, O(log n) per update, O(log n) per query
+# Time:  O(n log n) build, O(log n) per update, O(log n) per query
 # Space: O(n)
 
 from typing import List
 
 
+# 1. Output: Return the current inclusive sum from left through right after
+#    any earlier assignments made by update(index, val).
+# 2. Structure: One array value changes at a time, but many ranges need sums;
+#    fixed prefix totals would become stale after each replacement.
+# 3. Constraints: Assume valid zero-based indices and left <= right; negatives work.
+#    This build is O(n log n), operations O(log n), and storage O(n).
+# 4. Choice: Keep current values and a Fenwick tree of reusable partial sums;
+#    add only new minus old, then subtract totals before the range's two boundaries.
+# 5. Why it works: Each tree entry always summarizes its current array block;
+#    subtracting the prefix before left leaves exactly the requested interval.
 class NumArray:
     """Mutable range-sum structure backed by a Fenwick tree."""
 
@@ -64,4 +74,3 @@ if __name__ == "__main__":
     na.update(1, 2)
     print(na.sum_range(0, 2))  # 8
     print(na.sum_range(1, 2))  # 7
-

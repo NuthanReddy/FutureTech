@@ -15,6 +15,13 @@ def min_cost_connect_points(points: List[List[int]]) -> int:
     Pattern identification: cheapest network connecting all points -> dense Prim;
     best[v] is the cheapest edge from the growing tree to unused point v.
     """
+    # 1. Output: Return the minimum total Manhattan cost of connecting every point.
+    # 2. Structure: Connect all points, not just one route; any pair is allowed and extra cycles only add cost.
+    # 3. Constraints: Zero or one point costs zero; avoid storing every pairwise edge.
+    # 4. Choice: Store each outside point's cheapest link to the growing tree; take the smallest and update links.
+    # 5. Why it works: Any connecting tree must cross from inside to outside; this cheapest crossing is safe.
+    #    Add it to an optimum and remove another crossing on the resulting cycle: cost cannot increase.
+    #    Dense Prim scans points each round: O(n^2) time and O(n) extra space.
     n = len(points)
     if n < 2:
         return 0

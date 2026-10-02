@@ -3,6 +3,12 @@ from collections import deque
 # Pattern identification: longest interval with max - min <= k (k >= 0) -> dual deques;
 # fronts are the live extrema; shrink left until their difference is within k.
 def longest_k_stable_subarray(arr, k):
+    # 1. Output: Return the longest valid subarray's length and inclusive indices; keep the first tie.
+    # 2. Structure: Values must be adjacent; removing leftmost items cannot increase max - min, so shrinking repairs a window.
+    # 3. Constraints: Assume k >= 0 so a single item is valid; empty input returns (0, (0, -1)).
+    # 4. Choice: Keep largest/smallest candidates in two ordered deques; their fronts give the spread while left shrinks.
+    # 5. Why it works: Newer stronger candidates outlast discarded ones; a rejected left boundary stays invalid on expansion.
+    #    Each index enters/leaves each deque once: O(n) time and O(n) extra space.
     if not arr:
         return 0, (0, -1)
     maxd = deque()  # indices of elements in decreasing order

@@ -34,6 +34,16 @@ sys.path.insert(0, os.path.join(_project_root, "DataStructures"))
 from SkipList import SkipList
 
 
+# 1. Output: Maintain duplicate values, delete one copy with a success flag,
+#    and return the sum of all copies whose values lie in inclusive [low, high].
+# 2. Structure: Insertions/deletions change a collection with duplicate values;
+#    keeping keys sorted allows a value-range scan to stop once it passes high.
+# 3. Constraints: Negatives work; empty or reversed ranges sum to 0.
+#    With d distinct keys, updates are expected O(log d), queries O(d), storage O(d).
+# 4. Choice: Store each distinct value once with its copy count in a skip list;
+#    adjust counts on updates and scan for sums; no stored range totals speed this scan.
+# 5. Why it works: Each stored count is positive and equals the live multiplicity;
+#    key * count includes every qualifying copy, and keys past high cannot re-enter the range.
 class RangeSumSortedList:
     """A dynamic sorted collection supporting insert, delete, and range_sum.
 

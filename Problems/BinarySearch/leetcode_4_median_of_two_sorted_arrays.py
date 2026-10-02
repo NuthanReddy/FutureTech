@@ -10,6 +10,14 @@ class Solution:
         """Pattern identification: sorted streams, middle rank -> partial two-pointer merge ->
         each consumed value is the next smallest; this variant is linear, not binary search.
         """
+        # 1. Output: Return the median, averaging the two middle values for even totals.
+        # 2. Structure: Each input is sorted, so its next unread value is its smallest.
+        # 3. Constraints: At least one array must be non-empty; assume both sorted.
+        #    This partial merge takes O(m+n) time and O(1) space, not logarithmic time.
+        # 4. Choice: Advance the pointer with the smaller next value until reaching
+        #    the lower middle; for even totals average it with the next unread value.
+        # 5. Why it works: Each consumed value is next in combined sorted order,
+        #    so counting consumed values locates the required middle rank(s).
         if not nums1:
             if len(nums2) % 2 == 1:
                 return nums2[len(nums2) // 2]

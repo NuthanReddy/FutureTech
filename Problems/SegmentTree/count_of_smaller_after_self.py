@@ -46,6 +46,16 @@ def count_smaller_after_self(nums: List[int]) -> List[int]:
         >>> count_smaller_after_self([])
         []
     """
+    # 1. Output: Return one count per input position: strictly smaller elements
+    #    after that position, not a single total of all such pairs.
+    # 2. Structure: Every position asks about later values; a backward scan lets
+    #    one growing collection of counts answer all these questions.
+    # 3. Constraints: Negatives and duplicates work; empty input returns [].
+    #    Including rank sorting, time is O(n log n) and space is O(n + m) for m ranks.
+    # 4. Choice: Number distinct values in sorted order; a sum segment tree stores
+    #    their counts, so query lower-numbered values before adding this occurrence.
+    # 5. Why it works: The tree contains only values strictly to the right;
+    #    lower ranks count smaller values while equal ranks never enter the answer.
     if not nums:
         return []
 

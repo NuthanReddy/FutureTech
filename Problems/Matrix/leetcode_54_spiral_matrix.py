@@ -9,6 +9,12 @@
 # @lc code=start
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        # 1. Output: Return all matrix values in clockwise spiral order.
+        # 2. Structure: This is a prescribed visiting order, not a path search; each outer ring leaves a smaller rectangle.
+        # 3. Constraints: Assume rectangular rows; empty input returns [], and a single row/column is visited once.
+        # 4. Choice: Walk top, right, bottom, and left edges, moving each boundary inward after visiting it.
+        # 5. Why it works: Bounds enclose unvisited cells; checking crossed bounds prevents duplicate edge visits.
+        #    O(rows*columns) time and O(1) extra space beyond output.
         output = []
         if not matrix:
             return output

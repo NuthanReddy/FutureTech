@@ -16,6 +16,12 @@ class Solution:
         return count
 
     def numSubmatrixSumTarget(self, mat: List[List[int]], target: int) -> int:
+        # 1. Output: Intend to count all contiguous matrix rectangles summing to target.
+        # 2. Structure: Fixing top/bottom rows turns rectangles into adjacent column sums, enabling a subarray counter.
+        # 3. Constraints: Assume a nonempty rectangular matrix; negatives require prefix counts, not a window.
+        # 4. Choice: Accumulate rows into v and call fun, which counts target-sum subarrays by prefix frequency.
+        # 5. Why it works: v should describe every top/bottom row band exactly once, but
+        # j runs from zero to i-1 each time, repeating top-zero bands and missing all later-start bands.
         # Pattern identification: count target-sum rectangles -> row-band compression + prefix-frequency counting;
         # intended invariant: v sums one row band; fun counts its target-sum subarrays (legacy band loops differ).
         m, n = len(mat), len(mat[0])

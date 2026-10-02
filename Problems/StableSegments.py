@@ -5,6 +5,12 @@ from collections import defaultdict
 
 
 def count_stable_segments(input):
+    # 1. Output: Seek segments of length at least three whose equal endpoints each equal the interior sum.
+    # 2. Structure: Equal endpoints v require total sum 3*v, so a running sum can look up matching earlier starts.
+    # 3. Constraints: Values may include zero or negatives; fewer than three items returns zero.
+    # 4. Choice: Count earlier (prefix-before-start, start-value) pairs and query using s-3*v.
+    # 5. Why it works: The key equation tests equal endpoints and the sum relation, but
+    # the scan omits the final endpoint and inserts starts too soon to enforce length three.
     n = len(input)
     if n < 3:
         return 0

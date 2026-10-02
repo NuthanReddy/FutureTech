@@ -32,6 +32,12 @@ def copy_random_list(
 
     Time: O(n); extra space: O(n).
     """
+    # 1. Output: Return a new list with the same values, next links, and random links, sharing no nodes.
+    # 2. Structure: next walks the chain; random may name any node in that chain or None.
+    # 3. Constraints: Reject next-link cycles and outside random targets; O(n) time and O(n) extra space.
+    # 4. Choice: Random targets may not be copied yet, so first map every original to a copy, then translate both links.
+    # 5. Why it works: Every original has exactly one copy before links are set, even for backward/self links.
+    # Translated links point only to copies; empty input needs no copy and returns None.
     if head is None:
         return None
 
@@ -62,6 +68,11 @@ class Solution:
         self,
         head: Optional[RandomListNode],
     ) -> Optional[RandomListNode]:
+        # 1. Output: Return a deep copy through the LeetCode-compatible entry point.
+        # 2. Structure: Each node has a next link and an optional arbitrary random link.
+        # 3. Constraints: The helper validates link targets; O(n) time and O(n) additional storage.
+        # 4. Choice: Call copy_random_list to allocate copies first and translate references second.
+        # 5. Why it works: One copy per original preserves shared targets without sharing original nodes.
         return copy_random_list(head)
 
 

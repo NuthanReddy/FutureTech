@@ -33,6 +33,15 @@ def rob_memo(nums: List[int]) -> int:
     At every index the complete choice is either to skip ``i`` or rob it and
     therefore skip ``i + 1``.  The answer at index zero is the final state.
     """
+    # 1. Output: Return the largest sum of house amounts with no adjacent houses chosen.
+    # 2. Structure: Houses form a row and neighbors conflict; taking the biggest
+    #    house immediately can lose to two smaller houses, so compare take/skip.
+    # 3. Constraints: Non-negative amounts; empty input gives 0. O(n) time/space;
+    #    the recursive version also needs enough Python call-stack depth.
+    # 4. Choice: Remember the best amount from house i onward; past the end gives 0.
+    #    Choose max(skip i via i+1, rob i plus the result at i+2).
+    # 5. Why it works: Every legal plan either skips or robs this house;
+    #    taking the better complete branch cannot miss the best plan.
     n = len(nums)
 
     @lru_cache(maxsize=None)
@@ -56,6 +65,14 @@ def rob_tab(nums: List[int]) -> int:
     The two zero-valued sentinel cells represent the terminal states ``n`` and
     ``n + 1``.  They make the ``i + 2`` transition safe without special cases.
     """
+    # 1. Output: Return the maximum money obtainable without robbing neighboring houses.
+    # 2. Structure: Taking house i blocks i+1; skipping it leaves i+1 available.
+    #    Both choices need best amounts for the remaining row, not a greedy pick.
+    # 3. Constraints: Non-negative amounts; empty input gives 0. O(n) time and space.
+    # 4. Choice: Store best amounts from each house onward; seed two end cells with zero.
+    #    Fill backward: dp[i] = max(dp[i+1], nums[i] + dp[i+2]).
+    # 5. Why it works: Later suffixes are already solved; skip and rob cover all
+    #    legal choices, so each cell stores the true best suffix amount.
     n = len(nums)
     dp = [0] * (n + 2)
 
@@ -77,6 +94,15 @@ def climb_stairs_memo(n: int) -> int:
     state ``ways(n) = 1`` is important: reaching the top is one completed
     route, not zero routes.  ``ways(n + 1) = 0`` is an invalid overshoot.
     """
+    # 1. Output: Return the number of one-step/two-step routes to stair n.
+    # 2. Structure: Routes start with one or two steps; different routes reach
+    #    the same stair, where the number of remaining routes is the same.
+    # 3. Constraints: Negative n gives 0; n=0 gives 1. O(n) time/space;
+    #    recursion must fit Python's call-stack limit.
+    # 4. Choice: Remember remaining routes as ways(step); reaching n gives 1, overshooting 0;
+    #    otherwise add ways(step+1) and ways(step+2).
+    # 5. Why it works: The two first-move groups do not overlap and include
+    #    every route; the base cases count completed routes exactly once.
     if n < 0:
         return 0
 
@@ -97,6 +123,14 @@ def climb_stairs_tab(n: int) -> int:
     Pattern identification: one/two-step routes -> rolling stair-count DP ->
     the two stored counts cover every possible final move.
     """
+    # 1. Output: Return the number of routes to stair n using steps of size one or two.
+    # 2. Structure: The last move comes from stair i-1 or i-2.
+    # 3. Constraints: Negative n gives 0; n=0 or 1 gives 1. O(n) time,
+    #    O(1) stored counts, treating integer arithmetic as constant cost.
+    # 4. Choice: Seed counts for stairs 0 and 1 with 1; repeatedly add the
+    #    previous two counts, replacing them together.
+    # 5. Why it works: Each route has exactly one last move, so adding these
+    #    disjoint groups gives the next correct count without a full table.
     if n < 0:
         return 0
     if n <= 1:
@@ -120,6 +154,15 @@ def word_break_memo(text: str, words: List[str]) -> bool:
     word is the transition; a successful word carries the solution to its
     ending index.  The empty suffix is a valid completed segmentation.
     """
+    # 1. Output: Return whether the whole text can be split into dictionary words.
+    # 2. Structure: Different word choices can reach the same text position.
+    #    That remaining text has the same answer, so solve it once, not greedily.
+    # 3. Constraints: Empty text is True; empty words are ignored. With n text
+    #    characters, w words, max length L: O(n*w*L) time, O(n+w) space; recursion is limited.
+    # 4. Choice: Remember whether text from start onward can split; empty text is True. Try each
+    #    matching non-empty word, then solve the suffix after that word.
+    # 5. Why it works: Every segmentation has a first word tried here;
+    #    success requires both that word and a complete remaining segmentation.
     dictionary = set(words)
     n = len(text)
 
@@ -146,6 +189,15 @@ def word_break_tab(text: str, words: List[str]) -> bool:
     ``dp[end]`` is true when ``text[:end]`` is segmentable.  For each reachable
     prefix, append each dictionary word and carry the truth value forward.
     """
+    # 1. Output: Return whether dictionary words can cover the entire text.
+    # 2. Structure: Every valid beginning ends with a dictionary word after
+    #    another valid beginning; trying only the longest word can miss a split.
+    # 3. Constraints: Empty text is True; empty words are ignored. With n text
+    #    characters, w words, max length L: O(n*w*L) time and O(n+w+L) extra space.
+    # 4. Choice: dp[end] means text[:end] can split; start dp[0]=True and mark dp[end]
+    #    when a matching word follows a True dp[start].
+    # 5. Why it works: Every possible last word is tested against an already
+    #    solved shorter prefix; a True cell describes a complete segmentation.
     dictionary = set(words)
     dp = [False] * (len(text) + 1)
     dp[0] = True  # The empty prefix is the seed for the first word.

@@ -22,6 +22,12 @@ result = [
 # Pattern identification: sum a fixed 3x3 neighborhood -> bounded grid stencil;
 # count only in-bounds offsets (including self); legacy output slicing is unchanged.
 def count_neighbours(input):
+    # 1. Output: Intend to return the sum of each cell's 3x3 neighborhood, including itself.
+    # 2. Structure: Only immediate grid neighbors matter, so nine fixed offsets replace any path search.
+    # 3. Constraints: Out-of-bounds neighbors contribute zero; empty input is returned unchanged.
+    # 4. Choice: Sum safe_get values for every offset and write each sum into output[r][c].
+    # 5. Why it works: Each written sum covers the right neighbors, but output[1:-1]
+    # drops the first computed row and retains padding, so the returned grid is misaligned.
     rows = len(input)
     if rows == 0:
         return input

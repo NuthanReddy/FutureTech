@@ -49,6 +49,12 @@ def network_delay_time(
         >>> network_delay_time([[2,1,1],[2,3,1],[3,4,1]], 4, 2)
         2
     """
+    # 1. Output: Return the last node's earliest signal arrival, or -1 if any is unreachable.
+    # 2. Structure: Links have different travel times, so the fewest links may not give the fastest route.
+    # 3. Constraints: Labels are 1 through n; nonnegative times let Dijkstra safely settle earliest arrivals.
+    # 4. Choice: Query Graph.shortest_path() for each other target and retain the largest distance.
+    # 5. Why it works: Each minimum distance is that node's earliest arrival; their maximum covers all.
+    #    This wrapper repeats Dijkstra: O(V * (V + E) log V) time, O(V + E) space.
     graph = Graph(directed=True)
     for node in range(1, n + 1):
         graph.add_vertex(node)

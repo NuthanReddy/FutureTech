@@ -40,6 +40,13 @@ def merge_k_sorted_lists(lists: list[list[int]]) -> list[int]:
         >>> merge_k_sorted_lists([[1, 4, 5], [1, 3, 4], [2, 6]])
         [1, 1, 2, 3, 4, 4, 5, 6]
     """
+    # 1. Output: Return one sorted Python list containing all input elements, including duplicates.
+    # 2. Structure: Each input is an ascending Python list, not a node chain; indices locate its next value.
+    # 3. Constraints: Empty lists are allowed; N elements across k lists take O(k + N log(k + 1)) time.
+    # 4. Choice: Sorted lists make only their next unused values candidates, so compare those with a min-heap.
+    # Pop the smallest (value, list index, element index) and push only that list's successor.
+    # 5. Why it works: Each nonempty remaining list contributes its smallest unused value, so the root is next.
+    # Only that list advances; the heap uses O(k) space and the returned list uses O(N).
     heap = MinHeap()
     result: list[int] = []
 

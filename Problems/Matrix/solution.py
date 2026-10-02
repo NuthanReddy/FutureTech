@@ -28,6 +28,12 @@ def is_valid_sudoku(board: List[List[str]]) -> bool:
     Pattern identification: overlapping uniqueness constraints -> region sets;
     each set records only previously visited digits in its row, column, or box.
     """
+    # 1. Output: Return whether filled cells obey row, column, and box uniqueness rules.
+    # 2. Structure: A digit must be absent from its row, column, and box; sets remember exactly those earlier digits.
+    # 3. Constraints: Assume a 9-by-9 board containing digits or "."; this variant does not validate dimensions.
+    # 4. Choice: Skip dots, check three region sets for duplicates, then record the digit in each set.
+    # 5. Why it works: Each set remembers earlier digits in its region, so duplicate checks cover all conflicts.
+    #    Fixed board dimensions make time and extra space O(1); solvability is not tested.
     rows = [set() for _ in range(9)]
     columns = [set() for _ in range(9)]
     boxes = [set() for _ in range(9)]
@@ -51,6 +57,12 @@ def spiral_order(matrix: List[List[int]]) -> List[int]:
     Pattern identification: clockwise outer-ring traversal -> shrinking boundaries;
     the remaining rectangle contains exactly the unvisited cells.
     """
+    # 1. Output: Return every matrix value in clockwise spiral order.
+    # 2. Structure: The visiting order follows outer edges, not arbitrary neighbors; removing them leaves another rectangle.
+    # 3. Constraints: Assume rectangular input; empty matrices return [], and collapsed edges must not be repeated.
+    # 4. Choice: Maintain four bounds, append each edge, and shrink its bound before the next edge.
+    # 5. Why it works: The bounds always enclose exactly the unvisited cells; guards skip already consumed edges.
+    #    O(rows*columns) time; row slices use O(columns) temporary space beyond the output.
     if not matrix or not matrix[0]:
         return []
     top, bottom, left, right = 0, len(matrix) - 1, 0, len(matrix[0]) - 1
@@ -77,6 +89,12 @@ def rotate(matrix: List[List[int]]) -> None:
     Pattern identification: square clockwise coordinate transform -> transpose/reverse;
     swap each off-diagonal pair once, then reverse rows to map (r, c) to (c, n-1-r).
     """
+    # 1. Output: Rotate the matrix 90 degrees clockwise in place and return None.
+    # 2. Structure: Rotation changes positions, not values; the square shape lets us swap rows and columns in the same grid.
+    # 3. Constraints: Require a square matrix; preserve the grid rather than allocate a rotated copy.
+    # 4. Choice: Transpose by swapping pairs above the diagonal, then reverse rows to complete the clockwise mapping.
+    # 5. Why it works: (row, column) becomes (column, n-1-row), the clockwise destination; each pair swaps once.
+    #    O(n^2) time and O(1) extra space.
     n = len(matrix)
     for row in range(n):
         for column in range(row + 1, n):
@@ -91,6 +109,12 @@ def set_zeroes(matrix: List[List[int]]) -> None:
     Pattern identification: original zeros trigger whole lines -> first-row/column markers;
     markers preserve original triggers; separate flags preserve the marker lines' fate.
     """
+    # 1. Output: Mutate the matrix so every original zero clears its entire row and column.
+    # 2. Structure: One original zero clears a whole row/column; each line needs only a yes/no flag, not every zero's position.
+    # 3. Constraints: Assume rectangular input; new zeros must not trigger additional clearing.
+    # 4. Choice: Reuse the first row/column as flags instead of separate sets; save their own fate before marking and clearing.
+    # 5. Why it works: Marking finishes before clearing, so only original zeros determine which lines are affected.
+    #    O(rows*columns) time; replacing a cleared first row allocates O(columns) temporary space.
     if not matrix or not matrix[0]:
         return
     rows, columns = len(matrix), len(matrix[0])
@@ -117,6 +141,12 @@ def game_of_life(board: List[List[int]]) -> None:
     Pattern identification: simultaneous neighbor-dependent update -> old/new bit packing;
     low bits retain original states until every next state is encoded in bit 1.
     """
+    # 1. Output: Advance the board by one Game of Life generation in place, returning None.
+    # 2. Structure: All cells change together using old neighbors, so ordinary immediate overwrites would change later answers.
+    # 3. Constraints: Assume a rectangular binary board; out-of-bounds neighbors do not count, and empty input is unchanged.
+    # 4. Choice: Store old/new states in two bits of each cell instead of a second board; finally shift to keep only new states.
+    # 5. Why it works: Writing bit 1 never changes bit 0, so later cells still read the same original generation.
+    #    Constant neighbors per cell give O(rows*columns) time and O(1) extra space.
     if not board or not board[0]:
         return
     rows, columns = len(board), len(board[0])

@@ -46,6 +46,15 @@ class _BIT:
 
 def count_inversions(arr: List[int]) -> int:
     """Return the number of inversions in *arr*."""
+    # 1. Output: Count index pairs i < j where arr[i] is strictly greater than arr[j].
+    # 2. Structure: Checking every later value repeats pair comparisons; scanning
+    #    backward lets us reuse counts of values already seen on the right.
+    # 3. Constraints: Negatives and duplicates are allowed; equal values do not count.
+    #    Sorting ranks and scanning cost O(n log n) time and O(n) space; n <= 1 gives 0.
+    # 4. Choice: Give sorted distinct values consecutive ranks so "smaller" becomes
+    #    a prefix count; query that count in a Fenwick tree before adding this value.
+    # 5. Why it works: Before each query, the tree counts exactly the processed
+    #    suffix; querying rank - 1 excludes equals and counts each inversion once.
     if len(arr) <= 1:
         return 0
 
@@ -73,4 +82,3 @@ if __name__ == "__main__":
     print(count_inversions([5, 4, 3, 2, 1]))   # 10 (reverse sorted = n*(n-1)/2)
     print(count_inversions([1, 1, 1]))          # 0  (all equal)
     print(count_inversions([2, 1]))             # 1
-

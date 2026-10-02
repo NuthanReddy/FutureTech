@@ -37,6 +37,16 @@ Expected result
 2020-01-17   270.00
 */
 
+-- 1. Output: One row per stored sales_date with its matched sales total in USD,
+--    cast to decimal(18, 2) and ordered by the converted calendar date.
+-- 2. Structure: Rates are recorded only when they change, not on every sales date;
+--    the next change supplies the end boundary needed to match intervening sales.
+-- 3. Constraints: This is SQL Server syntax; assume valid dates and unique rate
+--    starts per pair after date conversion; unmatched sales disappear in the inner join.
+-- 4. Choice: Use LEAD to form USD rate periods, match currency and inclusive-start/
+--    exclusive-end dates, then sum amount * rate by the original sales_date.
+-- 5. Why it works: Nonoverlapping periods select one rate per matched sale;
+--    a NULL final end is open-ended, NULL products are ignored by SUM, and raw date groups stay separate.
 WITH rate_periods AS (
     SELECT
         source_currency,

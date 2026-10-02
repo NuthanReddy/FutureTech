@@ -22,6 +22,15 @@ def lis_memo(nums: List[int]) -> int:
     Pattern identification: increasing non-contiguous choices -> index/previous DP ->
     take requires a strictly larger value; take/skip exhausts valid subsequences.
     """
+    # 1. Output: Return the length of the longest strictly increasing subsequence.
+    # 2. Structure: Values may be skipped but cannot be reordered; whether a value
+    #    can follow depends on the previous choice, so position alone is not enough.
+    # 3. Constraints: Empty input gives 0; equal values cannot extend the sequence.
+    #    O(n^2) time/space; the O(n) recursive depth must fit Python's limit.
+    # 4. Choice: Remember the best remaining length for (index, prev_index), with -1 meaning no choice;
+    #    at the end return 0, otherwise skip or take a strictly larger value.
+    # 5. Why it works: Every increasing subsequence chooses one of these
+    #    legal branches at each index; their maximum yields the longest length.
     n = len(nums)
 
     @lru_cache(maxsize=None)
@@ -46,6 +55,15 @@ def lis_tab(nums: List[int]) -> int:
     Pattern identification: increasing non-contiguous choices -> best-ending-index DP ->
     each state extends only earlier, strictly smaller endpoints.
     """
+    # 1. Output: Return the length of the longest strictly increasing subsequence.
+    # 2. Structure: Values may have gaps but keep their order; any longer increasing
+    #    sequence ends after a smaller earlier value whose best length can be reused.
+    # 3. Constraints: Empty input gives 0; duplicates do not count as increases.
+    #    O(n^2) time and O(n) space; selected values need not be adjacent.
+    # 4. Choice: dp[index] is the best length ending there; seed it at 1 and test all earlier
+    #    smaller endpoints and extend their length by one, then return max(dp).
+    # 5. Why it works: Every longer subsequence has an earlier final predecessor;
+    #    testing all such indices finds the best length for every endpoint.
     if not nums:
         return 0
 
@@ -70,6 +88,15 @@ def edit_distance_memo(source: str, target: str) -> int:
     ``target[j:]``.  If characters match, no edit is needed.  Otherwise the
     three transitions are insertion, deletion, and replacement.
     """
+    # 1. Output: Return the fewest insertions, deletions, or replacements to reach target.
+    # 2. Structure: Insert/delete/replace each leaves shorter remaining strings;
+    #    different edit choices reach the same position pair, so reuse its cost.
+    # 3. Constraints: Empty suffixes require inserting/deleting their remaining length.
+    #    O((m+1)*(n+1)) time/space; recursive depth up to m+n must fit Python's limit.
+    # 4. Choice: Remember the fewest edits for source[i:] and target[j:]; matches advance both;
+    #    otherwise add one to the minimum insert, delete, or replace suffix cost.
+    # 5. Why it works: Equal leading characters need no edit; otherwise one
+    #    of the three edits begins an optimal transformation, and all are tried.
     @lru_cache(maxsize=None)
     def distance(i: int, j: int) -> int:
         if i == len(source):
@@ -97,6 +124,15 @@ def edit_distance_tab(source: str, target: str) -> int:
     ``j`` target characters.  Empty-prefix initialization supplies the only
     possible operation: deleting or inserting every remaining character.
     """
+    # 1. Output: Return the minimum edits needed to turn source into target.
+    # 2. Structure: Each final edit removes a source character, a target character,
+    #    or both from consideration; smaller beginning-pair costs can be reused.
+    # 3. Constraints: Empty strings are allowed. For lengths m and n,
+    #    O((m+1)*(n+1)) time and space; operations each cost one.
+    # 4. Choice: dp[i][j] is the cost for source[:i] versus target[:j]; seed empty costs with lengths.
+    #    Matches use the diagonal; mismatches add one to min(left, top, diagonal).
+    # 5. Why it works: These neighbors cover inserting, deleting, and replacing;
+    #    already optimal shorter-prefix costs make each new cell optimal too.
     rows, cols = len(source), len(target)
     dp = [[0] * (cols + 1) for _ in range(rows + 1)]
     for i in range(rows + 1):

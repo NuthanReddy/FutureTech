@@ -34,6 +34,12 @@ from __future__ import annotations
 
 def total_n_queens(n: int) -> int:
     """Return the number of valid n-queens placements."""
+    # 1. Output: Count ways to place n nonattacking queens; n=0 counts one empty board.
+    # 2. Structure: These are competing placements: a queen blocks its column and two diagonals for later rows.
+    # 3. Constraints: n must be nonnegative; placement search can take factorial-scale work.
+    # 4. Choice: A safe spot is not necessarily part of a full board; try every safe column and undo after recursion.
+    # 5. Why it works: The sets describe exactly the queens on the current path;
+    # rejecting attacks and undoing their keys enumerates every safe board once.
     if n < 0:
         raise ValueError("n must be non-negative")
 
@@ -60,6 +66,7 @@ def total_n_queens(n: int) -> int:
             diag_down.add(down_key)
             diag_up.add(up_key)
             count += dfs(row + 1)
+            # Remove all three marks before trying another column in this row.
             diag_up.remove(up_key)
             diag_down.remove(down_key)
             columns.remove(column)

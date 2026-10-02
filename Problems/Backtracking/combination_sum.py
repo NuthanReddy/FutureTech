@@ -33,6 +33,12 @@ from __future__ import annotations
 
 def combination_sum(candidates: list[int], target: int) -> list[list[int]]:
     """Return unique combinations that sum to ``target``."""
+    # 1. Output: List each different combination adding up to target; zero gives [[]].
+    # 2. Structure: We need all selections, not one best sum; order is irrelevant and values are reusable.
+    # 3. Constraints: Reject negative targets and nonpositive values; listing answers can be exponential.
+    # 4. Choice: Backtrack to try alternatives; sorted unique values bound choices and reuse keeps the same index.
+    # 5. Why it works: Nondecreasing indices avoid reordered duplicates; positive values shrink remaining,
+    # and sorted values let us stop when a choice is too large.
     if target < 0:
         raise ValueError("target must be non-negative")
     if any(candidate <= 0 for candidate in candidates):
@@ -53,6 +59,7 @@ def combination_sum(candidates: list[int], target: int) -> list[list[int]]:
                 break
             path.append(candidate)
             dfs(index, remaining - candidate)
+            # Undo this choice so the next branch starts with the same path.
             path.pop()
 
     dfs(0, target)

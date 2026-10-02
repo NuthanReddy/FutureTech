@@ -23,6 +23,13 @@ def daily_temperatures(temperatures: list[int]) -> list[int]:
 
     Complexity: O(n) time and O(n) space.
     """
+    # 1. Output: Return each day's distance to the next warmer day, or zero if there is none.
+    # 2. Structure: Temperatures are ordered by day; equal temperatures do not resolve a waiting day.
+    # 3. Constraints: Empty input returns []; visit each day once for O(n) time and O(n) space.
+    # 4. Choice: We need the first warmer day, so keep unresolved day indices instead of searching forward from each day.
+    # Stack waiting days with decreasing/equal temperatures; a new warmer day pops colder tops and records gaps.
+    # 5. Why it works: Waiting temperatures decrease or stay equal from stack bottom to top.
+    # A popped day's first warmer day is the current day; each index is pushed/popped at most once.
     answer = [0] * len(temperatures)
     unresolved: list[int] = []
 

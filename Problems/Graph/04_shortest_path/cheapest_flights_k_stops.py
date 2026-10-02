@@ -18,6 +18,13 @@ def find_cheapest_price(n: int, flights: List[List[int]], src: int, dst: int, k:
     Each round adds at most one edge.  Reading from a copy prevents an update
     in the same round from accidentally using more than the allowed edges.
     """
+    # 1. Output: Return the cheapest src-to-dst price with at most k stops, or -1.
+    # 2. Structure: Both price and flight count matter; a cheapest unrestricted route may use too many stops.
+    # 3. Constraints: Vertices are 0..n-1; a cheaper route is invalid if it exceeds the edge budget.
+    # 4. Choice: Try improving costs through every flight for k+1 rounds, using the previous round's costs.
+    #    A snapshot ensures each round adds at most one flight rather than chaining updates immediately.
+    # 5. Why it works: After round r, distances are best costs using at most r edges; snapshots prevent extras.
+    #    For E flights, time is O(n + (k+1)*(n+E)), including copies; extra space is O(n).
     inf = float("inf")
     distance = [inf] * n
     distance[src] = 0

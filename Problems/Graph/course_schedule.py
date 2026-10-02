@@ -51,6 +51,12 @@ def can_finish(num_courses: int, prerequisites: list[list[int]]) -> bool:
         >>> can_finish(2, [[1, 0], [0, 1]])
         False
     """
+    # 1. Output: Return whether every course can be completed.
+    # 2. Structure: "Take this before that" gives one-way links; a loop means circular waiting.
+    # 3. Constraints: Course labels are 0 through num_courses-1; include isolated courses.
+    # 4. Choice: Build all vertices and prerequisite edges, then call Graph.has_cycle().
+    # 5. Why it works: A cycle makes its courses depend on each other; no cycle permits completion.
+    #    Building and checking the graph takes O(V + E) time and space.
     graph = Graph(directed=True)
     for i in range(num_courses):
         graph.add_vertex(i)
@@ -78,6 +84,13 @@ def find_order(num_courses: int, prerequisites: list[list[int]]) -> list[int]:
         >>> find_order(4, [[1, 0], [2, 0], [3, 1], [3, 2]])  # doctest: +SKIP
         [0, 1, 2, 3]  # or [0, 2, 1, 3]
     """
+    # 1. Output: Return one valid course order, or [] when dependencies contain a cycle.
+    # 2. Structure: Prerequisites demand an order, so reachability alone cannot supply the answer.
+    # 3. Constraints: Include all numbered courses, even those without prerequisite edges.
+    # 4. Choice: Store prerequisite-to-course links and request topological_sort(), which respects those links.
+    #    Catch its cycle error because circular waiting prevents any complete order.
+    # 5. Why it works: A topological order places each prerequisite before its course.
+    #    A cycle has no such order; construction and sorting take O(V + E) time and space.
     graph = Graph(directed=True)
     for i in range(num_courses):
         graph.add_vertex(i)

@@ -17,6 +17,12 @@ def snakes_and_ladders(board: List[List[int]]) -> int:
     Pattern identification: minimum equal-cost throws with landing jumps -> BFS;
     first discovery of a post-jump square uses the fewest throws.
     """
+    # 1. Output: Return the fewest dice throws to the final square, or -1 when unreachable.
+    # 2. Structure: Alternating row numbering maps squares to cells; each throw is one equal-cost edge.
+    # 3. Constraints: The board is square; -1 means no jump, and only one landing jump is applied.
+    # 4. Choice: BFS over (square, throws), clamp rolls at the target, and mark post-jump destinations.
+    # 5. Why it works: BFS first reaches each destination with the fewest throws, including its landing jump.
+    #    Each of n*n squares tries six rolls: O(n*n) time and space.
     n = len(board)
     if n == 0:
         return -1

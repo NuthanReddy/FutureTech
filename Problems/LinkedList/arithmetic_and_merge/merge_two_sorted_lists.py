@@ -32,6 +32,12 @@ def merge_two_lists(
 
     Time: O(m + n); extra space: O(1).
     """
+    # 1. Output: Return one ascending list containing all nodes from both inputs.
+    # 2. Structure: Each input is already sorted; its current node is its smallest remaining value.
+    # 3. Constraints: Inputs may be empty; relinking is allowed. O(m + n) time and O(1) extra space.
+    # 4. Choice: Sorted inputs make only their two heads candidates; attach the smaller at tail and advance that input.
+    # 5. Why it works: The smaller head is the smallest unused value, so every attachment keeps order.
+    # Once one input ends, the other's entire remaining chain is already sorted.
     dummy = ListNode()
     tail = dummy
 
@@ -56,6 +62,11 @@ class Solution:
         list1: Optional[ListNode],
         list2: Optional[ListNode],
     ) -> Optional[ListNode]:
+        # 1. Output: Return the merged ascending chain through this compatibility entry point.
+        # 2. Structure: list1 and list2 are sorted chains of nodes joined by next links.
+        # 3. Constraints: Either may be empty; existing nodes are reused in O(m + n) time.
+        # 4. Choice: Delegate to merge_two_lists, which attaches the smaller remaining head.
+        # 5. Why it works: The helper keeps the attached prefix sorted and loses no input nodes.
         return merge_two_lists(list1, list2)
 
 

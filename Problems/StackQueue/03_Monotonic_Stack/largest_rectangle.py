@@ -24,6 +24,13 @@ def largest_rectangle_area(heights: list[int]) -> int:
 
     Complexity: O(n) time and O(n) space.
     """
+    # 1. Output: Return the largest area under any consecutive group of histogram bars.
+    # 2. Structure: Each bar has width one; a rectangle's height cannot exceed its shortest included bar.
+    # 3. Constraints: Assume non-negative heights; empty input gives zero. O(n) time and O(n) space.
+    # 4. Choice: A shorter bar blocks taller rectangles from extending right, so stack unfinished spans by height.
+    # Keep indices with nondecreasing heights; pop taller bars at that blocker and compute their widths.
+    # 5. Why it works: A pop finds the right limit; the remaining top limits how far that bar can extend left.
+    # Equal bars eventually let the earlier copy cover the full span; a final zero closes positive heights.
     stack: list[int] = []
     best = 0
     for index in range(len(heights) + 1):

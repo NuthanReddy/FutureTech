@@ -9,6 +9,12 @@ import sys
 # needed to partition a string such
 # that every part is a palindrome
 def minPalPartion(str1):
+    # 1. Output: Return the minimum cuts needed to split str1 into palindromes.
+    # 2. Structure: Candidate cuts reuse the same prefixes and palindrome interiors, so tables avoid repeating work.
+    # 3. Constraints: The tables use O(n^2) space; the empty input happens to return zero.
+    # 4. Choice: Fill palindrome intervals by length, then minimize cuts for each prefix.
+    # 5. Why it works: Shorter intervals are ready before larger ones; each prefix
+    # either is a palindrome or ends in one after an already optimally cut prefix.
     # Get the length of the string
     n = len(str1)
 

@@ -21,6 +21,12 @@ class CountMinSketch:
 # Pattern identification: approximate frequent words -> Count-Min Sketch estimates + heap top-k selection;
 # sketch counts never decrease, but collisions overestimate and stored word estimates can become stale.
 def get_top_k_words(descriptions, k):
+    # 1. Output: Return up to k (word, estimated-count) pairs ranked by stored estimates.
+    # 2. Structure: Repeated words need counts, then only k large counts are wanted; punctuation stays attached.
+    # 3. Constraints: Sketch collisions can inflate counts, and word_freq still stores every distinct token.
+    # 4. Choice: Shared sketch buckets estimate counts compactly; save word estimates and use nlargest for ranking.
+    # 5. Why it works: Sketch queries overestimate rather than lose occurrences, but older stored
+    # estimates can become stale after collisions; this ranks snapshots, not guaranteed exact frequencies.
     sketch = CountMinSketch(width=1000, depth=5)
     word_freq = {}
 

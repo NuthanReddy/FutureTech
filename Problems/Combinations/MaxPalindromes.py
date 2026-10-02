@@ -13,6 +13,12 @@ def max_palindromes(slot_lengths, char_freq):
     Key insight: total characters needed = L (pairs contribute 2 each, center contributes 1)
     We can use any character for the center, even if it could form a pair.
     """
+    # 1. Output: Attempt to maximize the number of slots filled with palindromes.
+    # 2. Structure: Filling one slot spends characters needed by others; a locally feasible slot may hurt later slots.
+    # 3. Constraints: Assume nonnegative frequencies and positive slot lengths; odd slots need a center.
+    # 4. Choice: Explore alternative slot orders, not one greedy commitment; each branch copies the character budget.
+    # 5. Why it works: Copies keep branches independent and each filled slot feasible, but
+    # dictionary-order spending does not explore every allocation, so that alone does not prove optimality.
 
     def backtrack(remaining_slots, freq):
         if not remaining_slots:
@@ -35,6 +41,7 @@ def max_palindromes(slot_lengths, char_freq):
                 continue
 
             # Try to allocate - use pairs first
+            # Each branch spends its own copy; the parent's budget needs no undo.
             freq_copy = dict(freq)
             pairs_to_use = needed_pairs
             for c in list(freq_copy.keys()):

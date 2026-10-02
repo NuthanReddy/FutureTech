@@ -29,6 +29,12 @@ def is_anagram(first: str, second: str) -> bool:
     Complexity:
         Time ``O(n)`` average, space ``O(u)`` for ``u`` distinct characters.
     """
+    # 1. Output: Return whether the strings contain exactly the same characters with the same counts.
+    # 2. Structure: Order does not matter, but copies do: a set alone cannot distinguish "aab" from "abb".
+    # 3. Constraints: Matching is case-sensitive and literal; unequal lengths fail, two empty strings pass.
+    # 4. Choice: Count first's characters, then subtract each character in second and reject missing/excess copies.
+    # 5. Why it works: Equal lengths and no negative count mean every counted copy was consumed exactly once.
+    #    Average O(n) time and O(u) extra space for u distinct characters.
     if len(first) != len(second):
         return False
 

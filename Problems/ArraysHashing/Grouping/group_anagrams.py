@@ -33,6 +33,13 @@ def group_anagrams(words: list[str]) -> list[list[str]]:
         For ``n`` words of maximum length ``k``: time ``O(nk)``, space
         ``O(nk)`` including the returned groups.
     """
+    # 1. Output: Return groups of anagram words, retaining input order within each group.
+    # 2. Structure: Letter order can change, but each letter's number of copies must stay the same.
+    # 3. Constraints: Treat characters literally; repeated and empty words are valid, as is an empty list.
+    # 4. Choice: Count each word's letters; a frozenset makes those unordered counts a shared dictionary key.
+    #    Append the word to that key's group instead of comparing it with every earlier word.
+    # 5. Why it works: Two keys agree exactly when all character counts agree, so buckets are anagram groups.
+    #    Average time is O(nk) for n words of maximum length k; keys use O(nk) extra space.
     groups: defaultdict[frozenset[tuple[str, int]], list[str]] = defaultdict(
         list
     )

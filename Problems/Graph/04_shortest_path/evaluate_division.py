@@ -57,6 +57,13 @@ def calc_equation(
     Pattern identification: repeated consistent ratio queries -> weighted
     Union-Find; weight[x] remains x / parent[x], including after compression.
     """
+    # 1. Output: Return each requested ratio, or -1.0 for unknown or disconnected variables.
+    # 2. Structure: Many queries reuse the same equations; ratios multiply along chains such as a/b then b/c.
+    # 3. Constraints: Equations and values correspond; even x/x is unknown if x was never added.
+    # 4. Choice: Join related variables into groups, storing each variable's ratio to its parent.
+    #    Shorten parent chains while preserving ratios; divide a/root by b/root to answer a query.
+    # 5. Why it works: Multiplying along parents preserves x/root, so (a/root)/(b/root) equals a/b.
+    #    Storage is linear in variables; this helper compresses paths but has no balancing rule.
     uf = _WeightedUnionFind()
     for (a, b), value in zip(equations, values):
         uf.union(a, b, value)

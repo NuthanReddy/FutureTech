@@ -16,6 +16,12 @@ def pacific_atlantic(heights: List[List[int]]) -> List[List[int]]:
     Pattern identification: reach either boundary under downhill flow ->
     reverse DFS from each ocean; visited cells have a valid downhill return path.
     """
+    # 1. Output: Return coordinates of cells whose water can reach both oceans.
+    # 2. Structure: Many cells share downhill routes to the same borders; a search from every cell repeats work.
+    # 3. Constraints: Heights form a rectangular matrix; empty input returns [] without mutation.
+    # 4. Choice: Reverse downhill movement: search uphill from each ocean's borders and intersect the seen sets.
+    # 5. Why it works: Reversing each search path gives a legal downhill path back to that ocean.
+    #    Each cell is visited at most once per ocean: O(R*C) time and space.
     if not heights or not heights[0]:
         return []
     rows, cols = len(heights), len(heights[0])

@@ -22,6 +22,16 @@ Join teams to bugs, exclude unresolved bugs, calculate each resolution
 duration, and average the durations by team.
 */
 
+-- 1. Output: One row per team with completed bugs: average resolution hours,
+--    rounded to two decimals and ordered from shortest average to longest.
+-- 2. Structure: Many bugs belong to one team, and two timestamps give each
+--    duration; grouping is needed because the answer has one row per team, not per bug.
+-- 3. Constraints: Assume unique team IDs and valid timestamps; unresolved bugs
+--    and teams with no completed bugs are excluded; AVG ignores NULL durations.
+-- 4. Choice: Join on team_id, filter resolved_at, then group by team and
+--    average elapsed seconds before converting to hours.
+-- 5. Why it works: Each matching completed bug contributes one duration;
+--    grouping preserves the team grain without multiplying bugs under unique keys.
 SELECT
     teams.team_id,
     teams.team_name,
@@ -52,6 +62,16 @@ products by event count. DENSE_RANK returns every product tied for the highest
 usage count.
 */
 
+-- 1. Output: Return every product tied for the most usage events this month,
+--    with its event count, ordered by product name.
+-- 2. Structure: Many event rows belong to each product; first count them,
+--    then compare product totals, retaining every product sharing the largest count.
+-- 3. Constraints: Include the month's start but exclude next month's start;
+--    NULL dates fail the filter, while NULL product names form one group.
+-- 4. Choice: Count filtered events per product, then DENSE_RANK those counts
+--    descending and keep rank 1.
+-- 5. Why it works: Ranking aggregated counts compares products rather than
+--    individual events, and shared rank 1 retains all leaders instead of breaking ties.
 WITH product_usage AS (
     SELECT
         product_name,
@@ -97,6 +117,16 @@ journey analysis.
 Example: Find the time since each user's previous event.
 */
 
+-- 1. Output: Keep one row per event with the same user's preceding timestamp
+--    and the elapsed interval since it; the first event's two added fields are NULL.
+-- 2. Structure: Each event needs only the same user's immediately previous
+--    event, making ordered LAG more direct than joining every possible event pair.
+-- 3. Constraints: Assume non-NULL timestamps and no within-user time ties;
+--    ties lack a tie-breaker here, and window ordering does not sort final output.
+-- 4. Choice: Partition LAG by user_id and order by event_time; subtract the
+--    preceding time from the current one without collapsing event rows.
+-- 5. Why it works: LAG accesses only the immediate predecessor in that user's
+--    ordered partition, so other users never supply the previous event.
 SELECT
     user_id,
     event_name,
@@ -126,6 +156,16 @@ identify a churn month when a previously active user has no activity in the
 following month. This example reports churn by product and activity month.
 */
 
+-- 1. Output: One row per product and active month with active-user count,
+--    next-month churn count, and percentage; a later return can still follow churn.
+-- 2. Structure: Repeated events should count as one active user/product/month;
+--    the next active month reveals whether the immediately following month was missed.
+-- 3. Constraints: Assume non-NULL users/dates and a complete next-month observation;
+--    the query still counts trailing NULL next months as churn without checking completeness.
+-- 4. Choice: Combine sources with product labels, deduplicate user/product/month,
+--    and use LEAD per user/product to count missing or skipped next months.
+-- 5. Why it works: Distinct monthly rows count each user once per product/month;
+--    only a return exactly one month later avoids churn; NULLIF protects the rate divisor.
 WITH combined_activity AS (
     SELECT user_id, activity_date, 'Jira' AS product_name
     FROM jira_activity
@@ -195,6 +235,15 @@ Answer:
 Example anti-join: users who used Jira but never used Confluence.
 */
 
+-- 1. Output: Return distinct Jira user IDs with no equal user ID in Confluence.
+-- 2. Structure: We need absence of any Confluence match, not its event count;
+--    NOT EXISTS answers that question without multiplying repeated Jira events.
+-- 3. Constraints: No date filter is applied; assume non-NULL IDs for person matching.
+--    A NULL Jira ID survives because equality to NULL never establishes a match.
+-- 4. Choice: Use correlated NOT EXISTS to reject any Confluence match, then
+--    DISTINCT to collapse repeated Jira occurrences.
+-- 5. Why it works: Existence checks do not multiply Jira rows, and one matching
+--    Confluence event is enough to exclude the user regardless of event counts.
 SELECT DISTINCT
     jira.user_id
 FROM jira_activity AS jira
@@ -228,6 +277,16 @@ Answer:
 Example: Filter and aggregate events before joining to the product dimension.
 */
 
+-- 1. Output: One matched product-ID row with its product name and recent event
+--    count, ordered descending; identical names are not merged.
+-- 2. Structure: Many events share a product_id, but only its total is needed;
+--    counting first reduces the rows that must join to product names.
+-- 3. Constraints: Assume unique dimension IDs; the lower date bound is inclusive,
+--    with no upper bound, so future events qualify; NULL times/keys cannot match.
+-- 4. Choice: Filter events from CURRENT_DATE minus 30 days, count per product_id,
+--    then join those smaller grouped results to the dimension.
+-- 5. Why it works: Each count is computed before the join; unique dimension keys
+--    preserve it, while missing products disappear and equal counts have no tie order.
 WITH recent_usage AS (
     SELECT
         product_id,
@@ -260,6 +319,16 @@ Answer:
   and should be done only when NULL genuinely means zero.
 */
 
+-- 1. Output: One row per team_id with total/resolved bug counts, resolved
+--    percentage, and total recorded customer impact (zero if every impact is NULL).
+-- 2. Structure: One team has many bugs, and missing resolution/impact values
+--    affect different metrics differently; grouping and NULL-aware counts fit this output.
+-- 3. Constraints: NULL resolved_at means unresolved; NULL impacts are ignored
+--    by SUM, and NULL team IDs group together; no empty-team rows are generated.
+-- 4. Choice: GROUP BY team_id; compare COUNT(resolved_at) to COUNT(*),
+--    guard the denominator with NULLIF, and default a NULL impact sum with COALESCE.
+-- 5. Why it works: Each bug contributes to the total but only non-NULL resolutions
+--    enter the numerator; decimal scaling yields percentages rather than integer ratios.
 SELECT
     team_id,
     COUNT(*) AS total_bugs,
@@ -296,6 +365,16 @@ storage and write maintenance:
 Example definitions:
 */
 
+-- 1. Output: Define a subscription table enforcing row IDs and unique
+--    user/product pairs, plus an index for product-and-start-time lookups.
+-- 2. Structure: Writes must reject repeated user/product pairs, while reads
+--    search by product and start time; these are constraint/index needs, not ranking.
+-- 3. Constraints: IDs and timestamps cannot be NULL; a user/product pair cannot
+--    recur even at another start time; the extra index costs storage and write work.
+-- 4. Choice: Declare a primary key and composite UNIQUE constraint, then create
+--    an index ordered by product_id followed by started_at.
+-- 5. Why it works: Database constraints reject conflicting writes; the index
+--    arranges keys for product-first access, but does not guarantee any SELECT row order.
 CREATE TABLE product_subscriptions (
     subscription_id BIGINT PRIMARY KEY,
     user_id BIGINT NOT NULL,
@@ -331,6 +410,16 @@ measures and foreign keys in the fact table.
 Illustrative fact table:
 */
 
+-- 1. Output: Define an illustrative event fact table with a unique interaction
+--    ID, dimension-key columns, timestamp, optional duration, and JSONB properties.
+-- 2. Structure: Each interaction needs its own record and links to descriptive
+--    entities, so an event fact table stores measurements beside dimension identifiers.
+-- 3. Constraints: Only interaction_id uniqueness is enforced; dimension keys/time
+--    are non-NULL, duration/properties may be NULL, and no foreign keys are declared.
+-- 4. Choice: Store one fact row per recorded interaction with dimension identifiers
+--    and event-level measurements; this defines storage rather than an algorithm.
+-- 5. Why it works: A primary key distinguishes fact rows, but repeated
+--    user/product/time combinations and missing dimension references remain possible.
 CREATE TABLE fact_product_interaction (
     interaction_id BIGINT PRIMARY KEY,
     user_key BIGINT NOT NULL,
@@ -360,6 +449,16 @@ reduce row expansion.
 Snowflake example:
 */
 
+-- 1. Output: One row per flattened attribute entry with event fields and
+--    attribute name/value, not one row per event.
+-- 2. Structure: Event fields sit beside an array of attributes; asking for each
+--    attribute requires expanding that array into rows, not grouping events.
+-- 3. Constraints: Ingestion at or after the seven-day cutoff qualifies; no upper
+--    bound is used. Missing/empty arrays emit no rows by default; absent fields can be NULL.
+-- 4. Choice: Use LATERAL FLATTEN for each event's attributes, cast JSON values
+--    to the requested types, and filter events by ingested_at.
+-- 5. Why it works: Lateral expansion keeps attributes attached to their own
+--    event; many attributes repeat event fields, and invalid casts can fail the query.
 SELECT
     events.payload:userId::string AS user_id,
     events.payload:product::string AS product_name,

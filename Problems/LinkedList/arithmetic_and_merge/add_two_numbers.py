@@ -31,6 +31,12 @@ def add_two_numbers(
 
     Time: O(max(m, n)); extra space: O(max(m, n)) for the result.
     """
+    # 1. Output: Return a new digit list representing the sum.
+    # 2. Structure: Each next link leads to a higher decimal place; digits are least-significant first.
+    # 3. Constraints: Assume digits 0..9; unequal lengths use zero for missing digits. O(max(m, n)) time.
+    # 4. Choice: Lowest-place digits come first, so move both references forward, append total % 10, and carry total // 10.
+    # 5. Why it works: Appended digits are final; carry is the part still owed to the next column.
+    # Continue after both lists end if a carry remains; two empty inputs return None.
     dummy = ListNode()
     tail = dummy
     carry = 0
@@ -57,6 +63,11 @@ class Solution:
         l1: Optional[ListNode],
         l2: Optional[ListNode],
     ) -> Optional[ListNode]:
+        # 1. Output: Return the sum list through the LeetCode entry point.
+        # 2. Structure: l1 and l2 store decimal digits from lowest place to highest.
+        # 3. Constraints: Valid digit lists may differ in length; the helper takes O(max(m, n)) time.
+        # 4. Choice: Delegate to add_two_numbers, which advances nodes and saves the next-column carry.
+        # 5. Why it works: Delegation preserves the helper's finalized digits and remaining carry.
         return add_two_numbers(l1, l2)
 
 

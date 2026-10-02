@@ -42,6 +42,12 @@ def replace_words(roots: List[str], sentence: str) -> str:
     Pattern identification: shortest dictionary prefix per word -> trie lookup;
     the first terminal reached is the shortest matching root.
     """
+    # 1. Output: Return the sentence with each word replaced by its shortest dictionary root prefix.
+    # 2. Structure: Dictionary roots share character prefixes that can be checked while reading a word.
+    # 3. Constraints: Roots are nonempty; unmatched words stay unchanged, and split/join produces single spaces.
+    # 4. Choice: Build a root trie and stop a word's lookup at the first terminal, then join replacements.
+    # 5. Why it works: Terminals are reached in increasing prefix length, so the first match is shortest.
+    #    Time is O(total root characters + sentence length); trie and output need additional storage.
     # Build trie from root words
     trie_root = _TrieNode()
     for word in roots:

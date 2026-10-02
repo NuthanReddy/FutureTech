@@ -12,6 +12,12 @@ def get_num_repr(word):
 # Pattern identification: retrieve words by keypad code -> hash-based grouping;
 # each bucket contains words with the same numeric encoding; the character map is partial.
 def build_word_dict(words):
+    # 1. Output: Return a dictionary mapping numeric keypad codes to lists of matching words.
+    # 2. Structure: Many words share one digit code, so dictionary buckets support direct code-to-word lookup.
+    # 3. Constraints: Words must be nonempty and use only letters in the helper's partial mapping.
+    # 4. Choice: Encode each word, then append it to its code's bucket or create that bucket.
+    # 5. Why it works: After each word, every processed word is stored under its own code;
+    # collisions deliberately share a bucket, so a lookup retrieves all matching processed words.
     word_dict = {}
     for word in words:
         num_repr = get_num_repr(word)

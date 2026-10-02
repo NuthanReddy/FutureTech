@@ -1,6 +1,12 @@
 # Pattern identification: maximize disjoint zero-sum segments -> prefix-sum set + earliest-finish greedy;
 # repeated prefixes expose a zero sum; reset the prefix state after each accepted segment.
 def max_beautiful_segments(n, a):
+    # 1. Output: Return the maximum number of non-overlapping zero-sum segments.
+    # 2. Structure: Scan an array left to right; equal running sums reveal a zero-sum segment.
+    # 3. Constraints: Negative values make sum-based window shrinking unsafe; assume 0<=n<=len(a).
+    # 4. Choice: Remember sums since the last commitment; take the first repeat and reset for disjointness.
+    # 5. Why it works: Replace an optimum's first segment with this earliest-ending one:
+    # all its later segments still fit, so committing now cannot reduce the final count.
     prefix_sum = 0
     seen = set()
     seen.add(0)

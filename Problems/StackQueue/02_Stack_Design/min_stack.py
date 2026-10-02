@@ -16,6 +16,13 @@ empty between operations.
 from __future__ import annotations
 
 
+# 1. Output: Support push, pop, top, and retrieval of the smallest currently stored value.
+# 2. Structure: A stack removes the newest value first; pushes and pops change only that end.
+# 3. Constraints: Allow negative/duplicate values; empty queries raise IndexError. O(1) operations, O(n) space.
+# 4. Choice: A pop can uncover an older minimum, so save the minimum at every depth on a second stack.
+# Push min(new value, previous minimum); pop both stacks together rather than rescanning the remaining values.
+# 5. Why it works: The two stacks have equal length, and each saved minimum describes values up to its depth.
+# Popping restores the previous minimum, including when several equal minima were pushed.
 class MinStack:
     """Implement push, pop, top, and get_min in O(1) time.
 

@@ -29,6 +29,12 @@ def contains_duplicate(nums: list[int]) -> bool:
     Complexity:
         Time ``O(n)`` average, space ``O(n)``.
     """
+    # 1. Output: Return True if any value occurs twice; otherwise return False.
+    # 2. Structure: The input is unsorted; we only ask "have I seen this value?", so a set is enough.
+    # 3. Constraints: Negative values and empty input are allowed; leave the caller's order unchanged.
+    # 4. Choice: Scan with a set; check each number before adding it to seen.
+    # 5. Why it works: seen holds exactly the earlier values, so membership proves a distinct earlier copy.
+    #    Each number is checked once: average O(n) time and O(n) extra space.
     seen: set[int] = set()
     for number in nums:
         if number in seen:

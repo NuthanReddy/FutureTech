@@ -31,6 +31,15 @@ def min_path_sum_memo(grid: Grid) -> int:
     the minimum.  The destination returns its own value because it still must
     be paid exactly once.
     """
+    # 1. Output: Return the cheapest top-left to bottom-right path sum.
+    # 2. Structure: Right/down routes can reach the same cell, which has the same
+    #    remaining best cost; moves never circle back, so smaller routes finish.
+    # 3. Constraints: Assume a rectangular grid; empty input gives 0.
+    #    O(rows*cols) time/space; recursive path depth must fit Python's limit.
+    # 4. Choice: Remember the cheapest cell-to-destination cost; outside costs infinity,
+    #    the destination costs its value, and other cells add min(down, right).
+    # 5. Why it works: Every route starts with one legal successor; its best
+    #    suffix plus this cell's cost finds the cheapest complete route.
     if not grid or not grid[0]:
         return 0
 
@@ -62,6 +71,15 @@ def min_path_sum_tab(grid: Grid) -> int:
     explicitly prevents accidentally treating an unavailable direction as a
     free path.
     """
+    # 1. Output: Return the minimum sum along a right/down path across the grid.
+    # 2. Structure: Right/down moves mean a cell only needs its top/left costs;
+    #    filling rows in order solves those neighbors before they are needed.
+    # 3. Constraints: Assume a rectangular grid; empty input gives 0.
+    #    O(rows*cols) time and space; the input grid is not changed.
+    # 4. Choice: Store the cheapest start-to-cell cost; seed the start and single-route edges,
+    #    then fill each other cell with its value plus min(top cost, left cost).
+    # 5. Why it works: Both predecessors are solved before this cell;
+    #    choosing their cheaper path covers every possible final move.
     if not grid or not grid[0]:
         return 0
 
@@ -94,6 +112,15 @@ def unique_paths_memo(rows: int, cols: int) -> int:
     A one-cell grid has one path (doing nothing), while non-positive
     dimensions have no valid grid.
     """
+    # 1. Output: Return the number of right/down paths through an empty grid.
+    # 2. Structure: Right/down routes share cells, so their remaining counts repeat.
+    #    Count both next moves rather than choosing one cheapest-looking move.
+    # 3. Constraints: Non-positive dimensions give 0; one cell gives 1.
+    #    O(rows*cols) time/space; recursion depth must fit Python's limit.
+    # 4. Choice: Remember remaining routes per cell; destination=1, outside=0,
+    #    otherwise add the counts for down and right.
+    # 5. Why it works: Down-first and right-first paths are distinct and
+    #    exhaust all routes, so adding them neither misses nor double-counts paths.
     if rows <= 0 or cols <= 0:
         return 0
 
@@ -114,6 +141,15 @@ def unique_paths_tab(rows: int, cols: int) -> int:
     Pattern identification: count right/down routes -> rolling grid-count DP ->
     each update sums the old top count and the current row's left count.
     """
+    # 1. Output: Return the total number of right/down routes to the bottom-right.
+    # 2. Structure: Right/down arrivals come only from above or left;
+    #    those two counts are enough, so earlier rows need not all be stored.
+    # 3. Constraints: Non-positive dimensions give 0. O(rows*cols) time and
+    #    O(cols) stored counts, treating integer arithmetic as constant cost.
+    # 4. Choice: Seed the first row with ones; update left to right with
+    #    dp[col] += dp[col-1], combining old top and newly updated left.
+    # 5. Why it works: The two incoming route groups are disjoint; this order
+    #    preserves exactly the predecessor counts needed for each new cell.
     if rows <= 0 or cols <= 0:
         return 0
 

@@ -35,6 +35,13 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
 from DataStructures.Heap import MaxHeap, MinHeap
 
 
+# 1. Output: After insertions, return the middle value, or the average of the two middle values.
+# 2. Structure: Numbers arrive over time; a heap exposes its smallest/largest value without sorting everything.
+# 3. Constraints: Allow duplicates/negatives; querying an empty stream raises ValueError. O(log n) add, O(1) query.
+# 4. Choice: Only the two middle boundary values matter, so expose the lower half's largest and upper half's smallest.
+# Use a max-heap and min-heap; place each new number in its half and move a root if sizes become unbalanced.
+# 5. Why it works: Every lower value <= every upper value, and the lower half has equal size or one extra.
+# Their exposed roots are therefore exactly the middle value(s); both heaps together use O(n) space.
 class MedianFinder:
     """Finds the running median from a stream of integers.
 

@@ -108,6 +108,15 @@ def search_insert(nums: Sequence[int], target: int) -> int:
     Time: O(log n)
     Extra space: O(1)
     """
+    # 1. Output: Return the first target index, or its sorted insertion position.
+    # 2. Structure: Values are sorted; a midpoint below target rules out everything
+    #    before it, while a midpoint at least target can still be the first such value.
+    # 3. Constraints: Assume ascending order; empty input returns 0.
+    #    O(log n) time and O(1) extra space; duplicates use the first occurrence.
+    # 4. Choice: Use lower-bound search; keep values before left below target
+    #    and values at/after right at least target, until left equals right.
+    # 5. Why it works: Sorted order safely eliminates half the unknown indices;
+    #    the final boundary is exactly where target first belongs.
     return _lower_bound(nums, target)
 
 
@@ -140,6 +149,15 @@ def search_matrix(matrix: Sequence[Sequence[int]], target: int) -> bool:
     Time: O(log(rows * columns))
     Extra space: O(1)
     """
+    # 1. Output: Return True if target occurs in the matrix, otherwise False.
+    # 2. Structure: Every row follows the previous row's last value, so reading rows
+    #    in order gives one sorted list and a midpoint comparison rules out half.
+    # 3. Constraints: Assume rectangular, globally row-major sorted input;
+    #    empty input is False. O(log(rows*columns)) time and O(1) extra space.
+    # 4. Choice: Search inclusive flat bounds; divmod maps midpoint to a cell.
+    #    Keep the side allowed by its comparison with target, excluding midpoint.
+    # 5. Why it works: If target exists its index stays within the bounds;
+    #    sorted order proves every discarded index cannot match.
     if not matrix or not matrix[0]:
         return False
 
@@ -194,6 +212,14 @@ def find_peak_element(nums: Sequence[int]) -> int:
     Time: O(log n)
     Extra space: O(1)
     """
+    # 1. Output: Return an index whose value is greater than its immediate neighbors.
+    # 2. Structure: A local upward/downward slope points toward a half containing a peak.
+    # 3. Constraints: Adjacent values must differ; outside neighbors are negative infinity.
+    #    Empty input raises ValueError. O(log n) time and O(1) extra space.
+    # 4. Choice: Keep a peak inside [left,right]; if middle rises to middle+1
+    #    move left past middle, otherwise retain middle as the right boundary.
+    # 5. Why it works: Following the slope reaches a peak or a valid endpoint;
+    #    each retained half contains one, so the final single index is a peak.
     if not nums:
         raise ValueError("find_peak_element requires at least one value")
 
@@ -236,6 +262,15 @@ def search_rotated(nums: Sequence[int], target: int) -> int:
     Time: O(log n)
     Extra space: O(1)
     """
+    # 1. Output: Return target's index in the rotated array, or -1 when absent.
+    # 2. Structure: Rotation breaks global sorting but leaves one midpoint half sorted;
+    #    distinct endpoints tell us which half, whose value range can exclude target.
+    # 3. Constraints: Assume distinct values and a valid rotation; empty input gives -1.
+    #    O(log n) time and O(1) extra space.
+    # 4. Choice: Keep any target in [left,right]; identify the sorted half
+    #    and keep it only when its endpoint range contains target.
+    # 5. Why it works: The sorted half's range proves whether target belongs
+    #    there; discarding the other half never removes an existing target.
     left, right = 0, len(nums) - 1
 
     while left <= right:
@@ -281,6 +316,14 @@ def search_range(nums: Sequence[int], target: int) -> list[int]:
     Time: O(log n)
     Extra space: O(1)
     """
+    # 1. Output: Return [first_index,last_index] for target, or [-1,-1] if absent.
+    # 2. Structure: Equal values form one consecutive block in a sorted sequence.
+    # 3. Constraints: Assume non-decreasing order; duplicates and empty input are allowed.
+    #    Two binary searches take O(log n) time and O(1) extra space.
+    # 4. Choice: Find the first value >= target and check it matches;
+    #    find the first value > target and subtract one for the last occurrence.
+    # 5. Why it works: Each search preserves its sorted boundary; all target
+    #    values lie between the two boundaries, including a block at either end.
     first = _lower_bound(nums, target)
 
     # A lower bound can point one past the list or at the next larger value.
@@ -318,6 +361,15 @@ def find_min_rotated(nums: Sequence[int]) -> int:
     Time: O(log n)
     Extra space: O(1)
     """
+    # 1. Output: Return the minimum value, not its index, in the rotated array.
+    # 2. Structure: Rotation creates one drop; a midpoint above the right end
+    #    puts that drop to its right, letting us discard the high-value half.
+    # 3. Constraints: Assume a valid distinct-value rotation; empty input raises ValueError.
+    #    O(log n) time and O(1) extra space.
+    # 4. Choice: Keep the minimum in [left,right]; middle > right's value
+    #    moves left past middle, otherwise move right to middle, retaining it.
+    # 5. Why it works: A larger midpoint lies before the low segment; otherwise
+    #    the minimum is at or left of middle. The final cell must be the minimum.
     if not nums:
         raise ValueError("find_min_rotated requires at least one value")
 
@@ -371,6 +423,15 @@ def find_median_sorted_arrays(
     Time: O(log(min(m, n)))
     Extra space: O(1)
     """
+    # 1. Output: Return the combined median as a float, averaging two middles if needed.
+    # 2. Structure: Each array is already sorted; only values beside their cuts
+    #    need checking to tell whether all lower-half values precede all upper-half values.
+    # 3. Constraints: Assume both sorted; both empty raises ValueError.
+    #    O(log(min(m,n)+1)) time and O(1) extra space; neither input is merged.
+    # 4. Choice: Search cuts in the shorter input, fixing the combined left size.
+    #    Move left if its left value is too large, right if its right value is too small.
+    # 5. Why it works: A valid cut stays in the search bounds; when cross-boundary
+    #    order holds, max(left) and min(right) are exactly the middle-ranked values.
     if not first and not second:
         raise ValueError("at least one sorted array must be non-empty")
 

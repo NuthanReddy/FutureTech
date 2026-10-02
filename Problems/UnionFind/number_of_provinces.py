@@ -58,6 +58,12 @@ def find_circle_num(is_connected: List[List[int]]) -> int:
     Pattern identification: symmetric city connectivity matrix -> Union-Find;
     each successful distinct-root merge reduces the province count by one.
     """
+    # 1. Output: Return the number of directly or indirectly connected city groups.
+    # 2. Structure: Connections work both ways; we need city groups, not the routes joining their members.
+    # 3. Constraints: The matrix is square; checking above the diagonal avoids mirrored duplicates.
+    # 4. Choice: Start one set per city, union connected pairs by size, and return the component counter.
+    # 5. Why it works: Only distinct-root merges reduce groups; final sets are exactly the provinces.
+    #    Matrix scanning takes O(n^2 * alpha(n)) time with O(n) extra storage.
     n = len(is_connected)
     uf = _UnionFind(n)
     for i in range(n):

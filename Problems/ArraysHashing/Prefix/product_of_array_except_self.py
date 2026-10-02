@@ -31,6 +31,12 @@ def product_except_self(nums: list[int]) -> list[int]:
     Complexity:
         Time ``O(n)``, auxiliary space ``O(1)`` beyond the output.
     """
+    # 1. Output: Return one product per index using every value except the value at that index.
+    # 2. Structure: Excluding one position leaves values to its left and right; neighboring outputs reuse those products.
+    # 3. Constraints: Division is forbidden; zeros and negative values work without special branches.
+    # 4. Choice: Reuse running left and right products in two passes instead of multiplying all other values per index.
+    # 5. Why it works: Each accumulator excludes the current position until after its output is updated.
+    #    Two passes take O(n) time and O(1) extra space beyond the returned list.
     result = [1] * len(nums)
 
     prefix = 1

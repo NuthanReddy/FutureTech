@@ -29,6 +29,13 @@ def two_sum(nums: list[int], target: int) -> list[int]:
     Complexity:
         Time ``O(n)`` average, space ``O(n)``.
     """
+    # 1. Output: Return two distinct zero-based indices summing to target, or [] when no pair exists.
+    # 2. Structure: Values are unsorted; each number needs exactly one partner value, target - number.
+    # 3. Constraints: Preserve original indices and allow equal values at different positions.
+    # 4. Choice: Store value-to-index pairs; look up target - number instead of trying every earlier partner.
+    #    Record the current index only after lookup so it cannot match itself.
+    # 5. Why it works: Stored partners always come from earlier positions, and any pair is found at its later end.
+    #    Average O(n) time and O(n) extra space avoid checking every pair.
     seen: dict[int, int] = {}
     for index, number in enumerate(nums):
         complement = target - number

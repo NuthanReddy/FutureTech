@@ -1,6 +1,12 @@
 # Pattern identification: maximum sum of exactly k adjacent items -> fixed rolling sum;
 # for 1 <= k <= len(arr), subtract outgoing/add incoming to retain exactly k items.
 def max_k_sub_array_sum(arr, k):
+    # 1. Output: Return the largest sum of exactly k adjacent values, or -1 if k exceeds the length.
+    # 2. Structure: Every answer uses exactly k neighbors; sliding one place changes just the outgoing and incoming item.
+    # 3. Constraints: Assume k >= 1; negative values are allowed because the window size never changes.
+    # 4. Choice: Sum the first window, then subtract arr[i-k] and add arr[i] while retaining the best sum.
+    # 5. Why it works: The running sum always represents exactly the current k items, and every window is visited.
+    #    O(n) time; the initial arr[:k] slice uses O(k) temporary extra space.
     n = len(arr)
     if k > n:
         return -1

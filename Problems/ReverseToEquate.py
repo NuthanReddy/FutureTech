@@ -10,6 +10,12 @@ import math
 # Pattern identification: arbitrary subarray reversals preserve multiplicities -> multiset frequency comparison;
 # counts track unmatched occurrences from array_a while consuming array_b.
 def are_they_equal(array_a, array_b):
+    # 1. Output: Return whether arbitrary subarray reversals can turn array_a into array_b.
+    # 2. Structure: Any adjacent pair can be reversed, so order is freely changeable but value counts are not.
+    # 3. Constraints: Values must be hashable; unequal lengths fail and two empty arrays match.
+    # 4. Choice: Count array_a values, consume one count per array_b value, and reject missing values.
+    # 5. Why it works: Remaining counts are exactly the unmatched occurrences; identical
+    # multisets suffice because length-two reversals can swap adjacent values into any needed order.
     if len(array_a) != len(array_b):
         return False
     counts = {}

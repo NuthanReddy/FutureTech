@@ -47,6 +47,16 @@ def range_minimum_query(
         >>> range_minimum_query([5], [("query", 0, 0)])
         [5]
     """
+    # 1. Output: Return the minimum for each inclusive query in operation order;
+    #    updates replace a value but do not append an answer.
+    # 2. Structure: Array values change between range-minimum questions;
+    #    unlike sums, a range minimum cannot be recovered by subtracting prefix minima.
+    # 3. Constraints: Assume valid indices and query bounds; empty input gives [].
+    #    Build costs O(n), q operations O(q log n), and storage O(n).
+    # 4. Choice: A segment tree remembers minima of smaller array sections;
+    #    combine covered sections with min and refresh affected sections after updates.
+    # 5. Why it works: Every node stays the minimum of its current interval;
+    #    combining the pieces covering a query returns exactly its minimum.
     if not arr:
         return []
 

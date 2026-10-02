@@ -17,6 +17,13 @@ def ladder_length(begin_word: str, end_word: str, word_list: List[str]) -> int:
     Pattern identification: minimum single-letter changes -> wildcard-bucket BFS;
     first discovery gives the shortest sequence length for each word.
     """
+    # 1. Output: Return the shortest sequence's word count, including endpoints, or 0.
+    # 2. Structure: Every one-letter change costs one step; words like hot/dot share the pattern *ot.
+    # 3. Constraints: The end word must be listed; each new word is visited once, but buckets are rescanned.
+    # 4. Choice: Group words by one-position wildcard patterns, then BFS through those neighboring words.
+    #    Remember seen words and their sequence lengths so longer paths do not repeat searches.
+    # 5. Why it works: Bucket neighbors are legal one-letter changes; BFS gives the shortest word count.
+    #    With N words of length L, slicing costs O(N*L^2); repeated bucket scans can add O(N^2*L).
     words = set(word_list)
     if end_word not in words:
         return 0

@@ -25,6 +25,13 @@ def calculate(expression: str) -> int:
 
     Complexity: O(n) time and O(n) space for nested parentheses.
     """
+    # 1. Output: Return the integer value of the expression.
+    # 2. Structure: Numbers and +/- signs form scopes nested by parentheses; spaces separate nothing important.
+    # 3. Constraints: Assume valid calculator syntax without */; O(n) time and O(n) worst-case saved scopes.
+    # 4. Choice: The newest opened parentheses close first, so save outer (total, sign) on a stack.
+    # Track the inner total and next sign until a closing parenthesis restores that saved outer work.
+    # 5. Why it works: total evaluates the consumed terms in this scope; closing a scope restores its parent.
+    # Applying the saved sign includes the whole inner result exactly once in the outer total.
     stack: list[tuple[int, int]] = []
     total = 0
     sign = 1

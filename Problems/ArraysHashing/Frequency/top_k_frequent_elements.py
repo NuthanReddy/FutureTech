@@ -39,6 +39,12 @@ def top_k_frequent(nums: list[int], k: int) -> list[int]:
         Time ``O(n + u)`` and space ``O(n + u)``, where ``u`` is the number of
         distinct values.
     """
+    # 1. Output: Return up to k distinct values with the highest occurrence counts.
+    # 2. Structure: We rank counts, not numeric values; counts range up to len(nums), so count-indexed buckets fit.
+    # 3. Constraints: Do not reorder nums; empty input or k <= 0 returns [], oversized k returns all values.
+    # 4. Choice: Count values and bucket by count; scanning buckets downward avoids sorting the distinct values.
+    # 5. Why it works: Every earlier bucket outranks every later one; stopping at k keeps the top values.
+    #    Counting and scanning take average O(n) time and O(n) extra space.
     if k <= 0 or not nums:
         return []
 

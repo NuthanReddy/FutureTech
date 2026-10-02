@@ -30,6 +30,12 @@ def is_valid_sudoku(board: list[list[str]]) -> bool:
         Time ``O(1)`` for the fixed 9x9 board (or ``O(r*c)`` generally),
         space ``O(1)`` for the fixed number of regions.
     """
+    # 1. Output: Return whether filled cells avoid duplicates in every row, column, and 3-by-3 box.
+    # 2. Structure: Each digit must be absent from its row, column, and box; three families of sets answer that.
+    # 3. Constraints: Require a 9-by-9 board with digits or "."; check placement validity, not solvability.
+    # 4. Choice: Keep a set per region, skip dots, and reject membership before inserting a digit.
+    # 5. Why it works: Region sets hold exactly their earlier digits, so every repeated placement is detected.
+    #    The fixed board needs O(1) time and extra space.
     if len(board) != 9 or any(len(row) != 9 for row in board):
         return False
 

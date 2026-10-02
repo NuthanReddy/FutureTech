@@ -46,6 +46,12 @@
 # Pattern identification: merge two sorted inputs -> recursive head comparison;
 # emit the smaller head, leaving sorted tails; slicing copies data at each recursive step.
 def merge_sorted_arrays3(arr1, arr2):
+    # 1. Output: Return one sorted list containing all values from both inputs, including duplicates.
+    # 2. Structure: Sorted inputs expose their smallest values at the heads, so only those heads need comparison.
+    # 3. Constraints: Empty inputs return the other list; slicing copies data and recursion can be deep.
+    # 4. Choice: Emit the smaller head, recursively merge the remaining tails, then join the results.
+    # 5. Why it works: The chosen head is no larger than any remaining value; repeating
+    # this preserves sorted order, though slicing and list joining can take quadratic total work.
     if len(arr1) == 0:
         return arr2
     if len(arr2) == 0:

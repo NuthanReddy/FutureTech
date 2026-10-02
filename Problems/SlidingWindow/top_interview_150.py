@@ -37,6 +37,12 @@ class Solution:
         Pattern identification: positive values and minimum threshold length -> sum window;
         sum tracks [left, right]; record covered windows before shrinking loses coverage.
         """
+        # 1. Output: Return the shortest contiguous length with sum >= target, or zero if none exists.
+        # 2. Structure: We need adjacent values, and positivity makes left removal reduce the sum: expand, then try shrinking.
+        # 3. Constraints: Require positive target and array values; negative values invalidate this shrinking rule.
+        # 4. Choice: Add rightmost values to window_sum, record qualifying lengths, and shrink while still qualifying.
+        # 5. Why it works: Once a left endpoint qualifies, keeping it for later right endpoints cannot make it shorter.
+        #    Both boundaries advance at most n times: O(n) time and O(1) extra space.
         left = 0
         window_sum = 0
         best = len(nums) + 1
@@ -56,6 +62,12 @@ class Solution:
         Pattern identification: longest contiguous unique characters -> last-seen jumps;
         left never retreats and the current window contains no duplicate.
         """
+        # 1. Output: Return the maximum length of a substring with no repeated character.
+        # 2. Structure: Characters must be adjacent; a repeated character tells us exactly how far to move the left boundary.
+        # 3. Constraints: Treat characters literally; empty input returns zero and left must never retreat.
+        # 4. Choice: Store last-seen indices and jump left past an in-window duplicate before recording length.
+        # 5. Why it works: The retained window stays unique and is the longest unique suffix ending at right.
+        #    Average O(n) time and O(u) extra space for u distinct characters.
         last_seen: dict[str, int] = {}
         left = best = 0
         for right, character in enumerate(s):
@@ -74,6 +86,12 @@ class Solution:
         historical max_frequency keeps length - max_frequency <= k after repair,
         without claiming every retained window is currently feasible.
         """
+        # 1. Output: Return the longest substring made uniform by at most k character replacements.
+        # 2. Structure: Keep the most common letter and replace the rest; length minus its count measures a window's cost.
+        # 3. Constraints: Assume k >= 0 and uppercase letters; the saved maximum frequency may become stale.
+        # 4. Choice: Update counts and the historical max_frequency; shrink when length - max_frequency > k.
+        # 5. Why it works: A stale maximum can retain an invalid window, but cannot raise best past a feasible length.
+        #    A larger record needs a newly achieved frequency; O(n) time and O(1) space for the fixed alphabet.
         counts: Counter[str] = Counter()
         left = best = max_frequency = 0
         for right, character in enumerate(s):
@@ -92,6 +110,12 @@ class Solution:
         Pattern identification: permutation substring -> fixed-size frequency window;
         counts describe exactly len(s1) consecutive characters; equality proves a match.
         """
+        # 1. Output: Return whether s2 contains a contiguous permutation of s1.
+        # 2. Structure: A permutation has the same counts and length, so test only length-len(s1) windows, not all substrings.
+        # 3. Constraints: A longer s1 cannot fit; empty s1 matches the initially empty window.
+        # 4. Choice: Compare Counters, then add the incoming character and remove the outgoing one each slide.
+        # 5. Why it works: Counts always describe exactly len(s1) adjacent characters; equality proves a permutation.
+        #    For m=len(s1), n=len(s2), u distinct characters: O(m+n*u) time, O(m+u) space including the initial slice.
         if len(s1) > len(s2):
             return False
         need = Counter(s1)
@@ -114,6 +138,13 @@ class Solution:
         Pattern identification: repeated fixed-window maxima -> monotonic index deque;
         indices are live and values decrease, so the front is the current maximum.
         """
+        # 1. Output: Return the maximum value of each complete length-k window.
+        # 2. Structure: Adjacent length-k windows overlap; a newer value at least as large also stays in future windows longer.
+        # 3. Constraints: Empty input or k <= 0 returns []; k beyond the input yields no complete windows.
+        # 4. Choice: Keep indices in a deque from largest value to smallest; remove weaker backs and expired fronts.
+        #    Read the front for each complete window instead of rescanning all k values.
+        # 5. Why it works: Removed weaker values expire sooner, so they can never beat their newer replacement.
+        #    Each index enters/leaves once: O(n) time and O(min(n,k)) extra space, excluding output.
         if not nums or k <= 0:
             return []
         candidates: deque[int] = deque()
@@ -134,6 +165,12 @@ class Solution:
         Pattern identification: minimum multiplicity-aware coverage -> deficit window;
         remaining counts missing occurrences; zero permits recording then shrinking.
         """
+        # 1. Output: Return the shortest substring covering every character of t, including repeated copies.
+        # 2. Structure: We need adjacent characters with all required copies; once covered, removing left characters tests shorter answers.
+        # 3. Constraints: Match literally; empty t or impossible coverage returns "", and first equal-length tie wins.
+        # 4. Choice: Decrease required counts on expansion; when remaining is zero, record and shrink until coverage fails.
+        # 5. Why it works: remaining counts only missing copies, so zero certifies coverage before each left removal.
+        #    Average O(len(s)+len(t)) time; the Counter stores O(u) distinct characters across both strings.
         if not t or len(t) > len(s):
             return ""
         required = Counter(t)

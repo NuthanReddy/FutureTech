@@ -21,6 +21,12 @@ def convert(a, b):
 # Returns the minimum number of cuts needed to partition a string
 # such that every part is a palindrome
 def minpalparti_memo(input, i, j, memo):
+    # 1. Output: Seek the fewest cuts making input[i:j+1] into palindrome pieces.
+    # 2. Structure: Different cuts revisit the same string intervals; cached interval answers could avoid repeats.
+    # 3. Constraints: Assume valid inclusive indices and a fresh memo; empty intervals need no cuts.
+    # 4. Choice: Return zero for palindromes; otherwise try every split and memoize the best sum.
+    # 5. Why it works: Unique interval keys would let each minimum reuse correct subresults,
+    # but convert concatenates indices without a separator, so distinct intervals can share a wrong cached value.
     if i > j:
         return 0
 
@@ -75,5 +81,3 @@ if __name__ == '__main__':
     input = "ababbbabbababa"
     memo = dict()
     print(minpalparti_memo(input, 0, len(input) - 1, memo))
-
-

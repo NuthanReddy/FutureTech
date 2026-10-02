@@ -5,6 +5,12 @@ def is_safe(x, y, N, M):
 # Pattern identification: find a right/down maze path -> DFS with backtracking;
 # mark the tentative path and undo failed branches; legacy goal validation/aliasing is unchanged.
 def solve_maze(x, y, solution):
+    # 1. Output: Attempt to return whether a right/down path reaches the bottom-right cell.
+    # 2. Structure: Open cells are 1s; choosing down or right can hit a dead end, so alternatives matter.
+    # 3. Constraints: Assume nonempty matching grids; only right and down moves are tried.
+    # 4. Choice: Mark a safe cell, try down then right, and clear the mark if both fail.
+    # 5. Why it works: A valid path should contain only open cells, but the goal is
+    # accepted before checking safety; the demo also aliases solution and maze, changing the input.
     N = len(solution)
     M = len(solution[0])
     if x == N - 1 and y == M - 1:
@@ -20,6 +26,7 @@ def solve_maze(x, y, solution):
             return True
         if solve_maze(x, y + 1, solution):
             return True
+        # Neither continuation worked; remove this tentative path cell.
         solution[x][y] = 0  # Backtrack
         print("after", x, y)
         print_maze(solution)

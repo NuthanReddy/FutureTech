@@ -15,6 +15,13 @@ def count_components(n: int, edges: List[List[int]]) -> int:
     Pattern identification: count undirected groups without routes -> Union-Find;
     decrease the component count only when two distinct roots merge.
     """
+    # 1. Output: Return the number of connected components, including isolated vertices.
+    # 2. Structure: Each undirected edge joins reachable groups; we need their count, not actual paths.
+    # 3. Constraints: Endpoints are in 0..n-1; repeated edges must not reduce the count twice.
+    # 4. Choice: Start with n groups; follow and shorten parent links to find each endpoint's representative.
+    #    Join different representatives and decrease the group count only then.
+    # 5. Why it works: Joining separate groups removes exactly one component; equal roots change nothing.
+    #    Parent storage is O(n); without balanced unions a find may follow a long chain.
     parent = list(range(n))
     components = n
 

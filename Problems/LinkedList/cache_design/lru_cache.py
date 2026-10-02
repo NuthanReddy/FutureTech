@@ -33,6 +33,13 @@ class _CacheNode:
         self.next: Optional["_CacheNode"] = None
 
 
+# 1. Output: get returns a value or -1; put stores a value and evicts the least recently used key if full.
+# 2. Structure: Keys can be touched in any order; we need both direct lookup and an order of last use.
+# 3. Constraints: Capacity must be positive; aim for average O(1) get/put and O(capacity) storage.
+# 4. Choice: A dictionary avoids searching; links to both neighbors let us move any touched node to the recent end.
+# Evict the opposite end rather than scanning for the oldest entry.
+# 5. Why it works: Each dictionary key has exactly one node, and list order records last use.
+# The two placeholder end nodes make moving the first or last real entry use the same link updates.
 class LRUCache:
     """Fixed-capacity integer cache with O(1) ``get`` and ``put``."""
 
