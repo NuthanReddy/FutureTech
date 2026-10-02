@@ -313,7 +313,7 @@ def build_tree_preorder_inorder(
 
     # 1. Output: Return the tree described by the preorder and inorder traversals.
     # 2. Structure: Preorder supplies the root first; its inorder position splits left and right subtrees.
-    # 3. Constraints: Values must be unique and traversals compatible; empty traversals produce None.
+    # 3. Constraints: Unique values give each root one inorder position; incompatible traversals are rejected.
     # 4. Choice: Map inorder positions and advance a shared preorder cursor while building left before right.
     # 5. Why it works: Each inorder interval restricts one subtree, consuming precisely its preorder nodes.
     #    No slices are copied: O(n) time and O(n) map plus O(h) recursion space.
@@ -362,7 +362,7 @@ def build_tree_inorder_postorder(
 
     # 1. Output: Return the tree described by the inorder and postorder traversals.
     # 2. Structure: Backward postorder gives root-right-left; inorder positions divide child ranges.
-    # 3. Constraints: Values must be unique and traversals compatible; empty traversals produce None.
+    # 3. Constraints: Unique values give an unambiguous split; reading backward requires building right first.
     # 4. Choice: Map inorder positions, move a postorder cursor backward, and build right before left.
     # 5. Why it works: Building in reverse-postorder order keeps each cursor value in its proper subtree.
     #    Each node is consumed once: O(n) time, O(n) map and O(h) recursion space.
@@ -424,7 +424,7 @@ def connect_next(root: Optional[TreeNode]) -> Optional[TreeNode]:
     """
 
     # 1. Output: Set next pointers to each node's right neighbor on its level, and return the root.
-    # 2. Structure: A completed next chain can traverse a level while its children form the next level.
+    # 2. Structure: Each parent's children belong to the next level; next links can replace a separate queue.
     # 3. Constraints: The tree need not be perfect; stale next pointers must be cleared at level ends.
     # 4. Choice: Walk the current chain and append children to a dummy-headed chain using a tail pointer.
     # 5. Why it works: The new chain always contains exactly the next level's discovered left-to-right prefix.
@@ -587,7 +587,8 @@ def max_path_sum(root: Optional[TreeNode]) -> int:
     # 1. Output: Return the greatest sum of any nonempty connected path; this version returns 0 for None.
     # 2. Structure: A path may join two child branches locally but can extend upward through only one.
     # 3. Constraints: Values may be negative; retaining each node allows the best all-negative answer.
-    # 4. Choice: Postorder returns one nonnegative-child gain upward and scores both gains in global best.
+    # 4. Choice: Process children first; return this node plus its better useful branch to the parent.
+    #    Separately score both useful branches through this node in best, ignoring negative child gains.
     # 5. Why it works: Every path has a highest node, where its two possible branches are scored together.
     #    Each node supplies one result: O(n) time and O(h) recursion space.
     if root is None:
@@ -630,7 +631,7 @@ def count_complete_tree_nodes(root: Optional[TreeNode]) -> int:
     """
 
     # 1. Output: Return the number of nodes in a complete binary tree.
-    # 2. Structure: Completeness means full earlier levels and a left-filled last level.
+    # 2. Structure: Full earlier levels and a left-filled last level allow counting full subtrees by height.
     # 3. Constraints: The shortcut requires completeness; equal boundary heights do not prove a sparse tree full.
     # 4. Choice: Measure leftmost/rightmost heights; use 2**height-1 if equal, otherwise count both children.
     # 5. Why it works: Equal boundary heights in a complete subtree prove it perfect, so no nodes are skipped.
@@ -714,7 +715,7 @@ def right_side_view(root: Optional[TreeNode]) -> list[int]:
     """
 
     # 1. Output: Return one visible rightmost node value per depth, from top to bottom.
-    # 2. Structure: Nodes at the same depth form a left-to-right level.
+    # 2. Structure: The answer needs one value per depth, so visiting whole levels exposes their right edges.
     # 3. Constraints: Empty input returns []; tree shape need not be complete.
     # 4. Choice: Freeze the queue size for each BFS level and record its final popped value.
     # 5. Why it works: Enqueuing left before right preserves level order, so each batch ends at its rightmost node.
@@ -748,7 +749,7 @@ def average_of_levels(root: Optional[TreeNode]) -> list[float]:
     """
 
     # 1. Output: Return the arithmetic mean of node values at each depth.
-    # 2. Structure: A tree's nodes can be grouped into levels by breadth-first traversal.
+    # 2. Structure: Each average uses all nodes at one depth; a queue naturally groups those nodes together.
     # 3. Constraints: Empty input returns []; each level's divisor must count only that level.
     # 4. Choice: Freeze queue length, sum exactly that many popped values, and append sum/length.
     # 5. Why it works: Newly enqueued children wait for the next batch, keeping each total and count aligned.
@@ -948,7 +949,7 @@ def is_valid_bst(root: Optional[TreeNode]) -> bool:
 # 1. Output: Yield BST values in sorted order and report whether another value remains.
 # 2. Structure: Inorder traversal is sorted, and only the unfinished ancestor path is needed.
 # 3. Constraints: Avoid storing all values; next() raises StopIteration when the stack is empty.
-# 4. Choice: Keep a left-spine stack; pop the next node and push the left spine of its right subtree.
+# 4. Choice: Stack the path down left children; pop the next node, then stack its right subtree's left path.
 # 5. Why it works: The stack top is always the smallest unreturned node; pushing restores that invariant.
 #    Each node is pushed/popped once: O(1) amortized next(), O(h) worst-case per call and storage.
 class BSTIterator(Iterator[int]):
