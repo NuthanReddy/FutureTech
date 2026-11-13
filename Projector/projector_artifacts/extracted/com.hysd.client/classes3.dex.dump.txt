@@ -1,0 +1,2627 @@
+Processing 'C:\Users\ngantla\.copilot\session-state\4c8ab7fc-bd1f-480c-99ab-4458bfed9b0e\files\projector_artifacts\extracted\com.hysd.client\classes3.dex'...
+Opened 'C:\Users\ngantla\.copilot\session-state\4c8ab7fc-bd1f-480c-99ab-4458bfed9b0e\files\projector_artifacts\extracted\com.hysd.client\classes3.dex', DEX version '035'
+Class #0            -
+  Class descriptor  : 'Lcom/hysd/hyscreen/HYSDInterface;'
+  Access flags      : 0x0601 (PUBLIC INTERFACE ABSTRACT)
+  Superclass        : 'Ljava/lang/Object;'
+  Interfaces        -
+    #0              : 'Landroid/os/IInterface;'
+  Static fields     -
+  Instance fields   -
+  Direct methods    -
+  Virtual methods   -
+    #0              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'basicTypes'
+      type          : '(IJZFDLjava/lang/String;)V'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #1              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'finishkey'
+      type          : '(III)V'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #2              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'getangles'
+      type          : '()[F'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #3              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'getcast'
+      type          : '()I'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #4              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'getkey'
+      type          : '()[I'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #5              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'getsensordata'
+      type          : '()[F'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #6              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'gettofdata'
+      type          : '()[F'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #7              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'gettofstate'
+      type          : '()I'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #8              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'init'
+      type          : '()I'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #9              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'motorb'
+      type          : '()I'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #10              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'motorf'
+      type          : '()I'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #11              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'motorg'
+      type          : '()I'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #12              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'motorg2'
+      type          : '()F'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #13              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'motors'
+      type          : '()I'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #14              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'setcast'
+      type          : '(I)I'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #15              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'setkey'
+      type          : '(IIIIIIII)I'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #16              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'unint'
+      type          : '()I'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+    #17              : (in Lcom/hysd/hyscreen/HYSDInterface;)
+      name          : 'updateui'
+      type          : '(I)I'
+      access        : 0x0401 (PUBLIC ABSTRACT)
+      code          : (none)
+
+  source_file_idx   : 5 (HYSDInterface.java)
+
+Class #1            -
+  Class descriptor  : 'Lcom/hysd/hyscreen/HYSDInterface$Default;'
+  Access flags      : 0x0001 (PUBLIC)
+  Superclass        : 'Ljava/lang/Object;'
+  Interfaces        -
+    #0              : 'Lcom/hysd/hyscreen/HYSDInterface;'
+  Static fields     -
+  Instance fields   -
+  Direct methods    -
+    #0              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : '<init>'
+      type          : '()V'
+      access        : 0x10001 (PUBLIC CONSTRUCTOR)
+      code          -
+      registers     : 1
+      ins           : 1
+      outs          : 1
+      insns size    : 4 16-bit code units
+000a80:                                        |[000a80] com.hysd.hyscreen.HYSDInterface$Default.<init>:()V
+000a90: 7010 6d00 0000                         |0000: invoke-direct {v0}, Ljava/lang/Object;.<init>:()V // method@006d
+000a96: 0e00                                   |0003: return-void
+      catches       : (none)
+      positions     :
+        0x0000 line=10
+      locals        :
+        0x0000 - 0x0004 reg=0 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+
+  Virtual methods   -
+    #0              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'asBinder'
+      type          : '()Landroid/os/IBinder;'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 0
+      insns size    : 2 16-bit code units
+00092c:                                        |[00092c] com.hysd.hyscreen.HYSDInterface$Default.asBinder:()Landroid/os/IBinder;
+00093c: 1200                                   |0000: const/4 v0, #int 0 // #0
+00093e: 1100                                   |0001: return-object v0
+      catches       : (none)
+      positions     :
+        0x0000 line=110
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+
+    #1              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'basicTypes'
+      type          : '(IJZFDLjava/lang/String;)V'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 9
+      ins           : 9
+      outs          : 0
+      insns size    : 1 16-bit code units
+000a98:                                        |[000a98] com.hysd.hyscreen.HYSDInterface$Default.basicTypes:(IJZFDLjava/lang/String;)V
+000aa8: 0e00                                   |0000: return-void
+      catches       : (none)
+      positions     :
+        0x0000 line=18
+      locals        :
+        0x0000 - 0x0001 reg=0 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+        0x0000 - 0x0001 reg=1 anInt I
+        0x0000 - 0x0001 reg=2 aLong J
+        0x0000 - 0x0001 reg=4 aBoolean Z
+        0x0000 - 0x0001 reg=5 aFloat F
+        0x0000 - 0x0001 reg=6 aDouble D
+        0x0000 - 0x0001 reg=8 aString Ljava/lang/String;
+
+    #2              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'finishkey'
+      type          : '(III)V'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 4
+      ins           : 4
+      outs          : 0
+      insns size    : 1 16-bit code units
+000aac:                                        |[000aac] com.hysd.hyscreen.HYSDInterface$Default.finishkey:(III)V
+000abc: 0e00                                   |0000: return-void
+      catches       : (none)
+      positions     :
+        0x0000 line=61
+      locals        :
+        0x0000 - 0x0001 reg=0 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+        0x0000 - 0x0001 reg=1 calibstate I
+        0x0000 - 0x0001 reg=2 keystate I
+        0x0000 - 0x0001 reg=3 errorcode I
+
+    #3              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'getangles'
+      type          : '()[F'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 0
+      insns size    : 2 16-bit code units
+000954:                                        |[000954] com.hysd.hyscreen.HYSDInterface$Default.getangles:()[F
+000964: 1200                                   |0000: const/4 v0, #int 0 // #0
+000966: 1100                                   |0001: return-object v0
+      catches       : (none)
+      positions     :
+        0x0000 line=80
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+
+    #4              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'getcast'
+      type          : '()I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 0
+      insns size    : 2 16-bit code units
+000990:                                        |[000990] com.hysd.hyscreen.HYSDInterface$Default.getcast:()I
+0009a0: 1200                                   |0000: const/4 v0, #int 0 // #0
+0009a2: 0f00                                   |0001: return v0
+      catches       : (none)
+      positions     :
+        0x0000 line=74
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+
+    #5              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'getkey'
+      type          : '()[I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 0
+      insns size    : 2 16-bit code units
+000a6c:                                        |[000a6c] com.hysd.hyscreen.HYSDInterface$Default.getkey:()[I
+000a7c: 1200                                   |0000: const/4 v0, #int 0 // #0
+000a7e: 1100                                   |0001: return-object v0
+      catches       : (none)
+      positions     :
+        0x0000 line=64
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+
+    #6              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'getsensordata'
+      type          : '()[F'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 0
+      insns size    : 2 16-bit code units
+000968:                                        |[000968] com.hysd.hyscreen.HYSDInterface$Default.getsensordata:()[F
+000978: 1200                                   |0000: const/4 v0, #int 0 // #0
+00097a: 1100                                   |0001: return-object v0
+      catches       : (none)
+      positions     :
+        0x0000 line=94
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+
+    #7              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'gettofdata'
+      type          : '()[F'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 0
+      insns size    : 2 16-bit code units
+00097c:                                        |[00097c] com.hysd.hyscreen.HYSDInterface$Default.gettofdata:()[F
+00098c: 1200                                   |0000: const/4 v0, #int 0 // #0
+00098e: 1100                                   |0001: return-object v0
+      catches       : (none)
+      positions     :
+        0x0000 line=84
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+
+    #8              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'gettofstate'
+      type          : '()I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 0
+      insns size    : 2 16-bit code units
+0009a4:                                        |[0009a4] com.hysd.hyscreen.HYSDInterface$Default.gettofstate:()I
+0009b4: 1200                                   |0000: const/4 v0, #int 0 // #0
+0009b6: 0f00                                   |0001: return v0
+      catches       : (none)
+      positions     :
+        0x0000 line=88
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+
+    #9              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'init'
+      type          : '()I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 0
+      insns size    : 2 16-bit code units
+0009b8:                                        |[0009b8] com.hysd.hyscreen.HYSDInterface$Default.init:()I
+0009c8: 1200                                   |0000: const/4 v0, #int 0 // #0
+0009ca: 0f00                                   |0001: return v0
+      catches       : (none)
+      positions     :
+        0x0000 line=23
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+
+    #10              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'motorb'
+      type          : '()I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 0
+      insns size    : 2 16-bit code units
+0009cc:                                        |[0009cc] com.hysd.hyscreen.HYSDInterface$Default.motorb:()I
+0009dc: 1200                                   |0000: const/4 v0, #int 0 // #0
+0009de: 0f00                                   |0001: return v0
+      catches       : (none)
+      positions     :
+        0x0000 line=37
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+
+    #11              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'motorf'
+      type          : '()I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 0
+      insns size    : 2 16-bit code units
+0009e0:                                        |[0009e0] com.hysd.hyscreen.HYSDInterface$Default.motorf:()I
+0009f0: 1200                                   |0000: const/4 v0, #int 0 // #0
+0009f2: 0f00                                   |0001: return v0
+      catches       : (none)
+      positions     :
+        0x0000 line=33
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+
+    #12              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'motorg'
+      type          : '()I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 0
+      insns size    : 2 16-bit code units
+0009f4:                                        |[0009f4] com.hysd.hyscreen.HYSDInterface$Default.motorg:()I
+000a04: 1200                                   |0000: const/4 v0, #int 0 // #0
+000a06: 0f00                                   |0001: return v0
+      catches       : (none)
+      positions     :
+        0x0000 line=45
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+
+    #13              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'motorg2'
+      type          : '()F'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 0
+      insns size    : 2 16-bit code units
+000940:                                        |[000940] com.hysd.hyscreen.HYSDInterface$Default.motorg2:()F
+000950: 1200                                   |0000: const/4 v0, #int 0 // #0
+000952: 0f00                                   |0001: return v0
+      catches       : (none)
+      positions     :
+        0x0000 line=106
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+
+    #14              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'motors'
+      type          : '()I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 0
+      insns size    : 2 16-bit code units
+000a08:                                        |[000a08] com.hysd.hyscreen.HYSDInterface$Default.motors:()I
+000a18: 1200                                   |0000: const/4 v0, #int 0 // #0
+000a1a: 0f00                                   |0001: return v0
+      catches       : (none)
+      positions     :
+        0x0000 line=41
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+
+    #15              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'setcast'
+      type          : '(I)I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 3
+      ins           : 2
+      outs          : 0
+      insns size    : 2 16-bit code units
+000a1c:                                        |[000a1c] com.hysd.hyscreen.HYSDInterface$Default.setcast:(I)I
+000a2c: 1200                                   |0000: const/4 v0, #int 0 // #0
+000a2e: 0f00                                   |0001: return v0
+      catches       : (none)
+      positions     :
+        0x0000 line=70
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+        0x0000 - 0x0002 reg=2 mode I
+
+    #16              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'setkey'
+      type          : '(IIIIIIII)I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 10
+      ins           : 9
+      outs          : 0
+      insns size    : 2 16-bit code units
+000a30:                                        |[000a30] com.hysd.hyscreen.HYSDInterface$Default.setkey:(IIIIIIII)I
+000a40: 1200                                   |0000: const/4 v0, #int 0 // #0
+000a42: 0f00                                   |0001: return v0
+      catches       : (none)
+      positions     :
+        0x0000 line=52
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+        0x0000 - 0x0002 reg=2 ltx I
+        0x0000 - 0x0002 reg=3 lty I
+        0x0000 - 0x0002 reg=4 lbx I
+        0x0000 - 0x0002 reg=5 lby I
+        0x0000 - 0x0002 reg=6 rbx I
+        0x0000 - 0x0002 reg=7 rby I
+        0x0000 - 0x0002 reg=8 rtx I
+        0x0000 - 0x0002 reg=9 rty I
+
+    #17              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'unint'
+      type          : '()I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 0
+      insns size    : 2 16-bit code units
+000a44:                                        |[000a44] com.hysd.hyscreen.HYSDInterface$Default.unint:()I
+000a54: 1200                                   |0000: const/4 v0, #int 0 // #0
+000a56: 0f00                                   |0001: return v0
+      catches       : (none)
+      positions     :
+        0x0000 line=27
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+
+    #18              : (in Lcom/hysd/hyscreen/HYSDInterface$Default;)
+      name          : 'updateui'
+      type          : '(I)I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 3
+      ins           : 2
+      outs          : 0
+      insns size    : 2 16-bit code units
+000a58:                                        |[000a58] com.hysd.hyscreen.HYSDInterface$Default.updateui:(I)I
+000a68: 1200                                   |0000: const/4 v0, #int 0 // #0
+000a6a: 0f00                                   |0001: return v0
+      catches       : (none)
+      positions     :
+        0x0000 line=100
+      locals        :
+        0x0000 - 0x0002 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Default;
+        0x0000 - 0x0002 reg=2 update_index I
+
+  source_file_idx   : 5 (HYSDInterface.java)
+
+Class #2            -
+  Class descriptor  : 'Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;'
+  Access flags      : 0x0000 ()
+  Superclass        : 'Ljava/lang/Object;'
+  Interfaces        -
+    #0              : 'Lcom/hysd/hyscreen/HYSDInterface;'
+  Static fields     -
+    #0              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'sDefaultImpl'
+      type          : 'Lcom/hysd/hyscreen/HYSDInterface;'
+      access        : 0x0009 (PUBLIC STATIC)
+  Instance fields   -
+    #0              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'mRemote'
+      type          : 'Landroid/os/IBinder;'
+      access        : 0x0002 (PRIVATE)
+  Direct methods    -
+    #0              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : '<init>'
+      type          : '(Landroid/os/IBinder;)V'
+      access        : 0x10000 (CONSTRUCTOR)
+      code          -
+      registers     : 2
+      ins           : 2
+      outs          : 1
+      insns size    : 6 16-bit code units
+00169c:                                        |[00169c] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.<init>:(Landroid/os/IBinder;)V
+0016ac: 7010 6d00 0000                         |0000: invoke-direct {v0}, Ljava/lang/Object;.<init>:()V // method@006d
+0016b2: 5b01 0000                              |0003: iput-object v1, v0, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+0016b6: 0e00                                   |0005: return-void
+      catches       : (none)
+      positions     :
+        0x0000 line=341
+        0x0003 line=342
+        0x0005 line=343
+      locals        :
+        0x0000 - 0x0006 reg=0 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+        0x0000 - 0x0006 reg=1 remote Landroid/os/IBinder;
+
+  Virtual methods   -
+    #0              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'asBinder'
+      type          : '()Landroid/os/IBinder;'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 0
+      insns size    : 3 16-bit code units
+000ac0:                                        |[000ac0] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.asBinder:()Landroid/os/IBinder;
+000ad0: 5410 0000                              |0000: iget-object v0, v1, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+000ad4: 1100                                   |0002: return-object v0
+      catches       : (none)
+      positions     :
+        0x0000 line=346
+      locals        :
+        0x0000 - 0x0003 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+
+    #1              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'basicTypes'
+      type          : '(IJZFDLjava/lang/String;)V'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 25
+      ins           : 9
+      outs          : 9
+      insns size    : 121 16-bit code units
+0016b8:                                        |[0016b8] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.basicTypes:(IJZFDLjava/lang/String;)V
+0016c8: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+0016ce: 0c01                                   |0003: move-result-object v1
+0016d0: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+0016d6: 0c02                                   |0007: move-result-object v2
+0016d8: 1a00 5700                              |0008: const-string v0, "com.hysd.hyscreen.HYSDInterface" // string@0057
+0016dc: 6e20 1400 0100                         |000a: invoke-virtual {v1, v0}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+0016e2: 020c 1100                              |000d: move/from16 v12, v17
+0016e6: 6e20 1200 c100                         |000f: invoke-virtual {v1, v12}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+0016ec: 050d 1200                              |0012: move-wide/from16 v13, v18
+0016f0: 6e30 1500 d10e                         |0014: invoke-virtual {v1, v13, v14}, Landroid/os/Parcel;.writeLong:(J)V // method@0015
+0016f6: 1210                                   |0017: const/4 v0, #int 1 // #1
+0016f8: 1203                                   |0018: const/4 v3, #int 0 // #0
+0016fa: 3814 0400                              |0019: if-eqz v20, 001d // +0004
+0016fe: 0104                                   |001b: move v4, v0
+001700: 2802                                   |001c: goto 001e // +0002
+001702: 0134                                   |001d: move v4, v3
+001704: 6e20 1200 4100                         |001e: invoke-virtual {v1, v4}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+00170a: 020f 1500                              |0021: move/from16 v15, v21
+00170e: 6e20 1000 f100                         |0023: invoke-virtual {v1, v15}, Landroid/os/Parcel;.writeFloat:(F)V // method@0010
+001714: 0509 1600                              |0026: move-wide/from16 v9, v22
+001718: 6e30 0f00 910a                         |0028: invoke-virtual {v1, v9, v10}, Landroid/os/Parcel;.writeDouble:(D)V // method@000f
+00171e: 080b 1800                              |002b: move-object/from16 v11, v24
+001722: 6e20 1700 b100                         |002d: invoke-virtual {v1, v11}, Landroid/os/Parcel;.writeString:(Ljava/lang/String;)V // method@0017
+001728: 0808 1000                              |0030: move-object/from16 v8, v16
+00172c: 5484 0000                              |0032: iget-object v4, v8, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+001730: 7253 0300 0421                         |0034: invoke-interface {v4, v0, v1, v2, v3}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+001736: 0a00                                   |0037: move-result v0
+001738: 3900 2200                              |0038: if-nez v0, 005a // +0022
+00173c: 7100 4700 0000                         |003a: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+001742: 0c03                                   |003d: move-result-object v3
+001744: 3803 1c00                              |003e: if-eqz v3, 005a // +001c
+001748: 7100 4700 0000                         |0040: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+00174e: 0c03                                   |0043: move-result-object v3
+001750: 0204 1100                              |0044: move/from16 v4, v17
+001754: 0505 1200                              |0046: move-wide/from16 v5, v18
+001758: 0207 1400                              |0048: move/from16 v7, v20
+00175c: 0208 1500                              |004a: move/from16 v8, v21
+001760: 0509 1600                              |004c: move-wide/from16 v9, v22
+001764: 080b 1800                              |004e: move-object/from16 v11, v24
+001768: 7809 5a00 0300                         |0050: invoke-interface/range {v3, v4, v5, v6, v7, v8, v9, v10, v11}, Lcom/hysd/hyscreen/HYSDInterface;.basicTypes:(IJZFDLjava/lang/String;)V // method@005a
+00176e: 6e10 0e00 0200                         |0053: invoke-virtual {v2}, Landroid/os/Parcel;.recycle:()V // method@000e
+001774: 6e10 0e00 0100                         |0056: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+00177a: 0e00                                   |0059: return-void
+00177c: 6e10 0900 0200                         |005a: invoke-virtual {v2}, Landroid/os/Parcel;.readException:()V // method@0009
+001782: 6e10 0e00 0200                         |005d: invoke-virtual {v2}, Landroid/os/Parcel;.recycle:()V // method@000e
+001788: 6e10 0e00 0100                         |0060: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+00178e: 0000                                   |0063: nop // spacer
+001790: 0e00                                   |0064: return-void
+001792: 0d00                                   |0065: move-exception v0
+001794: 280c                                   |0066: goto 0072 // +000c
+001796: 0d00                                   |0067: move-exception v0
+001798: 2808                                   |0068: goto 0070 // +0008
+00179a: 0d00                                   |0069: move-exception v0
+00179c: 2804                                   |006a: goto 006e // +0004
+00179e: 0d00                                   |006b: move-exception v0
+0017a0: 020c 1100                              |006c: move/from16 v12, v17
+0017a4: 050d 1200                              |006e: move-wide/from16 v13, v18
+0017a8: 020f 1500                              |0070: move/from16 v15, v21
+0017ac: 6e10 0e00 0200                         |0072: invoke-virtual {v2}, Landroid/os/Parcel;.recycle:()V // method@000e
+0017b2: 6e10 0e00 0100                         |0075: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+0017b8: 2700                                   |0078: throw v0
+      catches       : 5
+        0x0008 - 0x000d
+          <any> -> 0x006b
+        0x000f - 0x0012
+          <any> -> 0x0069
+        0x0014 - 0x0021
+          <any> -> 0x0067
+        0x0023 - 0x0053
+          <any> -> 0x0065
+        0x005a - 0x005d
+          <any> -> 0x0065
+      positions     :
+        0x0000 line=358
+        0x0004 line=359
+        0x0008 line=361
+        0x000d line=362
+        0x0012 line=363
+        0x0017 line=364
+        0x0021 line=365
+        0x0026 line=366
+        0x002b line=367
+        0x0030 line=368
+        0x0038 line=369
+        0x0040 line=370
+        0x0053 line=376
+        0x0056 line=377
+        0x0059 line=371
+        0x005a line=373
+        0x005d line=376
+        0x0060 line=377
+        0x0063 line=378
+        0x0064 line=379
+        0x0065 line=376
+        0x0075 line=377
+        0x0078 line=378
+      locals        :
+        0x0038 - 0x005d reg=0 _status Z
+        0x0004 - 0x0079 reg=1 _data Landroid/os/Parcel;
+        0x0008 - 0x0079 reg=2 _reply Landroid/os/Parcel;
+        0x0000 - 0x0079 reg=16 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+        0x0000 - 0x0079 reg=17 anInt I
+        0x0000 - 0x0079 reg=18 aLong J
+        0x0000 - 0x0079 reg=20 aBoolean Z
+        0x0000 - 0x0079 reg=21 aFloat F
+        0x0000 - 0x0079 reg=22 aDouble D
+        0x0000 - 0x0079 reg=24 aString Ljava/lang/String;
+
+    #2              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'finishkey'
+      type          : '(III)V'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 9
+      ins           : 4
+      outs          : 5
+      insns size    : 72 16-bit code units
+0017f0:                                        |[0017f0] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.finishkey:(III)V
+001800: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+001806: 0c00                                   |0003: move-result-object v0
+001808: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+00180e: 0c01                                   |0007: move-result-object v1
+001810: 1a02 5700                              |0008: const-string v2, "com.hysd.hyscreen.HYSDInterface" // string@0057
+001814: 6e20 1400 2000                         |000a: invoke-virtual {v0, v2}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+00181a: 6e20 1200 6000                         |000d: invoke-virtual {v0, v6}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001820: 6e20 1200 7000                         |0010: invoke-virtual {v0, v7}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001826: 6e20 1200 8000                         |0013: invoke-virtual {v0, v8}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+00182c: 5452 0000                              |0016: iget-object v2, v5, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+001830: 1303 0900                              |0018: const/16 v3, #int 9 // #9
+001834: 1204                                   |001a: const/4 v4, #int 0 // #0
+001836: 7254 0300 3210                         |001b: invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+00183c: 0a02                                   |001e: move-result v2
+00183e: 3902 1600                              |001f: if-nez v2, 0035 // +0016
+001842: 7100 4700 0000                         |0021: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+001848: 0c03                                   |0024: move-result-object v3
+00184a: 3803 1000                              |0025: if-eqz v3, 0035 // +0010
+00184e: 7100 4700 0000                         |0027: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+001854: 0c03                                   |002a: move-result-object v3
+001856: 7240 5b00 6387                         |002b: invoke-interface {v3, v6, v7, v8}, Lcom/hysd/hyscreen/HYSDInterface;.finishkey:(III)V // method@005b
+00185c: 6e10 0e00 0100                         |002e: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+001862: 6e10 0e00 0000                         |0031: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+001868: 0e00                                   |0034: return-void
+00186a: 6e10 0900 0100                         |0035: invoke-virtual {v1}, Landroid/os/Parcel;.readException:()V // method@0009
+001870: 6e10 0e00 0100                         |0038: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+001876: 6e10 0e00 0000                         |003b: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+00187c: 0000                                   |003e: nop // spacer
+00187e: 0e00                                   |003f: return-void
+001880: 0d02                                   |0040: move-exception v2
+001882: 6e10 0e00 0100                         |0041: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+001888: 6e10 0e00 0000                         |0044: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+00188e: 2702                                   |0047: throw v2
+      catches       : 2
+        0x0008 - 0x002e
+          <any> -> 0x0040
+        0x0035 - 0x0038
+          <any> -> 0x0040
+      positions     :
+        0x0000 line=542
+        0x0004 line=543
+        0x0008 line=545
+        0x000d line=546
+        0x0010 line=547
+        0x0013 line=548
+        0x0016 line=549
+        0x001f line=550
+        0x0027 line=551
+        0x002e line=557
+        0x0031 line=558
+        0x0034 line=552
+        0x0035 line=554
+        0x0038 line=557
+        0x003b line=558
+        0x003e line=559
+        0x003f line=560
+        0x0040 line=557
+        0x0044 line=558
+        0x0047 line=559
+      locals        :
+        0x001f - 0x0038 reg=2 _status Z
+        0x0004 - 0x0048 reg=0 _data Landroid/os/Parcel;
+        0x0008 - 0x0048 reg=1 _reply Landroid/os/Parcel;
+        0x0000 - 0x0048 reg=5 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+        0x0000 - 0x0048 reg=6 calibstate I
+        0x0000 - 0x0048 reg=7 keystate I
+        0x0000 - 0x0048 reg=8 errorcode I
+
+    #3              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'getInterfaceDescriptor'
+      type          : '()Ljava/lang/String;'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 0
+      insns size    : 3 16-bit code units
+001684:                                        |[001684] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.getInterfaceDescriptor:()Ljava/lang/String;
+001694: 1a00 5700                              |0000: const-string v0, "com.hysd.hyscreen.HYSDInterface" // string@0057
+001698: 1100                                   |0002: return-object v0
+      catches       : (none)
+      positions     :
+        0x0000 line=350
+      locals        :
+        0x0000 - 0x0003 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+
+    #4              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'getangles'
+      type          : '()[F'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 6
+      ins           : 1
+      outs          : 5
+      insns size    : 69 16-bit code units
+000b88:                                        |[000b88] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.getangles:()[F
+000b98: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+000b9e: 0c00                                   |0003: move-result-object v0
+000ba0: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+000ba6: 0c01                                   |0007: move-result-object v1
+000ba8: 1a02 5700                              |0008: const-string v2, "com.hysd.hyscreen.HYSDInterface" // string@0057
+000bac: 6e20 1400 2000                         |000a: invoke-virtual {v0, v2}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+000bb2: 5452 0000                              |000d: iget-object v2, v5, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+000bb6: 1303 0d00                              |000f: const/16 v3, #int 13 // #d
+000bba: 1204                                   |0011: const/4 v4, #int 0 // #0
+000bbc: 7254 0300 3210                         |0012: invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+000bc2: 0a02                                   |0015: move-result v2
+000bc4: 3902 1700                              |0016: if-nez v2, 002d // +0017
+000bc8: 7100 4700 0000                         |0018: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+000bce: 0c03                                   |001b: move-result-object v3
+000bd0: 3803 1100                              |001c: if-eqz v3, 002d // +0011
+000bd4: 7100 4700 0000                         |001e: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+000bda: 0c03                                   |0021: move-result-object v3
+000bdc: 7210 5c00 0300                         |0022: invoke-interface {v3}, Lcom/hysd/hyscreen/HYSDInterface;.getangles:()[F // method@005c
+000be2: 0c03                                   |0025: move-result-object v3
+000be4: 6e10 0e00 0100                         |0026: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000bea: 6e10 0e00 0000                         |0029: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000bf0: 1103                                   |002c: return-object v3
+000bf2: 6e10 0900 0100                         |002d: invoke-virtual {v1}, Landroid/os/Parcel;.readException:()V // method@0009
+000bf8: 6e10 0400 0100                         |0030: invoke-virtual {v1}, Landroid/os/Parcel;.createFloatArray:()[F // method@0004
+000bfe: 0c03                                   |0033: move-result-object v3
+000c00: 0732                                   |0034: move-object v2, v3
+000c02: 6e10 0e00 0100                         |0035: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000c08: 6e10 0e00 0000                         |0038: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000c0e: 0000                                   |003b: nop // spacer
+000c10: 1102                                   |003c: return-object v2
+000c12: 0d02                                   |003d: move-exception v2
+000c14: 6e10 0e00 0100                         |003e: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000c1a: 6e10 0e00 0000                         |0041: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000c20: 2702                                   |0044: throw v2
+      catches       : 2
+        0x0008 - 0x0026
+          <any> -> 0x003d
+        0x002d - 0x0034
+          <any> -> 0x003d
+      positions     :
+        0x0000 line=628
+        0x0004 line=629
+        0x0008 line=632
+        0x000d line=633
+        0x0016 line=634
+        0x001e line=635
+        0x0026 line=641
+        0x0029 line=642
+        0x002c line=635
+        0x002d line=637
+        0x0030 line=638
+        0x0035 line=641
+        0x0038 line=642
+        0x003b line=643
+        0x003c line=644
+        0x003d line=641
+        0x0041 line=642
+        0x0044 line=643
+      locals        :
+        0x0016 - 0x0035 reg=2 _status Z
+        0x0035 - 0x003d reg=2 _result [F
+        0x0004 - 0x0045 reg=0 _data Landroid/os/Parcel;
+        0x0008 - 0x0045 reg=1 _reply Landroid/os/Parcel;
+        0x0000 - 0x0045 reg=5 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+
+    #5              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'getcast'
+      type          : '()I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 6
+      ins           : 1
+      outs          : 5
+      insns size    : 69 16-bit code units
+000d98:                                        |[000d98] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.getcast:()I
+000da8: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+000dae: 0c00                                   |0003: move-result-object v0
+000db0: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+000db6: 0c01                                   |0007: move-result-object v1
+000db8: 1a02 5700                              |0008: const-string v2, "com.hysd.hyscreen.HYSDInterface" // string@0057
+000dbc: 6e20 1400 2000                         |000a: invoke-virtual {v0, v2}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+000dc2: 5452 0000                              |000d: iget-object v2, v5, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+000dc6: 1303 0c00                              |000f: const/16 v3, #int 12 // #c
+000dca: 1204                                   |0011: const/4 v4, #int 0 // #0
+000dcc: 7254 0300 3210                         |0012: invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+000dd2: 0a02                                   |0015: move-result v2
+000dd4: 3902 1700                              |0016: if-nez v2, 002d // +0017
+000dd8: 7100 4700 0000                         |0018: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+000dde: 0c03                                   |001b: move-result-object v3
+000de0: 3803 1100                              |001c: if-eqz v3, 002d // +0011
+000de4: 7100 4700 0000                         |001e: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+000dea: 0c03                                   |0021: move-result-object v3
+000dec: 7210 5d00 0300                         |0022: invoke-interface {v3}, Lcom/hysd/hyscreen/HYSDInterface;.getcast:()I // method@005d
+000df2: 0a03                                   |0025: move-result v3
+000df4: 6e10 0e00 0100                         |0026: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000dfa: 6e10 0e00 0000                         |0029: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000e00: 0f03                                   |002c: return v3
+000e02: 6e10 0900 0100                         |002d: invoke-virtual {v1}, Landroid/os/Parcel;.readException:()V // method@0009
+000e08: 6e10 0b00 0100                         |0030: invoke-virtual {v1}, Landroid/os/Parcel;.readInt:()I // method@000b
+000e0e: 0a03                                   |0033: move-result v3
+000e10: 0132                                   |0034: move v2, v3
+000e12: 6e10 0e00 0100                         |0035: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000e18: 6e10 0e00 0000                         |0038: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000e1e: 0000                                   |003b: nop // spacer
+000e20: 0f02                                   |003c: return v2
+000e22: 0d02                                   |003d: move-exception v2
+000e24: 6e10 0e00 0100                         |003e: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000e2a: 6e10 0e00 0000                         |0041: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000e30: 2702                                   |0044: throw v2
+      catches       : 2
+        0x0008 - 0x0026
+          <any> -> 0x003d
+        0x002d - 0x0034
+          <any> -> 0x003d
+      positions     :
+        0x0000 line=606
+        0x0004 line=607
+        0x0008 line=610
+        0x000d line=611
+        0x0016 line=612
+        0x001e line=613
+        0x0026 line=619
+        0x0029 line=620
+        0x002c line=613
+        0x002d line=615
+        0x0030 line=616
+        0x0035 line=619
+        0x0038 line=620
+        0x003b line=621
+        0x003c line=622
+        0x003d line=619
+        0x0041 line=620
+        0x0044 line=621
+      locals        :
+        0x0016 - 0x0035 reg=2 _status Z
+        0x0035 - 0x003d reg=2 _result I
+        0x0004 - 0x0045 reg=0 _data Landroid/os/Parcel;
+        0x0008 - 0x0045 reg=1 _reply Landroid/os/Parcel;
+        0x0000 - 0x0045 reg=5 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+
+    #6              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'getkey'
+      type          : '()[I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 6
+      ins           : 1
+      outs          : 5
+      insns size    : 69 16-bit code units
+0015d4:                                        |[0015d4] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.getkey:()[I
+0015e4: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+0015ea: 0c00                                   |0003: move-result-object v0
+0015ec: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+0015f2: 0c01                                   |0007: move-result-object v1
+0015f4: 1a02 5700                              |0008: const-string v2, "com.hysd.hyscreen.HYSDInterface" // string@0057
+0015f8: 6e20 1400 2000                         |000a: invoke-virtual {v0, v2}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+0015fe: 5452 0000                              |000d: iget-object v2, v5, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+001602: 1303 0a00                              |000f: const/16 v3, #int 10 // #a
+001606: 1204                                   |0011: const/4 v4, #int 0 // #0
+001608: 7254 0300 3210                         |0012: invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+00160e: 0a02                                   |0015: move-result v2
+001610: 3902 1700                              |0016: if-nez v2, 002d // +0017
+001614: 7100 4700 0000                         |0018: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+00161a: 0c03                                   |001b: move-result-object v3
+00161c: 3803 1100                              |001c: if-eqz v3, 002d // +0011
+001620: 7100 4700 0000                         |001e: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+001626: 0c03                                   |0021: move-result-object v3
+001628: 7210 5e00 0300                         |0022: invoke-interface {v3}, Lcom/hysd/hyscreen/HYSDInterface;.getkey:()[I // method@005e
+00162e: 0c03                                   |0025: move-result-object v3
+001630: 6e10 0e00 0100                         |0026: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+001636: 6e10 0e00 0000                         |0029: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+00163c: 1103                                   |002c: return-object v3
+00163e: 6e10 0900 0100                         |002d: invoke-virtual {v1}, Landroid/os/Parcel;.readException:()V // method@0009
+001644: 6e10 0500 0100                         |0030: invoke-virtual {v1}, Landroid/os/Parcel;.createIntArray:()[I // method@0005
+00164a: 0c03                                   |0033: move-result-object v3
+00164c: 0732                                   |0034: move-object v2, v3
+00164e: 6e10 0e00 0100                         |0035: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+001654: 6e10 0e00 0000                         |0038: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+00165a: 0000                                   |003b: nop // spacer
+00165c: 1102                                   |003c: return-object v2
+00165e: 0d02                                   |003d: move-exception v2
+001660: 6e10 0e00 0100                         |003e: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+001666: 6e10 0e00 0000                         |0041: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+00166c: 2702                                   |0044: throw v2
+      catches       : 2
+        0x0008 - 0x0026
+          <any> -> 0x003d
+        0x002d - 0x0034
+          <any> -> 0x003d
+      positions     :
+        0x0000 line=563
+        0x0004 line=564
+        0x0008 line=567
+        0x000d line=568
+        0x0016 line=569
+        0x001e line=570
+        0x0026 line=576
+        0x0029 line=577
+        0x002c line=570
+        0x002d line=572
+        0x0030 line=573
+        0x0035 line=576
+        0x0038 line=577
+        0x003b line=578
+        0x003c line=579
+        0x003d line=576
+        0x0041 line=577
+        0x0044 line=578
+      locals        :
+        0x0016 - 0x0035 reg=2 _status Z
+        0x0035 - 0x003d reg=2 _result [I
+        0x0004 - 0x0045 reg=0 _data Landroid/os/Parcel;
+        0x0008 - 0x0045 reg=1 _reply Landroid/os/Parcel;
+        0x0000 - 0x0045 reg=5 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+
+    #7              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'getsensordata'
+      type          : '()[F'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 6
+      ins           : 1
+      outs          : 5
+      insns size    : 69 16-bit code units
+000c38:                                        |[000c38] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.getsensordata:()[F
+000c48: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+000c4e: 0c00                                   |0003: move-result-object v0
+000c50: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+000c56: 0c01                                   |0007: move-result-object v1
+000c58: 1a02 5700                              |0008: const-string v2, "com.hysd.hyscreen.HYSDInterface" // string@0057
+000c5c: 6e20 1400 2000                         |000a: invoke-virtual {v0, v2}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+000c62: 5452 0000                              |000d: iget-object v2, v5, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+000c66: 1303 1000                              |000f: const/16 v3, #int 16 // #10
+000c6a: 1204                                   |0011: const/4 v4, #int 0 // #0
+000c6c: 7254 0300 3210                         |0012: invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+000c72: 0a02                                   |0015: move-result v2
+000c74: 3902 1700                              |0016: if-nez v2, 002d // +0017
+000c78: 7100 4700 0000                         |0018: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+000c7e: 0c03                                   |001b: move-result-object v3
+000c80: 3803 1100                              |001c: if-eqz v3, 002d // +0011
+000c84: 7100 4700 0000                         |001e: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+000c8a: 0c03                                   |0021: move-result-object v3
+000c8c: 7210 5f00 0300                         |0022: invoke-interface {v3}, Lcom/hysd/hyscreen/HYSDInterface;.getsensordata:()[F // method@005f
+000c92: 0c03                                   |0025: move-result-object v3
+000c94: 6e10 0e00 0100                         |0026: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000c9a: 6e10 0e00 0000                         |0029: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000ca0: 1103                                   |002c: return-object v3
+000ca2: 6e10 0900 0100                         |002d: invoke-virtual {v1}, Landroid/os/Parcel;.readException:()V // method@0009
+000ca8: 6e10 0400 0100                         |0030: invoke-virtual {v1}, Landroid/os/Parcel;.createFloatArray:()[F // method@0004
+000cae: 0c03                                   |0033: move-result-object v3
+000cb0: 0732                                   |0034: move-object v2, v3
+000cb2: 6e10 0e00 0100                         |0035: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000cb8: 6e10 0e00 0000                         |0038: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000cbe: 0000                                   |003b: nop // spacer
+000cc0: 1102                                   |003c: return-object v2
+000cc2: 0d02                                   |003d: move-exception v2
+000cc4: 6e10 0e00 0100                         |003e: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000cca: 6e10 0e00 0000                         |0041: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000cd0: 2702                                   |0044: throw v2
+      catches       : 2
+        0x0008 - 0x0026
+          <any> -> 0x003d
+        0x002d - 0x0034
+          <any> -> 0x003d
+      positions     :
+        0x0000 line=690
+        0x0004 line=691
+        0x0008 line=694
+        0x000d line=695
+        0x0016 line=696
+        0x001e line=697
+        0x0026 line=703
+        0x0029 line=704
+        0x002c line=697
+        0x002d line=699
+        0x0030 line=700
+        0x0035 line=703
+        0x0038 line=704
+        0x003b line=705
+        0x003c line=706
+        0x003d line=703
+        0x0041 line=704
+        0x0044 line=705
+      locals        :
+        0x0016 - 0x0035 reg=2 _status Z
+        0x0035 - 0x003d reg=2 _result [F
+        0x0004 - 0x0045 reg=0 _data Landroid/os/Parcel;
+        0x0008 - 0x0045 reg=1 _reply Landroid/os/Parcel;
+        0x0000 - 0x0045 reg=5 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+
+    #8              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'gettofdata'
+      type          : '()[F'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 6
+      ins           : 1
+      outs          : 5
+      insns size    : 69 16-bit code units
+000ce8:                                        |[000ce8] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.gettofdata:()[F
+000cf8: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+000cfe: 0c00                                   |0003: move-result-object v0
+000d00: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+000d06: 0c01                                   |0007: move-result-object v1
+000d08: 1a02 5700                              |0008: const-string v2, "com.hysd.hyscreen.HYSDInterface" // string@0057
+000d0c: 6e20 1400 2000                         |000a: invoke-virtual {v0, v2}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+000d12: 5452 0000                              |000d: iget-object v2, v5, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+000d16: 1303 0e00                              |000f: const/16 v3, #int 14 // #e
+000d1a: 1204                                   |0011: const/4 v4, #int 0 // #0
+000d1c: 7254 0300 3210                         |0012: invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+000d22: 0a02                                   |0015: move-result v2
+000d24: 3902 1700                              |0016: if-nez v2, 002d // +0017
+000d28: 7100 4700 0000                         |0018: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+000d2e: 0c03                                   |001b: move-result-object v3
+000d30: 3803 1100                              |001c: if-eqz v3, 002d // +0011
+000d34: 7100 4700 0000                         |001e: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+000d3a: 0c03                                   |0021: move-result-object v3
+000d3c: 7210 6000 0300                         |0022: invoke-interface {v3}, Lcom/hysd/hyscreen/HYSDInterface;.gettofdata:()[F // method@0060
+000d42: 0c03                                   |0025: move-result-object v3
+000d44: 6e10 0e00 0100                         |0026: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000d4a: 6e10 0e00 0000                         |0029: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000d50: 1103                                   |002c: return-object v3
+000d52: 6e10 0900 0100                         |002d: invoke-virtual {v1}, Landroid/os/Parcel;.readException:()V // method@0009
+000d58: 6e10 0400 0100                         |0030: invoke-virtual {v1}, Landroid/os/Parcel;.createFloatArray:()[F // method@0004
+000d5e: 0c03                                   |0033: move-result-object v3
+000d60: 0732                                   |0034: move-object v2, v3
+000d62: 6e10 0e00 0100                         |0035: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000d68: 6e10 0e00 0000                         |0038: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000d6e: 0000                                   |003b: nop // spacer
+000d70: 1102                                   |003c: return-object v2
+000d72: 0d02                                   |003d: move-exception v2
+000d74: 6e10 0e00 0100                         |003e: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000d7a: 6e10 0e00 0000                         |0041: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000d80: 2702                                   |0044: throw v2
+      catches       : 2
+        0x0008 - 0x0026
+          <any> -> 0x003d
+        0x002d - 0x0034
+          <any> -> 0x003d
+      positions     :
+        0x0000 line=648
+        0x0004 line=649
+        0x0008 line=652
+        0x000d line=653
+        0x0016 line=654
+        0x001e line=655
+        0x0026 line=661
+        0x0029 line=662
+        0x002c line=655
+        0x002d line=657
+        0x0030 line=658
+        0x0035 line=661
+        0x0038 line=662
+        0x003b line=663
+        0x003c line=664
+        0x003d line=661
+        0x0041 line=662
+        0x0044 line=663
+      locals        :
+        0x0016 - 0x0035 reg=2 _status Z
+        0x0035 - 0x003d reg=2 _result [F
+        0x0004 - 0x0045 reg=0 _data Landroid/os/Parcel;
+        0x0008 - 0x0045 reg=1 _reply Landroid/os/Parcel;
+        0x0000 - 0x0045 reg=5 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+
+    #9              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'gettofstate'
+      type          : '()I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 6
+      ins           : 1
+      outs          : 5
+      insns size    : 69 16-bit code units
+000e48:                                        |[000e48] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.gettofstate:()I
+000e58: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+000e5e: 0c00                                   |0003: move-result-object v0
+000e60: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+000e66: 0c01                                   |0007: move-result-object v1
+000e68: 1a02 5700                              |0008: const-string v2, "com.hysd.hyscreen.HYSDInterface" // string@0057
+000e6c: 6e20 1400 2000                         |000a: invoke-virtual {v0, v2}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+000e72: 5452 0000                              |000d: iget-object v2, v5, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+000e76: 1303 0f00                              |000f: const/16 v3, #int 15 // #f
+000e7a: 1204                                   |0011: const/4 v4, #int 0 // #0
+000e7c: 7254 0300 3210                         |0012: invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+000e82: 0a02                                   |0015: move-result v2
+000e84: 3902 1700                              |0016: if-nez v2, 002d // +0017
+000e88: 7100 4700 0000                         |0018: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+000e8e: 0c03                                   |001b: move-result-object v3
+000e90: 3803 1100                              |001c: if-eqz v3, 002d // +0011
+000e94: 7100 4700 0000                         |001e: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+000e9a: 0c03                                   |0021: move-result-object v3
+000e9c: 7210 6100 0300                         |0022: invoke-interface {v3}, Lcom/hysd/hyscreen/HYSDInterface;.gettofstate:()I // method@0061
+000ea2: 0a03                                   |0025: move-result v3
+000ea4: 6e10 0e00 0100                         |0026: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000eaa: 6e10 0e00 0000                         |0029: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000eb0: 0f03                                   |002c: return v3
+000eb2: 6e10 0900 0100                         |002d: invoke-virtual {v1}, Landroid/os/Parcel;.readException:()V // method@0009
+000eb8: 6e10 0b00 0100                         |0030: invoke-virtual {v1}, Landroid/os/Parcel;.readInt:()I // method@000b
+000ebe: 0a03                                   |0033: move-result v3
+000ec0: 0132                                   |0034: move v2, v3
+000ec2: 6e10 0e00 0100                         |0035: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000ec8: 6e10 0e00 0000                         |0038: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000ece: 0000                                   |003b: nop // spacer
+000ed0: 0f02                                   |003c: return v2
+000ed2: 0d02                                   |003d: move-exception v2
+000ed4: 6e10 0e00 0100                         |003e: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000eda: 6e10 0e00 0000                         |0041: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000ee0: 2702                                   |0044: throw v2
+      catches       : 2
+        0x0008 - 0x0026
+          <any> -> 0x003d
+        0x002d - 0x0034
+          <any> -> 0x003d
+      positions     :
+        0x0000 line=668
+        0x0004 line=669
+        0x0008 line=672
+        0x000d line=673
+        0x0016 line=674
+        0x001e line=675
+        0x0026 line=681
+        0x0029 line=682
+        0x002c line=675
+        0x002d line=677
+        0x0030 line=678
+        0x0035 line=681
+        0x0038 line=682
+        0x003b line=683
+        0x003c line=684
+        0x003d line=681
+        0x0041 line=682
+        0x0044 line=683
+      locals        :
+        0x0016 - 0x0035 reg=2 _status Z
+        0x0035 - 0x003d reg=2 _result I
+        0x0004 - 0x0045 reg=0 _data Landroid/os/Parcel;
+        0x0008 - 0x0045 reg=1 _reply Landroid/os/Parcel;
+        0x0000 - 0x0045 reg=5 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+
+    #10              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'init'
+      type          : '()I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 6
+      ins           : 1
+      outs          : 5
+      insns size    : 68 16-bit code units
+000ef8:                                        |[000ef8] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.init:()I
+000f08: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+000f0e: 0c00                                   |0003: move-result-object v0
+000f10: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+000f16: 0c01                                   |0007: move-result-object v1
+000f18: 1a02 5700                              |0008: const-string v2, "com.hysd.hyscreen.HYSDInterface" // string@0057
+000f1c: 6e20 1400 2000                         |000a: invoke-virtual {v0, v2}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+000f22: 5452 0000                              |000d: iget-object v2, v5, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+000f26: 1223                                   |000f: const/4 v3, #int 2 // #2
+000f28: 1204                                   |0010: const/4 v4, #int 0 // #0
+000f2a: 7254 0300 3210                         |0011: invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+000f30: 0a02                                   |0014: move-result v2
+000f32: 3902 1700                              |0015: if-nez v2, 002c // +0017
+000f36: 7100 4700 0000                         |0017: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+000f3c: 0c03                                   |001a: move-result-object v3
+000f3e: 3803 1100                              |001b: if-eqz v3, 002c // +0011
+000f42: 7100 4700 0000                         |001d: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+000f48: 0c03                                   |0020: move-result-object v3
+000f4a: 7210 6200 0300                         |0021: invoke-interface {v3}, Lcom/hysd/hyscreen/HYSDInterface;.init:()I // method@0062
+000f50: 0a03                                   |0024: move-result v3
+000f52: 6e10 0e00 0100                         |0025: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000f58: 6e10 0e00 0000                         |0028: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000f5e: 0f03                                   |002b: return v3
+000f60: 6e10 0900 0100                         |002c: invoke-virtual {v1}, Landroid/os/Parcel;.readException:()V // method@0009
+000f66: 6e10 0b00 0100                         |002f: invoke-virtual {v1}, Landroid/os/Parcel;.readInt:()I // method@000b
+000f6c: 0a03                                   |0032: move-result v3
+000f6e: 0132                                   |0033: move v2, v3
+000f70: 6e10 0e00 0100                         |0034: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000f76: 6e10 0e00 0000                         |0037: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000f7c: 0000                                   |003a: nop // spacer
+000f7e: 0f02                                   |003b: return v2
+000f80: 0d02                                   |003c: move-exception v2
+000f82: 6e10 0e00 0100                         |003d: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000f88: 6e10 0e00 0000                         |0040: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000f8e: 2702                                   |0043: throw v2
+      catches       : 2
+        0x0008 - 0x0025
+          <any> -> 0x003c
+        0x002c - 0x0033
+          <any> -> 0x003c
+      positions     :
+        0x0000 line=384
+        0x0004 line=385
+        0x0008 line=388
+        0x000d line=389
+        0x0015 line=390
+        0x001d line=391
+        0x0025 line=397
+        0x0028 line=398
+        0x002b line=391
+        0x002c line=393
+        0x002f line=394
+        0x0034 line=397
+        0x0037 line=398
+        0x003a line=399
+        0x003b line=400
+        0x003c line=397
+        0x0040 line=398
+        0x0043 line=399
+      locals        :
+        0x0015 - 0x0034 reg=2 _status Z
+        0x0034 - 0x003c reg=2 _result I
+        0x0004 - 0x0044 reg=0 _data Landroid/os/Parcel;
+        0x0008 - 0x0044 reg=1 _reply Landroid/os/Parcel;
+        0x0000 - 0x0044 reg=5 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+
+    #11              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'motorb'
+      type          : '()I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 6
+      ins           : 1
+      outs          : 5
+      insns size    : 68 16-bit code units
+000fa4:                                        |[000fa4] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.motorb:()I
+000fb4: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+000fba: 0c00                                   |0003: move-result-object v0
+000fbc: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+000fc2: 0c01                                   |0007: move-result-object v1
+000fc4: 1a02 5700                              |0008: const-string v2, "com.hysd.hyscreen.HYSDInterface" // string@0057
+000fc8: 6e20 1400 2000                         |000a: invoke-virtual {v0, v2}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+000fce: 5452 0000                              |000d: iget-object v2, v5, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+000fd2: 1253                                   |000f: const/4 v3, #int 5 // #5
+000fd4: 1204                                   |0010: const/4 v4, #int 0 // #0
+000fd6: 7254 0300 3210                         |0011: invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+000fdc: 0a02                                   |0014: move-result v2
+000fde: 3902 1700                              |0015: if-nez v2, 002c // +0017
+000fe2: 7100 4700 0000                         |0017: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+000fe8: 0c03                                   |001a: move-result-object v3
+000fea: 3803 1100                              |001b: if-eqz v3, 002c // +0011
+000fee: 7100 4700 0000                         |001d: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+000ff4: 0c03                                   |0020: move-result-object v3
+000ff6: 7210 6300 0300                         |0021: invoke-interface {v3}, Lcom/hysd/hyscreen/HYSDInterface;.motorb:()I // method@0063
+000ffc: 0a03                                   |0024: move-result v3
+000ffe: 6e10 0e00 0100                         |0025: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+001004: 6e10 0e00 0000                         |0028: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+00100a: 0f03                                   |002b: return v3
+00100c: 6e10 0900 0100                         |002c: invoke-virtual {v1}, Landroid/os/Parcel;.readException:()V // method@0009
+001012: 6e10 0b00 0100                         |002f: invoke-virtual {v1}, Landroid/os/Parcel;.readInt:()I // method@000b
+001018: 0a03                                   |0032: move-result v3
+00101a: 0132                                   |0033: move v2, v3
+00101c: 6e10 0e00 0100                         |0034: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+001022: 6e10 0e00 0000                         |0037: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+001028: 0000                                   |003a: nop // spacer
+00102a: 0f02                                   |003b: return v2
+00102c: 0d02                                   |003c: move-exception v2
+00102e: 6e10 0e00 0100                         |003d: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+001034: 6e10 0e00 0000                         |0040: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+00103a: 2702                                   |0043: throw v2
+      catches       : 2
+        0x0008 - 0x0025
+          <any> -> 0x003c
+        0x002c - 0x0033
+          <any> -> 0x003c
+      positions     :
+        0x0000 line=446
+        0x0004 line=447
+        0x0008 line=450
+        0x000d line=451
+        0x0015 line=452
+        0x001d line=453
+        0x0025 line=459
+        0x0028 line=460
+        0x002b line=453
+        0x002c line=455
+        0x002f line=456
+        0x0034 line=459
+        0x0037 line=460
+        0x003a line=461
+        0x003b line=462
+        0x003c line=459
+        0x0040 line=460
+        0x0043 line=461
+      locals        :
+        0x0015 - 0x0034 reg=2 _status Z
+        0x0034 - 0x003c reg=2 _result I
+        0x0004 - 0x0044 reg=0 _data Landroid/os/Parcel;
+        0x0008 - 0x0044 reg=1 _reply Landroid/os/Parcel;
+        0x0000 - 0x0044 reg=5 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+
+    #12              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'motorf'
+      type          : '()I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 6
+      ins           : 1
+      outs          : 5
+      insns size    : 68 16-bit code units
+001050:                                        |[001050] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.motorf:()I
+001060: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+001066: 0c00                                   |0003: move-result-object v0
+001068: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+00106e: 0c01                                   |0007: move-result-object v1
+001070: 1a02 5700                              |0008: const-string v2, "com.hysd.hyscreen.HYSDInterface" // string@0057
+001074: 6e20 1400 2000                         |000a: invoke-virtual {v0, v2}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+00107a: 5452 0000                              |000d: iget-object v2, v5, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+00107e: 1243                                   |000f: const/4 v3, #int 4 // #4
+001080: 1204                                   |0010: const/4 v4, #int 0 // #0
+001082: 7254 0300 3210                         |0011: invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+001088: 0a02                                   |0014: move-result v2
+00108a: 3902 1700                              |0015: if-nez v2, 002c // +0017
+00108e: 7100 4700 0000                         |0017: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+001094: 0c03                                   |001a: move-result-object v3
+001096: 3803 1100                              |001b: if-eqz v3, 002c // +0011
+00109a: 7100 4700 0000                         |001d: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+0010a0: 0c03                                   |0020: move-result-object v3
+0010a2: 7210 6400 0300                         |0021: invoke-interface {v3}, Lcom/hysd/hyscreen/HYSDInterface;.motorf:()I // method@0064
+0010a8: 0a03                                   |0024: move-result v3
+0010aa: 6e10 0e00 0100                         |0025: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+0010b0: 6e10 0e00 0000                         |0028: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+0010b6: 0f03                                   |002b: return v3
+0010b8: 6e10 0900 0100                         |002c: invoke-virtual {v1}, Landroid/os/Parcel;.readException:()V // method@0009
+0010be: 6e10 0b00 0100                         |002f: invoke-virtual {v1}, Landroid/os/Parcel;.readInt:()I // method@000b
+0010c4: 0a03                                   |0032: move-result v3
+0010c6: 0132                                   |0033: move v2, v3
+0010c8: 6e10 0e00 0100                         |0034: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+0010ce: 6e10 0e00 0000                         |0037: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+0010d4: 0000                                   |003a: nop // spacer
+0010d6: 0f02                                   |003b: return v2
+0010d8: 0d02                                   |003c: move-exception v2
+0010da: 6e10 0e00 0100                         |003d: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+0010e0: 6e10 0e00 0000                         |0040: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+0010e6: 2702                                   |0043: throw v2
+      catches       : 2
+        0x0008 - 0x0025
+          <any> -> 0x003c
+        0x002c - 0x0033
+          <any> -> 0x003c
+      positions     :
+        0x0000 line=426
+        0x0004 line=427
+        0x0008 line=430
+        0x000d line=431
+        0x0015 line=432
+        0x001d line=433
+        0x0025 line=439
+        0x0028 line=440
+        0x002b line=433
+        0x002c line=435
+        0x002f line=436
+        0x0034 line=439
+        0x0037 line=440
+        0x003a line=441
+        0x003b line=442
+        0x003c line=439
+        0x0040 line=440
+        0x0043 line=441
+      locals        :
+        0x0015 - 0x0034 reg=2 _status Z
+        0x0034 - 0x003c reg=2 _result I
+        0x0004 - 0x0044 reg=0 _data Landroid/os/Parcel;
+        0x0008 - 0x0044 reg=1 _reply Landroid/os/Parcel;
+        0x0000 - 0x0044 reg=5 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+
+    #13              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'motorg'
+      type          : '()I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 6
+      ins           : 1
+      outs          : 5
+      insns size    : 68 16-bit code units
+0010fc:                                        |[0010fc] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.motorg:()I
+00110c: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+001112: 0c00                                   |0003: move-result-object v0
+001114: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+00111a: 0c01                                   |0007: move-result-object v1
+00111c: 1a02 5700                              |0008: const-string v2, "com.hysd.hyscreen.HYSDInterface" // string@0057
+001120: 6e20 1400 2000                         |000a: invoke-virtual {v0, v2}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+001126: 5452 0000                              |000d: iget-object v2, v5, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+00112a: 1273                                   |000f: const/4 v3, #int 7 // #7
+00112c: 1204                                   |0010: const/4 v4, #int 0 // #0
+00112e: 7254 0300 3210                         |0011: invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+001134: 0a02                                   |0014: move-result v2
+001136: 3902 1700                              |0015: if-nez v2, 002c // +0017
+00113a: 7100 4700 0000                         |0017: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+001140: 0c03                                   |001a: move-result-object v3
+001142: 3803 1100                              |001b: if-eqz v3, 002c // +0011
+001146: 7100 4700 0000                         |001d: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+00114c: 0c03                                   |0020: move-result-object v3
+00114e: 7210 6500 0300                         |0021: invoke-interface {v3}, Lcom/hysd/hyscreen/HYSDInterface;.motorg:()I // method@0065
+001154: 0a03                                   |0024: move-result v3
+001156: 6e10 0e00 0100                         |0025: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+00115c: 6e10 0e00 0000                         |0028: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+001162: 0f03                                   |002b: return v3
+001164: 6e10 0900 0100                         |002c: invoke-virtual {v1}, Landroid/os/Parcel;.readException:()V // method@0009
+00116a: 6e10 0b00 0100                         |002f: invoke-virtual {v1}, Landroid/os/Parcel;.readInt:()I // method@000b
+001170: 0a03                                   |0032: move-result v3
+001172: 0132                                   |0033: move v2, v3
+001174: 6e10 0e00 0100                         |0034: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+00117a: 6e10 0e00 0000                         |0037: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+001180: 0000                                   |003a: nop // spacer
+001182: 0f02                                   |003b: return v2
+001184: 0d02                                   |003c: move-exception v2
+001186: 6e10 0e00 0100                         |003d: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+00118c: 6e10 0e00 0000                         |0040: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+001192: 2702                                   |0043: throw v2
+      catches       : 2
+        0x0008 - 0x0025
+          <any> -> 0x003c
+        0x002c - 0x0033
+          <any> -> 0x003c
+      positions     :
+        0x0000 line=486
+        0x0004 line=487
+        0x0008 line=490
+        0x000d line=491
+        0x0015 line=492
+        0x001d line=493
+        0x0025 line=499
+        0x0028 line=500
+        0x002b line=493
+        0x002c line=495
+        0x002f line=496
+        0x0034 line=499
+        0x0037 line=500
+        0x003a line=501
+        0x003b line=502
+        0x003c line=499
+        0x0040 line=500
+        0x0043 line=501
+      locals        :
+        0x0015 - 0x0034 reg=2 _status Z
+        0x0034 - 0x003c reg=2 _result I
+        0x0004 - 0x0044 reg=0 _data Landroid/os/Parcel;
+        0x0008 - 0x0044 reg=1 _reply Landroid/os/Parcel;
+        0x0000 - 0x0044 reg=5 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+
+    #14              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'motorg2'
+      type          : '()F'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 6
+      ins           : 1
+      outs          : 5
+      insns size    : 69 16-bit code units
+000ad8:                                        |[000ad8] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.motorg2:()F
+000ae8: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+000aee: 0c00                                   |0003: move-result-object v0
+000af0: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+000af6: 0c01                                   |0007: move-result-object v1
+000af8: 1a02 5700                              |0008: const-string v2, "com.hysd.hyscreen.HYSDInterface" // string@0057
+000afc: 6e20 1400 2000                         |000a: invoke-virtual {v0, v2}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+000b02: 5452 0000                              |000d: iget-object v2, v5, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+000b06: 1303 1200                              |000f: const/16 v3, #int 18 // #12
+000b0a: 1204                                   |0011: const/4 v4, #int 0 // #0
+000b0c: 7254 0300 3210                         |0012: invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+000b12: 0a02                                   |0015: move-result v2
+000b14: 3902 1700                              |0016: if-nez v2, 002d // +0017
+000b18: 7100 4700 0000                         |0018: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+000b1e: 0c03                                   |001b: move-result-object v3
+000b20: 3803 1100                              |001c: if-eqz v3, 002d // +0011
+000b24: 7100 4700 0000                         |001e: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+000b2a: 0c03                                   |0021: move-result-object v3
+000b2c: 7210 6600 0300                         |0022: invoke-interface {v3}, Lcom/hysd/hyscreen/HYSDInterface;.motorg2:()F // method@0066
+000b32: 0a03                                   |0025: move-result v3
+000b34: 6e10 0e00 0100                         |0026: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000b3a: 6e10 0e00 0000                         |0029: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000b40: 0f03                                   |002c: return v3
+000b42: 6e10 0900 0100                         |002d: invoke-virtual {v1}, Landroid/os/Parcel;.readException:()V // method@0009
+000b48: 6e10 0a00 0100                         |0030: invoke-virtual {v1}, Landroid/os/Parcel;.readFloat:()F // method@000a
+000b4e: 0a03                                   |0033: move-result v3
+000b50: 0132                                   |0034: move v2, v3
+000b52: 6e10 0e00 0100                         |0035: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000b58: 6e10 0e00 0000                         |0038: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000b5e: 0000                                   |003b: nop // spacer
+000b60: 0f02                                   |003c: return v2
+000b62: 0d02                                   |003d: move-exception v2
+000b64: 6e10 0e00 0100                         |003e: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+000b6a: 6e10 0e00 0000                         |0041: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+000b70: 2702                                   |0044: throw v2
+      catches       : 2
+        0x0008 - 0x0026
+          <any> -> 0x003d
+        0x002d - 0x0034
+          <any> -> 0x003d
+      positions     :
+        0x0000 line=735
+        0x0004 line=736
+        0x0008 line=739
+        0x000d line=740
+        0x0016 line=741
+        0x001e line=742
+        0x0026 line=748
+        0x0029 line=749
+        0x002c line=742
+        0x002d line=744
+        0x0030 line=745
+        0x0035 line=748
+        0x0038 line=749
+        0x003b line=750
+        0x003c line=751
+        0x003d line=748
+        0x0041 line=749
+        0x0044 line=750
+      locals        :
+        0x0016 - 0x0035 reg=2 _status Z
+        0x0035 - 0x003d reg=2 _result F
+        0x0004 - 0x0045 reg=0 _data Landroid/os/Parcel;
+        0x0008 - 0x0045 reg=1 _reply Landroid/os/Parcel;
+        0x0000 - 0x0045 reg=5 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+
+    #15              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'motors'
+      type          : '()I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 6
+      ins           : 1
+      outs          : 5
+      insns size    : 68 16-bit code units
+0011a8:                                        |[0011a8] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.motors:()I
+0011b8: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+0011be: 0c00                                   |0003: move-result-object v0
+0011c0: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+0011c6: 0c01                                   |0007: move-result-object v1
+0011c8: 1a02 5700                              |0008: const-string v2, "com.hysd.hyscreen.HYSDInterface" // string@0057
+0011cc: 6e20 1400 2000                         |000a: invoke-virtual {v0, v2}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+0011d2: 5452 0000                              |000d: iget-object v2, v5, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+0011d6: 1263                                   |000f: const/4 v3, #int 6 // #6
+0011d8: 1204                                   |0010: const/4 v4, #int 0 // #0
+0011da: 7254 0300 3210                         |0011: invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+0011e0: 0a02                                   |0014: move-result v2
+0011e2: 3902 1700                              |0015: if-nez v2, 002c // +0017
+0011e6: 7100 4700 0000                         |0017: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+0011ec: 0c03                                   |001a: move-result-object v3
+0011ee: 3803 1100                              |001b: if-eqz v3, 002c // +0011
+0011f2: 7100 4700 0000                         |001d: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+0011f8: 0c03                                   |0020: move-result-object v3
+0011fa: 7210 6700 0300                         |0021: invoke-interface {v3}, Lcom/hysd/hyscreen/HYSDInterface;.motors:()I // method@0067
+001200: 0a03                                   |0024: move-result v3
+001202: 6e10 0e00 0100                         |0025: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+001208: 6e10 0e00 0000                         |0028: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+00120e: 0f03                                   |002b: return v3
+001210: 6e10 0900 0100                         |002c: invoke-virtual {v1}, Landroid/os/Parcel;.readException:()V // method@0009
+001216: 6e10 0b00 0100                         |002f: invoke-virtual {v1}, Landroid/os/Parcel;.readInt:()I // method@000b
+00121c: 0a03                                   |0032: move-result v3
+00121e: 0132                                   |0033: move v2, v3
+001220: 6e10 0e00 0100                         |0034: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+001226: 6e10 0e00 0000                         |0037: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+00122c: 0000                                   |003a: nop // spacer
+00122e: 0f02                                   |003b: return v2
+001230: 0d02                                   |003c: move-exception v2
+001232: 6e10 0e00 0100                         |003d: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+001238: 6e10 0e00 0000                         |0040: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+00123e: 2702                                   |0043: throw v2
+      catches       : 2
+        0x0008 - 0x0025
+          <any> -> 0x003c
+        0x002c - 0x0033
+          <any> -> 0x003c
+      positions     :
+        0x0000 line=466
+        0x0004 line=467
+        0x0008 line=470
+        0x000d line=471
+        0x0015 line=472
+        0x001d line=473
+        0x0025 line=479
+        0x0028 line=480
+        0x002b line=473
+        0x002c line=475
+        0x002f line=476
+        0x0034 line=479
+        0x0037 line=480
+        0x003a line=481
+        0x003b line=482
+        0x003c line=479
+        0x0040 line=480
+        0x0043 line=481
+      locals        :
+        0x0015 - 0x0034 reg=2 _status Z
+        0x0034 - 0x003c reg=2 _result I
+        0x0004 - 0x0044 reg=0 _data Landroid/os/Parcel;
+        0x0008 - 0x0044 reg=1 _reply Landroid/os/Parcel;
+        0x0000 - 0x0044 reg=5 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+
+    #16              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'setcast'
+      type          : '(I)I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 7
+      ins           : 2
+      outs          : 5
+      insns size    : 72 16-bit code units
+001254:                                        |[001254] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.setcast:(I)I
+001264: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+00126a: 0c00                                   |0003: move-result-object v0
+00126c: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+001272: 0c01                                   |0007: move-result-object v1
+001274: 1a02 5700                              |0008: const-string v2, "com.hysd.hyscreen.HYSDInterface" // string@0057
+001278: 6e20 1400 2000                         |000a: invoke-virtual {v0, v2}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+00127e: 6e20 1200 6000                         |000d: invoke-virtual {v0, v6}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001284: 5452 0000                              |0010: iget-object v2, v5, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+001288: 1303 0b00                              |0012: const/16 v3, #int 11 // #b
+00128c: 1204                                   |0014: const/4 v4, #int 0 // #0
+00128e: 7254 0300 3210                         |0015: invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+001294: 0a02                                   |0018: move-result v2
+001296: 3902 1700                              |0019: if-nez v2, 0030 // +0017
+00129a: 7100 4700 0000                         |001b: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+0012a0: 0c03                                   |001e: move-result-object v3
+0012a2: 3803 1100                              |001f: if-eqz v3, 0030 // +0011
+0012a6: 7100 4700 0000                         |0021: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+0012ac: 0c03                                   |0024: move-result-object v3
+0012ae: 7220 6800 6300                         |0025: invoke-interface {v3, v6}, Lcom/hysd/hyscreen/HYSDInterface;.setcast:(I)I // method@0068
+0012b4: 0a03                                   |0028: move-result v3
+0012b6: 6e10 0e00 0100                         |0029: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+0012bc: 6e10 0e00 0000                         |002c: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+0012c2: 0f03                                   |002f: return v3
+0012c4: 6e10 0900 0100                         |0030: invoke-virtual {v1}, Landroid/os/Parcel;.readException:()V // method@0009
+0012ca: 6e10 0b00 0100                         |0033: invoke-virtual {v1}, Landroid/os/Parcel;.readInt:()I // method@000b
+0012d0: 0a03                                   |0036: move-result v3
+0012d2: 0132                                   |0037: move v2, v3
+0012d4: 6e10 0e00 0100                         |0038: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+0012da: 6e10 0e00 0000                         |003b: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+0012e0: 0000                                   |003e: nop // spacer
+0012e2: 0f02                                   |003f: return v2
+0012e4: 0d02                                   |0040: move-exception v2
+0012e6: 6e10 0e00 0100                         |0041: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+0012ec: 6e10 0e00 0000                         |0044: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+0012f2: 2702                                   |0047: throw v2
+      catches       : 2
+        0x0008 - 0x0029
+          <any> -> 0x0040
+        0x0030 - 0x0037
+          <any> -> 0x0040
+      positions     :
+        0x0000 line=585
+        0x0004 line=586
+        0x0008 line=589
+        0x000d line=590
+        0x0010 line=591
+        0x0019 line=592
+        0x0021 line=593
+        0x0029 line=599
+        0x002c line=600
+        0x002f line=593
+        0x0030 line=595
+        0x0033 line=596
+        0x0038 line=599
+        0x003b line=600
+        0x003e line=601
+        0x003f line=602
+        0x0040 line=599
+        0x0044 line=600
+        0x0047 line=601
+      locals        :
+        0x0019 - 0x0038 reg=2 _status Z
+        0x0038 - 0x0040 reg=2 _result I
+        0x0004 - 0x0048 reg=0 _data Landroid/os/Parcel;
+        0x0008 - 0x0048 reg=1 _reply Landroid/os/Parcel;
+        0x0000 - 0x0048 reg=5 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+        0x0000 - 0x0048 reg=6 mode I
+
+    #17              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'setkey'
+      type          : '(IIIIIIII)I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 25
+      ins           : 9
+      outs          : 9
+      insns size    : 143 16-bit code units
+001308:                                        |[001308] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.setkey:(IIIIIIII)I
+001318: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+00131e: 0c01                                   |0003: move-result-object v1
+001320: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+001326: 0c02                                   |0007: move-result-object v2
+001328: 1a00 5700                              |0008: const-string v0, "com.hysd.hyscreen.HYSDInterface" // string@0057
+00132c: 6e20 1400 0100                         |000a: invoke-virtual {v1, v0}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+001332: 020c 1100                              |000d: move/from16 v12, v17
+001336: 6e20 1200 c100                         |000f: invoke-virtual {v1, v12}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+00133c: 020d 1200                              |0012: move/from16 v13, v18
+001340: 6e20 1200 d100                         |0014: invoke-virtual {v1, v13}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001346: 020e 1300                              |0017: move/from16 v14, v19
+00134a: 6e20 1200 e100                         |0019: invoke-virtual {v1, v14}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001350: 020f 1400                              |001c: move/from16 v15, v20
+001354: 6e20 1200 f100                         |001e: invoke-virtual {v1, v15}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+00135a: 020b 1500                              |0021: move/from16 v11, v21
+00135e: 6e20 1200 b100                         |0023: invoke-virtual {v1, v11}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001364: 020a 1600                              |0026: move/from16 v10, v22
+001368: 6e20 1200 a100                         |0028: invoke-virtual {v1, v10}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+00136e: 0209 1700                              |002b: move/from16 v9, v23
+001372: 6e20 1200 9100                         |002d: invoke-virtual {v1, v9}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001378: 0208 1800                              |0030: move/from16 v8, v24
+00137c: 6e20 1200 8100                         |0032: invoke-virtual {v1, v8}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001382: 0807 1000                              |0035: move-object/from16 v7, v16
+001386: 5470 0000                              |0037: iget-object v0, v7, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+00138a: 1303 0800                              |0039: const/16 v3, #int 8 // #8
+00138e: 1204                                   |003b: const/4 v4, #int 0 // #0
+001390: 7254 0300 3021                         |003c: invoke-interface {v0, v3, v1, v2, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+001396: 0a00                                   |003f: move-result v0
+001398: 3900 2700                              |0040: if-nez v0, 0067 // +0027
+00139c: 7100 4700 0000                         |0042: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+0013a2: 0c03                                   |0045: move-result-object v3
+0013a4: 3803 2100                              |0046: if-eqz v3, 0067 // +0021
+0013a8: 7100 4700 0000                         |0048: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+0013ae: 0c03                                   |004b: move-result-object v3
+0013b0: 0204 1100                              |004c: move/from16 v4, v17
+0013b4: 0205 1200                              |004e: move/from16 v5, v18
+0013b8: 0206 1300                              |0050: move/from16 v6, v19
+0013bc: 0207 1400                              |0052: move/from16 v7, v20
+0013c0: 0208 1500                              |0054: move/from16 v8, v21
+0013c4: 0209 1600                              |0056: move/from16 v9, v22
+0013c8: 020a 1700                              |0058: move/from16 v10, v23
+0013cc: 020b 1800                              |005a: move/from16 v11, v24
+0013d0: 7809 6900 0300                         |005c: invoke-interface/range {v3, v4, v5, v6, v7, v8, v9, v10, v11}, Lcom/hysd/hyscreen/HYSDInterface;.setkey:(IIIIIIII)I // method@0069
+0013d6: 0a03                                   |005f: move-result v3
+0013d8: 6e10 0e00 0200                         |0060: invoke-virtual {v2}, Landroid/os/Parcel;.recycle:()V // method@000e
+0013de: 6e10 0e00 0100                         |0063: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+0013e4: 0f03                                   |0066: return v3
+0013e6: 6e10 0900 0200                         |0067: invoke-virtual {v2}, Landroid/os/Parcel;.readException:()V // method@0009
+0013ec: 6e10 0b00 0200                         |006a: invoke-virtual {v2}, Landroid/os/Parcel;.readInt:()I // method@000b
+0013f2: 0a03                                   |006d: move-result v3
+0013f4: 0130                                   |006e: move v0, v3
+0013f6: 6e10 0e00 0200                         |006f: invoke-virtual {v2}, Landroid/os/Parcel;.recycle:()V // method@000e
+0013fc: 6e10 0e00 0100                         |0072: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+001402: 0000                                   |0075: nop // spacer
+001404: 0f00                                   |0076: return v0
+001406: 0d00                                   |0077: move-exception v0
+001408: 2810                                   |0078: goto 0088 // +0010
+00140a: 0d00                                   |0079: move-exception v0
+00140c: 280c                                   |007a: goto 0086 // +000c
+00140e: 0d00                                   |007b: move-exception v0
+001410: 2808                                   |007c: goto 0084 // +0008
+001412: 0d00                                   |007d: move-exception v0
+001414: 2804                                   |007e: goto 0082 // +0004
+001416: 0d00                                   |007f: move-exception v0
+001418: 020c 1100                              |0080: move/from16 v12, v17
+00141c: 020d 1200                              |0082: move/from16 v13, v18
+001420: 020e 1300                              |0084: move/from16 v14, v19
+001424: 020f 1400                              |0086: move/from16 v15, v20
+001428: 6e10 0e00 0200                         |0088: invoke-virtual {v2}, Landroid/os/Parcel;.recycle:()V // method@000e
+00142e: 6e10 0e00 0100                         |008b: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+001434: 2700                                   |008e: throw v0
+      catches       : 6
+        0x0008 - 0x000d
+          <any> -> 0x007f
+        0x000f - 0x0012
+          <any> -> 0x007d
+        0x0014 - 0x0017
+          <any> -> 0x007b
+        0x0019 - 0x001c
+          <any> -> 0x0079
+        0x001e - 0x0060
+          <any> -> 0x0077
+        0x0067 - 0x006e
+          <any> -> 0x0077
+      positions     :
+        0x0000 line=509
+        0x0004 line=510
+        0x0008 line=513
+        0x000d line=514
+        0x0012 line=515
+        0x0017 line=516
+        0x001c line=517
+        0x0021 line=518
+        0x0026 line=519
+        0x002b line=520
+        0x0030 line=521
+        0x0035 line=522
+        0x0040 line=523
+        0x0048 line=524
+        0x0060 line=530
+        0x0063 line=531
+        0x0066 line=524
+        0x0067 line=526
+        0x006a line=527
+        0x006f line=530
+        0x0072 line=531
+        0x0075 line=532
+        0x0076 line=533
+        0x0077 line=530
+        0x008b line=531
+        0x008e line=532
+      locals        :
+        0x0040 - 0x006f reg=0 _status Z
+        0x006f - 0x0077 reg=0 _result I
+        0x0004 - 0x008f reg=1 _data Landroid/os/Parcel;
+        0x0008 - 0x008f reg=2 _reply Landroid/os/Parcel;
+        0x0000 - 0x008f reg=16 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+        0x0000 - 0x008f reg=17 ltx I
+        0x0000 - 0x008f reg=18 lty I
+        0x0000 - 0x008f reg=19 lbx I
+        0x0000 - 0x008f reg=20 lby I
+        0x0000 - 0x008f reg=21 rbx I
+        0x0000 - 0x008f reg=22 rby I
+        0x0000 - 0x008f reg=23 rtx I
+        0x0000 - 0x008f reg=24 rty I
+
+    #18              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'unint'
+      type          : '()I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 6
+      ins           : 1
+      outs          : 5
+      insns size    : 68 16-bit code units
+001474:                                        |[001474] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.unint:()I
+001484: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+00148a: 0c00                                   |0003: move-result-object v0
+00148c: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+001492: 0c01                                   |0007: move-result-object v1
+001494: 1a02 5700                              |0008: const-string v2, "com.hysd.hyscreen.HYSDInterface" // string@0057
+001498: 6e20 1400 2000                         |000a: invoke-virtual {v0, v2}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+00149e: 5452 0000                              |000d: iget-object v2, v5, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+0014a2: 1233                                   |000f: const/4 v3, #int 3 // #3
+0014a4: 1204                                   |0010: const/4 v4, #int 0 // #0
+0014a6: 7254 0300 3210                         |0011: invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+0014ac: 0a02                                   |0014: move-result v2
+0014ae: 3902 1700                              |0015: if-nez v2, 002c // +0017
+0014b2: 7100 4700 0000                         |0017: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+0014b8: 0c03                                   |001a: move-result-object v3
+0014ba: 3803 1100                              |001b: if-eqz v3, 002c // +0011
+0014be: 7100 4700 0000                         |001d: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+0014c4: 0c03                                   |0020: move-result-object v3
+0014c6: 7210 6a00 0300                         |0021: invoke-interface {v3}, Lcom/hysd/hyscreen/HYSDInterface;.unint:()I // method@006a
+0014cc: 0a03                                   |0024: move-result v3
+0014ce: 6e10 0e00 0100                         |0025: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+0014d4: 6e10 0e00 0000                         |0028: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+0014da: 0f03                                   |002b: return v3
+0014dc: 6e10 0900 0100                         |002c: invoke-virtual {v1}, Landroid/os/Parcel;.readException:()V // method@0009
+0014e2: 6e10 0b00 0100                         |002f: invoke-virtual {v1}, Landroid/os/Parcel;.readInt:()I // method@000b
+0014e8: 0a03                                   |0032: move-result v3
+0014ea: 0132                                   |0033: move v2, v3
+0014ec: 6e10 0e00 0100                         |0034: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+0014f2: 6e10 0e00 0000                         |0037: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+0014f8: 0000                                   |003a: nop // spacer
+0014fa: 0f02                                   |003b: return v2
+0014fc: 0d02                                   |003c: move-exception v2
+0014fe: 6e10 0e00 0100                         |003d: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+001504: 6e10 0e00 0000                         |0040: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+00150a: 2702                                   |0043: throw v2
+      catches       : 2
+        0x0008 - 0x0025
+          <any> -> 0x003c
+        0x002c - 0x0033
+          <any> -> 0x003c
+      positions     :
+        0x0000 line=404
+        0x0004 line=405
+        0x0008 line=408
+        0x000d line=409
+        0x0015 line=410
+        0x001d line=411
+        0x0025 line=417
+        0x0028 line=418
+        0x002b line=411
+        0x002c line=413
+        0x002f line=414
+        0x0034 line=417
+        0x0037 line=418
+        0x003a line=419
+        0x003b line=420
+        0x003c line=417
+        0x0040 line=418
+        0x0043 line=419
+      locals        :
+        0x0015 - 0x0034 reg=2 _status Z
+        0x0034 - 0x003c reg=2 _result I
+        0x0004 - 0x0044 reg=0 _data Landroid/os/Parcel;
+        0x0008 - 0x0044 reg=1 _reply Landroid/os/Parcel;
+        0x0000 - 0x0044 reg=5 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+
+    #19              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;)
+      name          : 'updateui'
+      type          : '(I)I'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 7
+      ins           : 2
+      outs          : 5
+      insns size    : 72 16-bit code units
+001520:                                        |[001520] com.hysd.hyscreen.HYSDInterface$Stub$Proxy.updateui:(I)I
+001530: 7100 0700 0000                         |0000: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+001536: 0c00                                   |0003: move-result-object v0
+001538: 7100 0700 0000                         |0004: invoke-static {}, Landroid/os/Parcel;.obtain:()Landroid/os/Parcel; // method@0007
+00153e: 0c01                                   |0007: move-result-object v1
+001540: 1a02 5700                              |0008: const-string v2, "com.hysd.hyscreen.HYSDInterface" // string@0057
+001544: 6e20 1400 2000                         |000a: invoke-virtual {v0, v2}, Landroid/os/Parcel;.writeInterfaceToken:(Ljava/lang/String;)V // method@0014
+00154a: 6e20 1200 6000                         |000d: invoke-virtual {v0, v6}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001550: 5452 0000                              |0010: iget-object v2, v5, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.mRemote:Landroid/os/IBinder; // field@0000
+001554: 1303 1100                              |0012: const/16 v3, #int 17 // #11
+001558: 1204                                   |0014: const/4 v4, #int 0 // #0
+00155a: 7254 0300 3210                         |0015: invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;.transact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0003
+001560: 0a02                                   |0018: move-result v2
+001562: 3902 1700                              |0019: if-nez v2, 0030 // +0017
+001566: 7100 4700 0000                         |001b: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+00156c: 0c03                                   |001e: move-result-object v3
+00156e: 3803 1100                              |001f: if-eqz v3, 0030 // +0011
+001572: 7100 4700 0000                         |0021: invoke-static {}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface; // method@0047
+001578: 0c03                                   |0024: move-result-object v3
+00157a: 7220 6b00 6300                         |0025: invoke-interface {v3, v6}, Lcom/hysd/hyscreen/HYSDInterface;.updateui:(I)I // method@006b
+001580: 0a03                                   |0028: move-result v3
+001582: 6e10 0e00 0100                         |0029: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+001588: 6e10 0e00 0000                         |002c: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+00158e: 0f03                                   |002f: return v3
+001590: 6e10 0900 0100                         |0030: invoke-virtual {v1}, Landroid/os/Parcel;.readException:()V // method@0009
+001596: 6e10 0b00 0100                         |0033: invoke-virtual {v1}, Landroid/os/Parcel;.readInt:()I // method@000b
+00159c: 0a03                                   |0036: move-result v3
+00159e: 0132                                   |0037: move v2, v3
+0015a0: 6e10 0e00 0100                         |0038: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+0015a6: 6e10 0e00 0000                         |003b: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+0015ac: 0000                                   |003e: nop // spacer
+0015ae: 0f02                                   |003f: return v2
+0015b0: 0d02                                   |0040: move-exception v2
+0015b2: 6e10 0e00 0100                         |0041: invoke-virtual {v1}, Landroid/os/Parcel;.recycle:()V // method@000e
+0015b8: 6e10 0e00 0000                         |0044: invoke-virtual {v0}, Landroid/os/Parcel;.recycle:()V // method@000e
+0015be: 2702                                   |0047: throw v2
+      catches       : 2
+        0x0008 - 0x0029
+          <any> -> 0x0040
+        0x0030 - 0x0037
+          <any> -> 0x0040
+      positions     :
+        0x0000 line=712
+        0x0004 line=713
+        0x0008 line=716
+        0x000d line=717
+        0x0010 line=718
+        0x0019 line=719
+        0x0021 line=720
+        0x0029 line=726
+        0x002c line=727
+        0x002f line=720
+        0x0030 line=722
+        0x0033 line=723
+        0x0038 line=726
+        0x003b line=727
+        0x003e line=728
+        0x003f line=729
+        0x0040 line=726
+        0x0044 line=727
+        0x0047 line=728
+      locals        :
+        0x0019 - 0x0038 reg=2 _status Z
+        0x0038 - 0x0040 reg=2 _result I
+        0x0004 - 0x0048 reg=0 _data Landroid/os/Parcel;
+        0x0008 - 0x0048 reg=1 _reply Landroid/os/Parcel;
+        0x0000 - 0x0048 reg=5 this Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;
+        0x0000 - 0x0048 reg=6 update_index I
+
+  source_file_idx   : 5 (HYSDInterface.java)
+
+Class #3            -
+  Class descriptor  : 'Lcom/hysd/hyscreen/HYSDInterface$Stub;'
+  Access flags      : 0x0401 (PUBLIC ABSTRACT)
+  Superclass        : 'Landroid/os/Binder;'
+  Interfaces        -
+    #0              : 'Lcom/hysd/hyscreen/HYSDInterface;'
+  Static fields     -
+    #0              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'DESCRIPTOR'
+      type          : 'Ljava/lang/String;'
+      access        : 0x001a (PRIVATE STATIC FINAL)
+      value         : "com.hysd.hyscreen.HYSDInterface"
+    #1              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_basicTypes'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 1
+    #2              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_finishkey'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 9
+    #3              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_getangles'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 13
+    #4              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_getcast'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 12
+    #5              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_getkey'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 10
+    #6              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_getsensordata'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 16
+    #7              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_gettofdata'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 14
+    #8              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_gettofstate'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 15
+    #9              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_init'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 2
+    #10              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_motorb'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 5
+    #11              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_motorf'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 4
+    #12              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_motorg'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 7
+    #13              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_motorg2'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 18
+    #14              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_motors'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 6
+    #15              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_setcast'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 11
+    #16              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_setkey'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 8
+    #17              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_unint'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 3
+    #18              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'TRANSACTION_updateui'
+      type          : 'I'
+      access        : 0x0018 (STATIC FINAL)
+      value         : 17
+  Instance fields   -
+  Direct methods    -
+    #0              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : '<init>'
+      type          : '()V'
+      access        : 0x10001 (PUBLIC CONSTRUCTOR)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 3
+      insns size    : 9 16-bit code units
+001ce4:                                        |[001ce4] com.hysd.hyscreen.HYSDInterface$Stub.<init>:()V
+001cf4: 7010 0000 0100                         |0000: invoke-direct {v1}, Landroid/os/Binder;.<init>:()V // method@0000
+001cfa: 1a00 5700                              |0003: const-string v0, "com.hysd.hyscreen.HYSDInterface" // string@0057
+001cfe: 6e30 4400 1100                         |0005: invoke-virtual {v1, v1, v0}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.attachInterface:(Landroid/os/IInterface;Ljava/lang/String;)V // method@0044
+001d04: 0e00                                   |0008: return-void
+      catches       : (none)
+      positions     :
+        0x0000 line=119
+        0x0003 line=120
+        0x0008 line=121
+      locals        :
+        0x0000 - 0x0009 reg=1 this Lcom/hysd/hyscreen/HYSDInterface$Stub;
+
+    #1              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'asInterface'
+      type          : '(Landroid/os/IBinder;)Lcom/hysd/hyscreen/HYSDInterface;'
+      access        : 0x0009 (PUBLIC STATIC)
+      code          -
+      registers     : 3
+      ins           : 1
+      outs          : 2
+      insns size    : 26 16-bit code units
+001c88:                                        |[001c88] com.hysd.hyscreen.HYSDInterface$Stub.asInterface:(Landroid/os/IBinder;)Lcom/hysd/hyscreen/HYSDInterface;
+001c98: 3902 0400                              |0000: if-nez v2, 0004 // +0004
+001c9c: 1200                                   |0002: const/4 v0, #int 0 // #0
+001c9e: 1100                                   |0003: return-object v0
+001ca0: 1a00 5700                              |0004: const-string v0, "com.hysd.hyscreen.HYSDInterface" // string@0057
+001ca4: 7220 0200 0200                         |0006: invoke-interface {v2, v0}, Landroid/os/IBinder;.queryLocalInterface:(Ljava/lang/String;)Landroid/os/IInterface; // method@0002
+001caa: 0c00                                   |0009: move-result-object v0
+001cac: 3800 0a00                              |000a: if-eqz v0, 0014 // +000a
+001cb0: 2001 0c00                              |000c: instance-of v1, v0, Lcom/hysd/hyscreen/HYSDInterface; // type@000c
+001cb4: 3801 0600                              |000e: if-eqz v1, 0014 // +0006
+001cb8: 0701                                   |0010: move-object v1, v0
+001cba: 1f01 0c00                              |0011: check-cast v1, Lcom/hysd/hyscreen/HYSDInterface; // type@000c
+001cbe: 1101                                   |0013: return-object v1
+001cc0: 2201 0a00                              |0014: new-instance v1, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy; // type@000a
+001cc4: 7020 2c00 2100                         |0016: invoke-direct {v1, v2}, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.<init>:(Landroid/os/IBinder;)V // method@002c
+001cca: 1101                                   |0019: return-object v1
+      catches       : (none)
+      positions     :
+        0x0000 line=128
+        0x0002 line=129
+        0x0004 line=131
+        0x000a line=132
+        0x0010 line=133
+        0x0014 line=135
+      locals        :
+        0x000a - 0x001a reg=0 iin Landroid/os/IInterface;
+        0x0000 - 0x001a reg=2 obj Landroid/os/IBinder;
+
+    #2              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'getDefaultImpl'
+      type          : '()Lcom/hysd/hyscreen/HYSDInterface;'
+      access        : 0x0009 (PUBLIC STATIC)
+      code          -
+      registers     : 1
+      ins           : 0
+      outs          : 0
+      insns size    : 3 16-bit code units
+001ccc:                                        |[001ccc] com.hysd.hyscreen.HYSDInterface$Stub.getDefaultImpl:()Lcom/hysd/hyscreen/HYSDInterface;
+001cdc: 6200 0100                              |0000: sget-object v0, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.sDefaultImpl:Lcom/hysd/hyscreen/HYSDInterface; // field@0001
+001ce0: 1100                                   |0002: return-object v0
+      catches       : (none)
+      positions     :
+        0x0000 line=787
+      locals        :
+
+    #3              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'setDefaultImpl'
+      type          : '(Lcom/hysd/hyscreen/HYSDInterface;)Z'
+      access        : 0x0009 (PUBLIC STATIC)
+      code          -
+      registers     : 3
+      ins           : 1
+      outs          : 2
+      insns size    : 20 16-bit code units
+001c50:                                        |[001c50] com.hysd.hyscreen.HYSDInterface$Stub.setDefaultImpl:(Lcom/hysd/hyscreen/HYSDInterface;)Z
+001c60: 6200 0100                              |0000: sget-object v0, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.sDefaultImpl:Lcom/hysd/hyscreen/HYSDInterface; // field@0001
+001c64: 3900 0a00                              |0002: if-nez v0, 000c // +000a
+001c68: 3802 0600                              |0004: if-eqz v2, 000a // +0006
+001c6c: 6902 0100                              |0006: sput-object v2, Lcom/hysd/hyscreen/HYSDInterface$Stub$Proxy;.sDefaultImpl:Lcom/hysd/hyscreen/HYSDInterface; // field@0001
+001c70: 1210                                   |0008: const/4 v0, #int 1 // #1
+001c72: 0f00                                   |0009: return v0
+001c74: 1200                                   |000a: const/4 v0, #int 0 // #0
+001c76: 0f00                                   |000b: return v0
+001c78: 2200 1100                              |000c: new-instance v0, Ljava/lang/IllegalStateException; // type@0011
+001c7c: 1a01 8b00                              |000e: const-string v1, "setDefaultImpl() called twice" // string@008b
+001c80: 7020 6c00 1000                         |0010: invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;.<init>:(Ljava/lang/String;)V // method@006c
+001c86: 2700                                   |0013: throw v0
+      catches       : (none)
+      positions     :
+        0x0000 line=777
+        0x0004 line=780
+        0x0006 line=781
+        0x0008 line=782
+        0x000a line=784
+        0x000c line=778
+      locals        :
+        0x0000 - 0x0014 reg=2 impl Lcom/hysd/hyscreen/HYSDInterface;
+
+  Virtual methods   -
+    #0              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'asBinder'
+      type          : '()Landroid/os/IBinder;'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 1
+      ins           : 1
+      outs          : 0
+      insns size    : 1 16-bit code units
+0018a4:                                        |[0018a4] com.hysd.hyscreen.HYSDInterface$Stub.asBinder:()Landroid/os/IBinder;
+0018b4: 1100                                   |0000: return-object v0
+      catches       : (none)
+      positions     :
+        0x0000 line=139
+      locals        :
+        0x0000 - 0x0001 reg=0 this Lcom/hysd/hyscreen/HYSDInterface$Stub;
+
+    #1              : (in Lcom/hysd/hyscreen/HYSDInterface$Stub;)
+      name          : 'onTransact'
+      type          : '(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 27
+      ins           : 5
+      outs          : 9
+      insns size    : 452 16-bit code units
+0018b8:                                        |[0018b8] com.hysd.hyscreen.HYSDInterface$Stub.onTransact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
+0018c8: 0809 1600                              |0000: move-object/from16 v9, v22
+0018cc: 080a 1800                              |0002: move-object/from16 v10, v24
+0018d0: 080b 1900                              |0004: move-object/from16 v11, v25
+0018d4: 1a0c 5700                              |0006: const-string v12, "com.hysd.hyscreen.HYSDInterface" // string@0057
+0018d8: 121d                                   |0008: const/4 v13, #int 1 // #1
+0018da: 2c17 6d01 0000                         |0009: sparse-switch v23, 00000176 // +0000016d
+0018e0: 7505 0100 1600                         |000c: invoke-super/range {v22, v23, v24, v25, v26}, Landroid/os/Binder;.onTransact:(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z // method@0001
+0018e6: 0a00                                   |000f: move-result v0
+0018e8: 0f00                                   |0010: return v0
+0018ea: 6e20 1700 cb00                         |0011: invoke-virtual {v11, v12}, Landroid/os/Parcel;.writeString:(Ljava/lang/String;)V // method@0017
+0018f0: 0f0d                                   |0014: return v13
+0018f2: 6e20 0600 ca00                         |0015: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+0018f8: 7401 5200 1600                         |0018: invoke-virtual/range {v22}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.motorg2:()F // method@0052
+0018fe: 0a00                                   |001b: move-result v0
+001900: 7401 1600 1900                         |001c: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+001906: 6e20 1000 0b00                         |001f: invoke-virtual {v11, v0}, Landroid/os/Parcel;.writeFloat:(F)V // method@0010
+00190c: 0f0d                                   |0022: return v13
+00190e: 6e20 0600 ca00                         |0023: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+001914: 7401 0b00 1800                         |0026: invoke-virtual/range {v24}, Landroid/os/Parcel;.readInt:()I // method@000b
+00191a: 0a00                                   |0029: move-result v0
+00191c: 6e20 5900 0900                         |002a: invoke-virtual {v9, v0}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.updateui:(I)I // method@0059
+001922: 0a01                                   |002d: move-result v1
+001924: 7401 1600 1900                         |002e: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+00192a: 6e20 1200 1b00                         |0031: invoke-virtual {v11, v1}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001930: 0f0d                                   |0034: return v13
+001932: 6e20 0600 ca00                         |0035: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+001938: 7401 4b00 1600                         |0038: invoke-virtual/range {v22}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getsensordata:()[F // method@004b
+00193e: 0c00                                   |003b: move-result-object v0
+001940: 7401 1600 1900                         |003c: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+001946: 6e20 1100 0b00                         |003f: invoke-virtual {v11, v0}, Landroid/os/Parcel;.writeFloatArray:([F)V // method@0011
+00194c: 0f0d                                   |0042: return v13
+00194e: 6e20 0600 ca00                         |0043: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+001954: 7401 4d00 1600                         |0046: invoke-virtual/range {v22}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.gettofstate:()I // method@004d
+00195a: 0a00                                   |0049: move-result v0
+00195c: 7401 1600 1900                         |004a: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+001962: 6e20 1200 0b00                         |004d: invoke-virtual {v11, v0}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001968: 0f0d                                   |0050: return v13
+00196a: 6e20 0600 ca00                         |0051: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+001970: 7401 4c00 1600                         |0054: invoke-virtual/range {v22}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.gettofdata:()[F // method@004c
+001976: 0c00                                   |0057: move-result-object v0
+001978: 7401 1600 1900                         |0058: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+00197e: 6e20 1100 0b00                         |005b: invoke-virtual {v11, v0}, Landroid/os/Parcel;.writeFloatArray:([F)V // method@0011
+001984: 0f0d                                   |005e: return v13
+001986: 6e20 0600 ca00                         |005f: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+00198c: 7401 4800 1600                         |0062: invoke-virtual/range {v22}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getangles:()[F // method@0048
+001992: 0c00                                   |0065: move-result-object v0
+001994: 7401 1600 1900                         |0066: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+00199a: 6e20 1100 0b00                         |0069: invoke-virtual {v11, v0}, Landroid/os/Parcel;.writeFloatArray:([F)V // method@0011
+0019a0: 0f0d                                   |006c: return v13
+0019a2: 6e20 0600 ca00                         |006d: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+0019a8: 7401 4900 1600                         |0070: invoke-virtual/range {v22}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getcast:()I // method@0049
+0019ae: 0a00                                   |0073: move-result v0
+0019b0: 7401 1600 1900                         |0074: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+0019b6: 6e20 1200 0b00                         |0077: invoke-virtual {v11, v0}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+0019bc: 0f0d                                   |007a: return v13
+0019be: 6e20 0600 ca00                         |007b: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+0019c4: 7401 0b00 1800                         |007e: invoke-virtual/range {v24}, Landroid/os/Parcel;.readInt:()I // method@000b
+0019ca: 0a00                                   |0081: move-result v0
+0019cc: 6e20 5600 0900                         |0082: invoke-virtual {v9, v0}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.setcast:(I)I // method@0056
+0019d2: 0a01                                   |0085: move-result v1
+0019d4: 7401 1600 1900                         |0086: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+0019da: 6e20 1200 1b00                         |0089: invoke-virtual {v11, v1}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+0019e0: 0f0d                                   |008c: return v13
+0019e2: 6e20 0600 ca00                         |008d: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+0019e8: 7401 4a00 1600                         |0090: invoke-virtual/range {v22}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.getkey:()[I // method@004a
+0019ee: 0c00                                   |0093: move-result-object v0
+0019f0: 7401 1600 1900                         |0094: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+0019f6: 6e20 1300 0b00                         |0097: invoke-virtual {v11, v0}, Landroid/os/Parcel;.writeIntArray:([I)V // method@0013
+0019fc: 0f0d                                   |009a: return v13
+0019fe: 6e20 0600 ca00                         |009b: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+001a04: 7401 0b00 1800                         |009e: invoke-virtual/range {v24}, Landroid/os/Parcel;.readInt:()I // method@000b
+001a0a: 0a00                                   |00a1: move-result v0
+001a0c: 7401 0b00 1800                         |00a2: invoke-virtual/range {v24}, Landroid/os/Parcel;.readInt:()I // method@000b
+001a12: 0a01                                   |00a5: move-result v1
+001a14: 7401 0b00 1800                         |00a6: invoke-virtual/range {v24}, Landroid/os/Parcel;.readInt:()I // method@000b
+001a1a: 0a02                                   |00a9: move-result v2
+001a1c: 6e40 4600 0921                         |00aa: invoke-virtual {v9, v0, v1, v2}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.finishkey:(III)V // method@0046
+001a22: 7401 1600 1900                         |00ad: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+001a28: 0f0d                                   |00b0: return v13
+001a2a: 6e20 0600 ca00                         |00b1: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+001a30: 7401 0b00 1800                         |00b4: invoke-virtual/range {v24}, Landroid/os/Parcel;.readInt:()I // method@000b
+001a36: 0a0e                                   |00b7: move-result v14
+001a38: 7401 0b00 1800                         |00b8: invoke-virtual/range {v24}, Landroid/os/Parcel;.readInt:()I // method@000b
+001a3e: 0a0f                                   |00bb: move-result v15
+001a40: 7401 0b00 1800                         |00bc: invoke-virtual/range {v24}, Landroid/os/Parcel;.readInt:()I // method@000b
+001a46: 0a10                                   |00bf: move-result v16
+001a48: 7401 0b00 1800                         |00c0: invoke-virtual/range {v24}, Landroid/os/Parcel;.readInt:()I // method@000b
+001a4e: 0a11                                   |00c3: move-result v17
+001a50: 7401 0b00 1800                         |00c4: invoke-virtual/range {v24}, Landroid/os/Parcel;.readInt:()I // method@000b
+001a56: 0a12                                   |00c7: move-result v18
+001a58: 7401 0b00 1800                         |00c8: invoke-virtual/range {v24}, Landroid/os/Parcel;.readInt:()I // method@000b
+001a5e: 0a13                                   |00cb: move-result v19
+001a60: 7401 0b00 1800                         |00cc: invoke-virtual/range {v24}, Landroid/os/Parcel;.readInt:()I // method@000b
+001a66: 0a14                                   |00cf: move-result v20
+001a68: 7401 0b00 1800                         |00d0: invoke-virtual/range {v24}, Landroid/os/Parcel;.readInt:()I // method@000b
+001a6e: 0a15                                   |00d3: move-result v21
+001a70: 0800 1600                              |00d4: move-object/from16 v0, v22
+001a74: 01e1                                   |00d6: move v1, v14
+001a76: 01f2                                   |00d7: move v2, v15
+001a78: 0203 1000                              |00d8: move/from16 v3, v16
+001a7c: 0204 1100                              |00da: move/from16 v4, v17
+001a80: 0205 1200                              |00dc: move/from16 v5, v18
+001a84: 0206 1300                              |00de: move/from16 v6, v19
+001a88: 0207 1400                              |00e0: move/from16 v7, v20
+001a8c: 0208 1500                              |00e2: move/from16 v8, v21
+001a90: 7409 5700 0000                         |00e4: invoke-virtual/range {v0, v1, v2, v3, v4, v5, v6, v7, v8}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.setkey:(IIIIIIII)I // method@0057
+001a96: 0a00                                   |00e7: move-result v0
+001a98: 7401 1600 1900                         |00e8: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+001a9e: 6e20 1200 0b00                         |00eb: invoke-virtual {v11, v0}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001aa4: 0f0d                                   |00ee: return v13
+001aa6: 6e20 0600 ca00                         |00ef: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+001aac: 7401 5100 1600                         |00f2: invoke-virtual/range {v22}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.motorg:()I // method@0051
+001ab2: 0a00                                   |00f5: move-result v0
+001ab4: 7401 1600 1900                         |00f6: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+001aba: 6e20 1200 0b00                         |00f9: invoke-virtual {v11, v0}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001ac0: 0f0d                                   |00fc: return v13
+001ac2: 6e20 0600 ca00                         |00fd: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+001ac8: 7401 5300 1600                         |0100: invoke-virtual/range {v22}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.motors:()I // method@0053
+001ace: 0a00                                   |0103: move-result v0
+001ad0: 7401 1600 1900                         |0104: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+001ad6: 6e20 1200 0b00                         |0107: invoke-virtual {v11, v0}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001adc: 0f0d                                   |010a: return v13
+001ade: 6e20 0600 ca00                         |010b: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+001ae4: 7401 4f00 1600                         |010e: invoke-virtual/range {v22}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.motorb:()I // method@004f
+001aea: 0a00                                   |0111: move-result v0
+001aec: 7401 1600 1900                         |0112: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+001af2: 6e20 1200 0b00                         |0115: invoke-virtual {v11, v0}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001af8: 0f0d                                   |0118: return v13
+001afa: 6e20 0600 ca00                         |0119: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+001b00: 7401 5000 1600                         |011c: invoke-virtual/range {v22}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.motorf:()I // method@0050
+001b06: 0a00                                   |011f: move-result v0
+001b08: 7401 1600 1900                         |0120: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+001b0e: 6e20 1200 0b00                         |0123: invoke-virtual {v11, v0}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001b14: 0f0d                                   |0126: return v13
+001b16: 6e20 0600 ca00                         |0127: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+001b1c: 7401 5800 1600                         |012a: invoke-virtual/range {v22}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.unint:()I // method@0058
+001b22: 0a00                                   |012d: move-result v0
+001b24: 7401 1600 1900                         |012e: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+001b2a: 6e20 1200 0b00                         |0131: invoke-virtual {v11, v0}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001b30: 0f0d                                   |0134: return v13
+001b32: 6e20 0600 ca00                         |0135: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+001b38: 7401 4e00 1600                         |0138: invoke-virtual/range {v22}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.init:()I // method@004e
+001b3e: 0a00                                   |013b: move-result v0
+001b40: 7401 1600 1900                         |013c: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+001b46: 6e20 1200 0b00                         |013f: invoke-virtual {v11, v0}, Landroid/os/Parcel;.writeInt:(I)V // method@0012
+001b4c: 0f0d                                   |0142: return v13
+001b4e: 6e20 0600 ca00                         |0143: invoke-virtual {v10, v12}, Landroid/os/Parcel;.enforceInterface:(Ljava/lang/String;)V // method@0006
+001b54: 7401 0b00 1800                         |0146: invoke-virtual/range {v24}, Landroid/os/Parcel;.readInt:()I // method@000b
+001b5a: 0a0e                                   |0149: move-result v14
+001b5c: 7401 0c00 1800                         |014a: invoke-virtual/range {v24}, Landroid/os/Parcel;.readLong:()J // method@000c
+001b62: 0b0f                                   |014d: move-result-wide v15
+001b64: 7401 0b00 1800                         |014e: invoke-virtual/range {v24}, Landroid/os/Parcel;.readInt:()I // method@000b
+001b6a: 0a00                                   |0151: move-result v0
+001b6c: 3800 0400                              |0152: if-eqz v0, 0156 // +0004
+001b70: 01d4                                   |0154: move v4, v13
+001b72: 2803                                   |0155: goto 0158 // +0003
+001b74: 1200                                   |0156: const/4 v0, #int 0 // #0
+001b76: 0104                                   |0157: move v4, v0
+001b78: 7401 0a00 1800                         |0158: invoke-virtual/range {v24}, Landroid/os/Parcel;.readFloat:()F // method@000a
+001b7e: 0a11                                   |015b: move-result v17
+001b80: 7401 0800 1800                         |015c: invoke-virtual/range {v24}, Landroid/os/Parcel;.readDouble:()D // method@0008
+001b86: 0b12                                   |015f: move-result-wide v18
+001b88: 7401 0d00 1800                         |0160: invoke-virtual/range {v24}, Landroid/os/Parcel;.readString:()Ljava/lang/String; // method@000d
+001b8e: 0c14                                   |0163: move-result-object v20
+001b90: 0800 1600                              |0164: move-object/from16 v0, v22
+001b94: 01e1                                   |0166: move v1, v14
+001b96: 04f2                                   |0167: move-wide v2, v15
+001b98: 0205 1100                              |0168: move/from16 v5, v17
+001b9c: 0506 1200                              |016a: move-wide/from16 v6, v18
+001ba0: 0808 1400                              |016c: move-object/from16 v8, v20
+001ba4: 7409 4500 0000                         |016e: invoke-virtual/range {v0, v1, v2, v3, v4, v5, v6, v7, v8}, Lcom/hysd/hyscreen/HYSDInterface$Stub;.basicTypes:(IJZFDLjava/lang/String;)V // method@0045
+001baa: 7401 1600 1900                         |0171: invoke-virtual/range {v25}, Landroid/os/Parcel;.writeNoException:()V // method@0016
+001bb0: 0f0d                                   |0174: return v13
+001bb2: 0000                                   |0175: nop // spacer
+001bb4: 0002 1300 0100 0000 0200 0000 0300 ... |0176: sparse-switch-data (78 units)
+      catches       : (none)
+      positions     :
+        0x0000 line=143
+        0x0008 line=144
+        0x000c line=333
+        0x0011 line=148
+        0x0014 line=149
+        0x0015 line=325
+        0x0018 line=326
+        0x001c line=327
+        0x001f line=328
+        0x0022 line=329
+        0x0023 line=315
+        0x0026 line=317
+        0x002a line=318
+        0x002e line=319
+        0x0031 line=320
+        0x0034 line=321
+        0x0035 line=307
+        0x0038 line=308
+        0x003c line=309
+        0x003f line=310
+        0x0042 line=311
+        0x0043 line=299
+        0x0046 line=300
+        0x004a line=301
+        0x004d line=302
+        0x0050 line=303
+        0x0051 line=291
+        0x0054 line=292
+        0x0058 line=293
+        0x005b line=294
+        0x005e line=295
+        0x005f line=283
+        0x0062 line=284
+        0x0066 line=285
+        0x0069 line=286
+        0x006c line=287
+        0x006d line=275
+        0x0070 line=276
+        0x0074 line=277
+        0x0077 line=278
+        0x007a line=279
+        0x007b line=265
+        0x007e line=267
+        0x0082 line=268
+        0x0086 line=269
+        0x0089 line=270
+        0x008c line=271
+        0x008d line=257
+        0x0090 line=258
+        0x0094 line=259
+        0x0097 line=260
+        0x009a line=261
+        0x009b line=244
+        0x009e line=246
+        0x00a2 line=248
+        0x00a6 line=250
+        0x00aa line=251
+        0x00ad line=252
+        0x00b0 line=253
+        0x00b1 line=220
+        0x00b4 line=222
+        0x00b8 line=224
+        0x00bc line=226
+        0x00c0 line=228
+        0x00c4 line=230
+        0x00c8 line=232
+        0x00cc line=234
+        0x00d0 line=236
+        0x00d4 line=237
+        0x00e8 line=238
+        0x00eb line=239
+        0x00ee line=240
+        0x00ef line=212
+        0x00f2 line=213
+        0x00f6 line=214
+        0x00f9 line=215
+        0x00fc line=216
+        0x00fd line=204
+        0x0100 line=205
+        0x0104 line=206
+        0x0107 line=207
+        0x010a line=208
+        0x010b line=196
+        0x010e line=197
+        0x0112 line=198
+        0x0115 line=199
+        0x0118 line=200
+        0x0119 line=188
+        0x011c line=189
+        0x0120 line=190
+        0x0123 line=191
+        0x0126 line=192
+        0x0127 line=180
+        0x012a line=181
+        0x012e line=182
+        0x0131 line=183
+        0x0134 line=184
+        0x0135 line=172
+        0x0138 line=173
+        0x013c line=174
+        0x013f line=175
+        0x0142 line=176
+        0x0143 line=153
+        0x0146 line=155
+        0x014a line=157
+        0x014e line=159
+        0x0158 line=161
+        0x015c line=163
+        0x0160 line=165
+        0x0164 line=166
+        0x0171 line=167
+        0x0174 line=168
+      locals        :
+        0x001c - 0x0023 reg=0 _result F
+        0x002a - 0x0035 reg=0 _arg0 I
+        0x002e - 0x0035 reg=1 _result I
+        0x003c - 0x0043 reg=0 _result [F
+        0x004a - 0x0051 reg=0 _result I
+        0x0058 - 0x005f reg=0 _result [F
+        0x0066 - 0x006d reg=0 _result [F
+        0x0074 - 0x007b reg=0 _result I
+        0x0082 - 0x008d reg=0 _arg0 I
+        0x0086 - 0x008d reg=1 _result I
+        0x0094 - 0x009b reg=0 _result [I
+        0x00a2 - 0x00b1 reg=0 _arg0 I
+        0x00a6 - 0x00b1 reg=1 _arg1 I
+        0x00aa - 0x00b1 reg=2 _arg2 I
+        0x00e8 - 0x00ef reg=0 _result I
+        0x00b8 - 0x00ef reg=14 _arg0 I
+        0x00bc - 0x00ef reg=15 _arg1 I
+        0x00c0 - 0x00ef reg=16 _arg2 I
+        0x00c4 - 0x00ef reg=17 _arg3 I
+        0x00c8 - 0x00ef reg=18 _arg4 I
+        0x00cc - 0x00ef reg=19 _arg5 I
+        0x00d0 - 0x00ef reg=20 _arg6 I
+        0x00d4 - 0x00ef reg=21 _arg7 I
+        0x00f6 - 0x00fd reg=0 _result I
+        0x0104 - 0x010b reg=0 _result I
+        0x0112 - 0x0119 reg=0 _result I
+        0x0120 - 0x0127 reg=0 _result I
+        0x012e - 0x0135 reg=0 _result I
+        0x013c - 0x0143 reg=0 _result I
+        0x0158 - 0x01c4 reg=4 _arg2 Z
+        0x0008 - 0x01c4 reg=12 descriptor Ljava/lang/String;
+        0x014a - 0x01c4 reg=14 _arg0 I
+        0x014e - 0x01c4 reg=15 _arg1 J
+        0x015c - 0x01c4 reg=17 _arg3 F
+        0x0160 - 0x01c4 reg=18 _arg4 D
+        0x0164 - 0x01c4 reg=20 _arg5 Ljava/lang/String;
+        0x0000 - 0x01c4 reg=22 this Lcom/hysd/hyscreen/HYSDInterface$Stub;
+        0x0000 - 0x01c4 reg=23 code I
+        0x0000 - 0x01c4 reg=24 data Landroid/os/Parcel;
+        0x0000 - 0x01c4 reg=25 reply Landroid/os/Parcel;
+        0x0000 - 0x01c4 reg=26 flags I
+
+  source_file_idx   : 5 (HYSDInterface.java)
+

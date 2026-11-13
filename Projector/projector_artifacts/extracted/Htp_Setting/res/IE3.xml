@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<!-- <SourceLists_TVSYSTEM_ATV> means supportSourceList in global_ATV area -->
+<sourceList>
+<!--    <SourceLists_Globle_ATV sourceid="0" name="ATV" type="text" grouptype="SourceLists_Globle_ATV" status="enable" icon="tv_icon_atv"/>-->
+
+    <!-- in china,it is also support DVBC,but DVBC and DTMB should be combined to one source,so keep dtmb for default dtv source;
+    when changed to cable signal type,it will change source to dvbc -->
+<!--    <SourceLists_China sourceid="0" name="ATV" type="text" grouptype="SourceLists_China" status="enable" icon="tv_icon_atv"/>-->
+<!--    <SourceLists_China sourceid="2" name="DTV" type="text" grouptype="SourceLists_China" status="enable" icon="tv_icon_dvbc"/>-->
+
+     <!-- TVSYSTEM_DVBT_T2_C for south east asia  for south east asia,default dtv is DVBT(18) -->
+<!--    <SourceLists_SEA sourceid="0" name="ATV" type="text" grouptype="SourceLists_SEA" status="enable" icon="tv_icon_atv"/>-->
+<!--    <SourceLists_SEA sourceid="18" name="DTV" type="text" grouptype="SourceLists_SEA" status="enable" icon="tv_icon_dvbc"/>-->
+
+    <!-- TVSYSTEM_DVBT_T2_S_S2_C for Europ,default dtv is DVBS(20) -->
+<!--    <SourceLists_Europe sourceid="0" name="ATV" type="text" grouptype="SourceLists_Europe" status="enable" icon="tv_icon_atv"/>-->
+<!--    <SourceLists_Europe sourceid="20" name="DTV" type="text" grouptype="SourceLists_Europe" status="enable" icon="tv_icon_dvbc"/>-->
+<!--    <SourceLists_Europe sourceid="15" name="SCART" type="text" grouptype="SourceLists_Europe" status="enable" icon="tv_icon_vga"/>-->
+
+    <!-- TVSYSTEM_ATSC for NorthAmerica,default dtv is ATSC -->
+<!--    <SourceLists_NA sourceid="19" name="TV" type="text" grouptype="SourceLists_NA" status="enable" icon="tv_icon_dvbc"/>-->
+
+    <!-- TVSYSTEM_ISDBT for SouthAmerica，default dtv is ISDBT -->
+<!--    <SourceLists_SA sourceid="21" name="TV" type="text" grouptype="SourceLists_SA" status="enable" icon="tv_icon_dvbc"/>-->
+
+    <SourceLists_Common sourceid="3" name="AV" type="text" grouptype="SourceLists_Common" status="enable" icon="tv_icon_av"/>
+    <SourceLists_Common sourceid="6" name="VGA" type="text" grouptype="SourceLists_Common" status="enable" icon="tv_icon_vga"/>
+    <SourceLists_Common sourceid="7" name="YPBPR" type="text" grouptype="SourceLists_Common" status="enable" icon="tv_icon_ypbpr"/>
+    <SourceLists_Common sourceid="9" name="HDMI1" type="text" grouptype="SourceLists_Common" status="enable" icon="tv_icon_hdmi"/>
+    <SourceLists_Common sourceid="10" name="HDMI2" type="text" grouptype="SourceLists_Common" status="enable" icon="tv_icon_hdmi"/>
+<!--    <SourceLists_Common sourceid="11" name="HDMI3" type="text" grouptype="SourceLists_Common" status="enable" icon="tv_icon_hdmi"/>-->
+    <SourceLists_Common sourceid="13" name="MEDIA" type="text" grouptype="SourceLists_Common" status="enable" icon="tv_icon_media"/>
+</sourceList>

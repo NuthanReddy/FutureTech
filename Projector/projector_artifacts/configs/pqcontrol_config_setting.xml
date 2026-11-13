@@ -1,0 +1,47 @@
+<config_setting>
+	<save_current_data value = "true"/>
+	<ui_use brightness="1" contrast="1" saturation="1" hue="1" sharpness="1" backlight="1"
+            colortemperature="1" gamma="1"
+            tnr="1" snr="1" dynamic_backlight="1"
+            dci="1" blackextenstion="1"/>
+
+    <!--
+        video_range_mode 0:Auto; 1:Limit; 2:Full
+        hdmi_control_pc_mode 0:Auto; 1:HDMI Video; 2: DVI PC Graphic
+        -->
+    <default brightness="50" contrast="50" saturation="50" hue="50" sharpness="50"
+            backlight="3" energy_saving_backlight = "15"
+            colortemperature="0" gamma="1"
+            tnr="2" snr="1" dynamic_backlight="0"
+            dci="2" blackextenstion="1"
+            smart_picture_mode="0"
+            overscan_enable="0" cvbs_pedestal_mode="0"
+            video_range_mode="0" hdmi_control_pc_mode="0"
+        />
+
+	<has_detail_preset_mode value="true"/>
+
+	<use_energy_saving value="true"/>
+
+	<!--
+	    0:disable the func
+	    1:use computer mode, means that configure computer mode for hdmi channel in ini file
+	    2:use VGA channel, means that configure VGA channel with all picture modes in ini file
+	    -->
+	<picture_mode_for_hdmi_special_timing value="2"/>
+
+	<preset_mode_use brightness="1" contrast="1" saturation="1" hue="1" sharpness="1" backlight="1"
+            colortemperature="1" gamma="1"
+            tnr="1" snr="1" dynamic_backlight="0"
+            dci="1" blackextenstion="1"/>
+
+	<transform>
+		<item
+			name="gamma"
+			level0="1.8"
+			level1="2.0"
+			level2="2.1"
+			level3="2.2"
+            level4="2.4"/>
+	</transform>
+</config_setting>
