@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tree>
+    <Setting type="sub_menu" class="RootController" >
+        <Setting key="factory_reset" type="do" title="title_factory_reset"/>
+        <Setting key="picture" type="sub_menu" title="title_picture_setting" class="picture.PictureController">
+            <Setting key="inputSource" type="level" title="title_picture_input" level="setting_input_choices"/>
+            <Setting key="signal_info" type="sub_menu" title="title_picture_signal_info" class="picture.PictureSignalInfoController">
+                <Setting key="signal_id" type="text" title="title_picture_signal_id"/>
+                <Setting key="frame_rate_x100" type="text" title="title_picture_frame_rate_x100"/>
+                <Setting key="b_interlace" type="text" title="title_picture_b_interlace"/>
+                <Setting key="color_format" type="text" title="title_picture_color_format"/>
+                <Setting key="color_space" type="text" title="title_picture_color_space"/>
+                <Setting key="resolution" type="text" title="title_picture_resolution"/>
+                <Setting key="hdr_mode" type="text" title="title_picture_hdr_mode"/>
+                <Setting key="b_full_range" type="text" title="title_picture_b_full_range"/>
+                <Setting key="b_dvi_mode" type="text" title="title_picture_b_dvi_mode"/>
+                <Setting key="atv_uid" type="text" title="title_picture_atv_uid"/>
+            </Setting>
+            <Setting type="sub_menu" title="title_picture_mode" class="picture.PictureModeController">
+                <Setting key="pictureMode" type="level" title="title_picture_mode" level="setting_picture_mode_choices"/>
+                <Setting key="modeBrightness" type="value" title="title_picture_brightness" min="0" max="100"/>
+                <Setting key="modeContrast" type="value" title="title_picture_contrast" min="0" max="100"/>
+                <Setting key="modeColor" type="value" title="title_picture_color" min="0" max="100"/>
+                <Setting key="modeSharpness" type="value" title="title_picture_sharpness" min="0" max="100"/>
+                <Setting key="modeTint" type="value" title="title_picture_tint" min="0" max="100"/>
+            </Setting>
+            <Setting key="pictureCurve" type="sub_menu" title="title_picture_curve" class="picture.PictureCurveController">
+                <Setting key="modeBrightness" type="sub_menu" title="title_picture_brightness" class="picture.PictureCurveBasicItemController"/>
+                <Setting key="modeContrast" type="sub_menu" title="title_picture_contrast" class="picture.PictureCurveBasicItemController"/>
+                <Setting key="modeColor" type="sub_menu" title="title_picture_color" class="picture.PictureCurveBasicItemController"/>
+                <Setting key="modeTint" type="sub_menu" title="title_picture_tint" class="picture.PictureCurveBasicItemController"/>
+                <Setting key="modeSharpness" type="sub_menu" title="title_picture_sharpness" class="picture.PictureCurveBasicItemController"/>
+            </Setting>
+            <Setting key="pictureWhiteBalance" type="sub_menu" title="title_picture_white_balance" class="picture.PictureWhiteBalanceController">
+                <Setting key="WBMode" type="level" title="title_picture_WB_mode" level="setting_wb_choices"/>
+                <Setting key="WBRedGain" type="value" title="title_picture_WB_R_gain" min="0" max="1023"/>
+                <Setting key="WBGreenGain" type="value" title="title_picture_WB_G_gain" min="0" max="1023"/>
+                <Setting key="WBBlueGain" type="value" title="title_picture_WB_B_gain" min="0" max="1023"/>
+                <Setting key="WBRedOffset" type="value" title="title_picture_WB_R_offset" min="-512" max="511"/>
+                <Setting key="WBGreenOffset" type="value" title="title_picture_WB_G_offset" min="-512" max="511"/>
+                <Setting key="WBBlueOffset" type="value" title="title_picture_WB_B_offset" min="-512" max="511"/>
+                <Setting key="WBReset" type="do" title="title_picture_WB_reset"/>
+                <Setting key="WBCopy" type="do" title="title_picture_WB_copy"/>
+            </Setting>
+            <Setting key="pictureOverScan" type="sub_menu" title="title_picture_over_scan" class="picture.PictureOverScanController">
+                <Setting key="OverScanLeft" type="value" title="title_picture_over_scan_left" min="0" max="1000"/>
+                <Setting key="OverScanRight" type="value" title="title_picture_over_scan_right" min="0" max="1000"/>
+                <Setting key="OverScanUp" type="value" title="title_picture_over_scan_up" min="0" max="1000"/>
+                <Setting key="OverScanDown" type="value" title="title_picture_over_scan_down" min="0" max="1000"/>
+                <Setting key="OverScanSwitch" type="level" title="title_picture_over_scan_switch" level="setting_enable_choices" />
+                <Setting key="OverScanSignal" type="text" title="title_picture_signal"/>
+                <Setting key="OverScanRatio" type="level" title="title_picture_ratio_debug" level="setting_aspectratio_choices" />
+            </Setting>
+            <Setting key="pictureAdvance" type="sub_menu" title="title_picture_advance" class="picture.PictureAdvanceController">
+                <Setting key="PQEnable" type="sub_menu" title="title_picture_advance_enable" class="picture.PictureAdvanceEnableController">
+                    <Setting key="picparams_tse_enable" type="level" title="title_picture_picparams_tse_enable" level="setting_enable_choices"/>
+                    <Setting key="pq_enable_all" type="level" title="title_picture_pq_enable_all" level="setting_enable_choices"/>
+                    <Setting key="tnr_luma_enable" type="level" title="title_picture_tnr_luma_enable" level="setting_enable_choices"/>
+                    <Setting key="tnr_chroma_enable" type="level" title="title_picture_tnr_chroma_enable" level="setting_enable_choices"/>
+                    <Setting key="snr_hblk_filter_enable" type="level" title="title_picture_snr_hblk_filter_enable" level="setting_enable_choices"/>
+                    <Setting key="snr_vbnr_filter_enable" type="level" title="title_picture_snr_vbnr_filter_enable" level="setting_enable_choices"/>
+                    <Setting key="snr_wmnr_filter_enable" type="level" title="title_picture_snr_wmnr_filter_enable" level="setting_enable_choices"/>
+                    <Setting key="cti_pre_dcti_enable" type="level" title="title_picture_cti_pre_dcti_enable" level="setting_enable_choices"/>
+                    <Setting key="cti_post_dcti_enable" type="level" title="title_picture_cti_post_dcti_enable" level="setting_enable_choices"/>
+                    <Setting key="ssr_general_enable" type="level" title="title_picture_ssr_general_enable" level="setting_enable_choices"/>
+                    <Setting key="ssr_peaking_enable" type="level" title="title_picture_ssr_peaking_enable" level="setting_enable_choices"/>
+                    <Setting key="cm_enable" type="level" title="title_picture_cm_enable" level="setting_enable_choices"/>
+                    <Setting key="dci_enable" type="level" title="title_picture_dci_enable" level="setting_enable_choices"/>
+                    <Setting key="pedestal_pre_y_setting_enable" type="level" title="title_picture_pedestal_pre_y_setting_enable" level="setting_enable_choices"/>
+                    <Setting key="gamma_enable" type="level" title="title_picture_gamma_enable" level="setting_enable_choices"/>
+                    <Setting key="black_extension_enable" type="level" title="title_picture_black_extension_enable" level="setting_enable_choices"/>
+                </Setting>
+
+                <Setting key="luma" type="sub_menu" title="title_picture_advance_luma" class="picture.PictureAdvanceLumaController">
+                    <Setting key="luma_pre_y_gain" type="value" title="title_picture_luma_pre_y_gain" min="0" max="255"/>
+                    <Setting key="luma_pre_y_offset" type="value" title="title_picture_luma_pre_y_offset" min="0" max="255"/>
+                </Setting>
+
+                <Setting key="nr" type="sub_menu" title="title_picture_advance_nr" class="picture.PictureAdvanceNRController">
+                    <Setting key="snr_table" type="level" title="title_snr_table" level="setting_snr_table_choices"/>
+                    <Setting key="snr_hblk_detection_thr" type="value" title="title_picture_snr_hblk_detection_thr" min="0" max="127"/>
+                    <Setting key="snr_hblk_alpha_gen_thr" type="value" title="title_picture_snr_hblk_alpha_gen_thr" min="0" max="127"/>
+                    <Setting key="snr_hblk_alpha_gen_trans" type="value" title="title_picture_snr_hblk_alpha_gen_trans" min="0" max="7"/>
+                    <Setting key="snr_hblk_edge_alpha_gen_thr" type="value" title="title_picture_snr_hblk_edge_alpha_gen_thr" min="0" max="127"/>
+                    <Setting key="snr_hblk_edge_alpha_gen_trans" type="value" title="title_picture_snr_hblk_edge_alpha_gen_trans" min="0" max="127"/>
+                    <Setting key="snr_vblk_detection_thr" type="value" title="title_picture_snr_vblk_detection_thr" min="0" max="127"/>
+                    <Setting key="snr_vblk_alpha_gen_thr" type="value" title="title_picture_snr_vblk_alpha_gen_thr" min="0" max="127"/>
+                    <Setting key="snr_vblk_alpha_gen_trans" type="value" title="title_picture_snr_vblk_alpha_gen_trans" min="0" max="7"/>
+                    <Setting key="snr_vblk_edge_alpha_gen_thr" type="value" title="title_picture_snr_vblk_edge_alpha_gen_thr" min="0" max="127"/>
+                    <Setting key="snr_vblk_edge_alpha_gen_trans" type="value" title="title_picture_snr_vblk_edge_alpha_gen_trans" min="0" max="7"/>
+                    <Setting key="snr_wnr_alpha_thr" type="value" title="title_picture_snr_wnr_alpha_thr" min="0" max="127"/>
+                    <Setting key="snr_wnr_alpha_trans" type="value" title="title_picture_snr_wnr_alpha_trans" min="0" max="15"/>
+                    <Setting key="snr_mnr_alpha_thr" type="value" title="title_picture_snr_mnr_alpha_thr" min="0" max="127"/>
+                    <Setting key="snr_mnr_alpha_trans" type="value" title="title_picture_snr_mnr_alpha_trans" min="0" max="15"/>
+                    <Setting key="snr_wgn_alpha_thr" type="value" title="title_picture_snr_wgn_alpha_thr" min="0" max="127"/>
+                    <Setting key="snr_wgn_alpha_trans" type="value" title="title_picture_snr_wgn_alpha_trans" min="0" max="7"/>
+                </Setting>
+
+
+                <Setting key="cti" type="sub_menu" title="title_picture_advance_cti" class="picture.PictureAdvanceCTIController">
+                    <Setting key="cti_pre_dcti_gain" type="value" title="title_picture_cti_pre_dcti_gain" min="0" max="15"/>
+                    <Setting key="cti_pre_dcti_step" type="value" title="title_picture_cti_pre_dcti_step" min="0" max="7"/>
+                    <Setting key="cti_post_dcti_gain" type="value" title="title_picture_cti_post_dcti_gain" min="0" max="15"/>
+                    <Setting key="cti_post_dcti_step" type="value" title="title_picture_cti_post_dcti_step" min="0" max="15"/>
+                </Setting>
+
+                <Setting key="ssr" type="sub_menu" title="title_picture_advance_ssr" class="picture.PictureAdvanceSSRController">
+                    <Setting key="ssr_table" type="level" title="title_ssr_table" level="setting_ssr_table_choices"/>
+                    <Setting key="ssr_general_pos_gain" type="value" title="title_picture_ssr_general_pos_gain" min="0" max="255"/>
+                    <Setting key="ssr_general_neg_gain" type="value" title="title_picture_ssr_general_neg_gain" min="0" max="255"/>
+                    <Setting key="ssr_peaking_norm_h_gain_2" type="value" title="title_picture_ssr_peaking_norm_h_gain_2" min="0" max="31"/>
+                    <Setting key="ssr_peaking_norm_h_gain_4" type="value" title="title_picture_ssr_peaking_norm_h_gain_4" min="0" max="31"/>
+                    <Setting key="ssr_peaking_norm_h_gain_6" type="value" title="title_picture_ssr_peaking_norm_h_gain_6" min="0" max="31"/>
+                    <Setting key="ssr_peaking_norm_h_gain_8" type="value" title="title_picture_ssr_peaking_norm_h_gain_8" min="0" max="31"/>
+                    <Setting key="ssr_peaking_norm_v_gain_2" type="value" title="title_picture_ssr_peaking_norm_v_gain_2" min="0" max="31"/>
+                    <Setting key="ssr_peaking_norm_v_gain_4" type="value" title="title_picture_ssr_peaking_norm_v_gain_4" min="0" max="31"/>
+                    <Setting key="ssr_peaking_norm_v_gain_6" type="value" title="title_picture_ssr_peaking_norm_v_gain_6" min="0" max="31"/>
+                    <Setting key="ssr_peaking_norm_s_gain_2" type="value" title="title_picture_ssr_peaking_norm_s_gain_2" min="0" max="31"/>
+                    <Setting key="ssr_peaking_norm_s_gain_4" type="value" title="title_picture_ssr_peaking_norm_s_gain_4" min="0" max="31"/>
+                    <Setting key="ssr_peaking_debug" type="value" title="title_picture_ssr_peaking_debug" min="0" max="3"/>
+                </Setting>
+                <Setting key="color manager" type="sub_menu" title="title_picture_advance_color_manager" class="picture.PictureColorManagerController">
+                    <Setting key="cm_gain_hue" type="sub_menu" title="title_picture_advance_cm_gain_hue" class="picture.PictureColorManagerItemController"/>
+                    <Setting key="cm_gain_saturation" type="sub_menu" title="title_picture_advance_cm_gain_saturation" class="picture.PictureColorManagerItemController"/>
+                    <Setting key="cm_gain_value" type="sub_menu" title="title_picture_advance_cm_gain_value" class="picture.PictureColorManagerItemController"/>
+                </Setting>
+                <Setting key="gammaTableIndex" type="level" title="title_picture_gamma_table_index" level="setting_gamma_table_index_choices"/>
+                <Setting key="pictureMode" type="level" title="title_picture_mode" level="setting_picture_mode_choices"/>
+                <Setting key="tnr" type="level" title="title_picture_tnr" level="setting_level_choices"/>
+                <Setting key="snr" type="level" title="title_picture_snr" level="setting_level_choices"/>
+                <Setting key="dci" type="level" title="title_picture_dci" level="setting_level_choices"/>
+                <Setting key="blackext" type="level" title="title_picture_blackext" level="setting_level_choices"/>
+                <Setting key="gamma" type="level" title="title_picture_gamma" level="setting_gamma_choices"/>
+                <Setting key="gammaColorTemp" type="level" title="title_picture_colortemp" level="setting_wb_choices"/>
+                <Setting key="pqDebugEnable" type="level" title="title_picture_debug_enable" level="setting_enable_choices"/>
+                <!--Setting key="PQEnable" type="sub_menu" title="title_picture_pq_enable" class="picture.PicturePQEnableController"/-->
+            </Setting>
+            <Setting key="pictureGamma11" type="sub_menu" title="title_picture_gamma11" class="picture.PictureGammaPointController">
+            </Setting>
+            <Setting key="cvbs_pedestal_mode" type="level" title="title_picture_cvbs_pedestal_mode" level="setting_enable_choices"/>
+        </Setting>
+
+        <Setting key="sound" type="sub_menu" title="title_sound_setting" class="sound.SoundController">
+            <Setting key="inputSource" type="level" title="title_sound_input" level="setting_sound_input_choices"/>
+            <Setting key="outputMode" type="level" title="title_sound_output" level="setting_sound_output_choices"/>
+            <Setting key="sound_hw_audiocodec" type="sub_menu" title="title_sound_hw_audiocodec" class="sound.SoundHwAudioCodecController">
+                <Setting key="lineout_gain" type="value" title="title_sound_hw_lineout_gain" min="0" max="31"/>
+                <Setting key="hpout_gain" type="value" title="title_sound_hw_hpout_gain" min="0" max="7"/>
+            </Setting>
+            <Setting key="sound_hw_msp" type="sub_menu" title="title_sound_hw_msp" class="sound.SoundHwMspController">
+                <Setting key="msp_input_gain" type="value" title="title_sound_hw_msp_input_gain" min="-31" max="12"/>
+                <Setting key="msp_output_gain" type="value" title="title_sound_hw_msp_output_gain" min="-127" max="30"/>
+                <Setting key="msp_delaytime" type="value" title="title_sound_hw_msp_delaytime" min="0" max="500"/>
+                <Setting key="msp_peq" type="sub_menu" title="title_sound_hw_msp_peq" class="sound.SoundHwMspPeqController">
+                    <Setting key="msp_peq_enable" type="level" title="title_sound_hw_msp_peq_enable" level="setting_enable_choices"/>
+                    <Setting key="msp_peq_pre_mode" type="level" title="title_sound_hw_msp_peq_pre_mode" level="setting_audio_peq_mode_choices"/>
+                    <Setting key="msp_peq_freq" type="sub_menu" title="title_sound_hw_msp_peq_freq" class="sound.SoundHwMspPeqItemController"/>
+                    <Setting key="msp_peq_q" type="sub_menu" title="title_sound_hw_msp_peq_q" class="sound.SoundHwMspPeqItemController"/>
+                    <Setting key="msp_peq_gain" type="sub_menu" title="title_sound_hw_msp_peq_gain" class="sound.SoundHwMspPeqItemController"/>
+                    <Setting key="msp_peq_overall_gain" type="value" title="title_sound_hw_msp_peq_overall_gain" min="-32" max="12"/>
+                </Setting>
+                <Setting key="msp_surround" type="sub_menu" title="title_sound_hw_msp_surround" class="sound.SoundHwMspSurroundController">
+                    <Setting key="msp_surround_enable" type="level" title="title_sound_hw_msp_surround_enable" level="setting_enable_choices"/>
+                    <Setting key="msp_surround_mode" type="level" title="title_sound_hw_msp_surround_mode" level="setting_audio_surround_mode_choices"/>
+                </Setting>
+                <Setting key="msp_balance" type="sub_menu" title="title_sound_hw_msp_balance" class="sound.SoundHwMspBalanceController">
+                    <Setting key="msp_balance_enable" type="level" title="title_sound_hw_msp_balance_enable" level="setting_enable_choices"/>
+                    <Setting key="msp_balance_value" type="value" title="title_sound_hw_msp_balance_value" min="-50" max="50"/>
+                </Setting>
+                <Setting key="msp_avl" type="sub_menu" title="title_sound_hw_msp_avl" class="sound.SoundHwMspAvlController">
+                    <Setting key="msp_avl_enable" type="level" title="title_sound_hw_msp_avl_enable" level="setting_enable_choices"/>
+                    <Setting key="msp_avl_threshold" type="value" title="title_sound_hw_msp_avl_threshold" min="-32" max="12"/>
+                    <Setting key="msp_avl_decaytime" type="level" title="title_sound_hw_msp_avl_decaytime" level="setting_audio_avl_decaytime_choices"/>
+                </Setting>
+                <Setting key="msp_avc" type="sub_menu" title="title_sound_hw_msp_avc" class="sound.SoundHwMspAvcController">
+                    <Setting key="msp_avc_enable" type="level" title="title_sound_hw_msp_avc_enable" level="setting_enable_choices"/>
+                    <Setting key="msp_avc_mode" type="level" title="title_sound_hw_msp_avc_mode" level="setting_audio_avc_mode_choices"/>
+                    <Setting key="msp_avc_gain" type="level" title="title_sound_hw_msp_avc_gain" level="setting_audio_avc_gain_choices"/>
+                    <Setting key="msp_avc_threshold" type="level" title="title_sound_hw_msp_avc_threshold" level="setting_audio_avc_threshold_choices"/>
+                    <Setting key="msp_avc_limit" type="value" title="title_sound_hw_msp_avc_limit" min="-18" max="-3"/>
+                    <Setting key="msp_avc_decaytime" type="level" title="title_sound_hw_msp_avc_decaytime" level="setting_audio_avc_decaytime_choices"/>
+                </Setting>
+            </Setting>
+            <Setting key="sound_sw_effect" type="sub_menu" title="title_sound_sw" class="sound.SoundSwSfxController">
+                <Setting key="sw_peq" type="sub_menu" title="title_sound_sw_peq" class="sound.SoundSwSfxPeqController">
+                    <Setting key="sw_peq_enable" type="level" title="title_sound_sw_peq_enable" level="setting_enable_choices"/>
+                    <Setting key="sw_peq_pre_mode" type="level" title="title_sound_sw_peq_pre_mode" level="setting_audio_peq_mode_choices"/>
+                    <Setting key="sw_peq_freq" type="sub_menu" title="title_sound_sw_peq_freq" class="sound.SoundSwSfxPeqItemController"/>
+                    <Setting key="sw_peq_q" type="sub_menu" title="title_sound_sw_peq_q" class="sound.SoundSwSfxPeqItemController"/>
+                    <Setting key="sw_peq_gain" type="sub_menu" title="title_sound_sw_peq_gain" class="sound.SoundSwSfxPeqItemController"/>
+                    <Setting key="sw_peq_overall_gain" type="value" title="title_sound_sw_peq_overall_gain" min="-32" max="12"/>
+                </Setting>
+            </Setting>
+        </Setting>
+        <Setting key="debug" type="sub_menu" title="title_debug_setting" class="debug.DebugController">
+            <Setting key="uart" type="level" title="title_debug_uart" level="setting_enable_choices"/>
+            <Setting key="adb" type="level" title="title_debug_adb" level="setting_enable_choices"/>
+            <Setting key="logcat" type="level" title="title_debug_logcat" level="setting_enable_choices"/>
+            <!--Setting key="afc" type="level" title="title_debug_afc" level="setting_enable_choices"/>
+            <Setting key="dbx" type="level" title="title_debug_dbx" level="setting_enable_choices"/>
+            <Setting key="mic" type="do" title="title_debug_mic"/-->
+        </Setting>
+        <Setting key="info" type="sub_menu" title="title_system_info" class="info.SystemInfoController">
+            <Setting key="board" type="text" title="title_info_board" />
+            <Setting key="panel" type="text" title="title_info_panel" />
+            <Setting key="tuner" type="text" title="title_info_tuner"/>
+            <Setting key="hdcp1.4" type="text" title="title_info_hdcp1"/>
+            <Setting key="hdcp2.2" type="text" title="title_info_hdcp2"/>
+            <Setting key="storage" type="text" title="title_info_flash"/>
+            <Setting key="ddr" type="text" title="title_info_ddr"/>
+            <Setting key="mac" type="text" title="title_info_mac"/>
+            <Setting key="serialno" type="text" title="title_info_serialno"/>
+            <Setting key="ip" type="text" title="title_info_ip"/>
+            <Setting key="ipv6" type="text" title="title_info_ipv6"/>
+            <Setting key="wifi" type="text" title="title_info_wifi"/>
+            <Setting key="bt" type="text" title="title_info_bt"/>
+            <Setting key="device" type="text" title="title_info_device"/>
+            <Setting key="buildtime" type="text" title="title_info_build"/>
+            <Setting key="boottime" type="text" title="title_info_boot"/>
+            <Setting key="totaltime" type="text" title="title_info_totaltime"/>
+            <!--Setting key="bootcount" type="text" title="title_info_bootcount"/-->
+        </Setting>
+        <Setting key="panel" type="sub_menu" title="title_panel_setting" class="panel.PanelController">
+            <!--Setting key="dcr" type="sub_menu" title="title_panel_dcr" class="panel.PanelDCRController">
+
+            </Setting-->
+            <Setting key="dcr" type="level" title="title_panel_dcr" level="setting_enable_choices"/>
+            <Setting key="backlight" type="value" title="title_panel_backlight" min="0" max="100"/>
+            <Setting key="pwmFreq" type="value" title="title_panel_pwm" min="1" max="67108863"/>    <!-- max = 2^26 - 1 -->
+            <Setting key="colorDepth" type="level" title="title_panel_color_depth" level="setting_panel_color_depth"/>
+            <Setting key="mapping" type="level" title="title_panel_mapping" level="setting_panel_mapping"/>
+            <Setting key="odd_even" type="level" title="title_panel_odd_even" level="setting_panel_odd_even"/>
+            <!--Setting key="screenDivision" type="level" title="title_panel_division" level="setting_input_choices"/-->
+            <Setting key="screenInvert" type="level" title="title_panel_invert" level="setting_panel_invert"/>
+            <Setting key="de_current" type="value" title="title_panel_de_current" min="0" max="63"/>
+            <Setting key="odd_current" type="value" title="title_panel_odd_current" min="0" max="7"/>
+            <Setting key="even_current" type="value" title="title_panel_even_current" min="0" max="7"/>
+            <!--Setting key="lvdsDriver" type="value" title="title_panel_lvds_driver" min="1" max="3"/-->
+            <Setting key="timing_work_mode" type="level" title="title_panel_timing_work_mode" level="setting_panel_timing_work_mode"/>
+        </Setting>
+        <Setting key="emc" type="sub_menu" title="title_emc_setting" class="emc.EMCController">
+            <Setting key="emc_ddr_ssc_enable" type="level" title="title_emc_ddr_ssc_enable" level="setting_enable_choices"/>
+            <Setting key="emc_ddr_ssc_span" type="level" title="title_emc_ddr_ssc_range" level="setting_emc_ddr_ssc_span"/>
+            <Setting key="emc_ddr_ssc_step" type="text" title="title_emc_ddr_ssc_step" min="0" max="1000"/>
+            <Setting key="emc_lvds_ssc_enable" type="level" title="title_emc_lvds_ssc_enable" level="setting_enable_choices"/>
+            <Setting key="emc_lvds_ssc_span" type="level" title="title_emc_lvds_ssc_range" level="setting_panel_emc_lvds_ssc_span"/>
+            <Setting key="emc_lvds_ssc_step" type="value" title="title_emc_lvds_ssc_step" min="0" max="1000"/>
+        </Setting>
+        <Setting key="general" type="sub_menu" title="title_general_setting" class="general.GeneralController">
+            <Setting key="power" type="level" title="title_general_power" level="setting_power_choices"/>
+            <Setting key="videoRange" type="level" title="title_picture_video_range" level="setting_video_range"/>
+            <Setting key="sourceFreezeTest" type="level" title="title_source_freeze_test" level="setting_enable_choices"/>
+            <!--Setting key="logo" type="level" title="title_general_logo" level="setting_enable_choices"/>
+            <Setting key="xbug" type="level" title="title_general_xbug" level="setting_enable_choices"/-->
+            <Setting key="pattern" type="do" title="title_general_pattern"/>
+            <Setting key="aging" type="do" title="title_general_aging"/>
+            <!--Setting key="watchdog" type="level" title="title_general_watchdog" level="setting_enable_choices"/-->
+            <Setting key="inOut" type="sub_menu" title="title_general_inout" class="general.GeneralInoutController">
+                <Setting key="logoExport" type="do" title="title_general_export_logo"/>
+                <Setting key="logoImport" type="do" title="title_general_import_logo"/>
+                <Setting key="channelDBExport" type="do" title="title_general_export_channel_db"/>
+                <Setting key="channelDBImportUsb" type="do" title="title_general_import_channel_db_usb"/>
+                <Setting key="channelJsonExport" type="do" title="title_general_export_channel_json"/>
+                <Setting key="channelJsonImportUsb" type="do" title="title_general_import_channel_json_usb"/>
+                <Setting key="pqExport" type="do" title="title_general_export_pq"/>
+                <Setting key="pqImport" type="do" title="title_general_import_pq"/>
+                <Setting key="panelExport" type="do" title="title_general_export_panel"/>
+                <Setting key="panelImport" type="do" title="title_general_import_panel"/>
+
+            </Setting>
+            <Setting key="timer" type="sub_menu" title="title_general_timer" class="general.GeneralTimerController">
+                <Setting key="timerNosignal" type="level" title="title_timer_nosignal" level="setting_enable_choices"/>
+            </Setting>
+            <!--Setting key="bandBin" type="do" title="title_general_bandbin"/>
+            <Setting key="channelLock" type="level" title="title_general_channellock" level="setting_enable_choices"/>
+            <Setting key="inputLock" type="sub_menu" title="title_general_inputlock" class=""/>
+            <Setting key="volumeLock" type="level" title="title_general_volumelock" level="setting_enable_choices"/>
+            <Setting key="volume" type="value" title="title_general_volume" min="0" max="5"/-->
+        </Setting>
+        <Setting key="upgrade" type="sub_menu" title="title_upgrade_setting" class="upgrade.UpgradeController">
+            <Setting key="mac_burn" type="do" title="title_upgrade_mac_burn"/>
+            <Setting key="serialno_burn" type="do" title="title_upgrade_serialno_burn"/>
+            <Setting key="hdcp_1_4_burn" type="do" title="title_upgrade_hdcp_1_4_burn"/>
+            <Setting key="hdcp_2_2_burn" type="do" title="title_upgrade_hdcp_2_2_burn"/>
+            <Setting key="widevine_burn" type="do" title="title_upgrade_widevine_burn"/>
+            <Setting key="mac_clear" type="do" title="title_upgrade_mac_clear"/>
+            <!--Setting key="mac_clear" type="do" title="title_upgrade_mac_clear"/>
+            <Setting key="hdcp_1_4_clear" type="do" title="title_upgrade_hdcp_1_4_clear"/>
+            <Setting key="hdcp_2_2_clear" type="do" title="title_upgrade_hdcp_2_2_clear"/-->
+            <Setting key="widevine_clear" type="do" title="title_upgrade_widevine_clear"/>
+            <!--Setting key="burn_data_clear" type="do" title="title_upgrade_burn_data_clear"/>
+            <Setting key="upgrade_pq" type="do" title="title_upgrade_pq"/-->
+        </Setting>
+    </Setting>
+</tree>

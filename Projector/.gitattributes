@@ -1,0 +1,10 @@
+scripts/macos/*.sh text eol=lf
+*.apk binary
+*.bmp binary
+*.dex binary
+*.gz binary
+*.jar binary
+*.jpg binary
+*.png binary
+*.so binary
+*.webp binary
