@@ -1,1 +1,0 @@
-task ':profileinstaller:profileinstaller:writeVersionFile' property 'version'
