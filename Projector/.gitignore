@@ -1,0 +1,13 @@
+# Track pre-built signed alignment APK, patched DEX files, and compiled classes in alcove_upgrade/build/
+!build/
+!build/**
+!dist/
+!dist/**
+
+# Never commit signing keys, certificates, or keystores (fetched on demand from AOSP Gitiles)
+alcove_upgrade/keys/
+*.pk8
+*.pem
+*.keystore
+*.jks
+
